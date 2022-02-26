@@ -4,8 +4,11 @@ import glob
 import json
 import os
 
-thumnail_max_size = 1000
-thumnail_quality = 50
+full_max_size = 2500
+full_quality = 65
+
+thumbnail_max_size = 1000
+thumbnail_quality = 50
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
@@ -19,33 +22,37 @@ if __name__ == "__main__":
   os.makedirs(args.output_dir + "thumbnail", exist_ok=True)
   photos = []
 
-  for path in paths:
-    print("processing:" + path)
+  for i, path in enumerate(paths):
+    print(f"processing: {path} (i/{len(paths)})")
     img = Image.open(path)
+    full_ratio = min(full_max_size / max(img.width, img.height), 1.0)
+    full_width, full_height = round(img.width * full_ratio), round(img.height * full_ratio)
+    thumbnail = img.resize((full_width, full_height))
+
     basename = os.path.splitext(os.path.basename(path))[0]
     filename = basename + ".webp"
-    img.save(f"{args.output_dir}{filename}", quality=100)
+    img.save(f"{args.output_dir}{filename}", quality=full_quality)
 
     # create a thumbnail
-    ratio = min(thumnail_max_size / max(img.width, img.height), 1.0)
-    width, height = round(img.width * ratio), round(img.height * ratio)
-    thumbnail = img.resize((width, height))
-    thumbnail.save(f"{args.output_dir}thumbnail/{filename}", quality=thumnail_quality)    
+    ratio = min(thumbnail_max_size / max(img.width, img.height), 1.0)
+    thumbnail_width, thumbnail_height = round(img.width * ratio), round(img.height * ratio)
+    thumbnail = img.resize((thumbnail_width, thumbnail_height))
+    thumbnail.save(f"{args.output_dir}thumbnail/{filename}", quality=thumbnail_quality)    
 
     photos.append({
       "src": filename,
       "title": "",
       "place": "",
       "date": "",
-      "width": width,
-      "height": height
+      "width": full_width,
+      "height": full_height
     })
 
   data = {
       "title": "",      
       "date": "",
       "dir": "/" + args.output_dir,
-      "photos": photos
+      "photos": sorted(photos, key=lambda x: x["src"])
   }
   with open(args.json_path, "w") as fp:
     json.dump(data, fp, indent=2)

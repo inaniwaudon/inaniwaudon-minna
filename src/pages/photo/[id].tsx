@@ -46,12 +46,14 @@ const Index = (props: Props) => {
   };
 
   useEffect(() => {
-    changeColumnCount(Math.floor(window.innerWidth / 350));
+    changeColumnCount(Math.max(Math.floor(window.innerWidth / 350), 2));
     window.onresize = () => {
       setImgWidth(window.innerWidth / columnCount);
     };
   }, []);
   const photos = shuffle(props.photos);
+  const titleLast = props.title[props.title.length - 1];
+  console.log(titleLast);
 
   return (
     <div className={styles.container}>
@@ -92,7 +94,16 @@ const Index = (props: Props) => {
         ))}
       </main>
       <footer className={styles.footer}>
-        <h1>{props.title}</h1>
+        <h1>
+          {props.title.substring(0, props.title.length - 1)}
+          {["）", "」", "』", "】", "］", "〉", "》", "。", "、"].includes(
+            titleLast
+          ) ? (
+            <span className={styles.half}>）</span>
+          ) : (
+            { titleLast }
+          )}
+        </h1>
         <p className={styles.date}>{props.date}</p>
         <p className={styles.copyright}>
           <small>
@@ -105,20 +116,20 @@ const Index = (props: Props) => {
         </p>
       </footer>
       <nav className={styles.nav}>
-        <button
+        <a
           onClick={() => {
             zoom(true);
           }}
         >
           −
-        </button>
-        <button
+        </a>
+        <a
           onClick={() => {
             zoom(false);
           }}
         >
           ＋
-        </button>
+        </a>
       </nav>
     </div>
   );

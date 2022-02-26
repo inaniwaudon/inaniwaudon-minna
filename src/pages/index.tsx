@@ -7,22 +7,18 @@ const Index = () => {
       <h1>いなにわうどん.みんな</h1>
       <ul>
         <li>
-          <Link href="/photo/kiroro">キロロの写真</Link>
-        </li>
-        <li>
-          <Link href="/photo/tokyo2020">
-            東京オリンピック開会式・聖火・閉会式 （2021/8）
-          </Link>
-        </li>
-        <li>
-          <Link href="/photo/mot-eugene-kubota">
-            東京都現代美術館（2022/2/17）
-          </Link>
-        </li>
-        <li>
           <Link href="/photo/2202kyushu">
             九州旅行（長崎・福岡、2022/2/21―25）
           </Link>
+        </li>
+        <li>
+          <del>キロロの写真</del>
+        </li>
+        <li>
+          <del>東京オリンピック開会式・聖火・閉会式 （2021/8）</del>
+        </li>
+        <li>
+          <del>東京都現代美術館（2022/2/17）</del>
         </li>
       </ul>
       <h2>外部リンク</h2>
