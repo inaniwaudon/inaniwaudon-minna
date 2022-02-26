@@ -60,6 +60,7 @@ const Index = (props: Props) => {
       <Head>
         <title>{props.title} - いなにわうどん.みんな</title>
         <meta charSet="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
