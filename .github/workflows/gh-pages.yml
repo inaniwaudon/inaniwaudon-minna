@@ -39,3 +39,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+          cname: xn--n8je9hcf0t4a.xn--q9jyb4c.xn--n8je9hcf0t4a.xn--q9jyb4c
