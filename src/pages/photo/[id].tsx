@@ -53,7 +53,6 @@ const Index = (props: Props) => {
   }, []);
   const photos = shuffle(props.photos);
   const titleLast = props.title[props.title.length - 1];
-  console.log(titleLast);
 
   return (
     <div className={styles.container}>
@@ -102,7 +101,7 @@ const Index = (props: Props) => {
           ) ? (
             <span className={styles.half}>）</span>
           ) : (
-            { titleLast }
+            <span>{titleLast}</span>
           )}
         </h1>
         <p className={styles.date}>{props.date}</p>
@@ -161,7 +160,10 @@ export const getStaticProps = async ({
 };
 
 export const getStaticPaths = () => {
-  return { paths: [{ params: { id: "2202kyushu" } }], fallback: false };
+  return {
+    paths: [{ params: { id: "2202kyushu" } }, { params: { id: "210301ysfh" } }],
+    fallback: false,
+  };
 };
 
 export default Index;

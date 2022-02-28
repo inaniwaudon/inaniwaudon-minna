@@ -23,7 +23,7 @@ if __name__ == "__main__":
   photos = []
 
   for i, path in enumerate(paths):
-    print(f"processing: {path} (i/{len(paths)})")
+    print(f"processing: {path} ({i}/{len(paths)})")
     img = Image.open(path)
     full_ratio = min(full_max_size / max(img.width, img.height), 1.0)
     full_width, full_height = round(img.width * full_ratio), round(img.height * full_ratio)
