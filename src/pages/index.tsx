@@ -12,6 +12,11 @@ const Index = () => {
           </Link>
         </li>
         <li>
+          <Link href="/photo/210301ysfh">
+            卒業式前日（横浜サイエンスフロンティア高校、2022/3/1）
+          </Link>
+        </li>
+        <li>
           <del>キロロの写真</del>
         </li>
         <li>

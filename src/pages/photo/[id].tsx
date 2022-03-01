@@ -2,16 +2,13 @@ import fs from "fs";
 import path from "path";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import styles from "./Index.module.scss";
 
 interface Props {
   title: string;
   date: string;
-  photos: [
-    {
-      thumnail_src: string;
-    } & PhotoData
-  ];
+  photos: PhotoList;
 }
 
 interface PhotoData {
@@ -23,12 +20,17 @@ interface PhotoData {
   height: number;
 }
 
+type PhotoList = ({
+  thumnail_src: string;
+} & PhotoData)[];
+
 const shuffle = (array: any[]): any[] => {
-  for (let i = array.length - 1; i >= 0; i--) {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
-  return array;
+  return newArray;
 };
 
 const Index = (props: Props) => {
@@ -45,13 +47,17 @@ const Index = (props: Props) => {
     changeColumnCount(count);
   };
 
+  const router = useRouter();
+  const [photos, setPhotos] = useState<PhotoList>([]);
+
   useEffect(() => {
     changeColumnCount(Math.max(Math.floor(window.innerWidth / 350), 2));
     window.onresize = () => {
       setImgWidth(window.innerWidth / columnCount);
     };
-  }, []);
-  const photos = shuffle(props.photos);
+    setPhotos("sorted" in router.query ? props.photos : shuffle(props.photos));
+  }, [router.query]);
+
   const titleLast = props.title[props.title.length - 1];
 
   return (
