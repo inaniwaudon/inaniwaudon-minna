@@ -26,6 +26,16 @@ const Index = () => {
           <del>東京都現代美術館（2022/2/17）</del>
         </li>
       </ul>
+
+      <ul>
+        <li>
+          <a href="https://inaniwaudon.github.io/spring-2022/">
+            桜が舞い上がるページ
+          </a>
+          <a href="https://inaniwaudon.github.io/hoshiimo/">ほしいものリスト</a>
+        </li>
+      </ul>
+
       <h2>外部リンク</h2>
       <ul>
         <li>
@@ -48,7 +58,7 @@ const Index = () => {
         </li>
         <li>
           Qiita：
-          <a href="https://github.com/inaniwaudon/">inaniwaudon - Qiita</a>
+          <a href="https://qiita.com/inaniwaudon/">inaniwaudon - Qiita</a>
         </li>
       </ul>
     </main>
