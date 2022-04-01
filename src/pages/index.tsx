@@ -32,6 +32,8 @@ const Index = () => {
           <a href="https://inaniwaudon.github.io/spring-2022/">
             桜が舞い上がるページ
           </a>
+        </li>
+        <li>
           <a href="https://inaniwaudon.github.io/hoshiimo/">ほしいものリスト</a>
         </li>
       </ul>
