@@ -34,6 +34,9 @@ const Index = () => {
           </a>
         </li>
         <li>
+          <a href="https://exagree.netlify.app/">超便乗ツール</a>
+        </li>
+        <li>
           <a href="https://inaniwaudon.github.io/hoshiimo/">ほしいものリスト</a>
         </li>
       </ul>
