@@ -1,0 +1,7 @@
+@import "./index.module.scss";
+
+.main {
+  li + li {
+    margin-top: 10px;
+  }
+}

@@ -39,6 +39,9 @@ const Index = () => {
         <li>
           <a href="https://inaniwaudon.github.io/hoshiimo/">ほしいものリスト</a>
         </li>
+        <li>
+          <Link href="/kdb">Kdbもどき関連リンク</Link>
+        </li>
       </ul>
 
       <h2>外部リンク</h2>
