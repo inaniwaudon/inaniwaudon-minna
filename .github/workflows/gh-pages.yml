@@ -15,9 +15,9 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "14.x"
 
-      - name: Cache dependencies
+      - name: cache dependencies
         uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -26,10 +26,10 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: install
-        run: npm install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: build
-        run: npm run build
+        run: yarn run build
 
       - name: add nojekyll
         run: touch ./out/.nojekyll
