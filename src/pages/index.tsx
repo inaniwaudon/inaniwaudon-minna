@@ -2,29 +2,39 @@ import Link from "next/link";
 import styles from "./index.module.scss";
 
 const Index = () => {
+  const photos: { [key in string]: { title: string; deleted?: boolean } } = {
+    "2202kyushu": {
+      title: "九州旅行（長崎・福岡、2022/2/21―25）",
+    },
+    "210301ysfh": {
+      title: "卒業式前日（横浜サイエンスフロンティア高校、2022/3/1）",
+    },
+    kiroro: {
+      title: "キロロの写真",
+    },
+    tokyo2020: {
+      title: "東京オリンピック開会式・聖火・閉会式 （2021/8）",
+      deleted: true,
+    },
+    "210217mot": {
+      title: "東京都現代美術館（2022/2/17）",
+      deleted: true,
+    },
+  };
+
   return (
     <main className={styles.main}>
       <h1>いなにわうどん.みんな</h1>
       <ul>
-        <li>
-          <Link href="/photo/2202kyushu">
-            九州旅行（長崎・福岡、2022/2/21―25）
-          </Link>
-        </li>
-        <li>
-          <Link href="/photo/210301ysfh">
-            卒業式前日（横浜サイエンスフロンティア高校、2022/3/1）
-          </Link>
-        </li>
-        <li>
-          <del>キロロの写真</del>
-        </li>
-        <li>
-          <del>東京オリンピック開会式・聖火・閉会式 （2021/8）</del>
-        </li>
-        <li>
-          <del>東京都現代美術館（2022/2/17）</del>
-        </li>
+        {Object.entries(photos).map(([url, photo]) => (
+          <li>
+            {photo.deleted ? (
+              <del>{photo.title}</del>
+            ) : (
+              <Link href={`/photo/${url}`}>{photo.title}</Link>
+            )}
+          </li>
+        ))}
       </ul>
 
       <ul>
@@ -41,6 +51,11 @@ const Index = () => {
         </li>
         <li>
           <Link href="/kdb">Kdbもどき関連リンク</Link>
+        </li>
+        <li>
+          <a href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
+            2021年度 授業感想
+          </a>
         </li>
       </ul>
 

@@ -24,6 +24,8 @@ type PhotoList = ({
   thumnail_src: string;
 } & PhotoData)[];
 
+const topics = ["2022kyushu", "210301ysfh", "kiroro"];
+
 const shuffle = (array: any[]): any[] => {
   const newArray = [...array];
   for (let i = newArray.length - 1; i >= 0; i--) {
@@ -167,7 +169,7 @@ export const getStaticProps = async ({
 
 export const getStaticPaths = () => {
   return {
-    paths: [{ params: { id: "2202kyushu" } }, { params: { id: "210301ysfh" } }],
+    paths: topics.map((topic) => ({ params: { id: topic } })),
     fallback: false,
   };
 };
