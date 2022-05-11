@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 
 const Index = () => {
   const photos: { [key in string]: { title: string; deleted?: boolean } } = {
-    "2202kyushu": {
+    "2022kyushu": {
       title: "九州旅行（長崎・福岡、2022/2/21―25）",
     },
     "210301ysfh": {
