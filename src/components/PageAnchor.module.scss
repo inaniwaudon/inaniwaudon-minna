@@ -1,0 +1,9 @@
+.Link {
+  color: #191970;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: solid 1px #191970;
+  border-image: linear-gradient(to right, #191970, rgba(255, 255, 255, 0));
+  border-image-slice: 1;
+  display: inline-block;
+}

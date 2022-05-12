@@ -2,6 +2,38 @@
 
 .main {
   li + li {
-    margin-top: 10px;
+    margin-top: 8px;
+  }
+
+  h3 {
+    font-size: 1em;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  h3 + p {
+    margin-top: 4px;
+  }
+
+  p + p {
+    margin-top: 4px;
+  }
+}
+
+.documentLink {
+  color: #191970;
+  padding: 1px 3px;
+  border: solid 1px #191970;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  transition: color 200ms, background 200ms;
+
+  &:hover {
+    color: #fff;
+    background: #191970;
   }
 }

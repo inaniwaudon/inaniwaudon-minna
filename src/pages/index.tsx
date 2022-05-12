@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PageAnchor from "../components/PageAnchor";
 import styles from "./index.module.scss";
 
 const Index = () => {
@@ -31,7 +32,7 @@ const Index = () => {
             {photo.deleted ? (
               <del>{photo.title}</del>
             ) : (
-              <Link href={`/photo/${url}`}>{photo.title}</Link>
+              <PageAnchor href={`/photo/${url}`}>{photo.title}</PageAnchor>
             )}
           </li>
         ))}
@@ -39,23 +40,27 @@ const Index = () => {
 
       <ul>
         <li>
-          <a href="https://inaniwaudon.github.io/spring-2022/">
+          <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
             桜が舞い上がるページ
-          </a>
+          </PageAnchor>
         </li>
         <li>
-          <a href="https://exagree.netlify.app/">超便乗ツール</a>
+          <PageAnchor href="https://exagree.netlify.app/">
+            超便乗ツール
+          </PageAnchor>
         </li>
         <li>
-          <a href="https://inaniwaudon.github.io/hoshiimo/">ほしいものリスト</a>
+          <PageAnchor href="https://inaniwaudon.github.io/hoshiimo/">
+            ほしいものリスト
+          </PageAnchor>
         </li>
         <li>
-          <Link href="/kdb">Kdbもどき関連リンク</Link>
+          <PageAnchor href="/kdb">Kdbもどき関連リンク</PageAnchor>
         </li>
         <li>
-          <a href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
+          <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
             2021年度 授業感想
-          </a>
+          </PageAnchor>
         </li>
       </ul>
 
@@ -63,25 +68,27 @@ const Index = () => {
       <ul>
         <li>
           Twitter：
-          <a href="https://twitter.com/kyoto_mast21/">
+          <PageAnchor href="https://twitter.com/kyoto_mast21/">
             いなにわうどん（@kyoto_mast21）
-          </a>
+          </PageAnchor>
         </li>
         <li>
           GitHub：
-          <a href="https://github.com/inaniwaudon/">
+          <PageAnchor href="https://github.com/inaniwaudon/">
             いなにわうどん（inaniwaudon）
-          </a>
+          </PageAnchor>
         </li>
         <li>
           はてなブログ：
-          <a href="https://soudakyoto-ikou.hatenadiary.jp/">
+          <PageAnchor href="https://soudakyoto-ikou.hatenadiary.jp/">
             いなにわうどん（うどんの話に見せかけて技術的な話をしたい（できない））
-          </a>
+          </PageAnchor>
         </li>
         <li>
           Qiita：
-          <a href="https://qiita.com/inaniwaudon/">inaniwaudon - Qiita</a>
+          <PageAnchor href="https://qiita.com/inaniwaudon/">
+            inaniwaudon - Qiita
+          </PageAnchor>
         </li>
       </ul>
     </main>
