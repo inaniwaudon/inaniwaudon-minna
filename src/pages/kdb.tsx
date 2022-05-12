@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./kdb.module.scss";
 
 const Index = () => {
@@ -24,6 +25,34 @@ const Index = () => {
           </a>
         </li>
       </ul>
+
+      <h2>発表</h2>
+      <ul>
+        <li>
+          <a href="https://conf2021.axies.jp/program/_file/20006_000.pdf">
+            オープンソースでLMSをより使いやすく～ユーザによるLMSの機能拡張～
+          </a>
+          <br />
+          （大学ICT推進協議会（AXIES）年次大会・2021年12月15日・幕張メッセ）
+          <br />
+          <Link href="/docs/axies-kdb.pdf">発表資料（PDF）</Link>
+        </li>
+        <li>
+          <a href="https://www.k-of.jp/2021/session/tsukuba/">
+            筑波大シラバス「KdBもどき」を作ったその後どうなった？
+          </a>
+          <br />
+          （関西オープンフォーラム2021・2021年10月19日・オンライン）
+        </li>
+        <li>
+          <a href="https://laboratoryautomation.connpass.com/event/206175/">
+            授業科目DB代替システム「KdBもどき」の開発と運用
+          </a>
+          <br />
+          （Laboratory Automation月例勉強会・2021年5月22日・オンライン）
+        </li>
+      </ul>
+
       <h2>記事掲載など</h2>
       <ul>
         <li>
@@ -42,28 +71,6 @@ const Index = () => {
           </a>
           <br />
           （筑波大学新聞 第363号・2021年5月24日）
-        </li>
-
-        <li>
-          <a href="https://conf2021.axies.jp/program/_file/20006_000.pdf">
-            オープンソースでLMSをより使いやすく～ユーザによるLMSの機能拡張～
-          </a>
-          <br />
-          （大学ICT推進協議会（AXIES）年次大会・2021年12月15日・幕張メッセ）
-        </li>
-        <li>
-          <a href="https://www.k-of.jp/2021/session/tsukuba/">
-            筑波大シラバス「KdBもどき」を作ったその後どうなった？
-          </a>
-          <br />
-          （関西オープンフォーラム2021・2021年10月19日・オンライン）
-        </li>
-        <li>
-          <a href="https://laboratoryautomation.connpass.com/event/206175/">
-            授業科目DB代替システム「KdBもどき」の開発と運用
-          </a>
-          <br />
-          （Laboratory Automation月例勉強会・2021年5月22日・オンライン）
         </li>
 
         <li>
