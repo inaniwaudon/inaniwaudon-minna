@@ -1,4 +1,4 @@
-import Link from "next/link";
+import CustomList from "../components/CustomList";
 import PageAnchor from "../components/PageAnchor";
 import styles from "./index.module.scss";
 
@@ -28,68 +28,68 @@ const Index = () => {
       <h1>いなにわうどん.みんな</h1>
       <ul>
         {Object.entries(photos).map(([url, photo]) => (
-          <li>
+          <CustomList>
             {photo.deleted ? (
               <del>{photo.title}</del>
             ) : (
               <PageAnchor href={`/photo/${url}`}>{photo.title}</PageAnchor>
             )}
-          </li>
+          </CustomList>
         ))}
       </ul>
 
       <ul>
-        <li>
+        <CustomList>
           <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
             桜が舞い上がるページ
           </PageAnchor>
-        </li>
-        <li>
+        </CustomList>
+        <CustomList>
           <PageAnchor href="https://exagree.netlify.app/">
             超便乗ツール
           </PageAnchor>
-        </li>
-        <li>
+        </CustomList>
+        <CustomList>
           <PageAnchor href="https://inaniwaudon.github.io/hoshiimo/">
             ほしいものリスト
           </PageAnchor>
-        </li>
-        <li>
+        </CustomList>
+        <CustomList>
           <PageAnchor href="/kdb">Kdbもどき関連リンク</PageAnchor>
-        </li>
-        <li>
+        </CustomList>
+        <CustomList>
           <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
             2021年度 授業感想
           </PageAnchor>
-        </li>
+        </CustomList>
       </ul>
 
       <h2>外部リンク</h2>
       <ul>
-        <li>
+        <CustomList>
           Twitter：
           <PageAnchor href="https://twitter.com/kyoto_mast21/">
             いなにわうどん（@kyoto_mast21）
           </PageAnchor>
-        </li>
-        <li>
+        </CustomList>
+        <CustomList>
           GitHub：
           <PageAnchor href="https://github.com/inaniwaudon/">
             いなにわうどん（inaniwaudon）
           </PageAnchor>
-        </li>
-        <li>
+        </CustomList>
+        <CustomList>
           はてなブログ：
           <PageAnchor href="https://soudakyoto-ikou.hatenadiary.jp/">
             いなにわうどん（うどんの話に見せかけて技術的な話をしたい（できない））
           </PageAnchor>
-        </li>
-        <li>
+        </CustomList>
+        <CustomList>
           Qiita：
           <PageAnchor href="https://qiita.com/inaniwaudon/">
             inaniwaudon - Qiita
           </PageAnchor>
-        </li>
+        </CustomList>
       </ul>
     </main>
   );

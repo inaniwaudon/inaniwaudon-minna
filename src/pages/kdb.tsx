@@ -1,5 +1,5 @@
-import { link } from "fs";
 import Link from "next/link";
+import CustomList from "../components/CustomList";
 import PageAnchor from "../components/PageAnchor";
 import styles from "./kdb.module.scss";
 
@@ -102,27 +102,25 @@ const articleLinks: LinkItem[] = [
 const Index = () => {
   const LinkCollection = (links: LinkItem[]) => (
     <ul>
-      <li>
-        {links.map((link) => (
-          <li>
-            {
-              <h3>
-                <PageAnchor href={link.href}>{link.title}</PageAnchor>
-              </h3>
-            }
-            {link.description && <p>{link.description}</p>}
-            {link.references && (
-              <p>
-                {link.references.map((reference) => (
-                  <Link href={reference.href}>
-                    <div className={styles.documentLink}>{reference.title}</div>
-                  </Link>
-                ))}
-              </p>
-            )}
-          </li>
-        ))}
-      </li>
+      {links.map((link) => (
+        <CustomList>
+          {
+            <h3>
+              <PageAnchor href={link.href}>{link.title}</PageAnchor>
+            </h3>
+          }
+          {link.description && <p>{link.description}</p>}
+          {link.references && (
+            <p>
+              {link.references.map((reference) => (
+                <Link href={reference.href}>
+                  <div className={styles.documentLink}>{reference.title}</div>
+                </Link>
+              ))}
+            </p>
+          )}
+        </CustomList>
+      ))}
     </ul>
   );
 
