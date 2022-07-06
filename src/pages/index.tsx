@@ -25,44 +25,68 @@ const Index = () => {
 
   return (
     <main className={styles.main}>
-      <h1>いなにわうどん.みんな</h1>
-      <ul>
-        {Object.entries(photos).map(([url, photo]) => (
-          <CustomList>
-            {photo.deleted ? (
-              <del>{photo.title}</del>
-            ) : (
-              <PageAnchor href={`/photo/${url}`}>{photo.title}</PageAnchor>
-            )}
-          </CustomList>
-        ))}
-      </ul>
+      <div className={styles.top}>
+        <div>
+          <h1>いなにわうどん.みんな</h1>
+          <ul>
+            {Object.entries(photos).map(([url, photo]) => (
+              <CustomList>
+                {photo.deleted ? (
+                  <del>{photo.title}</del>
+                ) : (
+                  <PageAnchor href={`/photo/${url}`}>{photo.title}</PageAnchor>
+                )}
+              </CustomList>
+            ))}
+          </ul>
 
-      <ul>
-        <CustomList>
-          <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
-            桜が舞い上がるページ
-          </PageAnchor>
-        </CustomList>
-        <CustomList>
-          <PageAnchor href="https://exagree.netlify.app/">
-            超便乗ツール
-          </PageAnchor>
-        </CustomList>
-        <CustomList>
-          <PageAnchor href="https://inaniwaudon.github.io/hoshiimo/">
-            ほしいものリスト
-          </PageAnchor>
-        </CustomList>
-        <CustomList>
-          <PageAnchor href="/kdb">Kdbもどき関連リンク</PageAnchor>
-        </CustomList>
-        <CustomList>
-          <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
-            2021年度 授業感想
-          </PageAnchor>
-        </CustomList>
-      </ul>
+          <ul>
+            <CustomList>
+              <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
+                桜が舞い上がるページ
+              </PageAnchor>
+            </CustomList>
+            <CustomList>
+              <PageAnchor href="https://exagree.netlify.app/">
+                超便乗ツール
+              </PageAnchor>
+            </CustomList>
+            <CustomList>
+              <PageAnchor href="./docs/tsukuba-ramen2022.pdf">
+                2022年版 つくばらーめん10選（PDF, 1.5MB）
+              </PageAnchor>
+            </CustomList>
+            <CustomList>
+              <PageAnchor href="https://inaniwaudon.github.io/hoshiimo/">
+                ほしいものリスト
+              </PageAnchor>
+            </CustomList>
+            <CustomList>
+              <del>Twight関連リンク（工事中）</del>
+            </CustomList>
+            <CustomList>
+              <PageAnchor href="/kdb">KdBもどき関連リンク</PageAnchor>
+            </CustomList>
+            <CustomList>
+              <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
+                2021年度 授業感想
+              </PageAnchor>
+            </CustomList>
+          </ul>
+        </div>
+        <div>
+          <h3>年賀状 2022</h3>
+          <img
+            src="./docs/nengajo2022.png"
+            className={styles.nengajoImg}
+            alt="年賀状の写真です。
+        あけましておめでとうございます。旧年中は大変お世話になりました。
+        本年もどうぞよろしくお願い申し上げます。の文言が添えられています。
+        左下で黄色いまんまるのぬいぐるみが微笑んでいます。
+        背後にはクリスマスイルミネーションに照らされた東京駅が写っており、色鮮やかな花火が空を夜空を彩っています。"
+          ></img>
+        </div>
+      </div>
 
       <h2>外部リンク</h2>
       <ul>

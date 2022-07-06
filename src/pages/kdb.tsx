@@ -99,7 +99,7 @@ const articleLinks: LinkItem[] = [
   },
 ];
 
-const Index = () => {
+const Main = () => {
   const LinkCollection = (links: LinkItem[]) => (
     <ul>
       {links.map((link) => (
@@ -138,4 +138,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Main;
