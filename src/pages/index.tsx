@@ -68,8 +68,13 @@ const Index = () => {
               <PageAnchor href="/kdb">KdBもどき関連リンク</PageAnchor>
             </CustomList>
             <CustomList>
+              授業感想：
+              <PageAnchor href="./class-impression/2022spring">
+                2022年度 春学期
+              </PageAnchor>
+              ｜
               <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
-                2021年度 授業感想
+                2021年度
               </PageAnchor>
             </CustomList>
           </ul>
