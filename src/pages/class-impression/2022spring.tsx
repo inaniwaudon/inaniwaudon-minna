@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { createElement } from "react";
 import rehypeReact from "rehype-react";
 import remarkParse from "remark-parse";
@@ -39,6 +40,10 @@ const Index = () => {
 
   return (
     <Wrapper>
+      <Head>
+        <title>2022年度 春学期 授業感想｜いなにわうどん.みんな</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+      </Head>
       <header>
         <h1>2022年度 春学期 授業感想</h1>
         <p>
