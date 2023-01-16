@@ -1,15 +1,40 @@
-import React, { ReactChild } from "react";
-import Link from "next/link";
-import styles from "./PageAnchor.module.scss";
+import Link from 'next/link';
+import React, { ReactNode } from 'react';
+import styled from 'styled-components';
+
+const color = '#06c';
+const hoverColor = '#0cf';
+
+const Content = styled.div`
+  color: ${color};
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: background 200ms;
+
+  &:hover {
+    color: ${hoverColor};
+  }
+`;
+
+const Line = styled.span`
+  height: 1px;
+  background: ${color};
+  display: block;
+`;
 
 interface PageAnchorProps {
   href: string;
-  children: ReactChild;
+  children: ReactNode;
 }
 
 const PageAnchor = ({ href, children }: PageAnchorProps) => (
   <Link href={href}>
-    <div className={styles.Link}>{children}</div>
+    <Content>
+      {children}
+      <Line />
+    </Content>
   </Link>
 );
 
