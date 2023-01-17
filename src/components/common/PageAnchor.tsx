@@ -1,13 +1,11 @@
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-
-const color = '#666';
-const underlineColor = '#ccc';
-const hoverColor = '#0cf';
+import { linkColor, linkHoverColor, linkUnderlineColor } from '@/const/style';
 
 const Content = styled.div`
-  color: ${color};
+  line-height: 1.3;
+  color: ${linkColor};
   font-weight: bold;
   text-decoration: none;
   display: inline-block;
@@ -15,13 +13,14 @@ const Content = styled.div`
   transition: background 200ms;
 
   &:hover {
-    color: ${hoverColor};
+    color: ${linkHoverColor};
   }
 `;
 
 const Line = styled.span`
   height: 1px;
-  background: ${underlineColor};
+  margin-top: 2px;
+  background: ${linkUnderlineColor};
   display: block;
 `;
 

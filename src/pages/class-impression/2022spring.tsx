@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Main = styled.main`
-  width: 600px;
+  max-width: 600px;
 
   h2 {
     font-size: 1.3em;

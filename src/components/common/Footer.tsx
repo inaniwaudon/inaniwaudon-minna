@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { linkColor, linkHoverColor } from '@/const/style';
 
 const Wrapper = styled.footer`
   font-size: 14px;
@@ -10,7 +11,11 @@ const Wrapper = styled.footer`
   border-top: solid 1px #ccc;
 
   a {
-    color: #666;
+    color: ${linkColor};
+
+    &:hover {
+      color: ${linkHoverColor};
+    }
   }
 `;
 

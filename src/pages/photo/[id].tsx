@@ -205,7 +205,7 @@ const Index = (props: IndexProps) => {
     let totalHeight = 0;
     const newPhotos: PhotoList[] = [[]];
     for (const photo of sortedPhotos) {
-      newPhotos.at(-1)!.push(photo);
+      newPhotos[newPhotos.length - 1].push(photo);
       totalHeight += calculateHeight(photo);
       if (totalHeight > allTotalHeight / columnCount) {
         newPhotos.push([]);
