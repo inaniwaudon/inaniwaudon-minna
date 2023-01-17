@@ -2,6 +2,11 @@ type DateTimeArray = [number, number, number, number, number];
 
 export const nerene: { id: string; message?: string; date: DateTimeArray }[] = [
   {
+    id: '1615072538442477570',
+    date: [2023, 1, 17, 4, 44],
+  },
+
+  {
     id: '1610348073888382976',
     message: 'エナドリ飲んだらネレネー山脈になってしまったな',
     date: [2023, 1, 4, 3, 51],

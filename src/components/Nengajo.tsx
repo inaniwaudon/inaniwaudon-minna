@@ -26,11 +26,13 @@ const Button = styled.input`
   background: #fff;
 `;
 
-const Img = styled.img<{ displays: boolean }>`
-  width: 100%;
+const ImgWrapper = styled.div<{ displays: boolean }>`
+  display: ${(props) => (props.displays ? 'block' : 'none')};
+`;
+
+const Img = styled.img`
   max-width: 500px;
   max-height: 500px;
-  display: ${(props) => (props.displays ? 'block' : 'none')};
 `;
 
 const Nengajo = () => {
@@ -52,7 +54,9 @@ const Nengajo = () => {
         </ButtonList>
       </Header>
       {nengajo.map((item) => (
-        <Img src={item.src} alt={item.alt} displays={item.year === year} key={item.year} />
+        <ImgWrapper displays={item.year === year} key={item.year}>
+          <Img src={item.src} alt={item.alt} />
+        </ImgWrapper>
       ))}
     </div>
   );

@@ -1,8 +1,8 @@
-import fs from 'fs';
+import { useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import fs from 'fs';
 import path from 'path';
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PhotoData } from '@/const/photo';
 
@@ -11,6 +11,11 @@ const Main = styled.main`
   min-height: 100vh;
   gap: 0;
   background: #000;
+  display: flex;
+`;
+
+const Column = styled.div<{ width: number }>`
+  width: ${(props) => props.width}px;
 `;
 
 const ImgWrapper = styled.div`
@@ -136,7 +141,7 @@ type PhotoList = ({
 
 const topics = ['2022kyushu', '210301ysfh', 'kiroro'];
 
-const shuffle = (array: any[]): any[] => {
+const shuffle = <T,>(array: T[]): T[] => {
   const newArray = [...array];
   for (let i = newArray.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -161,29 +166,54 @@ interface IndexProps {
 }
 
 const Index = (props: IndexProps) => {
-  const [imgWidth, setImgWidth] = useState(0);
-  const [columnCount, setColumnCount] = useState(0);
+  const router = useRouter();
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [columnCount, setColumnCount] = useState(1);
+  const [sortedPhotos, setSortedPhotos] = useState<PhotoList>([]);
+  const [photoColumns, setPhotoColumns] = useState<PhotoList[]>([]);
 
   const changeColumnCount = (count: number) => {
     setColumnCount(count);
-    setImgWidth(window.innerWidth / count);
   };
+
+  const imgWidth = windowWidth / columnCount;
 
   const zoom = (zooms: boolean) => {
     const count = Math.max(1, columnCount + (zooms ? 1 : -1));
     changeColumnCount(count);
   };
 
-  const router = useRouter();
-  const [photos, setPhotos] = useState<PhotoList>([]);
+  const calculateHeight = (photo: PhotoData) => {
+    return (photo.height / photo.width) * imgWidth;
+  };
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', () => {
+      setWindowWidth(window.innerWidth);
+    });
+
+    setSortedPhotos('sorted' in router.query ? props.photos : shuffle(props.photos));
     changeColumnCount(Math.max(Math.floor(window.innerWidth / 350), 2));
-    window.onresize = () => {
-      setImgWidth(window.innerWidth / columnCount);
-    };
-    setPhotos('sorted' in router.query ? props.photos : shuffle(props.photos));
-  }, [router.query]);
+  }, []);
+
+  useEffect(() => {
+    const allTotalHeight = props.photos.reduce(
+      (previous, photo) => previous + calculateHeight(photo),
+      0
+    );
+    let totalHeight = 0;
+    const newPhotos: PhotoList[] = [[]];
+    for (const photo of sortedPhotos) {
+      newPhotos.at(-1)!.push(photo);
+      totalHeight += calculateHeight(photo);
+      if (totalHeight > allTotalHeight / columnCount) {
+        newPhotos.push([]);
+        totalHeight = 0;
+      }
+    }
+    setPhotoColumns(newPhotos);
+  }, [imgWidth]);
 
   const titleLast = props.title[props.title.length - 1];
 
@@ -196,22 +226,26 @@ const Index = (props: IndexProps) => {
         <script dangerouslySetInnerHTML={{ __html: typekit }} />
       </Head>
       <Main style={{ columnCount }}>
-        {photos.map((photo) => (
-          <a href={photo.src} key={photo.src}>
-            <ImgWrapper>
-              <Img
-                src={photo.thumnail_src}
-                width={imgWidth}
-                height={(photo.height / photo.width) * imgWidth}
-                alt={photo.title}
-              />
-              <Description>
-                <h3>{photo.title}</h3>
-                <p>{photo.place}</p>
-                <p>{photo.date}</p>
-              </Description>
-            </ImgWrapper>
-          </a>
+        {photoColumns.map((column) => (
+          <Column width={imgWidth}>
+            {column.map((photo) => (
+              <a href={photo.src} key={photo.src}>
+                <ImgWrapper>
+                  <Img
+                    src={photo.thumnail_src}
+                    width={imgWidth}
+                    height={calculateHeight(photo)}
+                    alt={photo.title}
+                  />
+                  <Description>
+                    <h3>{photo.title}</h3>
+                    <p>{photo.place}</p>
+                    <p>{photo.date}</p>
+                  </Description>
+                </ImgWrapper>
+              </a>
+            ))}
+          </Column>
         ))}
       </Main>
       <Footer>

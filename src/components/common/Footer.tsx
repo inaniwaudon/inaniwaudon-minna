@@ -14,6 +14,10 @@ const Wrapper = styled.footer`
   }
 `;
 
+const Split = styled.span`
+  margin: 0 4px;
+`;
+
 const Index = () => {
   const router = useRouter();
   const [title, setTitle] = useState('');
@@ -24,10 +28,12 @@ const Index = () => {
   return (
     <>
       <Wrapper>
+        現在のページ：
         <Link href={router.pathname}>
           {title}（{router.pathname}）
         </Link>
-        ｜<Link href="/index2">トップページ</Link> - <a href="#">ページ上部</a>
+        <Split>｜</Split>
+        <Link href="/">トップページ</Link> - <a href="#">ページ上部</a>
       </Wrapper>
     </>
   );

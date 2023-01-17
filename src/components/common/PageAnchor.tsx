@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-const color = '#777';
+const color = '#666';
 const underlineColor = '#ccc';
 const hoverColor = '#0cf';
 

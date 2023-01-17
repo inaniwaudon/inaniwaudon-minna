@@ -8,7 +8,7 @@ export interface ArticleLink {
 export const articleHatenaLinks: ArticleLink[] = [
   {
     href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20180321/1521620634',
-    title: '3日間。Python でつくる、Twitter カウントダウン Bot',
+    title: '3 日間。Python でつくる、Twitter カウントダウン Bot',
     date: '2018/03/21',
   },
   {
@@ -135,6 +135,18 @@ export const articleWordLinks: ArticleLink[] = [
     title: '書いてみよう！組版処理系',
     date: '2021/09/12',
     description: 'WORD 50号',
+  },
+  {
+    href: '/docs/word-takutsu.pdf',
+    title: '宅通......本当にするのですか？',
+    date: '2022/02/26',
+    description: 'WORD 引っ越し準備号 2022',
+  },
+  {
+    href: '/docs/word-adobe.pdf',
+    title: 'あの日見た Adobe CC の名前を僕達はまだ知らない。',
+    date: '2022/03',
+    description: 'WORD 入学祝い号 2023',
   },
   {
     href: 'https://www.word-ac.net/post/2022/0811-word52/',
