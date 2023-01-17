@@ -33,6 +33,10 @@ const ImgWrapper = styled.div<{ displays: boolean }>`
 const Img = styled.img`
   max-width: 500px;
   max-height: 500px;
+
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+  }
 `;
 
 const Nengajo = () => {
