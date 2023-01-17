@@ -43,7 +43,8 @@ const Index = () => {
     if (!canvasRef.current) {
       return;
     }
-    const width = window.innerWidth * 2;
+    const boundingBox = canvasRef.current.getBoundingClientRect();
+    const width = boundingBox.width * 2;
     canvasRef.current.width = width;
     canvasRef.current.height = height;
     const context = canvasRef.current.getContext('2d');
@@ -60,8 +61,6 @@ const Index = () => {
     const splitCount = 10;
 
     context.moveTo(0, height);
-    //context.lineTo(0, 0);
-
     for (let i = 0; i < maxHours + 1; i++) {
       const beforeX = (width / (maxHours + 1)) * i;
       const afterX = (width / (maxHours + 1)) * (i + 1);

@@ -7,6 +7,10 @@ import { links, photos } from '@/const/index';
 
 const Main = styled.div`
   margin: 30px 50px;
+
+  @media screen and (max-width: 500px) {
+    margin: 30px 30px;
+  }
 `;
 
 const Top = styled.div`
@@ -30,20 +34,24 @@ const LinkList = styled.ul`
   gap: 10px;
 `;
 
-const Link = styled.li<{ color: string }>`
+const Link = styled.li`
   width: 140px;
-  height: 46px;
+  height: 66px;
+  display: block;
+`;
+
+const LinkContent = styled.div<{ color: string }>`
   color: #fff;
+  height: 46px;
   padding: 10px 12px;
   border-radius: 4px;
-  transition: margin-top 0.2s ease-out;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  display: block;
   background: ${(props) => props.color};
+  transition: margin-top 0.2s ease-out;
 
   &:hover {
-    margin-top: 6px;
+    margin-top: 4px;
   }
 `;
 
@@ -141,13 +149,15 @@ const Index = () => {
           <h2>外部リンク</h2>
           <LinkList>
             {links.map(({ color, name, url, platform }) => (
-              <Link color={color} key={url}>
-                <LinkAnchor href={url}>
-                  <div>
-                    <Platform>{platform}</Platform>
-                    <Description>{name}</Description>
-                  </div>
-                </LinkAnchor>
+              <Link key={url}>
+                <LinkContent color={color}>
+                  <LinkAnchor href={url}>
+                    <div>
+                      <Platform>{platform}</Platform>
+                      <Description>{name}</Description>
+                    </div>
+                  </LinkAnchor>
+                </LinkContent>
               </Link>
             ))}
           </LinkList>
