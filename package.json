@@ -3,21 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "npx next dev",
+    "build": "npx next build && next export",
+    "start": "npx next start",
+    "lint": "npx next lint"
   },
   "dependencies": {
-    "next": "12.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "babel-plugin-styled-components": "^2.0.7",
+    "next": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "remark-parse": "^10.0.1",
     "sass": "^1.49.9"
   },
   "devDependencies": {
-    "@types/node": "17.0.21",
-    "@types/react": "17.0.39",
+    "@types/node": "18.11.18",
+    "@types/react": "^18.0.26",
     "@types/styled-components": "^5.1.25",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
@@ -25,8 +26,8 @@
     "rehype-react": "^7.1.1",
     "remark-rehype": "^10.1.0",
     "serve": "^13.0.2",
-    "styled-components": "^5.3.5",
-    "typescript": "4.5.5",
+    "styled-components": "^5.3.6",
+    "typescript": "4.9.4",
     "unified": "^10.1.2"
   }
 }
