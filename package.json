@@ -9,6 +9,7 @@
     "lint": "npx next lint"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
     "next": "^13.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

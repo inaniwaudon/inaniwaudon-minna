@@ -2,7 +2,8 @@ import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-const color = '#06c';
+const color = '#777';
+const underlineColor = '#ccc';
 const hoverColor = '#0cf';
 
 const Content = styled.div`
@@ -20,7 +21,7 @@ const Content = styled.div`
 
 const Line = styled.span`
   height: 1px;
-  background: ${color};
+  background: ${underlineColor};
   display: block;
 `;
 
@@ -29,13 +30,22 @@ interface PageAnchorProps {
   children: ReactNode;
 }
 
-const PageAnchor = ({ href, children }: PageAnchorProps) => (
-  <Link href={href}>
+const PageAnchor = ({ href, children }: PageAnchorProps) => {
+  const content = (
     <Content>
       {children}
       <Line />
     </Content>
-  </Link>
-);
+  );
+  return (
+    <>
+      {href.startsWith('https://') || href.startsWith('http://') ? (
+        <a href={href}>{content}</a>
+      ) : (
+        <Link href={href}>{content}</Link>
+      )}
+    </>
+  );
+};
 
 export default PageAnchor;

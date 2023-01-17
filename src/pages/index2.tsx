@@ -1,12 +1,21 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import CustomList from '../components/CustomList';
-import PageAnchor from '../components/PageAnchor';
-import styles from './index.module.scss';
+import Nengajo from '@/components/Nengajo';
+import CustomList from '@/components/common/CustomList';
+import PageAnchor from '@/components/common/PageAnchor';
 import { links, photos } from '@/const/index';
 
 const Main = styled.div`
   margin: 30px 50px;
+`;
+
+const Top = styled.div`
+  display: flex;
+  gap: 50px;
+
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+  }
 `;
 
 const H1 = styled.h1`
@@ -58,96 +67,88 @@ const Index = () => {
         <title>いなにわうどん.みんな</title>
       </Head>
       <Main>
-        <div className={styles.top}>
+        <Top>
           <div>
             <H1>いなにわうどん.みんな</H1>
-            <h2>写真</h2>
-            <ul>
-              {photos.map(({ id, title, deleted }) => (
-                <CustomList>
-                  {deleted ? (
-                    <del>{title}</del>
-                  ) : (
-                    <PageAnchor href={`/photo/${id}`}>{title}</PageAnchor>
-                  )}
-                </CustomList>
-              ))}
-            </ul>
-            <h2>その他</h2>
-            <ul>
+            <section>
+              <h2>写真</h2>
               <CustomList>
-                <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
-                  桜が舞い上がるページ
-                </PageAnchor>
+                {photos.map(({ id, title, deleted }) => (
+                  <li key={id}>
+                    {deleted ? (
+                      <del>{title}</del>
+                    ) : (
+                      <PageAnchor href={`/photo/${id}`}>{title}</PageAnchor>
+                    )}
+                  </li>
+                ))}
               </CustomList>
+            </section>
+            <section>
+              <h2>その他</h2>
               <CustomList>
-                <PageAnchor href="./docs/tsukuba-ramen2022.pdf">
-                  2022年版 つくばらーめん10選（PDF, 1.5MB）
-                </PageAnchor>
+                <li>
+                  <PageAnchor href="/articles">書いたもの・こと</PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
+                    桜が舞い上がるページ
+                  </PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="/docs/tsukuba-ramen2022.pdf">
+                    2022年版 つくばらーめん10選（PDF, 1.5MB）
+                  </PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="/nerene">ネレネー山脈</PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="https://inaniwaudon.github.io/nenga-atena/">
+                    年賀状宛名作成ツール
+                  </PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="https://inaniwaudon.github.io/hoshiimo/">
+                    ほしいものリスト
+                  </PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="https://exagree.netlify.app/">超便乗ツール</PageAnchor>
+                </li>
+                <li>
+                  <del>Twight 関連リンク（工事中）</del>
+                </li>
+                <li>
+                  <PageAnchor href="/kdb">KdBもどき関連リンク</PageAnchor>
+                </li>
+                <li>
+                  授業感想：
+                  <PageAnchor href="/class-impression/2022spring">2022年度 春学期</PageAnchor>｜
+                  <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
+                    2021年度
+                  </PageAnchor>
+                </li>
               </CustomList>
-              <CustomList>
-                <PageAnchor href="./nerene/">ネレネー山脈</PageAnchor>
-              </CustomList>
-              <CustomList>
-                <PageAnchor href="https://inaniwaudon.github.io/nenga-atena/">
-                  年賀状宛名作成ツール
-                </PageAnchor>
-              </CustomList>
-              <CustomList>
-                <PageAnchor href="https://inaniwaudon.github.io/hoshiimo/">
-                  ほしいものリスト
-                </PageAnchor>
-              </CustomList>
-              <CustomList>
-                <PageAnchor href="https://exagree.netlify.app/">超便乗ツール</PageAnchor>
-              </CustomList>
-              <CustomList>
-                <del>Twight関連リンク（工事中）</del>
-              </CustomList>
-              <CustomList>
-                <PageAnchor href="/kdb">KdBもどき関連リンク</PageAnchor>
-              </CustomList>
-              <CustomList>
-                授業感想：
-                <PageAnchor href="./class-impression/2022spring">2022年度 春学期</PageAnchor>｜
-                <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
-                  2021年度
-                </PageAnchor>
-              </CustomList>
-            </ul>
+            </section>
           </div>
-          <div>
-            <h3>年賀状</h3>
-            <img
-              src="./assets/nengajo2023.webp"
-              className={styles.nengajoImg}
-              alt="「あけましておめでとうございます。旧年中は大変お世話になりました。今年もどうぞよろしくお願い申し上げます。」の文言が左上に添えられています。
-下部には、細長く耳が伸びた黄色いまんまるのぬいぐるみが微笑んでいます。
-背後には色鮮やかに桜が咲いており、春の予感を到来させます。"
-            ></img>
-            <img
-              src="./assets/nengajo2022.png"
-              className={styles.nengajoImg}
-              alt="「あけましておめでとうございます。旧年中は大変お世話になりました。本年もどうぞよろしくお願い申し上げます。の文言が左上に添えられています。
-左下で黄色いまんまるのぬいぐるみが微笑んでいます。
-背後にはクリスマスイルミネーションに照らされた東京駅が写っており、色鮮やかな花火が空を夜空を彩っています。"
-            ></img>
-          </div>
-        </div>
-
-        <h2>外部リンク</h2>
-        <LinkList>
-          {links.map(({ color, name, url, platform }) => (
-            <Link color={color} key={name}>
-              <LinkAnchor href={url}>
-                <div>
-                  <Platform>{platform}</Platform>
-                  <Description>{name}</Description>
-                </div>
-              </LinkAnchor>
-            </Link>
-          ))}
-        </LinkList>
+          <Nengajo />
+        </Top>
+        <section>
+          <h2>外部リンク</h2>
+          <LinkList>
+            {links.map(({ color, name, url, platform }) => (
+              <Link color={color} key={url}>
+                <LinkAnchor href={url}>
+                  <div>
+                    <Platform>{platform}</Platform>
+                    <Description>{name}</Description>
+                  </div>
+                </LinkAnchor>
+              </Link>
+            ))}
+          </LinkList>
+        </section>
       </Main>
     </>
   );

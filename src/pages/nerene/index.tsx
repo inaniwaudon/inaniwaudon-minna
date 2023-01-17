@@ -25,7 +25,7 @@ const Index = () => {
         <h1>ネレネー山脈</h1>
         <p>生活習慣</p>
         {nerene.map((tweet) => (
-          <div>
+          <div key={tweet.id}>
             <a href={`https://twitter.com/kyoto_mast21/status/${tweet.id}`}>
               {tweet.message ?? 'ネレネー山脈'}
               {tweet.date}
