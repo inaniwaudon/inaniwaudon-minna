@@ -139,8 +139,6 @@ type PhotoList = ({
   thumnail_src: string;
 } & PhotoData)[];
 
-const topics = ['2022kyushu', '210301ysfh', 'kiroro'];
-
 const shuffle = <T,>(array: T[]): T[] => {
   const newArray = [...array];
   for (let i = newArray.length - 1; i >= 0; i--) {
@@ -288,8 +286,8 @@ export const getStaticProps = async ({
       title: json.title,
       date: json.date,
       photos: json.photos.map((photo: PhotoData) => ({
-        src: json.dir + photo.src,
-        thumnail_src: json.dir + 'thumbnail/' + photo.src,
+        src: path.join(json.dir, photo.src),
+        thumnail_src: path.join(json.dir, 'thumbnail', photo.src),
         title: photo.title,
         place: photo.place,
         date: photo.date,
@@ -301,8 +299,10 @@ export const getStaticProps = async ({
 };
 
 export const getStaticPaths = () => {
+  const dir_path = path.join(process.cwd(), 'public/photo');
+  const dirs = fs.readdirSync(dir_path);
   return {
-    paths: topics.map((topic) => ({ params: { id: topic } })),
+    paths: dirs.map((topic) => ({ params: { id: topic } })),
     fallback: false,
   };
 };

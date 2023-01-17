@@ -13,12 +13,12 @@ interface Link {
 
 export const photos: Photo[] = [
   { id: 'kiroro', title: 'キロロ' },
+  { id: '2023hokkaido', title: '北海道旅行（札幌・小樽・苫小牧、2022/01/13―15）' },
   { id: '2022kyushu', title: '九州旅行（長崎・福岡、2022/02/21―25）' },
   {
     id: '210301ysfh',
     title: '卒業式前日（横浜サイエンスフロンティア高校、2022/03/01）',
   },
-  { id: '2023hokkaido', title: '北海道旅行（札幌・小樽・苫小牧、2022/01/13―15）', deleted: true },
   {
     id: 'tokyo2020',
     title: '東京オリンピック開会式・聖火・閉会式（2021/08）',

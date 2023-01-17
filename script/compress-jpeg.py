@@ -16,10 +16,14 @@ if __name__ == "__main__":
   parser.add_argument("output_dir")
   parser.add_argument("json_path")
   args = parser.parse_args()
-  paths = glob.glob(args.input_dir + "*.jpg") + glob.glob(args.input_dir + "*.jpeg")
 
+  jpg_path = os.path.join(args.input_dir, "*.jpg")
+  jpeg_path = os.path.join(args.input_dir, "*.jpeg")
+  thumbnail_dir_path = os.path.join(args.output_dir, "thumbnail")
+
+  paths = glob.glob(jpg_path) + glob.glob(jpeg_path)
   os.makedirs(args.output_dir, exist_ok=True)
-  os.makedirs(args.output_dir + "thumbnail", exist_ok=True)
+  os.makedirs(thumbnail_dir_path, exist_ok=True)
   photos = []
 
   for i, path in enumerate(paths):
@@ -31,13 +35,15 @@ if __name__ == "__main__":
 
     basename = os.path.splitext(os.path.basename(path))[0]
     filename = basename + ".webp"
-    img.save(f"{args.output_dir}{filename}", quality=full_quality)
+    img_path = os.path.join(args.output_dir, filename)
+    img.save(img_path, quality=full_quality)
 
     # create a thumbnail
     ratio = min(thumbnail_max_size / max(img.width, img.height), 1.0)
     thumbnail_width, thumbnail_height = round(img.width * ratio), round(img.height * ratio)
     thumbnail = img.resize((thumbnail_width, thumbnail_height))
-    thumbnail.save(f"{args.output_dir}thumbnail/{filename}", quality=thumbnail_quality)    
+    thumbnail_path = os.path.join(args.output_dir, "thumbnail", filename)
+    thumbnail.save(thumbnail_path, quality=thumbnail_quality)    
 
     photos.append({
       "src": filename,
