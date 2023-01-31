@@ -3,6 +3,7 @@ export interface ArticleLink {
   title: string;
   date: string;
   description?: string;
+  tags?: string[];
 }
 
 export const articleHatenaLinks: ArticleLink[] = [
@@ -73,6 +74,7 @@ export const articleZennLinks: ArticleLink[] = [
     href: 'https://zenn.dev/inaniwaudon/articles/832ecf5180d527',
     title: '忙しい人のための CFF テーブル入門: PDF にOpenTypeフォントのサブセットを埋め込むには',
     date: '2022/01/26',
+    tags: ['hongoshi'],
   },
   {
     href: 'https://zenn.dev/inaniwaudon/articles/9cc5fcd5a08530',
@@ -88,11 +90,13 @@ export const articleZennLinks: ArticleLink[] = [
     href: 'https://zenn.dev/inaniwaudon/articles/a80f7dc66ffe92',
     title: 'Web だって組版の夢を見る――新聞のように自在にテキストを流し込むには',
     date: '2022/07/26',
+    tags: ['hongoshi'],
   },
   {
     href: 'https://zenn.dev/inaniwaudon/articles/e7c11633685cf5',
     title: 'Illustrator 上でルビを振るスクリプト illustrator-ruby を公開しました',
     date: '2022/08/17',
+    tags: ['hongoshi'],
   },
   {
     href: 'https://zenn.dev/inaniwaudon/articles/62dfe3923f8521',
@@ -103,11 +107,13 @@ export const articleZennLinks: ArticleLink[] = [
     href: 'https://zenn.dev/inaniwaudon/articles/a18ee47ce1488a',
     title: 'Type 2 Charstring を読み解いて OpenType フォントを描画してみる',
     date: '2022/11/16',
+    tags: ['hongoshi'],
   },
   {
     href: 'https://zenn.dev/inaniwaudon/articles/e4d6d326c4c18b',
     title: '筑波大学学園祭 Web サイト構築の舞台裏',
     date: '2022/12/15',
+    tags: ['hongoshi'],
   },
   {
     href: 'https://zenn.dev/inaniwaudon/articles/12fc531cb89813',
@@ -119,6 +125,11 @@ export const articleZennLinks: ArticleLink[] = [
     title: '年賀状の宛名をサクッと作るためのツールを公開しました',
     date: '2022/12/28',
   },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/b361c4f996c980',
+    title: 'Twitter 上のイラストを快適に閲覧するための Web アプリを公開しました',
+    date: '2023/01/22',
+  },
 ];
 
 export const articleNoteLinks: ArticleLink[] = [
@@ -126,6 +137,13 @@ export const articleNoteLinks: ArticleLink[] = [
     href: 'https://note.com/soudakyoto_ikou/n/n6967b2471eca',
     title: 'サイエンスフロンティア高校のポスターに学ぶ！グラフィックデザイン基本の「き」',
     date: '2019/06/02',
+    tags: ['hongoshi'],
+  },
+  {
+    href: 'https://note.com/soudakyoto_ikou/n/nd63330df85d8',
+    title: 'まんがタイムきららの「写植」を読む――吹き出しにみる漫画書体の使い分け',
+    date: '2023/01/29',
+    tags: ['hongoshi'],
   },
 ];
 
