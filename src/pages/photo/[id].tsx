@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import fs from 'fs';
@@ -300,7 +300,10 @@ export const getStaticProps = async ({
 
 export const getStaticPaths = () => {
   const dir_path = path.join(process.cwd(), 'public/photo');
-  const dirs = fs.readdirSync(dir_path);
+  const dirs = fs
+    .readdirSync(dir_path, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map(({ name }) => name);
   return {
     paths: dirs.map((topic) => ({ params: { id: topic } })),
     fallback: false,
