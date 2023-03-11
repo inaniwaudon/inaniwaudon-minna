@@ -108,7 +108,7 @@ const Index = () => {
                 </li>
                 <li>
                   <PageAnchor href="/docs/tsukuba-ramen2022.pdf">
-                    2022年版 つくばらーめん10選（PDF, 1.5MB）
+                    2022 年版 つくばらーめん10選（PDF, 1.5MB）
                   </PageAnchor>
                 </li>
                 <li>
@@ -131,14 +131,24 @@ const Index = () => {
                   <del>Twight 関連リンク（工事中）</del>
                 </li>
                 <li>
-                  <PageAnchor href="/kdb">KdBもどき関連リンク</PageAnchor>
+                  <PageAnchor href="/kdb">KdB もどき関連リンク</PageAnchor>
                 </li>
                 <li>
-                  授業感想：
-                  <PageAnchor href="/class-impression/2022spring">2022年度 春学期</PageAnchor>｜
-                  <PageAnchor href="https://www.notion.so/learnutsukuba/2021-78f1f36654ad4f7ca6c5d32ef6d40276">
-                    2021年度
-                  </PageAnchor>
+                  授業感想
+                  <ul>
+                    <li>
+                      2022 年度：
+                      <PageAnchor href="/class-impression/2022spring">春学期</PageAnchor>｜
+                      <PageAnchor href="/class-impression/2022autumn">秋学期</PageAnchor>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      2021 年度：
+                      <PageAnchor href="/class-impression/2021spring">春学期</PageAnchor>｜
+                      <PageAnchor href="/class-impression/2021autumn">秋学期</PageAnchor>
+                    </li>
+                  </ul>
                 </li>
               </CustomList>
             </section>
