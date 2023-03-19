@@ -62,6 +62,11 @@ export const articleHatenaLinks: ArticleLink[] = [
     title: '2022 年を振り返って',
     date: '2022/12/31',
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20230319/1679216111',
+    title: 'なぜ我々は筑波大を便利にすることができなかったのか？',
+    date: '2023/03/19',
+  },
 ];
 
 export const articleZennLinks: ArticleLink[] = [
@@ -129,6 +134,21 @@ export const articleZennLinks: ArticleLink[] = [
     href: 'https://zenn.dev/inaniwaudon/articles/b361c4f996c980',
     title: 'Twitter 上のイラストを快適に閲覧するための Web アプリを公開しました',
     date: '2023/01/22',
+  },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/df0b0959d61b23',
+    title: 'hyperref パッケージは PDF の注釈機能を用いて実現されている',
+    date: '2023/02/16',
+  },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/8ce67c38ed3624',
+    title: '郷に入れば郷に従って npm/yarn を切り替えるスクリプト',
+    date: '2023/02/21',
+  },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/a796af99ab834f',
+    title: 'input 要素に flex-shrink が効かないときの対処法',
+    date: '2023/02/27',
   },
 ];
 

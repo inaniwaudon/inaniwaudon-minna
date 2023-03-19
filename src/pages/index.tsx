@@ -41,22 +41,21 @@ const Link = styled.li`
 `;
 
 const LinkContent = styled.div<{ color: string }>`
-  color: #fff;
+  color: ${(props) => props.color};
   height: 46px;
-  padding: 10px 12px;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  background: ${(props) => props.color};
+  padding: 4px 0 4px 16px;
+  border-left: solid 1px ${(props) => props.color};
+  background: #fff;
   transition: margin-top 0.2s ease-out;
 
   &:hover {
-    margin-top: 4px;
+    color: #666;
+    border-left: solid 1px #555;
   }
 `;
 
 const LinkAnchor = styled.a`
-  color: #fff;
+  color: inherit;
   text-decoration: none;
 `;
 
@@ -67,6 +66,11 @@ const Platform = styled.div`
 
 const Description = styled.div`
   font-size: 14px;
+`;
+
+const Footer = styled.footer`
+  font-size: 14px;
+  margin-top: 10px;
 `;
 
 const Index = () => {
@@ -172,6 +176,10 @@ const Index = () => {
             ))}
           </LinkList>
         </section>
+        <Footer>
+          The source code of this side is available on{' '}
+          <PageAnchor href="https://github.com/inaniwaudon/inaniwaudon-minna">GitHub</PageAnchor>.
+        </Footer>
       </Main>
     </>
   );
