@@ -55,8 +55,14 @@ export const links: Link[] = [
   {
     platform: 'Qiita',
     name: 'inaniwaudon',
-    url: 'ttps://qiita.com/inaniwaudon',
+    url: 'https://qiita.com/inaniwaudon',
     color: '#55c500',
+  },
+  {
+    platform: 'note',
+    name: 'いなにわうどん',
+    url: 'https://note.com/soudakyoto_ikou',
+    color: 'rgba(44, 182, 150)',
   },
 ];
 
