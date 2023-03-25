@@ -3,6 +3,7 @@
 html,
 body {
   -webkit-text-size-adjust: 100%;
+  font-family: sans-serif;
   padding: 0;
   margin: 0;
 }
