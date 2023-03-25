@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import { PhotoData } from '@/const/photo';
 
 const Main = styled.main`
-  font-family: sans-serif;
   min-height: 100vh;
   gap: 0;
   background: #000;
@@ -56,7 +55,6 @@ const Footer = styled.footer`
   width: calc(100% - 80px);
   color: #fff;
   text-align: right;
-  font-family: sans-serif;
   padding: 20px 40px 20px 40px;
   position: fixed;
   bottom: 0px;

@@ -67,6 +67,11 @@ export const articleHatenaLinks: ArticleLink[] = [
     title: 'なぜ我々は筑波大を便利にすることができなかったのか？',
     date: '2023/03/19',
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20230322/1679413012',
+    title: 'やはり俺の青春ラブコメはまちがっている。聖地巡礼記',
+    date: '2023/03/22',
+  },
 ];
 
 export const articleZennLinks: ArticleLink[] = [
