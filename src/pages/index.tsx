@@ -111,9 +111,7 @@ const Index = () => {
                   </PageAnchor>
                 </li>
                 <li>
-                  <PageAnchor href="/docs/tsukuba-ramen2022.pdf">
-                    2022 年版 つくばらーめん10選（PDF, 1.5MB）
-                  </PageAnchor>
+                  <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
                 </li>
                 <li>
                   <PageAnchor href="/nerene">ネレネー山脈</PageAnchor>
