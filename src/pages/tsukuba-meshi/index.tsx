@@ -41,9 +41,9 @@ const Index = () => {
         </ImageWrapper>
         <CustomList>
           <li>
-            <PageAnchor href="/docs/tsukuba-meshi2023.pdf">
-              つくば おすすめ飲食店 2023（PDF, 3.4 MB）
-            </PageAnchor>
+            つくば おすすめ飲食店 2023：
+            <PageAnchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</PageAnchor>｜
+            <PageAnchor href="/tsukuba-meshi/restaurant2023">HTML 版</PageAnchor>
           </li>
           <li>
             <PageAnchor href="/docs/tsukuba-ramen2023.pdf">
@@ -51,7 +51,7 @@ const Index = () => {
             </PageAnchor>
           </li>
           <li>
-            <PageAnchor href="./tsukuba-meshi/errata">正誤表</PageAnchor>
+            <PageAnchor href="/tsukuba-meshi/errata">正誤表</PageAnchor>
           </li>
         </CustomList>
         <h2>2022 年度版</h2>

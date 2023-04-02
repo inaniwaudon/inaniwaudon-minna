@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { linkColor, linkHoverColor, linkUnderlineColor } from '@/const/style';
 
-const Content = styled.div`
+const Content = styled.span`
   line-height: 1.3;
   color: ${linkColor};
   font-weight: bold;
