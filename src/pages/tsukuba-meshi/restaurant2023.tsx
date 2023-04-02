@@ -23,6 +23,9 @@ const Index = () => {
           <br />
           <PageAnchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</PageAnchor>
         </p>
+        <p>
+          <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
+        </p>
         <Restaurant
           title="cox"
           description="小野崎の隠れ家的おしゃれカフェ"
