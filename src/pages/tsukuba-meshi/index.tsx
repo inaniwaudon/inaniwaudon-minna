@@ -46,9 +46,9 @@ const Index = () => {
             <PageAnchor href="/tsukuba-meshi/restaurant2023">HTML 版</PageAnchor>
           </li>
           <li>
-            <PageAnchor href="/docs/tsukuba-ramen2023.pdf">
-              つくば らーめん 10 選 2023（PDF, 1.2 MB）
-            </PageAnchor>
+            つくば らーめん 10 選 2023：
+            <PageAnchor href="/docs/tsukuba-ramen2023.pdf">PDF 版（1.2 MB）</PageAnchor>｜
+            <PageAnchor href="/tsukuba-meshi/ramen2023">HTML 版</PageAnchor>
           </li>
           <li>
             <PageAnchor href="/tsukuba-meshi/errata">正誤表</PageAnchor>

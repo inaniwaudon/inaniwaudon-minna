@@ -23,7 +23,7 @@ const AddressItem = styled.li`
 `;
 
 const AddressItemHead = styled.div`
-  width: 4em;
+  width: 5em;
   flex-shrink: 0;
   text-algin: center;
   font-weight: bold;
@@ -34,6 +34,7 @@ interface RestaurantProps {
   title: string;
   description: string;
   place: string;
+  date?: string;
   maps: string;
   tel?: string;
   web?: string;
@@ -45,49 +46,36 @@ const Restaurant = ({
   title,
   description,
   place,
+  date,
   maps,
   tel,
   web,
   twitter,
   instagram,
-}: RestaurantProps) => (
-  <div style={{ margin: '16px 0' }}>
-    <h3 style={{ margin: 0 }}>{title}</h3>
-    <RestaurantDescription>{description}</RestaurantDescription>
-    <AddressList>
-      <AddressItem>
-        <AddressItemHead>住所</AddressItemHead>
-        <PageAnchor href={maps}>{place}</PageAnchor>
-      </AddressItem>
-      {tel && (
-        <AddressItem>
-          <AddressItemHead>TEL</AddressItemHead>
-          <PageAnchor href={`tel:${tel}`}>{tel}</PageAnchor>
-        </AddressItem>
-      )}
-      {web && (
-        <AddressItem>
-          <AddressItemHead>Web</AddressItemHead>
-          <PageAnchor href={web}>{web}</PageAnchor>
-        </AddressItem>
-      )}
-      {twitter && (
-        <AddressItem>
-          <AddressItemHead>
-            <BsInstagram />
-          </AddressItemHead>
-          <PageAnchor href={`https://twitter.com/${twitter}`}>@{twitter}</PageAnchor>
-        </AddressItem>
-      )}
-      {instagram && (
-        <AddressItem>
-          <AddressItemHead>
-            <BsTwitter />
-          </AddressItemHead>
-          <PageAnchor href={`https://instagram.com/${instagram}`}>@{instagram}</PageAnchor>
-        </AddressItem>
-      )}
-    </AddressList>
-  </div>
-);
+}: RestaurantProps) => {
+  const fields = [
+    { key: '住所', value: place, href: maps },
+    { key: '営業日時', value: date },
+    { key: 'TEL', value: tel, href: `tel:${tel}` },
+    { key: 'Web', value: web, href: web },
+    { key: <BsTwitter />, value: twitter, href: `https://twitter.com/${twitter}` },
+    { key: <BsInstagram />, value: instagram, href: `https://instagram.com/${instagram}` },
+  ];
+  return (
+    <div style={{ margin: '16px 0' }}>
+      <h3 style={{ margin: 0 }}>{title}</h3>
+      <RestaurantDescription>{description}</RestaurantDescription>
+      <AddressList>
+        {fields
+          .flatMap((field) => (field.value ? field : []))
+          .map((field, index) => (
+            <AddressItem key={index}>
+              <AddressItemHead>{field.key}</AddressItemHead>
+              {field.href ? <PageAnchor href={field.href}>{field.value}</PageAnchor> : field.value}
+            </AddressItem>
+          ))}
+      </AddressList>
+    </div>
+  );
+};
 export default Restaurant;
