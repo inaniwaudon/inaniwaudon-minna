@@ -72,6 +72,11 @@ export const articleHatenaLinks: ArticleLink[] = [
     title: 'やはり俺の青春ラブコメはまちがっている。聖地巡礼記',
     date: '2023/03/22',
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20230411/1681167907',
+    title: '3 度目の春が来る',
+    date: '2023/04/11',
+  },
 ];
 
 export const articleZennLinks: ArticleLink[] = [
