@@ -13,6 +13,7 @@ interface Link {
 
 export const photos: Photo[] = [
   { id: 'kiroro', title: 'キロロ' },
+  { id: 'kirigirisu', title: 'キリギリス' },
   { id: '2023hokkaido', title: '北海道旅行（札幌・小樽・苫小牧、2023/1/13–15）' },
   { id: '2022kyushu', title: '九州旅行（長崎・福岡、2022/2/21–25）' },
   {
