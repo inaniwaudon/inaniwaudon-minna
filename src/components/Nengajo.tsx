@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { nengajo } from '@/const';
+import { keyColor } from '@/const/style';
 
 const Header = styled.header`
   margin-bottom: 20px;
@@ -17,13 +18,23 @@ const ButtonList = styled.div`
   gap: 10px;
 `;
 
-const Button = styled.input`
+const Button = styled.a`
+  color: #666;
   padding: 2px 8px;
-  border-radius: 2px;
-  border: solid 1px #ccc;
   cursor: pointer;
   appearance: none;
   background: #fff;
+  display: flex;
+  align-items: center;
+`;
+
+const ButtonDot = styled.div<{ selected: boolean }>`
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  opacity: ${({ selected }) => (selected ? 1.0 : 0.0)};
+  background: ${keyColor};
 `;
 
 const ImgWrapper = styled.div<{ displays: boolean }>`
@@ -48,12 +59,10 @@ const Nengajo = () => {
         <H3>年賀状</H3>
         <ButtonList>
           {nengajo.map((item) => (
-            <Button
-              type="button"
-              value={item.year}
-              onClick={() => setYear(item.year)}
-              key={item.year}
-            />
+            <Button type="button" onClick={() => setYear(item.year)} key={item.year}>
+              <ButtonDot selected={item.year === year} />
+              {item.year}
+            </Button>
           ))}
         </ButtonList>
       </Header>

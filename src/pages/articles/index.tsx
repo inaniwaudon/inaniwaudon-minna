@@ -19,7 +19,6 @@ const Header = styled.header`
 `;
 
 const Time = styled.time`
-  color: #333;
   font-family: 'Courier New';
   font-weight: 700;
 `;
