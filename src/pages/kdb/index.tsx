@@ -19,7 +19,6 @@ const Paragraph = styled.div`
 `;
 
 const DocumentLink = styled.div`
-  color: #333;
   line-height: 1em;
   padding: 3px 0 3px 10px;
   border-left: solid 2px #ccc;
