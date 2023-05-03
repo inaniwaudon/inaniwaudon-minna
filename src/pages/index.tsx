@@ -69,6 +69,10 @@ const Description = styled.div`
   font-size: 14px;
 `;
 
+const ListWrapper = styled.div`
+  margin-top: 8px;
+`;
+
 const Footer = styled.footer`
   font-size: 14px;
   margin-top: 10px;
@@ -86,7 +90,7 @@ const Index = () => {
         <Top>
           <div>
             <H1>
-              <img src={logo.src} alt="いなにわうどん.みんな" />
+              <img src={logo.src} height={36} alt="いなにわうどん.みんな" />
             </H1>
             <section>
               <h2>写真</h2>
@@ -122,18 +126,20 @@ const Index = () => {
                 </li>
                 <li>
                   授業感想
-                  <CustomList>
-                    <li>
-                      2022 年度：
-                      <PageAnchor href="/class-impression/2022spring">春学期</PageAnchor>｜
-                      <PageAnchor href="/class-impression/2022autumn">秋学期</PageAnchor>
-                    </li>
-                    <li>
-                      2021 年度：
-                      <PageAnchor href="/class-impression/2021spring">春学期</PageAnchor>｜
-                      <PageAnchor href="/class-impression/2021autumn">秋学期</PageAnchor>
-                    </li>
-                  </CustomList>
+                  <ListWrapper>
+                    <CustomList>
+                      <li>
+                        2022 年度：
+                        <PageAnchor href="/class-impression/2022spring">春学期</PageAnchor>｜
+                        <PageAnchor href="/class-impression/2022autumn">秋学期</PageAnchor>
+                      </li>
+                      <li>
+                        2021 年度：
+                        <PageAnchor href="/class-impression/2021spring">春学期</PageAnchor>｜
+                        <PageAnchor href="/class-impression/2021autumn">秋学期</PageAnchor>
+                      </li>
+                    </CustomList>
+                  </ListWrapper>
                 </li>
               </CustomList>
             </section>
