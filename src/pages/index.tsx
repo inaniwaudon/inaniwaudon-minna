@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import logo from '@/assets/logo.svg';
 import Nengajo from '@/components/Nengajo';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
@@ -84,7 +85,9 @@ const Index = () => {
       <Main>
         <Top>
           <div>
-            <H1>いなにわうどん.みんな</H1>
+            <H1>
+              <img src={logo.src} alt="いなにわうどん.みんな" />
+            </H1>
             <section>
               <h2>写真</h2>
               <CustomList>
@@ -100,15 +103,10 @@ const Index = () => {
               </CustomList>
             </section>
             <section>
-              <h2>その他</h2>
+              <h2>文章など</h2>
               <CustomList>
                 <li>
                   <PageAnchor href="/articles">書いたもの・こと</PageAnchor>
-                </li>
-                <li>
-                  <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
-                    桜が舞い上がるページ
-                  </PageAnchor>
                 </li>
                 <li>
                   <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
@@ -117,8 +115,44 @@ const Index = () => {
                   <PageAnchor href="/nerene">ネレネー山脈</PageAnchor>
                 </li>
                 <li>
+                  <del>Twight 関連リンク（工事中）</del>
+                </li>
+                <li>
+                  <PageAnchor href="/kdb">KdB もどき関連リンク</PageAnchor>
+                </li>
+                <li>
+                  授業感想
+                  <CustomList>
+                    <li>
+                      2022 年度：
+                      <PageAnchor href="/class-impression/2022spring">春学期</PageAnchor>｜
+                      <PageAnchor href="/class-impression/2022autumn">秋学期</PageAnchor>
+                    </li>
+                    <li>
+                      2021 年度：
+                      <PageAnchor href="/class-impression/2021spring">春学期</PageAnchor>｜
+                      <PageAnchor href="/class-impression/2021autumn">秋学期</PageAnchor>
+                    </li>
+                  </CustomList>
+                </li>
+              </CustomList>
+            </section>
+            <section>
+              <h2></h2>
+              <CustomList>
+                <li>
+                  <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
+                    桜が舞い上がるページ
+                  </PageAnchor>
+                </li>
+                <li>
                   <PageAnchor href="https://inaniwaudon.github.io/nenga-atena/">
                     年賀状宛名作成ツール
+                  </PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="https://github.com/inaniwaudon/twitter-illustration">
+                    twitter-illustration
                   </PageAnchor>
                 </li>
                 <li>
@@ -130,27 +164,7 @@ const Index = () => {
                   <PageAnchor href="https://exagree.netlify.app/">超便乗ツール</PageAnchor>
                 </li>
                 <li>
-                  <del>Twight 関連リンク（工事中）</del>
-                </li>
-                <li>
-                  <PageAnchor href="/kdb">KdB もどき関連リンク</PageAnchor>
-                </li>
-                <li>
-                  授業感想
-                  <ul>
-                    <li>
-                      2022 年度：
-                      <PageAnchor href="/class-impression/2022spring">春学期</PageAnchor>｜
-                      <PageAnchor href="/class-impression/2022autumn">秋学期</PageAnchor>
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                      2021 年度：
-                      <PageAnchor href="/class-impression/2021spring">春学期</PageAnchor>｜
-                      <PageAnchor href="/class-impression/2021autumn">秋学期</PageAnchor>
-                    </li>
-                  </ul>
+                  <PageAnchor href="https://inaniwaudon.github.io/genkotsu/">げんこつ</PageAnchor>
                 </li>
               </CustomList>
             </section>
@@ -175,7 +189,7 @@ const Index = () => {
           </LinkList>
         </section>
         <Footer>
-          The source code of this side is available on{' '}
+          The source code of this site is available on{' '}
           <PageAnchor href="https://github.com/inaniwaudon/inaniwaudon-minna">GitHub</PageAnchor>.
         </Footer>
       </Main>
