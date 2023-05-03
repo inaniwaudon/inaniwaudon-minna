@@ -20,12 +20,13 @@ export const photos: Photo[] = [
     id: '210301ysfh',
     title: '卒業式前日（横浜サイエンスフロンティア高校、2021/3/1）',
   },
+  { id: '2023setouchi', title: '瀬戸内旅行（倉敷・岡山・直島・小豆島・姫路、2023/3/12–15）' },
+  { id: '210217mot', title: '東京都現代美術館（2022/2/17）', deleted: true },
   {
     id: 'tokyo2020',
     title: '東京オリンピック開会式・聖火・閉会式（2021/8）',
     deleted: true,
   },
-  { id: '210217mot', title: '東京都現代美術館（2022/2/17）', deleted: true },
 ];
 
 export const links: Link[] = [
