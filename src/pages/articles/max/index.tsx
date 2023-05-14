@@ -215,6 +215,22 @@ const Index = () => {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;800&display=swap"
           rel="stylesheet"
         />
+        <link
+          rel="shortcut icon"
+          href="https://いなにわうどん.みんな/assets/max-ogp.jpg"
+          type="image/x-icon"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="$マックスコーヒーのパッケージ観察" />
+        <meta
+          property="og:description"
+          content="特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。"
+        />
+        <meta property="og:url" content="https://いなにわうどん.みんな/articles/max" />
+        <meta property="og:site_name" content="いなにわうどん.みんな" />
+        <meta property="og:image" content="https://いなにわうどん.みんな/assets/max-ogp.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://いなにわうどん.みんな/assets/max-ogp.jpg" />
         <title>マックスコーヒーのパッケージ観察｜いなにわうどん.みんな</title>
       </Head>
       <GlobalStyle />
