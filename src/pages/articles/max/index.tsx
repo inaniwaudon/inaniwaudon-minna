@@ -11,6 +11,7 @@ import maxRedImage from '@/assets/max/max-red.webp';
 import maxTrace from '@/assets/max/max-trace.webp';
 import scannerImage from '@/assets/max/scanner.webp';
 import scannedImage from '@/assets/max/scanned.webp';
+import tel from '@/assets/max/tel.webp';
 import wave from '@/assets/max/wave.webp';
 import Footer from '@/components/common/Footer';
 
@@ -31,7 +32,8 @@ const Page = styled.div`
   margin: 32px auto;
 
   @media screen and (max-width: ${800 + 32 * 2}px) {
-    width: 100%;
+    width: calc(100% - 32px * 2);
+    margin: 32px;
   }
 `;
 
@@ -40,7 +42,6 @@ const Wrapper = styled.div`
   gap: 40px;
 
   @media screen and (max-width: ${800 + 32 * 2}px) {
-    margin: 0 32px;
     justify-content: center;
   }
 `;
@@ -144,7 +145,7 @@ const Figure = styled.figure`
 
 const FigureImage = styled.img<{ border?: boolean }>`
   width: 100%;
-  border: ${({ border }) => (border ? `solid 1px ${maxBrown}` : 'none')};
+  box-shadow: ${({ border }) => (border ? `0 1px 6px rgba(0, 0, 0, 0.4)` : 'none')};
 `;
 
 const Caption = styled.figcaption`
@@ -242,7 +243,7 @@ const Index = () => {
                 </Figure>
                 <Paragraph>
                   缶のサイズを計測したところ高さ 125 mm、Φ51 mm、円周が 168 mm
-                  でした。これらのデータを基にトレースしたデータが図 4 に示します。
+                  でした。これらのデータを基にトレースしたデータを図 4 に示します。
                 </Paragraph>
                 <Figure>
                   <FigureImage src={maxTrace.src} alt="" border={true} />
@@ -268,8 +269,8 @@ const Index = () => {
                 </Figure>
                 <h3>In depth</h3>
                 <Paragraph>
-                  MAX
-                  の文字をより詳しく見てみます。一般に、書体は視差調節を重視して設計されていますが、本ロゴにもそのような調整が加えられているのかが気になります。
+                  MAX の文字をより詳しく見てみます（図
+                  6）。一般に、書体は視差調節を重視して設計されていますが、本ロゴにもそのような調整が加えられているのかが気になります。
                 </Paragraph>
                 <List>
                   <li>
@@ -315,7 +316,7 @@ const Index = () => {
               <section id="wave">
                 <H2>謎の曲線？ 波線</H2>
                 <Paragraph>
-                  ロゴ横に長さ 95.5 mm の波線が 4 箇所あしらわれ、1 本の波線に対して周期が 3
+                  ロゴ横に長さ 95.5 mm の波線（図 7）が 4 箇所あしらわれ、1 本の波線に対して周期が 3
                   回（背面は 3
                   回、縮尺も異なる）ずつ存在します。サイン波のような風貌ですがサイン波ではなく、線幅も一定ではありません。1
                   箇所につき、外側、中央、内側と 3
@@ -345,9 +346,9 @@ const Index = () => {
                 </Paragraph>
                 <MaxCoffeeH3>マックスコーヒー</MaxCoffeeH3>
                 <Paragraph>
-                  31.5 mm × 5 mm の赤い矩形で囲われており、下部から 21.7 mm
-                  の位置に配置されています。書体は新ゴ B の 16 Q
-                  で、適切にカーニングが詰められているほか、「コ<strong>ー</strong>ヒ
+                  「マックスコーヒー」の文字（図 8）は31.5 mm × 5 mm
+                  の赤い矩形で囲われており、下部から 21.7 mm の位置に配置されています。書体は新ゴ B
+                  の 16 Q で、適切にカーニングが詰められているほか、「コ<strong>ー</strong>ヒ
                   <strong>ー</strong>
                   」の長音の部分を 70% 程度の長体にする等、文字組みに工夫が凝らされています。
                 </Paragraph>
@@ -393,7 +394,11 @@ const Index = () => {
                     src={compositions.src}
                     alt="G2 サンセリフ リサイクルしてね リサイクルしてね"
                   />
-                  <Caption>図 10：「リサイクルしてね」のロゴタイプとG2サンセリフ</Caption>
+                  <Caption>図 10：裏面の成分表示欄</Caption>
+                </Figure>
+                <Figure>
+                  <FigureImage src={tel.src} alt="お客様相談室 0120-308509" />
+                  <Caption>図 10：電話番号の文字組み</Caption>
                 </Figure>
                 <Paragraph>
                   成分表示上のロゴ、「練乳入り」「マックスコーヒー」の文言は正面のものとはサイズが異なり、やや縮小されて掲載されています。
