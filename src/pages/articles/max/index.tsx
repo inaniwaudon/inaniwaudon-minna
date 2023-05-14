@@ -1,11 +1,17 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styled, { createGlobalStyle } from 'styled-components';
-import headline from '@/assets/max/headline.svg';
+import compositions from '@/assets/max/compositions.webp';
+import g2sanserif from '@/assets/max/g2sanserif.webp';
 import logo from '@/assets/max/logo.svg';
+import maxLogo from '@/assets/max/max-logo.webp';
+import maxLogoAnalyze from '@/assets/max/max-logo-analyze.webp';
 import maxMakuhariImage from '@/assets/max/max-makuhari.jpeg';
+import maxRedImage from '@/assets/max/max-red.webp';
+import maxTrace from '@/assets/max/max-trace.webp';
 import scannerImage from '@/assets/max/scanner.webp';
 import scannedImage from '@/assets/max/scanned.webp';
+import wave from '@/assets/max/wave.webp';
 import Footer from '@/components/common/Footer';
 
 const maxYellow = '#f9b900';
@@ -23,15 +29,28 @@ const GlobalStyle = createGlobalStyle`
 const Page = styled.div`
   width: 800px;
   margin: 32px auto;
+
+  @media screen and (max-width: ${800 + 32 * 2}px) {
+    width: 100%;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   gap: 40px;
+
+  @media screen and (max-width: ${800 + 32 * 2}px) {
+    margin: 0 32px;
+    justify-content: center;
+  }
 `;
 
 const SideNavigation = styled.nav`
   width: 160px;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 
   ul {
     margin: 0;
@@ -113,13 +132,19 @@ const Anchor = styled.a`
 
 // figure
 const Figure = styled.figure`
+  margin: 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media screen and (max-width: ${800 + 32 * 2}px) {
+    margin: 24px 0;
+  }
 `;
 
-const FigureImage = styled.img`
+const FigureImage = styled.img<{ border?: boolean }>`
   width: 100%;
+  border: ${({ border }) => (border ? `solid 1px ${maxBrown}` : 'none')};
 `;
 
 const Caption = styled.figcaption`
@@ -216,23 +241,20 @@ const Index = () => {
                   <Caption>図 3：スキャンしたデータ</Caption>
                 </Figure>
                 <Paragraph>
-                  なお、缶のサイズを計測したところ高さ 125 mm、Φ51 mm、円周が 168 mm
+                  缶のサイズを計測したところ高さ 125 mm、Φ51 mm、円周が 168 mm
                   でした。これらのデータを基にトレースしたデータが図 4 に示します。
                 </Paragraph>
                 <Figure>
-                  <FigureImage src={scannedImage.src} alt="" />
-                  <Caption>図 4：トレースした缶のパッケージ（PDF 版はこちら）</Caption>
+                  <FigureImage src={maxTrace.src} alt="" border={true} />
+                  <Caption>図 4：トレースした缶のパッケージ</Caption>
                 </Figure>
               </section>
               <section id="logo">
                 <H2>ロゴ</H2>
-                <Figure>
-                  <Caption>図 4：「MAX COFFEE」のロゴ</Caption>
-                </Figure>
                 <Paragraph>
-                  正面と背面の 2 箇所に「MAX
-                  COFFEE」のロゴが印刷されています。正面のロゴのサイズを計測したところ、50 mm × 26.7
-                  mm でした。書体の分類としてはサンセリフ体に該当し、Gotham
+                  正面と背面の 2 箇所に「MAX COFFEE」のロゴ（図
+                  5）が印刷されています。正面のロゴのサイズを計測したところ、50 mm × 26.7 mm
+                  でした。書体の分類としてはサンセリフ体に該当し、Gotham
                   等に通ずる幾何学的なデザインです。
                 </Paragraph>
                 <Paragraph>
@@ -240,6 +262,10 @@ const Index = () => {
                   C、O
                   は上下のラインから僅かに飛び出すような形で配置されています。水平方向では、「COFFEE」が「MAX」に比べて左（缶では上向き）に寄っていることも読み取れます。
                 </Paragraph>
+                <Figure>
+                  <FigureImage src={maxLogo.src} alt="MAX COFFEE" />
+                  <Caption>図 5：「MAX COFFEE」のロゴ</Caption>
+                </Figure>
                 <h3>In depth</h3>
                 <Paragraph>
                   MAX
@@ -276,6 +302,10 @@ const Index = () => {
                     下側のアームの順に長さが短い。
                   </li>
                 </List>
+                <Figure>
+                  <FigureImage src={maxLogoAnalyze.src} alt="MAX COFFEE" />
+                  <Caption>図 6：ロゴの詳細。ピンク色の線は平行</Caption>
+                </Figure>
                 <Paragraph>
                   なおインターネット上の画像と手元の実物を比較すると、現在発売されている缶・ペットボトル双方のパッケージにおいて、旧来よりも
                   <strong>カーニングが広めに取られている</strong>ことが判明しました。現行のものは
@@ -284,17 +314,18 @@ const Index = () => {
               </section>
               <section id="wave">
                 <H2>謎の曲線？ 波線</H2>
-                <Figure>
-                  <Caption>図 n：マックスコーヒーの破線</Caption>
-                </Figure>
                 <Paragraph>
                   ロゴ横に長さ 95.5 mm の波線が 4 箇所あしらわれ、1 本の波線に対して周期が 3
                   回（背面は 3
                   回、縮尺も異なる）ずつ存在します。サイン波のような風貌ですがサイン波ではなく、線幅も一定ではありません。1
-                  箇所につき、図中 a, b, c と 3 つの曲線が存在しますが、a の形状は b, c
-                  の形状と異なります。さらには、1
+                  箇所につき、外側、中央、内側と 3
+                  つの曲線が存在しますが、これらの形状はすべて異なります。さらには、1
                   つの山に対して左右対称ですらない、という謎な曲線です。
                 </Paragraph>
+                <Figure>
+                  <FigureImage src={wave.src} alt="" />
+                  <Caption>図 7：3 本の異なる破線</Caption>
+                </Figure>
               </section>
               <section id="front">
                 <H2>正面</H2>
@@ -309,7 +340,8 @@ const Index = () => {
                   」ファミリーに統一されていて、「練乳入り」「コーヒー飲料」の部分はそれぞれ 新ゴ
                   B、新ゴ M です。「練乳入り」の部分はベタ組みにトラッキングを -20
                   程度掛けてあり、カーニングは詰められていません。「1 本あたり 120
-                  kcal」は和文が新ゴ、欧文は Helvetica Condensed と推測されます。
+                  kcal」は和文が新ゴ、欧文は Helvetica Condensed
+                  で、天地が揃えるべく和文が級下げされています。テキストの囲み罫は矩形と楕円を組み合わせたデザインです。
                 </Paragraph>
                 <MaxCoffeeH3>マックスコーヒー</MaxCoffeeH3>
                 <Paragraph>
@@ -319,15 +351,21 @@ const Index = () => {
                   <strong>ー</strong>
                   」の長音の部分を 70% 程度の長体にする等、文字組みに工夫が凝らされています。
                 </Paragraph>
+                <Figure>
+                  <FigureImage src={maxRedImage.src} alt="MAX COFFEE" />
+                  <Caption>図 8：「マックスコーヒー」の表記</Caption>
+                </Figure>
               </section>
               <section id="side">
                 <H2>側面</H2>
                 <Paragraph>
-                  側面には、注意表記、バーコード、「リサイクルしてね」のロゴ等が縦方向に並んでおり、狭いスペースながらに大量の情報が詰め込まれています。注意書きは最終行まで両端揃えの所謂「カンパコ組み」で、項目ごとに本文よりも小さめに
-                  ● のマーカーが付されています。
+                  側面には、注意表記、バーコード（JAN
+                  コード）、「リサイクルしてね」のロゴ等が縦方向に並んでおり、狭いスペースながらに大量の情報が詰め込まれています。注意書きは最終行まで両端揃えの所謂「カンパコ組み」で、約物は行中・行末に関わらず半角です。全体的に平体気味ですが、項目ごとに本文よりも小さなサイズで付された
+                  ●
+                  のマーカーは正体のように見えます。注意事項の背後のザブトンは角が若干丸まっています。
                 </Paragraph>
                 <Paragraph>
-                  「リサイクルしてね」 は タイプバンク（旧リョービ）の{' '}
+                  「リサイクルしてね」（図 9） は タイプバンク（旧リョービ）の{' '}
                   <Anchor href="https://www.typebank.co.jp/fontfamily/g2sansserif/">
                     G2 サンセリフ-B
                   </Anchor>{' '}
@@ -335,12 +373,30 @@ const Index = () => {
                   また、「あき缶はリサイクル」の部分は <strong>UD 新ゴ</strong>
                   が採用されています。パッケージの他箇所が通常の新ゴであることに鑑みると、この部分も他飲料と共通である可能性が高いです。
                 </Paragraph>
+                <Figure>
+                  <FigureImage
+                    src={g2sanserif.src}
+                    alt="G2 サンセリフ リサイクルしてね リサイクルしてね"
+                  />
+                  <Caption>図 9：「リサイクルしてね」のロゴタイプとG2サンセリフ</Caption>
+                </Figure>
               </section>
               <section id="components">
                 <H2>成分表示</H2>
                 <Paragraph>
-                  複数の書体サイズが混在しています。「0120-308509」の電話番号は隣の「お客様相談室」よりも級上げされ、書体も太めのウェイトが採用されています。市外局番を区切るハイフンもベースラインシフトによって天地中央に揃えられるなど、細部まで拘った調整が伺えます。その下の
+                  複数の書体サイズが混在しています（図
+                  10）。「0120-308509」の電話番号は隣の「お客様相談室」よりも級上げされ、書体も太めのウェイトが採用されています。市外局番を区切るハイフンもベースラインシフトによって天地中央に揃えられるなど、細部まで拘った調整が伺えます。その下の
                   「GEOGIA」のみ Helvetica が使用されています。
+                </Paragraph>
+                <Figure>
+                  <FigureImage
+                    src={compositions.src}
+                    alt="G2 サンセリフ リサイクルしてね リサイクルしてね"
+                  />
+                  <Caption>図 10：「リサイクルしてね」のロゴタイプとG2サンセリフ</Caption>
+                </Figure>
+                <Paragraph>
+                  成分表示上のロゴ、「練乳入り」「マックスコーヒー」の文言は正面のものとはサイズが異なり、やや縮小されて掲載されています。
                 </Paragraph>
               </section>
               <section id="color">
@@ -360,7 +416,7 @@ const Index = () => {
                       <Td style={{ color: '#fff', background: '#000' }}>黒</Td>
                       <Td>
                         「MAX
-                        COFFEE」「GEOGIA」のロゴ、「練乳入り」「コーヒー飲料」の文字、バーコード。恐らく
+                        COFFEE」「GEOGIA」のロゴ、「練乳入り」「コーヒー飲料」の文字、バーコードの文字色。恐らく
                         K100。
                       </Td>
                     </tr>
@@ -377,6 +433,12 @@ const Index = () => {
                     <tr>
                       <Td style={{ color: '#fff', background: maxBrown }}>茶</Td>
                       <Td>波線や成分表示部分の背景色。</Td>
+                    </tr>
+                    <tr>
+                      <Td style={{ background: '#fff' }}>白</Td>
+                      <Td>
+                        実は意外に少ない。バーコードの背景色と背後の「ほっとする甘みがお楽しみいただける……」の文言のみ。
+                      </Td>
                     </tr>
                   </tbody>
                 </Table>
