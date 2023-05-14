@@ -221,7 +221,7 @@ const Index = () => {
           type="image/x-icon"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="$マックスコーヒーのパッケージ観察" />
+        <meta property="og:title" content="マックスコーヒーのパッケージ観察" />
         <meta
           property="og:description"
           content="特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。"
@@ -388,7 +388,7 @@ const Index = () => {
                   B、新ゴ M です。「練乳入り」の部分はベタ組みにトラッキングを -20
                   程度掛けてあり、カーニングは詰められていません。「1 本あたり 120
                   kcal」は和文が新ゴ、欧文は Helvetica Condensed
-                  で、天地が揃えるべく和文が級下げされています。テキストの囲み罫は矩形と楕円を組み合わせたデザインです。
+                  で、天地を揃えるべく和文が級下げされています。テキストの囲み罫は矩形と楕円を組み合わせたデザインです。
                 </Paragraph>
                 <MaxCoffeeH3>マックスコーヒー</MaxCoffeeH3>
                 <Paragraph>
@@ -416,9 +416,9 @@ const Index = () => {
                     G2 サンセリフ-B
                   </Anchor>{' '}
                   をベースとしたロゴタイプで、コカ・コーラ社で共通のシンボルが使用されています。「リサイクル」の部分は微調整が加えられ、元のフォントと若干エレメントが異なるほか、全体的に少し太めに強調されて見えます
-                  <a href="#footnote1">
+                  <Anchor href="#footnote1">
                     <sup>[1]</sup>
-                  </a>
+                  </Anchor>
                   。その他の部分に関しては元のフォントと同一の形状です。
                   また、「あき缶はリサイクル」の部分は <strong>UD 新ゴ</strong>
                   が採用されています。パッケージの他箇所が通常の新ゴであることに鑑みると、この部分も他飲料と共通である可能性が高いです。
@@ -428,7 +428,7 @@ const Index = () => {
                     src={g2sanserif.src}
                     alt="G2 サンセリフ リサイクルしてね リサイクルしてね"
                   />
-                  <Caption>図 8：「リサイクルしてね」のロゴタイプとG2サンセリフ</Caption>
+                  <Caption>図 8：「リサイクルしてね」のロゴタイプと G2 サンセリフ</Caption>
                 </Figure>
               </section>
               <section id="components">
