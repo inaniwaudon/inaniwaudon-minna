@@ -8,7 +8,7 @@ const Wrapper = styled.footer`
   font-size: 14px;
   margin-top: 20px;
   padding-top: 10px;
-  border-top: solid 1px #ccc;
+  border-top: solid 1px rgba(0, 0, 0, 0.2);
 
   a {
     color: ${linkColor};

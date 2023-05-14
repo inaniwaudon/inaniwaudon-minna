@@ -6,6 +6,7 @@ import PageAnchor from '@/components/common/PageAnchor';
 import {
   articleHatenaLinks,
   articleNoteLinks,
+  articleSiteLinks,
   articleWordLinks,
   articleZennLinks,
 } from '@/const/articles';
@@ -38,7 +39,11 @@ const Index = () => {
     const hatena = articleHatenaLinks.map((link) => ({ ...link, description: 'はてなブログ' }));
     const note = articleNoteLinks.map((link) => ({ ...link, description: 'note' }));
     const zenn = articleZennLinks.map((link) => ({ ...link, description: 'Zenn' }));
-    return [...hatena, ...note, ...zenn, ...articleWordLinks].sort((a, b) =>
+    const site = articleSiteLinks.map((link) => ({
+      ...link,
+      description: 'いなにわうどん.みんな',
+    }));
+    return [...hatena, ...note, ...zenn, ...site, ...articleWordLinks].sort((a, b) =>
       a.date === b.date ? 0 : a.date < b.date ? 1 : -1
     );
   }, [articleHatenaLinks, articleNoteLinks, articleZennLinks, articleWordLinks]);
