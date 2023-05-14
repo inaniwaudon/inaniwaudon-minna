@@ -160,6 +160,11 @@ export const articleZennLinks: ArticleLink[] = [
     title: 'input 要素に flex-shrink が効かないときの対処法',
     date: '2023/02/27',
   },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/0ccec9aab37032',
+    title: 'Intl.segmenter + React で改行位置の制御',
+    date: '2023/04/30',
+  },
 ];
 
 export const articleNoteLinks: ArticleLink[] = [
@@ -174,6 +179,14 @@ export const articleNoteLinks: ArticleLink[] = [
     title: 'まんがタイムきららの「写植」を読む――吹き出しにみる漫画書体の使い分け',
     date: '2023/01/29',
     tags: ['hongoshi'],
+  },
+];
+
+export const articleSiteLinks: ArticleLink[] = [
+  {
+    href: '/articles/max',
+    title: 'マックスコーヒーのパッケージ観察',
+    date: '2023/05/14',
   },
 ];
 

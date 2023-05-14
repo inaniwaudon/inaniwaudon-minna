@@ -172,6 +172,9 @@ const Index = () => {
                 <li>
                   <PageAnchor href="https://inaniwaudon.github.io/genkotsu/">げんこつ</PageAnchor>
                 </li>
+                <li>
+                  <PageAnchor href="https://cmap-display.pages.dev/">cmap-display</PageAnchor>
+                </li>
               </CustomList>
             </section>
           </div>
