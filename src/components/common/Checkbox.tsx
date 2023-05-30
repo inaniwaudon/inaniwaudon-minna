@@ -5,6 +5,7 @@ const CategoryList = styled.ul`
   padding: 4px 0 0 0;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 `;
 
