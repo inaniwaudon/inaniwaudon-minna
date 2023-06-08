@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 import logo from '@/assets/logo.svg';
@@ -5,6 +6,7 @@ import Nengajo from '@/components/Nengajo';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
 import { links, photos } from '@/const/index';
+import { generateRss } from '@/lib/articles-rss';
 
 const Main = styled.div`
   margin: 30px 50px;
@@ -204,6 +206,13 @@ const Index = () => {
       </Main>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = () => {
+  generateRss();
+  return {
+    props: {},
+  };
 };
 
 export default Index;
