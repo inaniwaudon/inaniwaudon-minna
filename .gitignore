@@ -190,3 +190,4 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,nextjs,react
 
 /photo/
+/public/feed

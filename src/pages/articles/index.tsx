@@ -4,13 +4,7 @@ import Checkbox from '@/components/common/Checkbox';
 import CustomList from '@/components/common/CustomList';
 import Page from '@/components/common/Page';
 import PageAnchor from '@/components/common/PageAnchor';
-import {
-  articleHatenaLinks,
-  articleNoteLinks,
-  articleSiteLinks,
-  articleWordLinks,
-  articleZennLinks,
-} from '@/const/articles';
+import { articleLinks } from '@/const/articles';
 
 const H1 = styled.h1`
   margin: 0 0 8px 0;
@@ -48,23 +42,12 @@ const Index = () => {
   ];
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  const links = useMemo(() => {
-    const hatena = articleHatenaLinks.map((link) => ({ ...link, description: 'はてなブログ' }));
-    const note = articleNoteLinks.map((link) => ({ ...link, description: 'note' }));
-    const zenn = articleZennLinks.map((link) => ({ ...link, description: 'Zenn' }));
-    const site = articleSiteLinks.map((link) => ({
-      ...link,
-      description: 'いなにわうどん.みんな',
-    }));
-    return [...hatena, ...note, ...zenn, ...site, ...articleWordLinks].sort((a, b) =>
-      a.date === b.date ? 0 : a.date < b.date ? 1 : -1
-    );
-  }, [articleHatenaLinks, articleNoteLinks, articleZennLinks, articleWordLinks]);
-
   const filteredLinks =
     selectedTags.length > 0
-      ? links.filter((link) => link.tags && selectedTags.some((tag) => link.tags!.includes(tag)))
-      : links;
+      ? articleLinks.filter(
+          (link) => link.tags && selectedTags.every((tag) => link.tags!.includes(tag))
+        )
+      : articleLinks;
 
   const title = '書いたもの・こと';
 
