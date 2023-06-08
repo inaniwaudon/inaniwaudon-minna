@@ -30,7 +30,11 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ja">
-        <Head />
+        <Head>
+          <link rel="alternate" type="application/atom+xml" href="/feed/atom.xml" title="Atom1.0" />
+          <link rel="alternate" type="application/rss+xml" href="/feed/feed.xml" title="RSS2.0" />
+          <link rel="alternate" type="application/json" href="/feed/feed.json" />
+        </Head>
         <body>
           <Main />
           <NextScript />

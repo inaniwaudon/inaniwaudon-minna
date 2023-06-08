@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 import logo from '@/assets/logo.svg';
@@ -5,6 +6,7 @@ import Nengajo from '@/components/Nengajo';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
 import { links, photos } from '@/const/index';
+import { generateRss } from '@/lib/articles-rss';
 
 const Main = styled.div`
   margin: 30px 50px;
@@ -110,7 +112,10 @@ const Index = () => {
               <h2>文章など</h2>
               <CustomList>
                 <li>
-                  <PageAnchor href="/articles">書いたもの・こと</PageAnchor>
+                  <PageAnchor href="/articles">書いたもの・こと</PageAnchor>（
+                  <PageAnchor href="/feed/feed.xml">RSS</PageAnchor>・
+                  <PageAnchor href="feed/atom.xml">Atom</PageAnchor>・
+                  <PageAnchor href="/feed/feed.json">JSON</PageAnchor>）
                 </li>
                 <li>
                   <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
@@ -204,6 +209,13 @@ const Index = () => {
       </Main>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = () => {
+  generateRss();
+  return {
+    props: {},
+  };
 };
 
 export default Index;

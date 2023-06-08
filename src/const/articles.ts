@@ -6,7 +6,7 @@ export interface ArticleLink {
   tags: string[];
 }
 
-export const articleHatenaLinks: ArticleLink[] = [
+const articleHatenaLinks: ArticleLink[] = [
   {
     href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20180321/1521620634',
     title: '3 日間。Python でつくる、Twitter カウントダウン Bot',
@@ -99,7 +99,7 @@ export const articleHatenaLinks: ArticleLink[] = [
   },
 ];
 
-export const articleZennLinks: ArticleLink[] = [
+const articleZennLinks: ArticleLink[] = [
   {
     href: 'https://zenn.dev/inaniwaudon/articles/039e82d61254ed',
     title: 'ヒラギノ角ゴシックの CMap を読む',
@@ -198,7 +198,7 @@ export const articleZennLinks: ArticleLink[] = [
   },
 ];
 
-export const articleNoteLinks: ArticleLink[] = [
+const articleNoteLinks: ArticleLink[] = [
   {
     href: 'https://note.com/soudakyoto_ikou/n/n6967b2471eca',
     title: 'サイエンスフロンティア高校のポスターに学ぶ！グラフィックデザイン基本の「き」',
@@ -213,7 +213,7 @@ export const articleNoteLinks: ArticleLink[] = [
   },
 ];
 
-export const articleSiteLinks: ArticleLink[] = [
+const articleSiteLinks: ArticleLink[] = [
   {
     href: '/articles/max',
     title: 'マックスコーヒーのパッケージ観察',
@@ -222,7 +222,7 @@ export const articleSiteLinks: ArticleLink[] = [
   },
 ];
 
-export const articleWordLinks: ArticleLink[] = [
+const articleWordLinks: ArticleLink[] = [
   {
     href: '/docs/word-kumihan.pdf',
     title: '書いてみよう！組版処理系',
@@ -252,3 +252,16 @@ export const articleWordLinks: ArticleLink[] = [
     tags: ['random'],
   },
 ];
+
+export const articleLinks = (() => {
+  const hatena = articleHatenaLinks.map((link) => ({ ...link, description: 'はてなブログ' }));
+  const note = articleNoteLinks.map((link) => ({ ...link, description: 'note' }));
+  const zenn = articleZennLinks.map((link) => ({ ...link, description: 'Zenn' }));
+  const site = articleSiteLinks.map((link) => ({
+    ...link,
+    description: 'いなにわうどん.みんな',
+  }));
+  return [...hatena, ...note, ...zenn, ...site, ...articleWordLinks].sort((a, b) =>
+    a.date === b.date ? 0 : a.date < b.date ? 1 : -1
+  );
+})();
