@@ -112,7 +112,10 @@ const Index = () => {
               <h2>文章など</h2>
               <CustomList>
                 <li>
-                  <PageAnchor href="/articles">書いたもの・こと</PageAnchor>
+                  <PageAnchor href="/articles">書いたもの・こと</PageAnchor>（
+                  <PageAnchor href="/feed/feed.xml">RSS</PageAnchor>・
+                  <PageAnchor href="feed/atom.xml">Atom</PageAnchor>・
+                  <PageAnchor href="/feed/feed.json">JSON</PageAnchor>）
                 </li>
                 <li>
                   <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
