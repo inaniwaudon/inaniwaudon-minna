@@ -32,8 +32,8 @@ export const photos: Photo[] = [
 export const links: Link[] = [
   {
     platform: 'Twitter',
-    name: '@kyoto_mast21',
-    url: 'https://twitter.com/kyoto_mast21',
+    name: '@kyoto_inaniwa',
+    url: 'https://twitter.com/kyoto_inaniwa',
     color: '#1da1f2',
   },
   {
