@@ -2,10 +2,11 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 import logo from '@/assets/logo.svg';
-import Nengajo from '@/components/Nengajo';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
-import { links, photos } from '@/const/index';
+import LinkList from '@/components/index/LinkList';
+import Nengajo from '@/components/index/Nengajo';
+import { photos } from '@/const/index';
 import { generateRss } from '@/lib/articles-rss';
 
 const Main = styled.div`
@@ -27,48 +28,6 @@ const Top = styled.div`
 
 const H1 = styled.h1`
   margin: 0;
-`;
-
-const LinkList = styled.ul`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-`;
-
-const Link = styled.li`
-  width: 140px;
-  height: 66px;
-  display: block;
-`;
-
-const LinkContent = styled.div<{ color: string }>`
-  color: ${(props) => props.color};
-  height: 46px;
-  padding: 4px 0 4px 16px;
-  border-left: solid 1px ${(props) => props.color};
-  background: #fff;
-  transition: margin-top 0.2s ease-out;
-
-  &:hover {
-    color: #666;
-    border-left: solid 1px #555;
-  }
-`;
-
-const LinkAnchor = styled.a`
-  color: inherit;
-  text-decoration: none;
-`;
-
-const Platform = styled.div`
-  font-weight: bold;
-  font-size: 16px;
-`;
-
-const Description = styled.div`
-  font-size: 14px;
 `;
 
 const ListWrapper = styled.div`
@@ -183,25 +142,11 @@ const Index = () => {
               </CustomList>
             </section>
           </div>
-          <Nengajo />
+          <div>
+            <Nengajo />
+            <LinkList />
+          </div>
         </Top>
-        <section>
-          <h2>外部リンク</h2>
-          <LinkList>
-            {links.map(({ color, name, url, platform }) => (
-              <Link key={url}>
-                <LinkContent color={color}>
-                  <LinkAnchor href={url}>
-                    <div>
-                      <Platform>{platform}</Platform>
-                      <Description>{name}</Description>
-                    </div>
-                  </LinkAnchor>
-                </LinkContent>
-              </Link>
-            ))}
-          </LinkList>
-        </section>
         <Footer>
           The source code of this site is available on{' '}
           <PageAnchor href="https://github.com/inaniwaudon/inaniwaudon-minna">GitHub</PageAnchor>.
