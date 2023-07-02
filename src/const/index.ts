@@ -1,3 +1,10 @@
+import gitHubIcon from '@/assets/icons/github.svg';
+import hatenablogIcon from '@/assets/icons/hatenablog.svg';
+import misskeyIcon from '@/assets/icons/misskey.png';
+import noteIcon from '@/assets/icons/note.svg';
+import twitterIcon from '@/assets/icons/twitter.svg';
+import zennIcon from '@/assets/icons/zenn.svg';
+
 interface Photo {
   id: string;
   title: string;
@@ -9,6 +16,10 @@ interface Link {
   name: string;
   url: string;
   color: string;
+  icon: {
+    url: string;
+    scale: number;
+  };
 }
 
 export const photos: Photo[] = [
@@ -20,7 +31,11 @@ export const photos: Photo[] = [
     id: '210301ysfh',
     title: '卒業式前日（横浜サイエンスフロンティア高校、2021/3/1）',
   },
-  { id: '2023setouchi', title: '瀬戸内旅行（倉敷・岡山・直島・小豆島・姫路、2023/3/12–15）' },
+  {
+    id: '2023setouchi',
+    title: '瀬戸内旅行（倉敷・岡山・直島・小豆島・姫路、2023/3/12–15）',
+    deleted: true,
+  },
   { id: '210217mot', title: '東京都現代美術館（2022/2/17）', deleted: true },
   {
     id: 'tokyo2020',
@@ -33,38 +48,62 @@ export const links: Link[] = [
   {
     platform: 'Twitter',
     name: '@kyoto_inaniwa',
-    url: 'https://twitter.com/kyoto_inaniwayar',
+    url: 'https://twitter.com/kyoto_inaniwa',
     color: '#1da1f2',
+    icon: {
+      url: twitterIcon.src,
+      scale: 1.0,
+    },
   },
   {
     platform: 'GitHub',
     name: 'inaniwaudon',
     url: 'https://github.com/inaniwaudon',
     color: '#171515',
+    icon: {
+      url: gitHubIcon.src,
+      scale: 1.1,
+    },
   },
   {
     platform: 'はてなブログ',
     name: 'いなにわうどん',
     url: 'https://soudakyoto-ikou.hatenadiary.jp',
     color: '#333',
+    icon: {
+      url: hatenablogIcon.src,
+      scale: 1.6,
+    },
   },
   {
     platform: 'Zenn',
     name: 'inaniwaudon',
     url: 'https://zenn.dev/inaniwaudon',
     color: '#3ea8ff',
+    icon: {
+      url: zennIcon.src,
+      scale: 1.0,
+    },
   },
   {
-    platform: 'Qiita',
-    name: 'inaniwaudon',
-    url: 'https://qiita.com/inaniwaudon',
+    platform: 'Misskey',
+    name: '@inaniwaudon@misskey.io',
+    url: 'https://misskey.io/@inaniwaudon',
     color: '#55c500',
+    icon: {
+      url: misskeyIcon.src,
+      scale: 1.6,
+    },
   },
   {
     platform: 'note',
     name: 'いなにわうどん',
     url: 'https://note.com/soudakyoto_ikou',
     color: 'rgba(44, 182, 150)',
+    icon: {
+      url: noteIcon.src,
+      scale: 1.7,
+    },
   },
 ];
 
