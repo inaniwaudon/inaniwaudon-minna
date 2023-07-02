@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import jikan from '@/assets/jikan.webp';
 import { links } from '@/const/index';
 
 const Wrapper = styled.section``;
@@ -71,6 +72,10 @@ const Description = styled.div`
   font-size: 14px;
 `;
 
+const Bunner = styled.div`
+  margin-top: 16px;
+`;
+
 const LinkList = () => {
   return (
     <Wrapper>
@@ -90,6 +95,11 @@ const LinkList = () => {
           </Link>
         ))}
       </List>
+      <Bunner>
+        <a href="https://sites.google.com/view/happy-busy/" rel="nofollow">
+          <img src={jikan.src} alt="時間ねぇ〜" />
+        </a>
+      </Bunner>
     </Wrapper>
   );
 };
