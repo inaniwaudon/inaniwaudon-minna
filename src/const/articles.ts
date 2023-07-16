@@ -196,6 +196,12 @@ const articleZennLinks: ArticleLink[] = [
     date: '2023/04/30',
     tags: ['tech'],
   },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/7fa50a744cb67a',
+    title: 'Cloudflare Workers + KV で OAuth2.0 クライアント',
+    date: '2023/07/15',
+    tags: ['tech'],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
