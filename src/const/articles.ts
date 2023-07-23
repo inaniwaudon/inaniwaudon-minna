@@ -257,6 +257,13 @@ const articleWordLinks: ArticleLink[] = [
     description: 'WORD 52号',
     tags: ['random'],
   },
+  {
+    href: '/docs/word-clreq.pdf',
+    title: 'やはり俺の中国語組版はまちがっている',
+    date: '2023/07/07',
+    description: 'WORD 53号',
+    tags: ['hongoshi', 'tech'],
+  },
 ];
 
 export const articleLinks = (() => {
