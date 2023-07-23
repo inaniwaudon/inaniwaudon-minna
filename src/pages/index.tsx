@@ -93,6 +93,10 @@ const Index = () => {
                   <ListWrapper>
                     <CustomList>
                       <li>
+                        2023 年度：
+                        <PageAnchor href="/class-impression/2023spring">春学期</PageAnchor>
+                      </li>
+                      <li>
                         2022 年度：
                         <PageAnchor href="/class-impression/2022spring">春学期</PageAnchor>｜
                         <PageAnchor href="/class-impression/2022autumn">秋学期</PageAnchor>
