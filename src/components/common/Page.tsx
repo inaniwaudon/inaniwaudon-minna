@@ -19,7 +19,7 @@ interface PageProps {
 const Page = ({ title, children }: PageProps) => (
   <>
     <Head>
-      <title>{title}｜いなにわうどん.みんな</title>
+      <title>{`${title}｜いなにわうどん.みんな`}</title>
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <meta name="description" content="回鍋肉と C# が好きです。" />
     </Head>

@@ -216,7 +216,7 @@ const Index = (props: IndexProps) => {
   return (
     <>
       <Head>
-        <title>{props.title} - いなにわうどん.みんな</title>
+        <title>{`${props.title} - いなにわうどん.みんな`}</title>
         <meta charSet="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <script dangerouslySetInnerHTML={{ __html: typekit }} />
