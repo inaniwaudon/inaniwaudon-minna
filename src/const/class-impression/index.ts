@@ -2,6 +2,7 @@ import markdown2021spring from './2021spring.md';
 import markdown2021autumn from './2021autumn.md';
 import markdown2022spring from './2022spring.md';
 import markdown2022autumn from './2022autumn.md';
+import markdown2023spring from './2023spring.md';
 
 export const classImpressions: {
   year: number;
@@ -32,5 +33,11 @@ export const classImpressions: {
     term: 'autumn',
     description: '飽きがきた秋学期',
     article: markdown2022autumn,
+  },
+  {
+    year: 2023,
+    term: 'spring',
+    description: '春はいつだって気持ち新たに',
+    article: markdown2023spring,
   },
 ];
