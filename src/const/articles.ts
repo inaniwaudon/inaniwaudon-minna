@@ -203,8 +203,8 @@ const articleZennLinks: ArticleLink[] = [
     tags: ['tech'],
   },
   {
-    href: 'スラッシュコマンドでぬいぐるみとおしゃべりする Discord Bot',
-    title: 'https://zenn.dev/inaniwaudon/articles/2ce2643abc9e08',
+    href: 'https://zenn.dev/inaniwaudon/articles/2ce2643abc9e08',
+    title: 'スラッシュコマンドでぬいぐるみとおしゃべりする Discord Bot',
     date: '2023/08/08',
     tags: ['tech'],
   },
