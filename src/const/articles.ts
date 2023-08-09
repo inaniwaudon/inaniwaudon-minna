@@ -97,6 +97,12 @@ const articleHatenaLinks: ArticleLink[] = [
     date: '2023/04/11',
     tags: ['random'],
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20230809/1691526678',
+    title: '令和 5 年度版 おすすめエナジードリンク',
+    date: '2023/08/10',
+    tags: ['random'],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [
