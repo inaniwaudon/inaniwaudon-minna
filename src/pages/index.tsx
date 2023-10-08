@@ -135,13 +135,16 @@ const Index = () => {
                   </PageAnchor>
                 </li>
                 <li>
-                  <PageAnchor href="https://exagree.netlify.app/">超便乗ツール</PageAnchor>
+                  <PageAnchor href="https://exagree.netlify.app">超便乗ツール</PageAnchor>
                 </li>
                 <li>
                   <PageAnchor href="https://inaniwaudon.github.io/genkotsu/">げんこつ</PageAnchor>
                 </li>
                 <li>
-                  <PageAnchor href="https://cmap-display.pages.dev/">cmap-display</PageAnchor>
+                  <PageAnchor href="https://cmap-display.pages.dev">cmap-display</PageAnchor>
+                </li>
+                <li>
+                  <PageAnchor href="https://mail-segmenter.yokohama.dev">mail-segmenter</PageAnchor>
                 </li>
               </CustomList>
             </section>
@@ -151,10 +154,6 @@ const Index = () => {
             <LinkList />
           </div>
         </Top>
-        <Footer>
-          The source code of this site is available on{' '}
-          <PageAnchor href="https://github.com/inaniwaudon/inaniwaudon-minna">GitHub</PageAnchor>.
-        </Footer>
       </Main>
     </>
   );

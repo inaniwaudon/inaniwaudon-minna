@@ -103,6 +103,12 @@ const articleHatenaLinks: ArticleLink[] = [
     date: '2023/08/10',
     tags: ['random'],
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20231008/1696714736',
+    title: '私から見たメ創',
+    date: '2023/10/09',
+    tags: ['random'],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [
