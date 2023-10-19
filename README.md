@@ -1,8 +1,8 @@
 # inaniwaudon-minna
 
-Next.js で構築された個人サイト。
+Next.js で構築された個人サイトです。
 
-https://いなにわうどん.みんな
+<https://いなにわうどん.みんな>
 
 ## Development
 

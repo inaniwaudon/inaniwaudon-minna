@@ -1,9 +1,11 @@
+type Tag = 'tech' | 'design' | 'random' | 'hongoshi';
+
 export interface ArticleLink {
   href: string;
   title: string;
   date: string;
   description?: string;
-  tags: string[];
+  tags: Tag[];
 }
 
 const articleHatenaLinks: ArticleLink[] = [
@@ -106,7 +108,13 @@ const articleHatenaLinks: ArticleLink[] = [
   {
     href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20231008/1696714736',
     title: '私から見たメ創',
-    date: '2023/10/09',
+    date: '2023/10/08',
+    tags: ['random'],
+  },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20231018/1697617090',
+    title: 'ChatGPT キロロとの仮想対談',
+    date: '2023/10/18',
     tags: ['random'],
   },
 ];
