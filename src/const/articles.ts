@@ -1,11 +1,11 @@
-type Tag = 'tech' | 'design' | 'random' | 'hongoshi';
+type ArticleTag = 'tech' | 'design' | 'random' | 'hongoshi';
 
 export interface ArticleLink {
   href: string;
   title: string;
   date: string;
   description?: string;
-  tags: Tag[];
+  tags: ArticleTag[];
 }
 
 const articleHatenaLinks: ArticleLink[] = [

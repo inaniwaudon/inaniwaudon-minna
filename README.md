@@ -17,7 +17,7 @@ yaru run build
 スクリプトを叩いて写真を WebP に圧縮する。以下のファイルが生成される。
 
 ```bash
-python script/compress-jpeg.py <input_dir> <output_dir> <json_path>
+ts-node script/compress-image.py <input_dir> <output_dir> <json_path>
 ```
 
 - `$output_dir/*.webp`：圧縮後画像
