@@ -45,7 +45,7 @@ const Index = () => {
   const filteredLinks =
     selectedTags.length > 0
       ? articleLinks.filter(
-          (link) => link.tags && selectedTags.every((tag) => link.tags!.includes(tag))
+          (link) => link.tags && selectedTags.every((tag) => (link.tags as string[]).includes(tag))
         )
       : articleLinks;
 
