@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import fs from 'fs';
 import path from 'path';
 import styled from 'styled-components';
-import { PhotoData } from '@/const/photo';
+import { PhotoData, PhotoInfo } from '@/lib/photo';
 
 const Main = styled.main`
   min-height: 100vh;
@@ -135,7 +135,7 @@ const Half = styled.span`
 
 type PhotoList = ({
   thumnail_src: string;
-} & PhotoData)[];
+} & PhotoInfo)[];
 
 const shuffle = <T,>(array: T[]): T[] => {
   const newArray = [...array];
@@ -179,7 +179,7 @@ const Index = (props: IndexProps) => {
     changeColumnCount(count);
   };
 
-  const calculateHeight = (photo: PhotoData) => {
+  const calculateHeight = (photo: PhotoInfo) => {
     return (photo.height / photo.width) * imgWidth;
   };
 
@@ -278,20 +278,24 @@ export const getStaticProps = async ({
   params: { id: string };
 }): Promise<{ props: IndexProps }> => {
   const jsonPath = path.join(process.cwd(), `src/data/photo/${params.id}.json`);
-  const json = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const json: PhotoData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+
   return {
     props: {
       title: json.title,
       date: json.date,
-      photos: json.photos.map((photo: PhotoData) => ({
-        src: path.join(json.dir, photo.src),
-        thumnail_src: path.join(json.dir, 'thumbnail', photo.src),
-        title: photo.title,
-        place: photo.place,
-        date: photo.date,
-        width: photo.width,
-        height: photo.height,
-      })),
+      photos: json.photos.map((photo) => {
+        const dir = path.join('/assets/photo', json.key);
+        return {
+          src: path.join(dir, photo.src),
+          thumnail_src: path.join(dir, 'thumbnail', photo.src),
+          title: photo.title,
+          place: photo.place,
+          date: photo.date,
+          width: photo.width,
+          height: photo.height,
+        };
+      }),
     },
   };
 };
