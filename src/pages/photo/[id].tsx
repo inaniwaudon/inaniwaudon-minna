@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { glob } from 'glob';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import fs from 'fs';
@@ -279,13 +280,13 @@ export const getStaticProps = async ({
 }): Promise<{ props: IndexProps }> => {
   const jsonPath = path.join(process.cwd(), `src/data/photo/${params.id}.json`);
   const json: PhotoData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const dir = path.join(process.env.PHOTO_URL!, 'photo', json.key);
 
   return {
     props: {
       title: json.title,
       date: json.date,
       photos: json.photos.map((photo) => {
-        const dir = path.join('/assets/photo', json.key);
         return {
           src: path.join(dir, photo.src),
           thumnail_src: path.join(dir, 'thumbnail', photo.src),
@@ -301,11 +302,8 @@ export const getStaticProps = async ({
 };
 
 export const getStaticPaths = () => {
-  const dir_path = path.join(process.cwd(), 'public/photo');
-  const dirs = fs
-    .readdirSync(dir_path, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map(({ name }) => name);
+  const jsonPaths = path.join(process.cwd(), '/src/data/photo/*.json');
+  const dirs = glob.sync(jsonPaths).map((jsonPath) => path.parse(jsonPath).name);
   return {
     paths: dirs.map((topic) => ({ params: { id: topic } })),
     fallback: false,

@@ -14,15 +14,26 @@ yaru run build
 
 ## 写真の更新方法
 
-スクリプトを叩いて写真を WebP に圧縮する。以下のファイルが生成される。
+WebP 形式に圧縮した上で、Cloudflare R2 にアップロードし、メタデータを JSON ファイルとして管理します。
 
-```bash
-ts-node script/compress-image.py <input_dir> <output_dir> <json_path>
-```
+1. スクリプトを叩き、圧縮済み画像とメタデータを自動生成する
 
-- `$output_dir/*.webp`：圧縮後画像
-- `$output_dir/thumbnail/*.webp`：サムネイル用画像
-- `json_path`：JSON ファイル
+    ```bash
+    ts-node script/compress-image.py $key $input_dir
+    ```
+    
+    以下の画像が生成される。
 
-生成された JSON は適宜編集して、`data/photo` 以下に配置する。
-出力フォルダ名と JSON のファイル名は合わせる。
+    - `/src/data/photo/$key.json`：JSON ファイル
+    - `$input_dir/temp/*.webp`：圧縮後画像
+    - `$input_dir/temp/thumbnail/*.webp`：サムネイル用画像
+
+2. 生成された画像ファイルを `/photo/$key` に移動させる
+
+3. `/photo` を `s3://site-photos/photo` と同期する
+
+    ```bash
+    aws s3 sync photo/ s3://site-photos/photo --delete --profile r2 --endpoint-url https://**.r2.cloudflarestorage.com
+    ```
+
+4. JSON ファイルを編集してコミットする
