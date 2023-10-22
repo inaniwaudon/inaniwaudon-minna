@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { glob } from 'glob';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import fs from 'fs';
 import path from 'path';
 import styled from 'styled-components';
-import { PhotoData } from '@/const/photo';
+import { PhotoData, PhotoInfo } from '@/lib/photo';
 
 const Main = styled.main`
   min-height: 100vh;
@@ -135,7 +136,7 @@ const Half = styled.span`
 
 type PhotoList = ({
   thumnail_src: string;
-} & PhotoData)[];
+} & PhotoInfo)[];
 
 const shuffle = <T,>(array: T[]): T[] => {
   const newArray = [...array];
@@ -163,6 +164,7 @@ interface IndexProps {
 
 const Index = (props: IndexProps) => {
   const router = useRouter();
+
   const [windowWidth, setWindowWidth] = useState(0);
   const [columnCount, setColumnCount] = useState(1);
   const [sortedPhotos, setSortedPhotos] = useState<PhotoList>([]);
@@ -179,7 +181,7 @@ const Index = (props: IndexProps) => {
     changeColumnCount(count);
   };
 
-  const calculateHeight = (photo: PhotoData) => {
+  const calculateHeight = (photo: PhotoInfo) => {
     return (photo.height / photo.width) * imgWidth;
   };
 
@@ -188,10 +190,13 @@ const Index = (props: IndexProps) => {
     window.addEventListener('resize', () => {
       setWindowWidth(window.innerWidth);
     });
-
-    setSortedPhotos('sorted' in router.query ? props.photos : shuffle(props.photos));
     changeColumnCount(Math.max(Math.floor(window.innerWidth / 350), 2));
-  }, []);
+  });
+
+  useEffect(() => {
+    const isUnsorted = 'unsort' in router.query;
+    setSortedPhotos(isUnsorted ? props.photos : shuffle(props.photos));
+  }, [router.query]);
 
   useEffect(() => {
     const allTotalHeight = props.photos.reduce(
@@ -209,7 +214,7 @@ const Index = (props: IndexProps) => {
       }
     }
     setPhotoColumns(newPhotos);
-  }, [imgWidth]);
+  }, [sortedPhotos, imgWidth]);
 
   const titleLast = props.title[props.title.length - 1];
 
@@ -222,8 +227,8 @@ const Index = (props: IndexProps) => {
         <script dangerouslySetInnerHTML={{ __html: typekit }} />
       </Head>
       <Main style={{ columnCount }}>
-        {photoColumns.map((column) => (
-          <Column width={imgWidth}>
+        {photoColumns.map((column, index) => (
+          <Column width={imgWidth} key={index}>
             {column.map((photo) => (
               <a href={photo.src} key={photo.src}>
                 <ImgWrapper>
@@ -278,30 +283,31 @@ export const getStaticProps = async ({
   params: { id: string };
 }): Promise<{ props: IndexProps }> => {
   const jsonPath = path.join(process.cwd(), `src/data/photo/${params.id}.json`);
-  const json = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const json: PhotoData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const dir = path.join(process.env.PHOTO_URL!, 'photo', json.key);
+
   return {
     props: {
       title: json.title,
       date: json.date,
-      photos: json.photos.map((photo: PhotoData) => ({
-        src: path.join(json.dir, photo.src),
-        thumnail_src: path.join(json.dir, 'thumbnail', photo.src),
-        title: photo.title,
-        place: photo.place,
-        date: photo.date,
-        width: photo.width,
-        height: photo.height,
-      })),
+      photos: json.photos.map((photo) => {
+        return {
+          src: path.join(dir, photo.src),
+          thumnail_src: path.join(dir, 'thumbnail', photo.src),
+          title: photo.title,
+          place: photo.place,
+          date: photo.date,
+          width: photo.width,
+          height: photo.height,
+        };
+      }),
     },
   };
 };
 
 export const getStaticPaths = () => {
-  const dir_path = path.join(process.cwd(), 'public/photo');
-  const dirs = fs
-    .readdirSync(dir_path, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map(({ name }) => name);
+  const jsonPaths = path.join(process.cwd(), '/src/data/photo/*.json');
+  const dirs = glob.sync(jsonPaths).map((jsonPath) => path.parse(jsonPath).name);
   return {
     paths: dirs.map((topic) => ({ params: { id: topic } })),
     fallback: false,
