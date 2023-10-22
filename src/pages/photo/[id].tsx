@@ -164,6 +164,7 @@ interface IndexProps {
 
 const Index = (props: IndexProps) => {
   const router = useRouter();
+
   const [windowWidth, setWindowWidth] = useState(0);
   const [columnCount, setColumnCount] = useState(1);
   const [sortedPhotos, setSortedPhotos] = useState<PhotoList>([]);
@@ -189,10 +190,13 @@ const Index = (props: IndexProps) => {
     window.addEventListener('resize', () => {
       setWindowWidth(window.innerWidth);
     });
-
-    setSortedPhotos('sorted' in router.query ? props.photos : shuffle(props.photos));
     changeColumnCount(Math.max(Math.floor(window.innerWidth / 350), 2));
-  }, []);
+  });
+
+  useEffect(() => {
+    const isUnsorted = 'unsort' in router.query;
+    setSortedPhotos(isUnsorted ? props.photos : shuffle(props.photos));
+  }, [router.query]);
 
   useEffect(() => {
     const allTotalHeight = props.photos.reduce(
@@ -210,7 +214,7 @@ const Index = (props: IndexProps) => {
       }
     }
     setPhotoColumns(newPhotos);
-  }, [imgWidth]);
+  }, [sortedPhotos, imgWidth]);
 
   const titleLast = props.title[props.title.length - 1];
 
@@ -223,8 +227,8 @@ const Index = (props: IndexProps) => {
         <script dangerouslySetInnerHTML={{ __html: typekit }} />
       </Head>
       <Main style={{ columnCount }}>
-        {photoColumns.map((column) => (
-          <Column width={imgWidth}>
+        {photoColumns.map((column, index) => (
+          <Column width={imgWidth} key={index}>
             {column.map((photo) => (
               <a href={photo.src} key={photo.src}>
                 <ImgWrapper>
