@@ -135,7 +135,7 @@ const Half = styled.span`
 `;
 
 type PhotoList = ({
-  thumnail_src: string;
+  thumbnail_src: string;
 } & PhotoInfo)[];
 
 const shuffle = <T,>(array: T[]): T[] => {
@@ -233,7 +233,7 @@ const Index = (props: IndexProps) => {
               <a href={photo.src} key={photo.src}>
                 <ImgWrapper>
                   <Img
-                    src={photo.thumnail_src}
+                    src={photo.thumbnail_src}
                     width={imgWidth}
                     height={calculateHeight(photo)}
                     alt={photo.title}
@@ -293,7 +293,7 @@ export const getStaticProps = async ({
       photos: json.photos.map((photo) => {
         return {
           src: `${dir}/${photo.src}`,
-          thumnail_src: path.join(dir, 'thumbnail', photo.src),
+          thumbnail_src: `${dir}/thumbnail/${photo.src}`,
           title: photo.title,
           place: photo.place,
           date: photo.date,
