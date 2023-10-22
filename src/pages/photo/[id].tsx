@@ -284,7 +284,7 @@ export const getStaticProps = async ({
 }): Promise<{ props: IndexProps }> => {
   const jsonPath = path.join(process.cwd(), `src/data/photo/${params.id}.json`);
   const json: PhotoData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-  const dir = path.join(process.env.PHOTO_URL!, 'photo', json.key);
+  const dir = `${process.env.PHOTO_URL}/photo/${json.key}`;
 
   return {
     props: {
@@ -292,7 +292,7 @@ export const getStaticProps = async ({
       date: json.date,
       photos: json.photos.map((photo) => {
         return {
-          src: path.join(dir, photo.src),
+          src: `${dir}/${photo.src}`,
           thumnail_src: path.join(dir, 'thumbnail', photo.src),
           title: photo.title,
           place: photo.place,
