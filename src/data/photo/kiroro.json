@@ -142,8 +142,8 @@
     {
       "src": "17.webp",
       "title": "包丁を向けられるキロロ",
-      "place": "友人宅",
-      "date": "2020",
+      "place": "友人宅, 神奈川県川崎市",
+      "date": "2020/3",
       "width": 1108,
       "height": 1477
     },
@@ -428,6 +428,14 @@
       "height": 900
     },
     {
+      "src": "ajisai.webp",
+      "title": "あじさいと戯れるキロロ",
+      "place": "明月院, 神奈川県鎌倉市",
+      "date": "2022/6/5",
+      "width": 2500,
+      "height": 1666
+    },
+    {
       "src": "bay-quarter.webp",
       "title": "電飾に紛れるキロロ",
       "place": "横浜ベイクォーター, 神奈川県横浜市",
@@ -442,6 +450,14 @@
       "date": "2022/12/30",
       "width": 1536,
       "height": 2048
+    },
+    {
+      "src": "cheese-gyudon.webp",
+      "title": "チーズ牛丼を食べるキロロ",
+      "place": "筑波大学, 茨城県つくば市",
+      "date": "2021/11/7",
+      "width": 2500,
+      "height": 1875
     },
     {
       "src": "cojt.webp",
@@ -468,6 +484,14 @@
       "height": 1536
     },
     {
+      "src": "expasa.webp",
+      "title": "談合坂にきたキロロ",
+      "place": "EXPASA 談合坂, 山梨県上野原市",
+      "date": "2022/9/4",
+      "width": 1536,
+      "height": 2048
+    },
+    {
       "src": "family.webp",
       "title": "家族が増えたキロロ",
       "place": "自宅",
@@ -484,6 +508,30 @@
       "height": 1667
     },
     {
+      "src": "good-design.webp",
+      "title": "グッドデザインになるキロロ",
+      "place": "東京ミッドタウン・デザインハブ, 東京都港区",
+      "date": "2021/11/15",
+      "width": 2500,
+      "height": 1875
+    },
+    {
+      "src": "grabber.webp",
+      "title": "グラバーと並ぶキロロ",
+      "place": "グラバー園, 長崎県長崎市",
+      "date": "2022/2/21",
+      "width": 2500,
+      "height": 1742
+    },
+    {
+      "src": "hatsuhinode.webp",
+      "title": "初日の出になるキロロ",
+      "place": "山口県山陽小野田市",
+      "date": "2022/1/1",
+      "width": 2500,
+      "height": 1875
+    },
+    {
       "src": "hiratsuka22.webp",
       "title": "七夕飾りに紛れるキロロ",
       "place": "湘南スターモール商店街, 神奈川県平塚市",
@@ -492,12 +540,28 @@
       "height": 1666
     },
     {
+      "src": "interview.webp",
+      "title": "インタビューを受けるキロロ",
+      "place": "筑波大学, 茨城県つくば市",
+      "date": "2022/9/15",
+      "width": 2048,
+      "height": 1497
+    },
+    {
       "src": "jsys22.webp",
       "title": "学園祭の準備をするキロロ",
       "place": "大学会館, 茨城県つくば市",
       "date": "2022/9/15",
       "width": 2048,
       "height": 1364
+    },
+    {
+      "src": "kagee.webp",
+      "title": "影絵になるキロロ",
+      "place": "春日宿舎, 茨城県つくば市",
+      "date": "2021/10/6",
+      "width": 2500,
+      "height": 2246
     },
     {
       "src": "kanayakou.webp",
@@ -516,12 +580,52 @@
       "height": 1667
     },
     {
+      "src": "marunouchi0.webp",
+      "title": "丸の内で腰掛けるキロロ",
+      "place": "丸の内仲通り, 東京都千代田区",
+      "date": "2021/12/12",
+      "width": 2500,
+      "height": 1667
+    },
+    {
+      "src": "marunouchi1.webp",
+      "title": "丸の内でドヤ顔をするキロロ",
+      "place": "丸の内仲通り, 東京都千代田区",
+      "date": "2021/12/12",
+      "width": 2500,
+      "height": 1667
+    },
+    {
+      "src": "mitou.webp",
+      "title": "未踏の発表をするキロロ",
+      "place": "自宅",
+      "date": "2020/4",
+      "width": 2500,
+      "height": 1546
+    },
+    {
       "src": "otaru.webp",
       "title": "小樽にきたキロロ",
       "place": "小樽駅, 北海道小樽市",
       "date": "2023/1/14",
       "width": 2048,
       "height": 1536
+    },
+    {
+      "src": "pengin.webp",
+      "title": "ペンギンとシンパシーを感じるキロロ",
+      "place": "葛西臨海水族園, 東京都江戸川区",
+      "date": "2023/5/28",
+      "width": 1536,
+      "height": 2048
+    },
+    {
+      "src": "projection.webp",
+      "title": "春にきたキロロ",
+      "place": "友人宅, 茨城県つくば市",
+      "date": "2022/2/11",
+      "width": 2500,
+      "height": 1666
     },
     {
       "src": "sohosai22.webp",
@@ -574,7 +678,7 @@
     {
       "src": "umeshu.webp",
       "title": "梅酒を飲むキロロ",
-      "place": "友人宅",
+      "place": "友人宅, 茨城県つくば市",
       "date": "2023/6/28",
       "width": 1875,
       "height": 2500
