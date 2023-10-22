@@ -16,10 +16,10 @@ yaru run build
 
 WebP 形式に圧縮した上で、Cloudflare R2 にアップロードし、メタデータを JSON ファイルとして管理します。
 
-1. スクリプトを叩き、圧縮済み画像とメタデータを自動生成する
+1. スクリプトを叩き、圧縮済み画像とメタデータを自動生成する。既に写真が存在する場合は、追記する形を取る。
 
     ```bash
-    ts-node script/compress-image.py $key $input_dir
+    ts-node script/compress-image.ts $key $input_dir
     ```
     
     以下の画像が生成される。
@@ -33,7 +33,7 @@ WebP 形式に圧縮した上で、Cloudflare R2 にアップロードし、メ�
 3. `/photo` を `s3://site-photos/photo` と同期する
 
     ```bash
-    aws s3 sync photo/ s3://site-photos/photo --delete --profile r2 --endpoint-url https://**.r2.cloudflarestorage.com
+    aws s3 sync photo/ s3://site-photos/photo --delete --profile r2 --endpoint-url https://**.r2.cloudflarestorage.com --dryrun
     ```
 
 4. JSON ファイルを編集してコミットする
