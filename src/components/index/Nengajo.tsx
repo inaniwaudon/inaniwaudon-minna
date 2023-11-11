@@ -27,13 +27,13 @@ const Img = styled.img`
   }
 `;
 
+const tags = [
+  { key: '2022', label: '2022', keyColor: '#ff32ab' },
+  { key: '2023', label: '2023', keyColor: '#2656f3' },
+];
+
 const Nengajo = () => {
   const [year, setYear] = useState(nengajo[0].year);
-
-  const tags = [
-    { key: '2022', label: '2022', keyColor: '#ff32ab' },
-    { key: '2023', label: '2023', keyColor: '#2656f3' },
-  ];
 
   return (
     <div>

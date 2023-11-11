@@ -31,4 +31,5 @@ interface CustomListProps {
 }
 
 const CustomList = ({ children }: CustomListProps) => <Ul className={'List'}>{children}</Ul>;
+
 export default CustomList;

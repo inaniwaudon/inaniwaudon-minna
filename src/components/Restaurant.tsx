@@ -61,6 +61,7 @@ const Restaurant = ({
     { key: <BsTwitter />, value: twitter, href: `https://twitter.com/${twitter}` },
     { key: <BsInstagram />, value: instagram, href: `https://instagram.com/${instagram}` },
   ];
+
   return (
     <div style={{ margin: '16px 0' }}>
       <h3 style={{ margin: 0 }}>{title}</h3>

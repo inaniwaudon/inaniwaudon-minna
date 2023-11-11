@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import styled from 'styled-components';
 
 const CategoryList = styled.ul`
@@ -55,13 +56,16 @@ interface CheckboxProps {
 }
 
 const Checkbox = ({ options, selectedOptions, setSelectedOptions }: CheckboxProps) => {
-  const onClickCategoryItem = (key: string) => {
-    setSelectedOptions(
-      selectedOptions.includes(key)
-        ? selectedOptions.filter((option) => option !== key)
-        : [...selectedOptions, key]
-    );
-  };
+  const onClickCategoryItem = useCallback(
+    (key: string) => {
+      setSelectedOptions(
+        selectedOptions.includes(key)
+          ? selectedOptions.filter((option) => option !== key)
+          : [...selectedOptions, key]
+      );
+    },
+    [selectedOptions, setSelectedOptions]
+  );
 
   return (
     <CategoryList>
@@ -83,4 +87,5 @@ const Checkbox = ({ options, selectedOptions, setSelectedOptions }: CheckboxProp
     </CategoryList>
   );
 };
+
 export default Checkbox;
