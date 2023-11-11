@@ -117,6 +117,12 @@ const articleHatenaLinks: ArticleLink[] = [
     date: '2023/10/18',
     tags: ['random'],
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20231109/1699528703',
+    title: '学園祭で売上をリアルタイムに公開するサイトを雑に作ると盛り上がる',
+    date: '2023/11/09',
+    tags: ['tech'],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [

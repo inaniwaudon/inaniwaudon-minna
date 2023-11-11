@@ -36,6 +36,7 @@ const PageAnchor = ({ href, children }: PageAnchorProps) => {
       <Line />
     </Content>
   );
+
   return (
     <>
       {href.startsWith('https://') || href.startsWith('http://') ? (

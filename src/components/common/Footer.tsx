@@ -26,6 +26,7 @@ const Split = styled.span`
 const Index = () => {
   const router = useRouter();
   const [title, setTitle] = useState('');
+
   useEffect(() => {
     setTitle(document.title.split('｜')[0]);
   }, []);
