@@ -1,6 +1,6 @@
 # inaniwaudon-minna
 
-Next.js で構築された個人サイトです。
+Next.js で構築された個人サイトです。Cloudflare Pages（+ Edge Runtime）にデプロイします。
 
 <https://いなにわうどん.みんな>
 

@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "npx next dev",
-    "build": "npx next build && next export",
+    "build": "npx next build",
     "start": "npx next start",
-    "lint": "npx next lint"
+    "lint": "npx next lint",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:watch": "npx @cloudflare/next-on-pages --watch",
+    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2023-10-30 --compatibility-flag=nodejs_compat"
   },
   "dependencies": {
     "argparse": "^2.0.1",
@@ -14,7 +17,7 @@
     "feed": "^4.2.2",
     "glob": "^10.3.10",
     "natsort": "^2.0.3",
-    "next": "^13.1.1",
+    "next": "~14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
@@ -23,6 +26,7 @@
     "sharp": "^0.32.6"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.7.3",
     "@types/argparse": "^2.0.12",
     "@types/node": "18.11.18",
     "@types/react": "^18.0.26",
