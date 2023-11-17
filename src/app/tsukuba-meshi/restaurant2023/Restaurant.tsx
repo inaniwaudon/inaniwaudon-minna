@@ -1,7 +1,7 @@
-import { BsInstagram, BsTwitter } from 'react-icons/bs';
 import { styled } from '@linaria/react';
+import { BsInstagram, BsTwitter } from 'react-icons/bs';
 
-import PageAnchor from './common/PageAnchor';
+import PageAnchor from '@/components/common/PageAnchor';
 
 const RestaurantDescription = styled.p`
   line-height: 1.8;

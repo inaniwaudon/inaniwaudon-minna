@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import Page from '@/components/common/PageWrapper';
+import { styled } from '@linaria/react';
+
+import Restaurant from './Restaurant';
 import PageAnchor from '@/components/common/PageAnchor';
-import Restaurant from '@/components/Restaurant';
+import PageWrapper from '@/components/common/PageWrapper';
 
 const Main = styled.main`
   line-height: 1.8;
@@ -11,11 +12,11 @@ const Section = styled.section`
   border-top: solid 1px #ccc;
 `;
 
-const Index = () => {
+const Page = () => {
   const title = 'つくば おすすめ飲食店 2023';
 
   return (
-    <Page title={title}>
+    <PageWrapper title={title} path="/tsukuba-meshi/restaurant2023">
       <Main>
         <h1>{title}</h1>
         <p>
@@ -191,8 +192,8 @@ const Index = () => {
           />
         </Section>
       </Main>
-    </Page>
+    </PageWrapper>
   );
 };
 
-export default Index;
+export default Page;

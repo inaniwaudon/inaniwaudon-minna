@@ -1,6 +1,8 @@
-import Page from '@/components/common/PageWrapper';
+import { Metadata } from 'next';
+import { styled } from '@linaria/react';
+
 import PageAnchor from '@/components/common/PageAnchor';
-import styled from 'styled-components';
+import PageWrapper from '@/components/common/PageWrapper';
 
 const Deletion = styled.div`
   background: #ffebe9;
@@ -26,11 +28,15 @@ const Addition = styled.div`
   }
 `;
 
-const Index = () => {
-  const title = 'つくばらーめん・飲食店情報 2023 正誤表';
+const title = 'つくばらーめん・飲食店情報 2023 正誤表';
 
+export const metadata: Metadata = {
+  title,
+};
+
+const Page = () => {
   return (
-    <Page title={title}>
+    <PageWrapper title={title} path="/tsukuba-meshi/eratta">
       <main>
         <h1>{title}</h1>
         <p>
@@ -46,8 +52,8 @@ const Index = () => {
         <Deletion>月　水木金土日</Deletion>
         <Addition>月火水木金土日</Addition>
       </main>
-    </Page>
+    </PageWrapper>
   );
 };
 
-export default Index;
+export default Page;

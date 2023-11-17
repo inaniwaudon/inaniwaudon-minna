@@ -1,7 +1,9 @@
-import styled from 'styled-components';
-import Page from '@/components/common/PageWrapper';
+import { Metadata } from 'next';
+import { styled } from '@linaria/react';
+
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
+import PageWrapper from '@/components/common/PageWrapper';
 
 const ImageWrapper = styled.div`
   width: 100%;
@@ -21,11 +23,15 @@ const Image = styled.img`
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const Index = () => {
-  const title = 'つくばらーめん・飲食店情報';
+const title = 'つくばらーめん・飲食店情報';
 
+export const metadata: Metadata = {
+  title,
+};
+
+const Page = () => {
   return (
-    <Page title={title}>
+    <PageWrapper title={title} path="/tsukuba-meshi">
       <main>
         <h1>{title}</h1>
         <p>激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に</p>
@@ -63,8 +69,8 @@ const Index = () => {
           </li>
         </CustomList>
       </main>
-    </Page>
+    </PageWrapper>
   );
 };
 
-export default Index;
+export default Page;

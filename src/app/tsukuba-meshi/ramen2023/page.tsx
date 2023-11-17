@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import Restaurant from '@/components/Restaurant';
-import Page from '@/components/common/PageWrapper';
+import { styled } from '@linaria/react';
+
+import Restaurant from '@/app/tsukuba-meshi/restaurant2023/Restaurant';
 import PageAnchor from '@/components/common/PageAnchor';
+import PageWrapper from '@/components/common/PageWrapper';
 import { ramenInfos } from '@/const/restaurant';
 
 const Main = styled.main`
@@ -12,11 +13,11 @@ const Section = styled.section`
   border-top: solid 1px #ccc;
 `;
 
-const Index = () => {
+const Page = () => {
   const title = 'つくば らーめん 10 選 2023';
 
   return (
-    <Page title={title}>
+    <PageWrapper title={title} path="/tsukuba-meshi/ramen2023">
       <Main>
         <h1>{title}</h1>
         <p>
@@ -129,8 +130,8 @@ const Index = () => {
           </table>
         </Section>
       </Main>
-    </Page>
+    </PageWrapper>
   );
 };
 
-export default Index;
+export default Page;
