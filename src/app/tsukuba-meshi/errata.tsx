@@ -1,4 +1,4 @@
-import Page from '@/components/common/Page';
+import Page from '@/components/common/PageWrapper';
 import PageAnchor from '@/components/common/PageAnchor';
 import styled from 'styled-components';
 

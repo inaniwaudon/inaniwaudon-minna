@@ -6,7 +6,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import styled from 'styled-components';
 import { unified } from 'unified';
-import Page from '@/components/common/Page';
+import Page from '@/components/common/PageWrapper';
 import PageAnchor from '@/components/common/PageAnchor';
 import { classImpressions } from '@/const/class-impression';
 

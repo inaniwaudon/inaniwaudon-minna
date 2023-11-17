@@ -1,4 +1,9 @@
-type ArticleTag = 'tech' | 'design' | 'random' | 'hongoshi';
+const tags = ['hongoshi', 'tech', 'design', 'random'] as const;
+
+export type ArticleTag = (typeof tags)[number];
+
+export const isArticleTag = (str: string): str is ArticleTag =>
+  (tags as readonly string[]).includes(str);
 
 export interface ArticleLink {
   href: string;

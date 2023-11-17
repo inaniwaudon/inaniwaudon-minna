@@ -1,6 +1,9 @@
+import { Metadata } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import styled, { createGlobalStyle } from 'styled-components';
+import { styled } from '@linaria/react';
+
+import './style.css';
 import compositions from '@/assets/max/compositions.webp';
 import g2sanserif from '@/assets/max/g2sanserif.webp';
 import logo from '@/assets/max/logo.svg';
@@ -16,22 +19,12 @@ import thumbnail from '@/assets/max/thumbnail.webp';
 import wave from '@/assets/max/wave.webp';
 import Footer from '@/components/common/Footer';
 
-const maxYellow = '#f9b900';
 const maxBrown = '#3e2500';
 const maxRed = '#c00';
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    color: #000;
-    font-family: 'Noto Sans JP', sans-serif;
-    background: ${maxYellow};
-  }
-`;
 
 const ThumbnailImage = styled.div`
   width: 100%;
   height: 440px;
-  background: url(${thumbnail.src});
   background-position: center;
   background-size: cover;
   position: absolute;
@@ -40,7 +33,7 @@ const ThumbnailImage = styled.div`
   z-index: -1;
 `;
 
-const Page = styled.div`
+const PageWrapper = styled.div`
   width: 800px;
   margin: 32px auto;
 
@@ -196,16 +189,37 @@ const Td = styled.td`
   padding: 8px;
 `;
 
-const Index = () => {
-  const links = [
-    { label: 'データ集め', id: 'data' },
-    { label: 'ロゴ', id: 'logo' },
-    { label: '波線', id: 'wave' },
-    { label: '正面', id: 'front' },
-    { label: '側面', id: 'side' },
-    { label: '成分表示', id: 'components' },
-  ];
+const title = 'マックスコーヒーのパッケージ観察';
 
+export const metadata: Metadata = {
+  title,
+  description:
+    '特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。',
+  openGraph: {
+    title,
+    description:
+      '特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。',
+    type: 'website',
+    url: 'https://いなにわうどん.みんな/articles/max',
+    siteName: 'いなにわうどん.みんな',
+    images: 'https://いなにわうどん.みんな/assets/max-ogp.jpg',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: 'https://いなにわうどん.みんな/assets/max-ogp.jpg',
+  },
+};
+
+const links = [
+  { label: 'データ集め', id: 'data' },
+  { label: 'ロゴ', id: 'logo' },
+  { label: '波線', id: 'wave' },
+  { label: '正面', id: 'front' },
+  { label: '側面', id: 'side' },
+  { label: '成分表示', id: 'components' },
+];
+
+const Page = () => {
   return (
     <>
       <Head>
@@ -220,22 +234,10 @@ const Index = () => {
           href="https://いなにわうどん.みんな/assets/max-ogp.jpg"
           type="image/x-icon"
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="マックスコーヒーのパッケージ観察" />
-        <meta
-          property="og:description"
-          content="特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。"
-        />
-        <meta property="og:url" content="https://いなにわうどん.みんな/articles/max" />
-        <meta property="og:site_name" content="いなにわうどん.みんな" />
-        <meta property="og:image" content="https://いなにわうどん.みんな/assets/max-ogp.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://いなにわうどん.みんな/assets/max-ogp.jpg" />
-        <title>マックスコーヒーのパッケージ観察｜いなにわうどん.みんな</title>
       </Head>
-      <GlobalStyle />
-      <ThumbnailImage />
-      <Page>
+
+      <ThumbnailImage style={{ backgroundImage: `url(${thumbnail.src}` }} />
+      <PageWrapper>
         <Wrapper>
           <SideNavigation>
             <ul>
@@ -527,10 +529,10 @@ const Index = () => {
             </aside>
           </Content>
         </Wrapper>
-        <Footer />
-      </Page>
+        <Footer title={title} path="/articles/max" />
+      </PageWrapper>
     </>
   );
 };
 
-export default Index;
+export default Page;

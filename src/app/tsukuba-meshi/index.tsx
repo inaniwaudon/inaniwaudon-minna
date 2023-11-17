@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Page from '@/components/common/Page';
+import Page from '@/components/common/PageWrapper';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
 

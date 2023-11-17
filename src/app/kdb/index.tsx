@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import CustomList from '@/components/common/CustomList';
-import Page from '@/components/common/Page';
+import Page from '@/components/common/PageWrapper';
 import PageAnchor from '@/components/common/PageAnchor';
 import { kdbArticleLinks, kdbMainLinks, kdbPresentationLinks, KdbLinkItem } from '@/const/kdb';
 

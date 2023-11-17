@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Page from '@/components/common/Page';
+import Page from '@/components/common/PageWrapper';
 import PageAnchor from '@/components/common/PageAnchor';
 import Restaurant from '@/components/Restaurant';
 

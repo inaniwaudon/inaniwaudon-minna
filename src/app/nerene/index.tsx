@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import Page from '@/components/common/Page';
+import Page from '@/components/common/PageWrapper';
 import { nerene } from '@/const/nerene';
 import { after } from 'node:test';
 

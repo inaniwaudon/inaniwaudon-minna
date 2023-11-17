@@ -1,5 +1,14 @@
+import { Metadata } from 'next';
+
 import '../styles/globals.css';
-import StyledComponentsRegistry from '@/lib/registry';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'いなにわうどん.みんな',
+    template: '%s｜いなにわうどん.みんな',
+  },
+  description: '回鍋肉と C# が好きです。',
+};
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (

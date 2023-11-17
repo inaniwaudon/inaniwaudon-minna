@@ -12,23 +12,19 @@ const Wrapper = styled.div`
   }
 `;
 
-interface PageProps {
+interface PageWrapperProps {
   title: string;
+  path: string;
   children: ReactNode;
 }
 
-const Page = ({ title, children }: PageProps) => (
+const PageWrapper = ({ title, children, path }: PageWrapperProps) => (
   <>
-    <Head>
-      <title>{`${title}｜いなにわうどん.みんな`}</title>
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <meta name="description" content="回鍋肉と C# が好きです。" />
-    </Head>
     <Wrapper>
       {children}
-      <Footer />
+      <Footer title={title} path={path} />
     </Wrapper>
   </>
 );
 
-export default Page;
+export default PageWrapper;
