@@ -188,5 +188,7 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,nextjs,react
 
+.vercel
+
 /photo/
 /public/feed
