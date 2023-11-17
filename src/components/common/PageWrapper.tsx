@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import Head from 'next/head';
 import { styled } from '@linaria/react';
 
 import Footer from '@/components/common/Footer';
