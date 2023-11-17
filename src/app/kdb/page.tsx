@@ -1,8 +1,10 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
+
 import CustomList from '@/components/common/CustomList';
-import Page from '@/components/common/PageWrapper';
 import PageAnchor from '@/components/common/PageAnchor';
+import PageWrapper from '@/components/common/PageWrapper';
 import { kdbArticleLinks, kdbMainLinks, kdbPresentationLinks, KdbLinkItem } from '@/const/kdb';
 
 const H1 = styled.h1`
@@ -26,7 +28,13 @@ const DocumentLink = styled.div`
   cursor: pointer;
 `;
 
-const Index = () => {
+const title = 'KdB もどき関連リンク';
+
+export const metadata: Metadata = {
+  title,
+};
+
+export const Page = () => {
   const LinkCollection = (links: KdbLinkItem[]) => (
     <CustomList>
       {links.map((link) => (
@@ -51,10 +59,8 @@ const Index = () => {
     </CustomList>
   );
 
-  const title = 'KdBもどき関連リンク';
-
   return (
-    <Page title={title}>
+    <PageWrapper title={title} path="/kdb">
       <main>
         <H1>{title}</H1>
         {LinkCollection(kdbMainLinks)}
@@ -63,8 +69,8 @@ const Index = () => {
         <h2>記事掲載など</h2>
         {LinkCollection(kdbArticleLinks)}
       </main>
-    </Page>
+    </PageWrapper>
   );
 };
 
-export default Index;
+export default Page;
