@@ -1,5 +1,6 @@
 import { BsInstagram, BsTwitter } from 'react-icons/bs';
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
+
 import PageAnchor from './common/PageAnchor';
 
 const RestaurantDescription = styled.p`

@@ -12,6 +12,10 @@
     "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2023-10-30 --compatibility-flag=nodejs_compat"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.23.3",
+    "@linaria/babel-preset": "^5.0.4",
+    "@linaria/core": "^5.0.2",
+    "@linaria/react": "^5.0.3",
     "argparse": "^2.0.1",
     "babel-plugin-styled-components": "^2.0.7",
     "feed": "^4.2.2",
@@ -34,6 +38,7 @@
     "@types/styled-components": "~5.1.30",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
+    "next-with-linaria": "^0.6.0",
     "raw-loader": "^4.0.2",
     "rehype-react": "^7.1.1",
     "remark-rehype": "^10.1.0",

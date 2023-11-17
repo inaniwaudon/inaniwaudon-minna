@@ -10,9 +10,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <link rel="alternate" type="application/rss+xml" href="/feed/feed.xml" title="RSS2.0" />
         <link rel="alternate" type="application/json" href="/feed/feed.json" />
       </head>
-      <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-      </body>
+      <body>{children}</body>
     </html>
   );
 };

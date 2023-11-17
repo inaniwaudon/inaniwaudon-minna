@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 const CategoryList = styled.ul`
   margin: 0;

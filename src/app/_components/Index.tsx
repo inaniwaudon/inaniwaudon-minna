@@ -1,5 +1,3 @@
-'use client';
-
 import { styled } from '@linaria/react';
 
 import LinkList from './LinkList';
@@ -34,7 +32,7 @@ const ListWrapper = styled.div`
   margin-top: 8px;
 `;
 
-const Main = () => {
+const Index = () => {
   return (
     <Wrapper>
       <Top>
@@ -147,4 +145,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Index;

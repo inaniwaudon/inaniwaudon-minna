@@ -1,9 +1,7 @@
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 import jikan from '@/assets/jikan.webp';
 import { links } from '@/const/index';
-
-const Wrapper = styled.section``;
 
 const List = styled.ul`
   margin: 0;
@@ -30,7 +28,7 @@ const Platform = styled.div`
   transition: margin 0.4s ease-out;
 `;
 
-const LinkContent = styled.div`
+const LinkContent = styled.div<{ color: string }>`
   color: #333;
   background: #fff;
   transition: padding 0.4s ease-out, background 0.4s ease-out, border-radius 0.4s ease-out;
@@ -79,7 +77,7 @@ const Bunner = styled.div`
 
 const LinkList = () => {
   return (
-    <Wrapper>
+    <section>
       <h2>外部リンク</h2>
       <List>
         {links.map(({ color, name, url, platform, icon }) => (
@@ -101,7 +99,7 @@ const LinkList = () => {
           <img src={jikan.src} alt="時間ねぇ〜" />
         </a>
       </Bunner>
-    </Wrapper>
+    </section>
   );
 };
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 import { linkColor, linkHoverColor, linkUnderlineColor } from '@/const/style';
 
 const Content = styled.span`
@@ -37,15 +37,10 @@ const PageAnchor = ({ href, children }: PageAnchorProps) => {
     </Content>
   );
 
-  return (
-    <>
-      {href.startsWith('https://') || href.startsWith('http://') ? (
-        <a href={href}>{content}</a>
-      ) : (
-        <Link href={href}>{content}</Link>
-      )}
-    </>
-  );
+  if (href.startsWith('https://') || href.startsWith('http://')) {
+    return <a href={href}>{content}</a>;
+  }
+  return <Link href={href}>{content}</Link>;
 };
 
 export default PageAnchor;

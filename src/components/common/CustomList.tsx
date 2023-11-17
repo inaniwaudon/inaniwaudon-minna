@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 const Ul = styled.ul`
   margin: 0;

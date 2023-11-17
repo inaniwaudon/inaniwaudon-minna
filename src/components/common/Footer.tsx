@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
+
 import { linkColor, linkHoverColor } from '@/const/style';
 
 const Wrapper = styled.footer`
