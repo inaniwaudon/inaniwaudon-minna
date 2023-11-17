@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import jikan from '@/assets/jikan.webp';
 import { links } from '@/const/index';
 

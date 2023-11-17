@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Checkbox from '../common/Checkbox';
+
+import Checkbox from '@/components/common/Checkbox';
 import { nengajo } from '@/const';
 
 const Header = styled.header`

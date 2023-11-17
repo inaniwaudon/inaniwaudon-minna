@@ -23,21 +23,21 @@
     "react-icons": "^4.8.0",
     "remark-parse": "^10.0.1",
     "sass": "^1.49.9",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "styled-components": "~6.1.1"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.7.3",
     "@types/argparse": "^2.0.12",
     "@types/node": "18.11.18",
     "@types/react": "^18.0.26",
-    "@types/styled-components": "^5.1.25",
+    "@types/styled-components": "~5.1.30",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
     "raw-loader": "^4.0.2",
     "rehype-react": "^7.1.1",
     "remark-rehype": "^10.1.0",
     "serve": "^13.0.2",
-    "styled-components": "^5.3.6",
     "typescript": "4.9.4",
     "unified": "^10.1.2"
   }
