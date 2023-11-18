@@ -1,4 +1,3 @@
-import * as convert from 'xml-js';
 import { Feed } from './feed';
 import { generator, sanitize } from './utils';
 
@@ -11,7 +10,7 @@ const feedToAtom1 = (feed: Feed) => {
     uri: sanitize(options.author.link),
   };
 
-  const entries = feed.items.map<convert.ElementCompact>((item) => ({
+  const entries = feed.items.map((item) => ({
     id: sanitize(item.id || item.link),
     link: [{ _attributes: { href: sanitize(item.link) } }],
     summary: {
@@ -42,7 +41,7 @@ const feedToAtom1 = (feed: Feed) => {
     },
   };
 
-  return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 });
+  return ''; //convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 });
 };
 
 export default feedToAtom1;

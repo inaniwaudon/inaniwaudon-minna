@@ -41,7 +41,7 @@ const generateRss = async () => {
   };
 
   fs.mkdirSync(`./public/${directory}`, { recursive: true });
-  //fs.writeFileSync(`./public/${directory}/atom.xml`, feedToAtom1(feed));
+  fs.writeFileSync(`./public/${directory}/atom.xml`, feedToAtom1(feed));
   //fs.writeFileSync(`./public/${directory}/feed.xml`, feed.rss2());
   fs.writeFileSync(`./public/${directory}/feed.json`, feedToJson(feed));
 };
