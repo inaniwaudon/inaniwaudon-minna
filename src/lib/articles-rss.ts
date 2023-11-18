@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { Feed } from 'feed';
+
 import { articleLinks } from '@/const/articles';
 
 export const generateRss = async () => {

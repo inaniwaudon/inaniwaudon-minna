@@ -1,4 +1,6 @@
-type ArticleTag = 'tech' | 'design' | 'random' | 'hongoshi';
+export const articleTags = ['hongoshi', 'tech', 'design', 'random'] as const;
+
+export type ArticleTag = (typeof articleTags)[number];
 
 export interface ArticleLink {
   href: string;

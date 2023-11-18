@@ -1,5 +1,7 @@
-import { useCallback } from 'react';
-import styled from 'styled-components';
+import Link from 'next/link';
+import { styled } from '@linaria/react';
+
+import { SearchParams, getStringParams, isSelectedTag, tagDelimiter } from '@/lib/utils';
 
 const CategoryList = styled.ul`
   margin: 0;
@@ -19,16 +21,16 @@ const CategoryItemCheck = styled.div<{ selected: boolean; keyColor: string }>`
   transition: opacity 0.2s;
 `;
 
-const Button = styled.button<{ selected: boolean; keyColor: string }>`
+const Anchor = styled.div<{ selected: boolean; keyColor: string }>`
   height: 14px;
   line-height: 14px;
   color: ${({ selected, keyColor }) => (selected ? '#fff' : keyColor)};
+  text-decoration: none;
   font-size: 14px;
   padding: 6px 8px 8px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-family: inherit;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   background: ${({ selected, keyColor }) => (selected ? keyColor : '#fff')};
   display: flex;
@@ -42,45 +44,66 @@ const Button = styled.button<{ selected: boolean; keyColor: string }>`
   }
 `;
 
-interface Option {
+interface Tag {
   key: string;
   label: string;
   keyColor: string;
 }
 
 interface CheckboxProps {
-  options: Option[];
+  paramKey: string;
+  tags: Tag[];
   multiple: boolean;
-  selectedOptions: string[];
-  setSelectedOptions: (value: string[]) => void;
+  searchParams: SearchParams;
 }
 
-const Checkbox = ({ options, selectedOptions, setSelectedOptions }: CheckboxProps) => {
-  const onClickCategoryItem = useCallback(
-    (key: string) => {
-      setSelectedOptions(
-        selectedOptions.includes(key)
-          ? selectedOptions.filter((option) => option !== key)
-          : [...selectedOptions, key]
-      );
-    },
-    [selectedOptions, setSelectedOptions]
-  );
+const Checkbox = ({ paramKey, tags, multiple, searchParams }: CheckboxProps) => {
+  const stringParams = getStringParams(searchParams);
+
+  const getNewParams = (tagKey: string) => {
+    const newParams = structuredClone(stringParams);
+
+    // single
+    if (!multiple) {
+      newParams[paramKey] = tagKey;
+    }
+    // multiple
+    else {
+      if (!newParams[paramKey]) {
+        newParams[paramKey] = tagKey;
+      } else {
+        let newKeys = newParams[paramKey].split(tagDelimiter);
+        if (newKeys.includes(tagKey)) {
+          newKeys = newKeys.filter((key) => key !== tagKey);
+        } else {
+          newKeys.push(tagKey);
+        }
+        if (newKeys.length > 0) {
+          newParams[paramKey] = newKeys.join(tagDelimiter);
+        } else {
+          delete newParams[paramKey];
+        }
+      }
+    }
+    return new URLSearchParams(newParams);
+  };
 
   return (
     <CategoryList>
-      {options.map((option) => {
-        const selected = selectedOptions.includes(option.key);
+      {tags.map((tag) => {
+        const selected = isSelectedTag(
+          tag.key,
+          stringParams[paramKey],
+          !multiple ? tags[0].key : undefined
+        );
         return (
-          <li key={option.key}>
-            <Button
-              selected={selected}
-              keyColor={option.keyColor}
-              onClick={() => onClickCategoryItem(option.key)}
-            >
-              <CategoryItemCheck selected={selected} keyColor={option.keyColor} />
-              {option.label}
-            </Button>
+          <li key={tag.key}>
+            <Link href={`?${getNewParams(tag.key)}`} replace legacyBehavior>
+              <Anchor selected={selected} keyColor={tag.keyColor}>
+                <CategoryItemCheck selected={selected} keyColor={tag.keyColor} />
+                {tag.label}
+              </Anchor>
+            </Link>
           </li>
         );
       })}

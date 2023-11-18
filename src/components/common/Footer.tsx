@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
+
 import { linkColor, linkHoverColor } from '@/const/style';
 
 const Wrapper = styled.footer`
@@ -23,26 +22,22 @@ const Split = styled.span`
   margin: 0 4px;
 `;
 
-const Index = () => {
-  const router = useRouter();
-  const [title, setTitle] = useState('');
+interface FooterProps {
+  title: string;
+  path: string;
+}
 
-  useEffect(() => {
-    setTitle(document.title.split('｜')[0]);
-  }, []);
-
+const Footer = ({ title, path }: FooterProps) => {
   return (
-    <>
-      <Wrapper>
-        現在のページ：
-        <Link href={router.pathname}>
-          {title}（{router.pathname}）
-        </Link>
-        <Split>｜</Split>
-        <Link href="/">トップページ</Link> - <a href="#">ページ上部</a>
-      </Wrapper>
-    </>
+    <Wrapper>
+      現在のページ：
+      <Link href={path}>
+        {title}（{path}）
+      </Link>
+      <Split>｜</Split>
+      <Link href="/">トップページ</Link> - <a href="#">ページ上部</a>
+    </Wrapper>
   );
 };
 
-export default Index;
+export default Footer;
