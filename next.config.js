@@ -10,6 +10,7 @@ const nextConfig = {
 
   webpack: (config) => {
     config.resolve.alias['@'] = path.join(__dirname, 'src');
+    config.resolve.fallback = { fs: false };
     config.module.rules.push({
       test: /\.md$/i,
       use: 'raw-loader',
