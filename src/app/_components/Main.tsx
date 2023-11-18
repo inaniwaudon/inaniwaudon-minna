@@ -50,7 +50,7 @@ const Main = () => {
                   {deleted ? (
                     <del>{title}</del>
                   ) : (
-                    <PageAnchor href={`/photo/${id}`}>{title}</PageAnchor>
+                    <PageAnchor href={`/photos/${id}`}>{title}</PageAnchor>
                   )}
                 </li>
               ))}

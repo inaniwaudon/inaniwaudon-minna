@@ -6,6 +6,7 @@ import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
 import PageWrapper from '@/components/common/PageWrapper';
 import { ArticleTag, articleLinks, isArticleTag } from '@/const/articles';
+import { SearchParams } from '@/lib/utils';
 
 const TopHeader = styled.header`
   margin-bottom: 16px;
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: SearchParams;
 }
 
 const Page = ({ searchParams }: PageProps) => {

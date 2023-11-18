@@ -17,9 +17,7 @@
     "@linaria/core": "^5.0.2",
     "@linaria/react": "^5.0.3",
     "argparse": "^2.0.1",
-    "babel-plugin-styled-components": "^2.0.7",
     "feed": "^4.2.2",
-    "glob": "^10.3.10",
     "natsort": "^2.0.3",
     "next": "~14.0.0",
     "react": "^18.2.0",
@@ -27,15 +25,13 @@
     "react-icons": "^4.8.0",
     "remark-parse": "^10.0.1",
     "sass": "^1.49.9",
-    "sharp": "^0.32.6",
-    "styled-components": "~6.1.1"
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.7.3",
     "@types/argparse": "^2.0.12",
     "@types/node": "18.11.18",
     "@types/react": "^18.0.26",
-    "@types/styled-components": "~5.1.30",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
     "next-with-linaria": "^0.6.0",
