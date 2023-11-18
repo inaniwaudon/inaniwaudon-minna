@@ -3,7 +3,7 @@ import { Feed } from 'feed';
 
 import { articleLinks } from '@/const/articles';
 
-export const generateRss = async () => {
+const generateRss = async () => {
   const directory = 'feed';
   const feed = new Feed({
     title: 'いなにわうどん.みんな',
@@ -36,4 +36,10 @@ export const generateRss = async () => {
   fs.writeFileSync(`./public/${directory}/atom.xml`, feed.atom1());
   fs.writeFileSync(`./public/${directory}/feed.xml`, feed.rss2());
   fs.writeFileSync(`./public/${directory}/feed.json`, feed.json1());
+};
+
+export const register = async () => {
+  if (process.env['NEXT_RUNTIME'] === 'nodejs') {
+    await generateRss();
+  }
 };

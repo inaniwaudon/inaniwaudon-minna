@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 
 import Main from './_components/Main';
-import { generateRss } from '@/lib/articles-rss';
 import { SearchParams } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -14,8 +13,6 @@ interface PageProps {
 }
 
 const Page = ({ searchParams }: PageProps) => {
-  generateRss();
-
   return <Main searchParams={searchParams} />;
 };
 
