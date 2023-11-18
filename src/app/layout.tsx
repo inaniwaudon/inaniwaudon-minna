@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 
 import './globals.css';
 
+export const runtime = 'edge';
+
 export const metadata: Metadata = {
   title: {
     absolute: 'いなにわうどん.みんな',
