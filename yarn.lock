@@ -4129,13 +4129,13 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^18.2.0:
-  version "18.2.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
-  integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
+react-dom@^18.3.0-canary-bbb9cb116-20231117:
+  version "18.3.0-canary-bbb9cb116-20231117"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.0-canary-bbb9cb116-20231117.tgz#f6015828cec86d138ead9123367a0fe734618d5c"
+  integrity sha512-IqCGG/8HSZlQoAlj7regk6q2H7buXAV5lyB3XEJ0PEQEBYNv+g5hBnkVfFxaZTtYFaP2oeCMwEx39hZfEDaiNQ==
   dependencies:
     loose-envify "^1.1.0"
-    scheduler "^0.23.0"
+    scheduler "0.24.0-canary-bbb9cb116-20231117"
 
 react-html-attributes@^1.4.6:
   version "1.4.6"
@@ -4374,10 +4374,10 @@ sax@^1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-scheduler@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
-  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
+scheduler@0.24.0-canary-bbb9cb116-20231117:
+  version "0.24.0-canary-bbb9cb116-20231117"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.24.0-canary-bbb9cb116-20231117.tgz#ee70fb383fa7c036d0a13d7c3e947de81ceebb07"
+  integrity sha512-VdcDXtQfRhFoGE+9QH0Cv0ThdTjaYNMiicKnBdm/uv2bUDILm9quCNBwBWsLJURRWVNO/TBtorokusi6VRKnsg==
   dependencies:
     loose-envify "^1.1.0"
 

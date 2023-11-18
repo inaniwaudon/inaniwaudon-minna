@@ -5,7 +5,7 @@ import Nengajo from './Nengajo';
 import logo from '@/assets/index/logo.svg';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
-import { photos } from '@/const/index';
+import { photos } from '@/const/photos';
 import { SearchParams } from '@/lib/utils';
 
 const Wrapper = styled.main`
@@ -48,9 +48,9 @@ const Main = ({ searchParams }: MainProps) => {
           <section>
             <h2>写真</h2>
             <CustomList>
-              {photos.map(({ id, title, deleted }) => (
+              {photos.map(({ id, title, data }) => (
                 <li key={id}>
-                  {deleted ? (
+                  {!data ? (
                     <del>{title}</del>
                   ) : (
                     <PageAnchor href={`/photos/${id}`}>{title}</PageAnchor>

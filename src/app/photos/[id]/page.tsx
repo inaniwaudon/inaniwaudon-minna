@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import { styled } from '@linaria/react';
-import fs from 'fs';
-import path from 'path';
 
 import Main from './Main';
-import { PhotoData, PhotoInfo } from '@/lib/photo';
+import { photos } from '@/const/photos';
+import { PhotoInfo } from '@/lib/photo';
 import { SearchParams } from '@/lib/utils';
 
 const Footer = styled.footer`
@@ -81,24 +80,21 @@ interface PageProps {
 
 const Page = ({ params, searchParams }: PageProps) => {
   const { id } = params;
-  const jsonPath = path.join(process.cwd(), `src/data/photo/${id}.json`);
-  const json: PhotoData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const photoData = photos.find((photo) => photo.id === id)!.data!;
 
-  const { title, date } = json;
-  const dir = `${process.env.PHOTO_URL}/photo/${json.key}`;
-  const photos = json.photos.map((photo) => {
-    return {
-      src: `${dir}/${photo.src}`,
-      thumbnail_src: `${dir}/thumbnail/${photo.src}`,
-      title: photo.title,
-      place: photo.place,
-      date: photo.date,
-      width: photo.width,
-      height: photo.height,
-    };
-  });
-
+  const { title, date } = photoData;
+  const dir = `${process.env.PHOTO_URL}/photo/${id}`;
   const titleLast = title[title.length - 1];
+
+  const newPhotos = photoData.photos.map((photo) => ({
+    src: `${dir}/${photo.src}`,
+    thumbnail_src: `${dir}/thumbnail/${photo.src}`,
+    title: photo.title,
+    place: photo.place,
+    date: photo.date,
+    width: photo.width,
+    height: photo.height,
+  }));
 
   return (
     <>
@@ -106,7 +102,7 @@ const Page = ({ params, searchParams }: PageProps) => {
         <meta name="format-detection" content="telephone=no" />
         <script dangerouslySetInnerHTML={{ __html: typekit }} />
       </Head>
-      <Main photos={photos} searchParams={searchParams} />
+      <Main photos={newPhotos} searchParams={searchParams} />
       <Footer>
         <h1>
           {title.substring(0, title.length - 1)}
@@ -132,19 +128,13 @@ const Page = ({ params, searchParams }: PageProps) => {
 };
 
 export const generateStaticParams = () => {
-  const dirPath = path.join(process.cwd(), '/src/data/photo');
-  const topics = fs
-    .readdirSync(dirPath)
-    .filter((file) => file.endsWith('.json'))
-    .map((file) => file.replace('.json', ''));
-  return topics.map((topic) => ({ id: topic }));
+  return photos.flatMap((photo) => (photo.data ? photo.id : []));
 };
 
 export const generateMetadata = ({ params }: PageProps) => {
   const { id } = params;
-  const jsonPath = path.join(process.cwd(), `src/data/photo/${id}.json`);
-  const json: PhotoData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-  return { title: json.title };
+  const photo = photos.find((photo) => photo.id === id)!;
+  return { title: photo.data!.title };
 };
 
 export default Page;
