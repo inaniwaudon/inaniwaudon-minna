@@ -23,7 +23,7 @@ const feedToJson = (feed: Feed) => {
     items,
   };
 
-  return JSON.stringify(base);
+  return base;
 };
 
 export default feedToJson;
