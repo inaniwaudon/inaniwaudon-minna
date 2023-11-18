@@ -1,11 +1,14 @@
 import fs from 'fs';
-import { Feed } from 'feed';
 
 import { articleLinks } from '@/const/articles';
+import { Feed, FeedOptions } from '@/lib/feed/feed';
+import feedToAtom1 from '@/lib/feed/atom1';
+import feedToJson from './lib/feed/json';
 
 const generateRss = async () => {
   const directory = 'feed';
-  const feed = new Feed({
+
+  const options: FeedOptions = {
     title: 'いなにわうどん.みんな',
     description: '書いたもの・こと',
     id: 'https://いなにわうどん.みんな',
@@ -20,22 +23,27 @@ const generateRss = async () => {
     author: {
       name: 'いなにわうどん',
       link: 'https://いなにわうどん.みんな',
+      email: 'me@yokohama.dev',
     },
-  });
+  };
 
-  for (const article of articleLinks) {
-    feed.addItem({
-      title: article.title,
-      description: '',
-      date: new Date(article.date),
-      id: article.href,
-      link: article.href,
-    });
-  }
+  const items = articleLinks.map((link) => ({
+    title: link.title,
+    description: '',
+    date: new Date(link.date),
+    id: link.href,
+    link: link.href,
+  }));
+
+  const feed: Feed = {
+    options,
+    items,
+  };
+
   fs.mkdirSync(`./public/${directory}`, { recursive: true });
-  fs.writeFileSync(`./public/${directory}/atom.xml`, feed.atom1());
-  fs.writeFileSync(`./public/${directory}/feed.xml`, feed.rss2());
-  fs.writeFileSync(`./public/${directory}/feed.json`, feed.json1());
+  //fs.writeFileSync(`./public/${directory}/atom.xml`, feedToAtom1(feed));
+  //fs.writeFileSync(`./public/${directory}/feed.xml`, feed.rss2());
+  fs.writeFileSync(`./public/${directory}/feed.json`, feedToJson(feed));
 };
 
 export const register = async () => {

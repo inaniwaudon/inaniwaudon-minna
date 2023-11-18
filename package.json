@@ -17,7 +17,6 @@
     "@linaria/core": "^5.0.2",
     "@linaria/react": "^5.0.3",
     "argparse": "^2.0.1",
-    "feed": "^4.2.2",
     "natsort": "^2.0.3",
     "next": "~13.5.6",
     "react": "^18.2.0",
