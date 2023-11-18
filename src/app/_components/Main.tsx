@@ -1,5 +1,3 @@
-'use client';
-
 import { styled } from '@linaria/react';
 
 import LinkList from './LinkList';
@@ -8,6 +6,7 @@ import logo from '@/assets/index/logo.svg';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
 import { photos } from '@/const/index';
+import { SearchParams } from '@/lib/utils';
 
 const Wrapper = styled.main`
   margin: 30px 50px;
@@ -34,7 +33,11 @@ const ListWrapper = styled.div`
   margin-top: 8px;
 `;
 
-const Main = () => {
+interface MainProps {
+  searchParams: SearchParams;
+}
+
+const Main = ({ searchParams }: MainProps) => {
   return (
     <Wrapper>
       <Top>
@@ -139,7 +142,7 @@ const Main = () => {
           </section>
         </div>
         <div>
-          <Nengajo />
+          <Nengajo searchParams={searchParams} />
           <LinkList />
         </div>
       </Top>

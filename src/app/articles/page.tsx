@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
 import { styled } from '@linaria/react';
 
-import Checkbox2 from '@/components/common/Checkbox2';
+import Checkbox from '@/components/common/Checkbox';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
 import PageWrapper from '@/components/common/PageWrapper';
-import { ArticleTag, articleLinks, isArticleTag } from '@/const/articles';
-import { SearchParams } from '@/lib/utils';
+import { ArticleTag, articleLinks, articleTags } from '@/const/articles';
+import { SearchParams, getStringParams, isSelectedTag } from '@/lib/utils';
 
 const TopHeader = styled.header`
   margin-bottom: 16px;
@@ -35,7 +35,7 @@ const Description = styled.span`
   font-size: 13px;
 `;
 
-const tagButtons = [
+const tags = [
   { key: 'hongoshi', label: 'hongoshi', keyColor: '#ff32ab' },
   { key: 'tech', label: 'tech', keyColor: '#cc22db' },
   { key: 'design', label: 'design', keyColor: '#2656f3' },
@@ -53,10 +53,11 @@ interface PageProps {
 }
 
 const Page = ({ searchParams }: PageProps) => {
-  const selectedTags: ArticleTag[] =
-    typeof searchParams['tag'] === 'string'
-      ? searchParams['tag'].split('+').flatMap((str) => (isArticleTag(str) ? str : []))
-      : [];
+  const stringParams = getStringParams(searchParams);
+
+  const selectedTags: ArticleTag[] = articleTags.filter((tag) =>
+    isSelectedTag(tag, stringParams['tag'])
+  );
 
   const filteredLinks =
     selectedTags.length > 0
@@ -70,12 +71,7 @@ const Page = ({ searchParams }: PageProps) => {
       <main>
         <TopHeader>
           <H1>{title}</H1>
-          <Checkbox2
-            query="tag"
-            options={tagButtons}
-            multiple={true}
-            selectedOptions={selectedTags}
-          />
+          <Checkbox paramKey="tag" tags={tags} multiple={true} searchParams={searchParams} />
         </TopHeader>
         <CustomList>
           {filteredLinks.map((link) => (

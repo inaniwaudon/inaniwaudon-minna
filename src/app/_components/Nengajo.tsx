@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { styled } from '@linaria/react';
 
 import Checkbox from '@/components/common/Checkbox';
 import { nengajo } from '@/const';
+import { SearchParams, getStringParams } from '@/lib/utils';
 
 const Header = styled.header`
   margin-bottom: 20px;
@@ -33,19 +33,19 @@ const tags = [
   { key: '2023', label: '2023', keyColor: '#2656f3' },
 ];
 
-const Nengajo = () => {
-  const [year, setYear] = useState(nengajo[0].year);
+interface NengajoProps {
+  searchParams: SearchParams;
+}
+
+const Nengajo = ({ searchParams }: NengajoProps) => {
+  const stringParams = getStringParams(searchParams);
+  const year = stringParams['year'] === '2023' ? 2023 : 2022;
 
   return (
     <div>
       <Header>
         <H3>年賀状</H3>
-        <Checkbox
-          options={tags}
-          multiple={true}
-          selectedOptions={[year.toString()]}
-          setSelectedOptions={(option) => setYear(parseInt(option.at(-1)!))}
-        />
+        <Checkbox paramKey="year" tags={tags} multiple={false} searchParams={searchParams} />
       </Header>
       {nengajo.map((item) => (
         <ImgWrapper displays={item.year === year} key={item.year}>
