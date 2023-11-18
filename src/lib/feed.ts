@@ -1,4 +1,5 @@
 import { Feed, FeedOptions } from 'feed';
+
 import { articleLinks } from '@/const/articles';
 
 const directory = 'feed';
