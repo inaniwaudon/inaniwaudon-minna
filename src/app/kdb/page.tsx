@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   title,
 };
 
-export const Page = () => {
+const Page = () => {
   const LinkCollection = (links: KdbLinkItem[]) => (
     <CustomList>
       {links.map((link) => (
