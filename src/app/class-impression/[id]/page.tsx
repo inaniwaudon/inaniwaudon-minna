@@ -1,13 +1,12 @@
 import { createElement } from 'react';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { ParsedUrlQuery } from 'querystring';
+import { styled } from '@linaria/react';
 import rehypeReact from 'rehype-react';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
-import styled from 'styled-components';
 import { unified } from 'unified';
-import Page from '@/components/common/PageWrapper';
+
 import PageAnchor from '@/components/common/PageAnchor';
+import PageWrapper from '@/components/common/PageWrapper';
 import { classImpressions } from '@/const/class-impression';
 
 const Wrapper = styled.div`
@@ -40,30 +39,31 @@ const Main = styled.main`
   }
 `;
 
-interface Params extends ParsedUrlQuery {
-  id: string;
-}
-
-interface Props {
-  year: number;
-  term: 'spring' | 'autumn';
-  description: string;
-  article: string;
-}
+const getInformation = (id: string) =>
+  classImpressions.find((item) => id === item.year + item.term)!;
 
 const termToJapanese = (term: string) => (term === 'spring' ? '春' : '秋');
 
-const Index = ({ year, term, description, article }: Props) => {
+const getTitle = (year: number, term: string) =>
+  `${year} 年度 ${termToJapanese(term)}学期 授業感想`;
+
+interface PageProps {
+  params: { id: string };
+}
+
+const Page = ({ params }: PageProps) => {
+  const { id } = params;
+  const { year, term, description, article } = getInformation(id);
+  const title = getTitle(year, term);
+
   const contents = unified()
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeReact, { createElement })
     .processSync(article).result;
 
-  const title = `${year} 年度 ${termToJapanese(term)}学期 授業感想`;
-
   return (
-    <Page title={title}>
+    <PageWrapper title={title} path={`/class-impression/${id}`}>
       <Wrapper>
         <header>
           <h1>{title}</h1>
@@ -89,28 +89,19 @@ const Index = ({ year, term, description, article }: Props) => {
         </header>
         <Main>{contents}</Main>
       </Wrapper>
-    </Page>
+    </PageWrapper>
   );
 };
 
-export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
-  const information = classImpressions.find((item) => params!.id === item.year + item.term)!;
-  return {
-    props: {
-      year: information.year,
-      term: information.term,
-      description: information.description,
-      article: information.article,
-    },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths<Params> = () => {
+export const generateStaticParams = () => {
   const ids = classImpressions.map(({ year, term }) => year + term);
-  return {
-    paths: ids.map((id) => ({ params: { id: id } })),
-    fallback: false,
-  };
+  return ids.map((id) => ({ id: id }));
 };
 
-export default Index;
+export const generateMetadata = ({ params }: PageProps) => {
+  const { id } = params;
+  const { year, term } = getInformation(id);
+  return { title: getTitle(year, term) };
+};
+
+export default Page;

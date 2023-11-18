@@ -4,7 +4,7 @@ import { styled } from '@linaria/react';
 
 import LinkList from './LinkList';
 import Nengajo from './Nengajo';
-import logo from '@/assets/logo.svg';
+import logo from '@/assets/index/logo.svg';
 import CustomList from '@/components/common/CustomList';
 import PageAnchor from '@/components/common/PageAnchor';
 import { photos } from '@/const/index';
