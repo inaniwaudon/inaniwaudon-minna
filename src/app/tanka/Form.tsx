@@ -18,8 +18,32 @@ const Label = styled.label`
   display: inline-block;
 `;
 
-const TankaInput = styled.input`
-  width: 31em;
+const Caution = styled.ul`
+  line-height: 1.5;
+  font-size: 14px;
+  margin: 0;
+  padding: 0 0 0 16px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Input = styled.input`
+  padding: 4px;
+`;
+
+const TankaInput = styled(Input)`
+  width: min(31em, 100% - 10rem);
+`;
+
+const SubmitButton = styled.input`
+  color: #fff;
+  font-size: 16px;
+  padding: 4px 18px 4px 24px;
+  border: none;
+  border-radius: 16px;
+  appearance: none;
+  --webkit-appearance: none;
+  background: #20b2aa;
 `;
 
 const Form = () => {
@@ -83,20 +107,18 @@ const Form = () => {
       </div>
       <div>
         <Label htmlFor="name">なまえ</Label>
-        <input type="text" id="name" onChange={(e) => setInputName(e.currentTarget.value)} />
+        <Input type="text" id="name" onChange={(e) => setInputName(e.currentTarget.value)} />
       </div>
       <div>
         <Label htmlFor="comment">ひとこと</Label>
-        <input type="text" id="comment" onChange={(e) => setInputComment(e.currentTarget.value)} />
+        <Input type="text" id="comment" onChange={(e) => setInputComment(e.currentTarget.value)} />
       </div>
+      <Caution>
+        <li>公序良俗に反した投稿はお控えください（IP アドレスが公開されます）。</li>
+        <li>短歌は予告なく削除される可能性があります。</li>
+      </Caution>
       <div>
-        <small>
-          公序良俗に反した投稿はお控えください（IP
-          アドレスが公開されます）。短歌は予告なく削除される可能性があります。
-        </small>
-      </div>
-      <div>
-        <button type="submit">投稿！</button>
+        <SubmitButton type="submit" value="投稿！" />
       </div>
     </FormWrapper>
   );
