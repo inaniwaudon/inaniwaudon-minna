@@ -12,7 +12,7 @@ declare global {
 export const GET = async () => {
   try {
     const { results } = await process.env.DB.prepare(
-      'SELECT * FROM tanka ORDER BY id DESC where deleted_at IS NULL'
+      'SELECT * FROM tanka WHERE deleted_at IS NULL ORDER BY id DESC'
     ).all();
     return NextResponse.json(results);
   } catch (e: any) {
