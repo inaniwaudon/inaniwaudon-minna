@@ -21,7 +21,7 @@ const CategoryItemCheck = styled.div<{ selected: boolean; keyColor: string }>`
   transition: opacity 0.2s;
 `;
 
-const Anchor = styled.div<{ selected: boolean; keyColor: string }>`
+const Anchor = styled.a<{ selected: boolean; keyColor: string }>`
   height: 14px;
   line-height: 14px;
   color: ${({ selected, keyColor }) => (selected ? '#fff' : keyColor)};
