@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { Metadata } from 'next';
 import Script from 'next/script';
 import { styled } from '@linaria/react';
 
@@ -6,7 +6,6 @@ import Main from './Main';
 import { photos } from '@/const/photos';
 import { PhotoInfo } from '@/lib/photo';
 import { SearchParams } from '@/lib/utils';
-import { Metadata } from 'next';
 
 const Footer = styled.footer`
   width: calc(100% - 80px);

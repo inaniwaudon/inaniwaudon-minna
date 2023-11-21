@@ -9,10 +9,11 @@
     "lint": "npx next lint",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:watch": "npx @cloudflare/next-on-pages --watch",
-    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2023-10-30 --compatibility-flag=nodejs_compat"
+    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat --local=false"
   },
   "dependencies": {
     "@babel/preset-react": "^7.23.3",
+    "@cloudflare/d1": "^1.4.1",
     "@linaria/babel-preset": "^5.0.4",
     "@linaria/core": "^5.0.2",
     "@linaria/react": "^5.0.3",
