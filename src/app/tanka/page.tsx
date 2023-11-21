@@ -9,7 +9,6 @@ const TankaList = styled.ul`
   padding: 0;
   list-style: none;
   display: flex;
-  flex-direction: column-row;
   gap: 16px;
   overflow: scroll;
 `;
@@ -36,26 +35,21 @@ const FootnoteSection = styled.div`
 `;
 
 interface Tanka {
-  content: string;
-  user: string;
+  id: number;
+  tanka: string;
+  name: string;
   ip: string;
+  comment: string | null;
 }
 
-const Index = () => {
+const Index = async () => {
   const title = '/tanka';
-
-  const tankas: Tanka[] = [...Array(20)].flatMap(() => [
-    {
-      content: '試験での 途中退出 できません',
-      user: 'ほげほげ',
-      ip: '192.168.0.0',
-    },
-    {
-      content: '急行と 快急どちらが 速いのか',
-      user: 'もへじ',
-      ip: '192.168.0.0',
-    },
-  ]);
+  const response = await fetch('http://localhost:8788/api/tanka', {
+    cache: 'no-store',
+  });
+  const json = await response.json();
+  console.log(json);
+  const tankas: Tanka[] = response.ok ? json : [];
 
   return (
     <PageWrapper title={title} path="/tanka">
@@ -69,11 +63,11 @@ const Index = () => {
         </p>
         <section>
           <TankaList>
-            {tankas.map((tanka, i) => (
-              <TankaItem key={i}>
-                {tanka.content.replaceAll(/[ 　]/g, '')}
+            {tankas.map((tanka) => (
+              <TankaItem key={tanka.id} title={tanka.comment ?? ''}>
+                {tanka.tanka.replaceAll(/[ 　]/g, '')}
                 <TankaAuthor>
-                  {tanka.user}（{tanka.ip}）
+                  {tanka.name}（{tanka.ip}）
                 </TankaAuthor>
               </TankaItem>
             ))}
