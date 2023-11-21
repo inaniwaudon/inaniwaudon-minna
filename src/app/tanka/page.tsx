@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { styled } from '@linaria/react';
 
 import Form from './Form';
@@ -42,13 +43,18 @@ interface Tanka {
   comment: string | null;
 }
 
+const title = '/tanka';
+
+export const metadata: Metadata = {
+  title,
+  description: '575 あつめてたのし最上川（#haiku）',
+};
+
 const Index = async () => {
-  const title = '/tanka';
-  const response = await fetch('http://localhost:8788/api/tanka', {
+  const response = await fetch('https://xn--n8je9hcf0t4a.xn--q9jyb4c/api/tanka', {
     cache: 'no-store',
   });
   const json = await response.json();
-  console.log(json);
   const tankas: Tanka[] = response.ok ? json : [];
 
   return (
@@ -56,7 +62,7 @@ const Index = async () => {
       <main>
         <h1>/tanka</h1>
         <p>
-          日常に潜む短歌や 575（#haiku）
+          575 あつめてたのし最上川（#haiku）
           <sup>
             <a href="#footnote">[1]</a>
           </sup>
