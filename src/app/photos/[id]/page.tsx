@@ -1,10 +1,12 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import { styled } from '@linaria/react';
 
 import Main from './Main';
 import { photos } from '@/const/photos';
 import { PhotoInfo } from '@/lib/photo';
 import { SearchParams } from '@/lib/utils';
+import { Metadata } from 'next';
 
 const Footer = styled.footer`
   width: calc(100% - 80px);
@@ -98,10 +100,7 @@ const Page = ({ params, searchParams }: PageProps) => {
 
   return (
     <>
-      <Head>
-        <meta name="format-detection" content="telephone=no" />
-        <script dangerouslySetInnerHTML={{ __html: typekit }} />
-      </Head>
+      <Script dangerouslySetInnerHTML={{ __html: typekit }} />
       <Main photos={newPhotos} searchParams={searchParams} />
       <Footer>
         <h1>
@@ -131,10 +130,13 @@ export const generateStaticParams = () => {
   return photos.flatMap((photo) => (photo.data ? photo.id : []));
 };
 
-export const generateMetadata = ({ params }: PageProps) => {
+export const generateMetadata = ({ params }: PageProps): Metadata => {
   const { id } = params;
   const photo = photos.find((photo) => photo.id === id)!;
-  return { title: photo.data!.title };
+  return {
+    title: photo.data!.title,
+    formatDetection: { telephone: false },
+  };
 };
 
 export default Page;
