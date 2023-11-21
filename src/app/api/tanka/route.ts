@@ -11,7 +11,9 @@ declare global {
 
 export const GET = async () => {
   try {
-    const { results } = await process.env.DB.prepare('SELECT * FROM tanka ORDER BY id DESC').all();
+    const { results } = await process.env.DB.prepare(
+      'SELECT * FROM tanka ORDER BY id DESC where deleted_at IS NULL'
+    ).all();
     return NextResponse.json(results);
   } catch (e: any) {
     return new Response(e, { status: 500 });
