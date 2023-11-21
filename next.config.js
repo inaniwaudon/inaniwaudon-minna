@@ -14,6 +14,20 @@ const nextConfig = {
     });
     return config;
   },
+
+  headers: async () => {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'max-age=600',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = withLinaria(nextConfig);
