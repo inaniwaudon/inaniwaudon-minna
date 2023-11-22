@@ -236,6 +236,12 @@ const articleZennLinks: ArticleLink[] = [
     date: '2023/08/08',
     tags: ['tech'],
   },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/2d0222ac183b86',
+    title: 'Server Components で複数選択できるフィルタリングを実装する',
+    date: '2023/11/19',
+    tags: ['tech'],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
