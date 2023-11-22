@@ -23,6 +23,46 @@ const TankaItem = styled.li`
   writing-mode: vertical-rl;
 `;
 
+const TankaItem1680 = styled(TankaItem)`
+  @keyframes color1680 {
+    0%,
+    100% {
+      color: red;
+    }
+    10% {
+      color: pink;
+    }
+    20% {
+      color: orange;
+    }
+    30% {
+      color: gold;
+    }
+    40% {
+      color: limegreen;
+    }
+    50% {
+      color: green;
+    }
+    60% {
+      color: skyblue;
+    }
+    70% {
+      color: blue;
+    }
+    80% {
+      color: purple;
+    }
+    90% {
+      color: mediumvioletred;
+    }
+  }
+
+  animation-name: color1680;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+`;
+
 const TankaAuthor = styled.div`
   text-align: right;
   font-size: 14px;
@@ -45,6 +85,7 @@ interface Tanka {
   name: string;
   ip: string;
   comment: string | null;
+  supplement: string | null;
 }
 
 const title = '/tanka';
@@ -81,14 +122,25 @@ const Index = async () => {
           </p>
           <section>
             <TankaList>
-              {tankas.map((tanka) => (
-                <TankaItem key={tanka.id} title={tanka.comment ?? ''}>
-                  {processTanka(tanka.tanka)}
-                  <TankaAuthor>
-                    {tanka.name}（{tanka.ip}）
-                  </TankaAuthor>
-                </TankaItem>
-              ))}
+              {tankas.map((tanka) => {
+                const content = (
+                  <>
+                    {processTanka(tanka.tanka)}
+                    <TankaAuthor>
+                      {tanka.name}（{tanka.ip}）
+                    </TankaAuthor>
+                  </>
+                );
+                return tanka.supplement && tanka.supplement.includes('1680') ? (
+                  <TankaItem1680 key={tanka.id} title={tanka.comment ?? ''}>
+                    {content}
+                  </TankaItem1680>
+                ) : (
+                  <TankaItem key={tanka.id} title={tanka.comment ?? ''}>
+                    {content}
+                  </TankaItem>
+                );
+              })}
             </TankaList>
           </section>
           <FormSection>

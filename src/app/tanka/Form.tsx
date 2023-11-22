@@ -35,15 +35,30 @@ const TankaInput = styled(Input)`
   width: min(31em, 100% - 10rem);
 `;
 
+const SubmitWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
 const SubmitButton = styled.input`
   color: #fff;
   font-size: 16px;
   padding: 4px 18px 4px 24px;
   border: none;
   border-radius: 16px;
+  cursor: pointer;
   appearance: none;
   --webkit-appearance: none;
   background: #20b2aa;
+
+  &:hover {
+    opacity: 0.85;
+  }
+`;
+
+const SubmitButton1680 = styled(SubmitButton)`
+  background: linear-gradient(120deg, #f9ce34, #ee2a7b, #6228d7);
 `;
 
 const Form = () => {
@@ -59,10 +74,12 @@ const Form = () => {
     setCount(value?.length ?? 0);
   }, [inputRef.current, setCount]);
 
-  const onSubmit = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
 
+  const submit = useCallback(
+    async (color1680: boolean) => {
       if (inputTanka.length === 0) {
         alert('短歌を入力してください');
         return;
@@ -76,6 +93,7 @@ const Form = () => {
         tanka: inputTanka,
         name: inputName,
         comment: inputComment,
+        color1680,
       };
       const response = await fetch('/api/tanka', {
         method: 'POST',
@@ -117,9 +135,10 @@ const Form = () => {
         <li>公序良俗に反した投稿はお控えください（IP アドレスが公開されます）。</li>
         <li>短歌は予告なく削除される可能性があります。</li>
       </Caution>
-      <div>
-        <SubmitButton type="submit" value="投稿！" />
-      </div>
+      <SubmitWrapper>
+        <SubmitButton type="submit" value="投稿！" onClick={() => submit(false)} />
+        <SubmitButton1680 type="submit" value="1680 万色で投稿" onClick={() => submit(true)} />
+      </SubmitWrapper>
     </FormWrapper>
   );
 };
