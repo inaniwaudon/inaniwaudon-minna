@@ -20,19 +20,32 @@ export const GET = async () => {
   }
 };
 
+interface POSTSchema {
+  tanka: string;
+  name: string;
+  comment: string;
+  color1680: boolean;
+}
+
 export const POST = async (req: NextRequest) => {
   try {
-    const { tanka, name, comment } = await req.json();
+    const { tanka, name, comment, color1680 } = (await req.json()) as POSTSchema;
     if (!tanka || tanka.length === 0) {
       return new NextResponse('Bad Request: tanka is empty', { status: 400 });
     }
     if (name.length === 0) {
       return new NextResponse('Bad Request: name is empty', { status: 400 });
     }
+    if (color1680 === undefined) {
+      return new NextResponse('Bad Request: color1680 does not exist', { status: 400 });
+    }
     const ip = req.headers.get('CF-Connecting-IP') ?? 'Undefined';
+    const supplement = color1680 ? '1680' : '';
 
-    await process.env.DB.prepare('INSERT INTO tanka (tanka, name, ip, comment) VALUES (?, ?, ?, ?)')
-      .bind(tanka, name, ip, comment)
+    await process.env.DB.prepare(
+      'INSERT INTO tanka (tanka, name, ip, comment, supplement) VALUES (?, ?, ?, ?, ?)'
+    )
+      .bind(tanka, name, ip, comment, supplement)
       .all();
     return new NextResponse('Created', { status: 201 });
   } catch (e: any) {
