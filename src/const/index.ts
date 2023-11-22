@@ -1,5 +1,6 @@
 import gitHubIcon from '@/assets/icons/github.svg';
 import hatenablogIcon from '@/assets/icons/hatenablog.svg';
+import keybaseIcon from '@/assets/icons/keybase.svg';
 import misskeyIcon from '@/assets/icons/misskey.png';
 import noteIcon from '@/assets/icons/note.svg';
 import twitterIcon from '@/assets/icons/twitter.svg';
@@ -75,6 +76,16 @@ export const links: Link[] = [
     icon: {
       url: noteIcon.src,
       scale: 1.7,
+    },
+  },
+  {
+    platform: 'Keybase',
+    name: 'inaniwaudon',
+    url: 'https://keybase.io/inaniwaudon',
+    color: '#33a0ff',
+    icon: {
+      url: keybaseIcon.src,
+      scale: 1.1,
     },
   },
 ];

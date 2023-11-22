@@ -21,6 +21,7 @@ const TankaItem = styled.li`
   font-size: 18px;
   font-family: kinuta-maruminold-stdn, serif;
   writing-mode: vertical-rl;
+  overflow-wrap: break-word;
 `;
 
 const TankaItem1680 = styled(TankaItem)`

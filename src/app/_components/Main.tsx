@@ -72,13 +72,10 @@ const Main = ({ searchParams }: MainProps) => {
                 <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
               </li>
               <li>
+                <PageAnchor href="/tanka">/tanka（みんなで作る短歌投稿ページ）</PageAnchor>
+              </li>
+              <li>
                 <PageAnchor href="/nerene">ネレネー山脈</PageAnchor>
-              </li>
-              <li>
-                <del>Twight 関連リンク（工事中）</del>
-              </li>
-              <li>
-                <PageAnchor href="/kdb">KdB もどき関連リンク</PageAnchor>
               </li>
               <li>
                 授業感想
@@ -101,10 +98,15 @@ const Main = ({ searchParams }: MainProps) => {
                   </CustomList>
                 </ListWrapper>
               </li>
+              <li>
+                <del>Twight 関連リンク（工事中）</del>
+              </li>
+              <li>
+                <PageAnchor href="/kdb">KdB もどき関連リンク</PageAnchor>
+              </li>
             </CustomList>
           </section>
-          <section>
-            <h2></h2>
+          <section style={{ marginTop: '24px' }}>
             <CustomList>
               <li>
                 <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
