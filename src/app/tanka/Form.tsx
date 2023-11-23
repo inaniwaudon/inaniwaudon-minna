@@ -3,6 +3,8 @@
 import { useCallback, useRef, useState } from 'react';
 import { styled } from '@linaria/react';
 
+import { tankaMaxLength } from '@/const/tanka';
+
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -83,6 +85,9 @@ const Form = () => {
       if (inputTanka.length === 0) {
         alert('短歌を入力してください');
         return;
+      }
+      if (inputTanka.length > tankaMaxLength) {
+        alert(`${tankaMaxLength} 文字以内で入力してください`);
       }
       if (inputName.length === 0) {
         alert('名前を入力してください');

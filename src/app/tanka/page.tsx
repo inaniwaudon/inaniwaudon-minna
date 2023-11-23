@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 import { styled } from '@linaria/react';
 
 import Form from './Form';
+import PlusOne from './PlusOne';
 import AdobeFonts from '@/components/common/AdobeFonts';
 import PageWrapper from '@/components/common/PageWrapper';
 
@@ -97,17 +99,22 @@ export const metadata: Metadata = {
 };
 
 const Index = async () => {
-  const response = await fetch('https://xn--n8je9hcf0t4a.xn--q9jyb4c/api/tanka', {
+  const headerList = headers();
+  const origin = new URL(headerList.get('x-url')!).origin;
+  const response = await fetch(`${origin}/api/tanka`, {
     cache: 'no-store',
   });
+  if (!response.ok) {
+    return <>Internal Server Error: DB connection failed.</>;
+  }
+
   const json = await response.json();
   const tankas: Tanka[] = response.ok ? json : [];
 
-  const processTanka = (tanka: string) => {
-    return tanka
-      .replaceAll(/[ 　]/g, '')
-      .replace(/[A-Za-z0-9]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));
-  };
+  const convertsToVertical = (str: string) =>
+    str.replace(/[A-Za-z0-9./:\-]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));
+
+  const processTanka = (tanka: string) => convertsToVertical(tanka.replaceAll(/[ 　]/g, ''));
 
   return (
     <>
@@ -128,7 +135,7 @@ const Index = async () => {
                   <>
                     {processTanka(tanka.tanka)}
                     <TankaAuthor>
-                      {tanka.name}（{tanka.ip}）
+                      {convertsToVertical(tanka.name)}（{tanka.ip}）<PlusOne />
                     </TankaAuthor>
                   </>
                 );
