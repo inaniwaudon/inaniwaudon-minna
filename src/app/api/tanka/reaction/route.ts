@@ -43,7 +43,7 @@ export const POST = async (req: NextRequest) => {
       .first()) as { 'count(*)': number };
 
     // 指定回数以上のリアクション
-    if (result['count(*)'] > maxReactionCount) {
+    if (result['count(*)'] + 1 > maxReactionCount) {
       const response: TankaReactionPOSTResult = { executed: false };
       return NextResponse.json(response, { status: 201 });
     }

@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-export type TankaGETResult = Tanka;
+export type TankaGETResult = Tanka[];
 
 export const GET = async () => {
   try {
@@ -22,7 +22,7 @@ export const GET = async () => {
         GROUP BY t.id
         ORDER BY t.id DESC;`
     ).all();
-    const results = executed.results as any as TankaGETResult[];
+    const results = executed.results as any as TankaGETResult;
     return NextResponse.json(results);
   } catch (e: any) {
     return new Response(e, { status: 500 });

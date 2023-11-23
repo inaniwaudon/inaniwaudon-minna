@@ -1,9 +1,29 @@
 'use client';
 
+import { styled } from '@linaria/react';
+
 import { maxReactionCount } from '@/const/tanka';
 import { useCallback, useState } from 'react';
 
 import { TankaReactionPOSTResult, TankaReactionPOSTSchema } from '@/app/api/tanka/reaction/route';
+
+const Wrapper = styled.button`
+  color: #20b2aa;
+  padding: 4px 0px;
+  text-align: center;
+  font-size: 12px;
+  font-family: sans-serif;
+  border: solid 1px #20b2aa;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 0.2s, background 0.2s;
+
+  &:hover {
+    color: #fff;
+    background: #20b2aa;
+  }
+`;
 
 interface PlusOneProps {
   tankaId: number;
@@ -32,13 +52,13 @@ const PlusOne = ({ tankaId, initialCount }: PlusOneProps) => {
 
     const result: TankaReactionPOSTResult = await response.json();
     if (!result.executed) {
-      alert(`${maxReactionCount} 回以上のリアクションはできません`);
+      alert(`同一 IP から ${maxReactionCount} 回以上のリアクションはできません`);
       return;
     }
     setCount((value) => value + 1);
   }, [tankaId]);
 
-  return <div onClick={onClick}>+{initialCount}</div>;
+  return <Wrapper onClick={onClick}>＋{count}</Wrapper>;
 };
 
 export default PlusOne;

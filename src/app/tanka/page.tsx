@@ -7,6 +7,7 @@ import PlusOne from './PlusOne';
 import { TankaGETResult } from '@/app/api/tanka/route';
 import AdobeFonts from '@/components/common/AdobeFonts';
 import PageWrapper from '@/components/common/PageWrapper';
+import { testTanka } from '@/const/tanka';
 
 const TankaList = styled.ul`
   width: 100%;
@@ -96,12 +97,13 @@ const Index = async () => {
   const response = await fetch(`${origin}/api/tanka`, {
     cache: 'no-store',
   });
-  if (!response.ok) {
-    return <>Internal Server Error: DB connection failed.</>;
-  }
 
-  const json = await response.json();
-  const tankas: TankaGETResult[] = response.ok ? json : [];
+  let tankas: TankaGETResult;
+  if (response.ok) {
+    tankas = await response.json();
+  } else {
+    tankas = [testTanka];
+  }
 
   const convertsToVertical = (str: string) =>
     str.replace(/[A-Za-z0-9./:\-]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));

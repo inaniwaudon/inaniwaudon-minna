@@ -54,6 +54,7 @@ const SubmitButton = styled.input`
   appearance: none;
   --webkit-appearance: none;
   background: #20b2aa;
+  transition: opacity 0.2s;
 
   &:hover {
     opacity: 0.85;
@@ -61,6 +62,7 @@ const SubmitButton = styled.input`
 `;
 
 const SubmitButton1680 = styled(SubmitButton)`
+  padding-left: 18px;
   background: linear-gradient(120deg, #f9ce34, #ee2a7b, #6228d7);
 `;
 
