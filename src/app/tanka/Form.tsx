@@ -3,6 +3,9 @@
 import { useCallback, useRef, useState } from 'react';
 import { styled } from '@linaria/react';
 
+import { TankaPOSTSchema } from '@/app/api/tanka/route';
+import { tankaMaxLength } from '@/const/tanka';
+
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -51,6 +54,7 @@ const SubmitButton = styled.input`
   appearance: none;
   --webkit-appearance: none;
   background: #20b2aa;
+  transition: opacity 0.2s;
 
   &:hover {
     opacity: 0.85;
@@ -58,6 +62,7 @@ const SubmitButton = styled.input`
 `;
 
 const SubmitButton1680 = styled(SubmitButton)`
+  padding-left: 18px;
   background: linear-gradient(120deg, #f9ce34, #ee2a7b, #6228d7);
 `;
 
@@ -84,12 +89,15 @@ const Form = () => {
         alert('短歌を入力してください');
         return;
       }
+      if (inputTanka.length > tankaMaxLength) {
+        alert(`${tankaMaxLength} 文字以内で入力してください`);
+      }
       if (inputName.length === 0) {
         alert('名前を入力してください');
         return;
       }
 
-      const data = {
+      const body: TankaPOSTSchema = {
         tanka: inputTanka,
         name: inputName,
         comment: inputComment,
@@ -100,7 +108,7 @@ const Form = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(body),
       });
 
       if (!response.ok) {
