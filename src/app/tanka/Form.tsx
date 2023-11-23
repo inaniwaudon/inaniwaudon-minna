@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { styled } from '@linaria/react';
 
+import { TankaPOSTSchema } from '@/app/api/tanka/route';
 import { tankaMaxLength } from '@/const/tanka';
 
 const FormWrapper = styled.form`
@@ -94,7 +95,7 @@ const Form = () => {
         return;
       }
 
-      const data = {
+      const body: TankaPOSTSchema = {
         tanka: inputTanka,
         name: inputName,
         comment: inputComment,
@@ -105,7 +106,7 @@ const Form = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(body),
       });
 
       if (!response.ok) {

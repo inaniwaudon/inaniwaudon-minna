@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Database } from '@cloudflare/d1';
-import { tankaMaxLength } from '@/const/tanka';
+import { Tanka, tankaMaxLength } from '@/const/tanka';
 
 declare global {
   namespace NodeJS {
@@ -10,18 +10,26 @@ declare global {
   }
 }
 
+export type TankaGETResult = Tanka;
+
 export const GET = async () => {
   try {
-    const { results } = await process.env.DB.prepare(
-      'SELECT * FROM tanka WHERE deleted_at IS NULL ORDER BY id DESC'
+    const executed = await process.env.DB.prepare(
+      `SELECT t.id, t.tanka, t.name, t.ip, t.comment, t.supplement, COUNT(tr.id) AS plusone_count
+        FROM tanka AS t
+        LEFT OUTER JOIN tanka_reaction tr ON t.id = tr.tanka_id AND tr.reaction = 'plusone'
+        WHERE deleted_at IS NULL
+        GROUP BY t.id
+        ORDER BY t.id DESC;`
     ).all();
+    const results = executed.results as any as TankaGETResult[];
     return NextResponse.json(results);
   } catch (e: any) {
     return new Response(e, { status: 500 });
   }
 };
 
-interface POSTSchema {
+export interface TankaPOSTSchema {
   tanka: string;
   name: string;
   comment: string;
@@ -30,7 +38,7 @@ interface POSTSchema {
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { tanka, name, comment, color1680 } = (await req.json()) as POSTSchema;
+    const { tanka, name, comment, color1680 } = (await req.json()) as TankaPOSTSchema;
 
     // Bad Request
     if (!tanka || tanka.length === 0) {

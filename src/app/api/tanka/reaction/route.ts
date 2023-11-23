@@ -10,18 +10,18 @@ declare global {
   }
 }
 
-interface POSTSchema {
+export interface TankaReactionPOSTSchema {
   tanka_id: number;
   reaction: string;
 }
 
-interface POSTResult {
+export interface TankaReactionPOSTResult {
   executed: boolean;
 }
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { tanka_id, reaction } = (await req.json()) as POSTSchema;
+    const { tanka_id, reaction } = (await req.json()) as TankaReactionPOSTSchema;
 
     // Bad Request
     if (tanka_id == null) {
@@ -44,7 +44,7 @@ export const POST = async (req: NextRequest) => {
 
     // 指定回数以上のリアクション
     if (result['count(*)'] > maxReactionCount) {
-      const response: POSTResult = { executed: false };
+      const response: TankaReactionPOSTResult = { executed: false };
       return NextResponse.json(response, { status: 201 });
     }
 
@@ -55,7 +55,7 @@ export const POST = async (req: NextRequest) => {
       .bind(tanka_id, ip, reaction)
       .run();
 
-    const response: POSTResult = { executed: true };
+    const response: TankaReactionPOSTResult = { executed: true };
     return NextResponse.json(response, { status: 201 });
   } catch (e: any) {
     return new Response(e, { status: 500 });

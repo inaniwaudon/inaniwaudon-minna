@@ -4,6 +4,7 @@ import { styled } from '@linaria/react';
 
 import Form from './Form';
 import PlusOne from './PlusOne';
+import { TankaGETResult } from '@/app/api/tanka/route';
 import AdobeFonts from '@/components/common/AdobeFonts';
 import PageWrapper from '@/components/common/PageWrapper';
 
@@ -82,15 +83,6 @@ const FootnoteSection = styled.div`
   border-top: solid 1px #ddd;
 `;
 
-interface Tanka {
-  id: number;
-  tanka: string;
-  name: string;
-  ip: string;
-  comment: string | null;
-  supplement: string | null;
-}
-
 const title = '/tanka';
 
 export const metadata: Metadata = {
@@ -109,7 +101,7 @@ const Index = async () => {
   }
 
   const json = await response.json();
-  const tankas: Tanka[] = response.ok ? json : [];
+  const tankas: TankaGETResult[] = response.ok ? json : [];
 
   const convertsToVertical = (str: string) =>
     str.replace(/[A-Za-z0-9./:\-]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));
@@ -135,7 +127,8 @@ const Index = async () => {
                   <>
                     {processTanka(tanka.tanka)}
                     <TankaAuthor>
-                      {convertsToVertical(tanka.name)}（{tanka.ip}）<PlusOne />
+                      {convertsToVertical(tanka.name)}（{tanka.ip}）
+                      <PlusOne tankaId={tanka.id} initialCount={tanka.plusone_count} />
                     </TankaAuthor>
                   </>
                 );
