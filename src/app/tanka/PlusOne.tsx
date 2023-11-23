@@ -9,15 +9,17 @@ import { TankaReactionPOSTResult, TankaReactionPOSTSchema } from '@/app/api/tank
 
 const Wrapper = styled.button`
   color: #20b2aa;
-  padding: 4px 0px;
+  line-height: 1;
   text-align: center;
   font-size: 12px;
   font-family: sans-serif;
+  padding: 3px 2px 4px 2px;
   border: solid 1px #20b2aa;
   border-radius: 4px;
   cursor: pointer;
   display: inline-block;
   transition: color 0.2s, background 0.2s;
+  background: #fff;
 
   &:hover {
     color: #fff;
