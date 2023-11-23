@@ -6,10 +6,15 @@ Next.js で構築された個人サイトです。Cloudflare Pages（+ Edge Runt
 
 ## Development
 
-```
+```bash
 yarn install
 yarn run dev
 yaru run build
+
+# 短歌用データベースを構築
+yarn add -g wrangler
+npx wrangler d1 create inaniwaudon-minna
+npx wrangler d1 execute inaniwaudon-minna --file=./create.sql
 ```
 
 ## 写真の更新方法
@@ -37,3 +42,11 @@ WebP 形式に圧縮した上で、Cloudflare R2 にアップロードし、メ�
     ```
 
 4. JSON ファイルを編集してコミットする
+
+## 短歌の削除方法
+
+不適切な短歌は、deleted_at カラムに任意の日付を追加してソフトデリートします。
+
+```sql
+UPDATE tanka SET deleted_at = "yyyy-MM-dd HH:mm:ss" WHERE ...
+```
