@@ -102,7 +102,7 @@ const Index = async () => {
   if (response.ok) {
     tankas = await response.json();
   } else {
-    tankas = [testTanka];
+    tankas = [testTanka, testTanka, testTanka, testTanka, testTanka, testTanka];
   }
 
   const convertsToVertical = (str: string) =>
