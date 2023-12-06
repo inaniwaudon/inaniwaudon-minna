@@ -1,4 +1,4 @@
-export const articleTags = ['hongoshi', 'tech', 'design', 'random'] as const;
+export const articleTags = ['hongoshi', 'tech', 'design', 'random', 'speaking'] as const;
 
 export type ArticleTag = (typeof articleTags)[number];
 
@@ -124,6 +124,12 @@ const articleHatenaLinks: ArticleLink[] = [
     title: '学園祭で売上をリアルタイムに公開するサイトを雑に作ると盛り上がる',
     date: '2023/11/09',
     tags: ['tech'],
+  },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20231207/1701875647',
+    title: 'GitHub Actions を回してピザを頼みたい',
+    date: '2023/12/07',
+    tags: ['tech', 'hongoshi'],
   },
 ];
 
@@ -259,15 +265,6 @@ const articleNoteLinks: ArticleLink[] = [
   },
 ];
 
-const articleSiteLinks: ArticleLink[] = [
-  {
-    href: '/articles/max',
-    title: 'マックスコーヒーのパッケージ観察',
-    date: '2023/05/14',
-    tags: ['hongoshi', 'design'],
-  },
-];
-
 const articleWordLinks: ArticleLink[] = [
   {
     href: '/docs/word-kumihan.pdf',
@@ -306,15 +303,56 @@ const articleWordLinks: ArticleLink[] = [
   },
 ];
 
+const articleOthersLinks: ArticleLink[] = [
+  {
+    href: 'https://speakerdeck.com/inaniwaudon/qiang-li-nagurahuitukuji-neng-wobei-etazu-ban-chu-li-sisutemutwightfalsekai-fa',
+    title: '強力なグラフィック機能を備えた組版処理システム Twight の開発',
+    date: '2021/04/10',
+    description: 'CSS組版 Vivliostyle ユーザーと開発者の集い 2021春',
+    tags: ['tech', 'speaking'],
+  },
+  {
+    href: 'https://speakerdeck.com/inaniwaudon/kdbmodoki-falsekai-fa-toyun-yong',
+    title: '授業科目 DB 代替システム「KdB もどき」の開発と運用',
+    date: '2021/12/15',
+    description: '大学 ICT 推進協議会 2021 年度 年次大会',
+    tags: ['tech', 'speaking'],
+  },
+  {
+    href: 'https://speakerdeck.com/inaniwaudon/puroguramingunihong-retemiyou',
+    title: 'プログラミングに触れてみよう！！',
+    date: '2023/01/23',
+    description: '文京区立昭和小学校',
+    tags: ['tech', 'speaking'],
+  },
+  {
+    href: '/articles/max',
+    title: 'マックスコーヒーのパッケージ観察',
+    date: '2023/05/14',
+    description: 'いなにわうどん.みんな',
+    tags: ['hongoshi', 'design'],
+  },
+  {
+    href: 'https://speakerdeck.com/inaniwaudon/until-0601-2',
+    title: 'Web フロントエンドと複雑 GUI の実装',
+    date: '2023/06/01',
+    description: 'UNTIL.LT 0x02',
+    tags: ['tech', 'speaking'],
+  },
+  {
+    href: 'https://speakerdeck.com/inaniwaudon/wip-github-actions-wo-hui-sitehisawolai-mitai',
+    title: '[WIP] GitHub Actions を回してピザを頼みたい',
+    date: '2023/12/03',
+    description: 'UNTIL.LT 0x03',
+    tags: ['tech', 'speaking'],
+  },
+];
+
 export const articleLinks = (() => {
   const hatena = articleHatenaLinks.map((link) => ({ ...link, description: 'はてなブログ' }));
   const note = articleNoteLinks.map((link) => ({ ...link, description: 'note' }));
   const zenn = articleZennLinks.map((link) => ({ ...link, description: 'Zenn' }));
-  const site = articleSiteLinks.map((link) => ({
-    ...link,
-    description: 'いなにわうどん.みんな',
-  }));
-  return [...hatena, ...note, ...zenn, ...site, ...articleWordLinks].sort((a, b) =>
+  return [...hatena, ...note, ...zenn, ...articleWordLinks, ...articleOthersLinks].sort((a, b) =>
     a.date === b.date ? 0 : a.date < b.date ? 1 : -1
   );
 })();
