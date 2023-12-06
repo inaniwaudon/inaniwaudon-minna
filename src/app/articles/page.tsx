@@ -40,6 +40,7 @@ const tags = [
   { key: 'tech', label: 'tech', keyColor: '#cc22db' },
   { key: 'design', label: 'design', keyColor: '#2656f3' },
   { key: 'random', label: 'random', keyColor: '#009ae1' },
+  { key: 'speaking', label: 'speaking', keyColor: '#00b300' },
 ];
 
 const title = '書いたもの・こと';
