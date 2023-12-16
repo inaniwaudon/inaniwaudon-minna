@@ -248,6 +248,12 @@ const articleZennLinks: ArticleLink[] = [
     date: '2023/11/19',
     tags: ['tech'],
   },
+  {
+    href: 'https://zenn.dev/inaniwaudon/articles/2c01b38eb447b9',
+    title: 'ベジェ曲線のオフセットを計算する',
+    date: '2023/12/12',
+    tags: ['tech'],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
