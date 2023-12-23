@@ -131,6 +131,12 @@ const articleHatenaLinks: ArticleLink[] = [
     date: '2023/12/07',
     tags: ['tech', 'hongoshi'],
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20231223/1703293729',
+    title: '雙峰祭でそば焼いたらやきそばになってワロタ',
+    date: '2023/12/23',
+    tags: ['random'],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [
