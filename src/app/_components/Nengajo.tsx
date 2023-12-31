@@ -29,8 +29,9 @@ const Img = styled.img`
 `;
 
 const tags = [
-  { key: '2022', label: '2022', keyColor: '#ff32ab' },
-  { key: '2023', label: '2023', keyColor: '#2656f3' },
+  { key: '2024', label: '2024', keyColor: '#fa981c' },
+  { key: '2023', label: '2023', keyColor: '#ff32ab' },
+  { key: '2022', label: '2022', keyColor: '#2656f3' },
 ];
 
 interface NengajoProps {
@@ -39,7 +40,9 @@ interface NengajoProps {
 
 const Nengajo = ({ searchParams }: NengajoProps) => {
   const stringParams = getStringParams(searchParams);
-  const year = stringParams['year'] === '2023' ? 2023 : 2022;
+  const year = ['2024', '2023', '2022'].includes(stringParams['year'])
+    ? parseInt(stringParams['year'])
+    : 2024;
 
   return (
     <div>
