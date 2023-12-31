@@ -40,7 +40,9 @@ interface NengajoProps {
 
 const Nengajo = ({ searchParams }: NengajoProps) => {
   const stringParams = getStringParams(searchParams);
-  const year = parseInt(stringParams['year']);
+  const year = ['2024', '2023', '2022'].includes(stringParams['year'])
+    ? parseInt(stringParams['year'])
+    : 2024;
 
   return (
     <div>
