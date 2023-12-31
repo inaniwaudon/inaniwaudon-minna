@@ -137,6 +137,12 @@ const articleHatenaLinks: ArticleLink[] = [
     date: '2023/12/23',
     tags: ['random'],
   },
+  {
+    href: 'https://soudakyoto-ikou.hatenadiary.jp/entry/20231231/1704013026',
+    title: '2023 年を振り返って',
+    date: '2023/12/31',
+    tags: ['random'],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [
