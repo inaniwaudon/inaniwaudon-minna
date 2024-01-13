@@ -1,7 +1,6 @@
 import { styled } from "@linaria/react";
 import { Metadata } from "next";
 
-import Anchor from "@/components/common/Anchor";
 import AnchorListItem from "@/components/common/AnchorListItem";
 import Checkbox from "@/components/common/Checkbox";
 import CustomList from "@/components/common/CustomList";

@@ -1,6 +1,6 @@
+import { styled } from "@linaria/react";
 import Link from "next/link";
 import React, { ReactNode } from "react";
-import { styled } from "@linaria/react";
 
 import { linkColor, linkHoverColor, linkUnderlineColor } from "@/const/style";
 

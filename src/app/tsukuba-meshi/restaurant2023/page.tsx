@@ -1,8 +1,8 @@
 import { styled } from "@linaria/react";
 
-import Restaurant from "./Restaurant";
 import Anchor from "@/components/common/Anchor";
 import PageWrapper from "@/components/common/PageWrapper";
+import Restaurant from "./Restaurant";
 
 const Main = styled.main`
   line-height: 1.8;

@@ -1,5 +1,5 @@
-import { createElement } from "react";
 import { styled } from "@linaria/react";
+import { createElement } from "react";
 import rehypeReact from "rehype-react";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";

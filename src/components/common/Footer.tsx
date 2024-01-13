@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { styled } from "@linaria/react";
+import Link from "next/link";
 
 import { linkColor, linkHoverColor } from "@/const/style";
 

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import Main from "./_components/Main";
 import { SearchParams } from "@/lib/utils";
+import Main from "./_components/Main";
 
 export const metadata: Metadata = {
   title: "いなにわうどん.みんな",

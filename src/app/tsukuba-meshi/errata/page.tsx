@@ -1,5 +1,5 @@
-import { Metadata } from "next";
 import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
 import Anchor from "@/components/common/Anchor";
 import PageWrapper from "@/components/common/PageWrapper";

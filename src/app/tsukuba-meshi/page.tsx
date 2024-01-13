@@ -1,8 +1,8 @@
-import { Metadata } from "next";
 import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
-import CustomList from "@/components/common/CustomList";
 import Anchor from "@/components/common/Anchor";
+import CustomList from "@/components/common/CustomList";
 import PageWrapper from "@/components/common/PageWrapper";
 
 const ImageWrapper = styled.div`

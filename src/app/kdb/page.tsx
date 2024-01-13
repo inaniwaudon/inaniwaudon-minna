@@ -1,18 +1,17 @@
-import { Metadata } from "next";
 import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
+import AnchorListItem from "@/components/common/AnchorListItem";
 import CustomList from "@/components/common/CustomList";
 import PageWrapper from "@/components/common/PageWrapper";
-import AnchorListItem from "@/components/common/AnchorListItem";
 import {
+  KdbLinkItem,
   kdbArticleLinks,
   kdbMainLinks,
   kdbPresentationLinks,
-  KdbLinkItem,
 } from "@/const/kdb";
 
 const H1 = styled.h1`
-  margin: 0 0 10px 0;
 `;
 
 const title = "KdB もどき関連リンク";

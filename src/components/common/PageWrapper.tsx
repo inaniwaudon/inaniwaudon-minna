@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import { styled } from "@linaria/react";
+import { ReactNode } from "react";
 
 import Footer from "@/components/common/Footer";
 

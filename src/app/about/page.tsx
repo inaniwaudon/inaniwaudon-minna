@@ -1,5 +1,7 @@
-import PageWrapper from "@/components/common/PageWrapper";
 import { styled } from "@linaria/react";
+
+import PageTitle from "@/components/common/PageTitle";
+import PageWrapper from "@/components/common/PageWrapper";
 
 const title = "about";
 
@@ -28,7 +30,7 @@ const Paragraph = styled.p`
 const Page = () => {
   return (
     <PageWrapper title={title} path="/about">
-      <h2>about</h2>
+      <PageTitle>about</PageTitle>
       <Main>
         <H3>趣味・好きなもの</H3>
         <Paragraph>
