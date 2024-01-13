@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import React, { ReactNode } from 'react';
-import { styled } from '@linaria/react';
+import Link from "next/link";
+import React, { ReactNode } from "react";
+import { styled } from "@linaria/react";
 
-import { linkColor, linkHoverColor, linkUnderlineColor } from '@/const/style';
+import { linkColor, linkHoverColor, linkUnderlineColor } from "@/const/style";
 
 const Content = styled.span`
   line-height: 1.3;
@@ -38,7 +38,7 @@ const Anchor = ({ href, children }: PageAnchorProps) => {
     </Content>
   );
 
-  if (href.startsWith('https://') || href.startsWith('http://')) {
+  if (href.startsWith("https://") || href.startsWith("http://")) {
     return <a href={href}>{content}</a>;
   }
   return <Link href={href}>{content}</Link>;

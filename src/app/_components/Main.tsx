@@ -1,12 +1,12 @@
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
 
-import LinkList from './LinkList';
-import Nengajo from './Nengajo';
-import logo from '@/assets/index/logo.svg';
-import CustomList from '@/components/common/CustomList';
-import Anchor from '@/components/common/Anchor';
-import { photos } from '@/const/photos';
-import { SearchParams } from '@/lib/utils';
+import LinkList from "./LinkList";
+import Nengajo from "./Nengajo";
+import logo from "@/assets/index/logo.svg";
+import CustomList from "@/components/common/CustomList";
+import Anchor from "@/components/common/Anchor";
+import { photos } from "@/const/photos";
+import { SearchParams } from "@/lib/utils";
 
 const Wrapper = styled.main`
   margin: 30px 50px;
@@ -50,7 +50,11 @@ const Main = ({ searchParams }: MainProps) => {
             <CustomList>
               {photos.map(({ id, title, data }) => (
                 <li key={id}>
-                  {!data ? <del>{title}</del> : <Anchor href={`/photos/${id}`}>{title}</Anchor>}
+                  {!data ? (
+                    <del>{title}</del>
+                  ) : (
+                    <Anchor href={`/photos/${id}`}>{title}</Anchor>
+                  )}
                 </li>
               ))}
             </CustomList>
@@ -65,10 +69,14 @@ const Main = ({ searchParams }: MainProps) => {
                 <Anchor href="/feed/feed.json">JSON</Anchor>）
               </li>
               <li>
-                <Anchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</Anchor>
+                <Anchor href="/tsukuba-meshi">
+                  つくばらーめん・飲食店情報
+                </Anchor>
               </li>
               <li>
-                <Anchor href="/tanka">/tanka（みんなで作る短歌投稿ページ）</Anchor>
+                <Anchor href="/tanka">
+                  /tanka（みんなで作る短歌投稿ページ）
+                </Anchor>
               </li>
               <li>
                 <Anchor href="/nerene">ネレネー山脈</Anchor>
@@ -79,17 +87,29 @@ const Main = ({ searchParams }: MainProps) => {
                   <CustomList>
                     <li>
                       2023 年度：
-                      <Anchor href="/class-impression/2023spring">春学期</Anchor>
+                      <Anchor href="/class-impression/2023spring">
+                        春学期
+                      </Anchor>
                     </li>
                     <li>
                       2022 年度：
-                      <Anchor href="/class-impression/2022spring">春学期</Anchor>｜
-                      <Anchor href="/class-impression/2022autumn">秋学期</Anchor>
+                      <Anchor href="/class-impression/2022spring">
+                        春学期
+                      </Anchor>
+                      ｜
+                      <Anchor href="/class-impression/2022autumn">
+                        秋学期
+                      </Anchor>
                     </li>
                     <li>
                       2021 年度：
-                      <Anchor href="/class-impression/2021spring">春学期</Anchor>｜
-                      <Anchor href="/class-impression/2021autumn">秋学期</Anchor>
+                      <Anchor href="/class-impression/2021spring">
+                        春学期
+                      </Anchor>
+                      ｜
+                      <Anchor href="/class-impression/2021autumn">
+                        秋学期
+                      </Anchor>
                     </li>
                   </CustomList>
                 </ListWrapper>
@@ -102,7 +122,7 @@ const Main = ({ searchParams }: MainProps) => {
               </li>
             </CustomList>
           </section>
-          <section style={{ marginTop: '24px' }}>
+          <section style={{ marginTop: "24px" }}>
             <CustomList>
               <li>
                 <Anchor href="https://inaniwaudon.github.io/spring-2022/">
@@ -110,7 +130,9 @@ const Main = ({ searchParams }: MainProps) => {
                 </Anchor>
               </li>
               <li>
-                <Anchor href="https://nenga.yokohama.dev">年賀状宛名作成ツール</Anchor>
+                <Anchor href="https://nenga.yokohama.dev">
+                  年賀状宛名作成ツール
+                </Anchor>
               </li>
               <li>
                 <Anchor href="https://github.com/inaniwaudon/twitter-illustration">
@@ -123,22 +145,32 @@ const Main = ({ searchParams }: MainProps) => {
                 </Anchor>
               </li>
               <li>
-                <Anchor href="https://parametric.yokohama.dev">parametric-typography</Anchor>
+                <Anchor href="https://parametric.yokohama.dev">
+                  parametric-typography
+                </Anchor>
               </li>
               <li>
-                <Anchor href="https://inaniwaudon.github.io/hoshiimo/">ほしいものリスト</Anchor>
+                <Anchor href="https://inaniwaudon.github.io/hoshiimo/">
+                  ほしいものリスト
+                </Anchor>
               </li>
               <li>
                 <Anchor href="https://exagree.netlify.app">超便乗ツール</Anchor>
               </li>
               <li>
-                <Anchor href="https://inaniwaudon.github.io/genkotsu/">げんこつ</Anchor>
+                <Anchor href="https://inaniwaudon.github.io/genkotsu/">
+                  げんこつ
+                </Anchor>
               </li>
               <li>
-                <Anchor href="https://cmap-display.pages.dev">cmap-display</Anchor>
+                <Anchor href="https://cmap-display.pages.dev">
+                  cmap-display
+                </Anchor>
               </li>
               <li>
-                <Anchor href="https://mail-segmenter.yokohama.dev">mail-segmenter</Anchor>
+                <Anchor href="https://mail-segmenter.yokohama.dev">
+                  mail-segmenter
+                </Anchor>
               </li>
             </CustomList>
           </section>

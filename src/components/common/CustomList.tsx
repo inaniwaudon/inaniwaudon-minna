@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { styled } from '@linaria/react';
+import React, { ReactNode } from "react";
+import { styled } from "@linaria/react";
 
 const Ul = styled.ul`
   margin: 0;
@@ -30,6 +30,8 @@ interface CustomListProps {
   children: ReactNode;
 }
 
-const CustomList = ({ children }: CustomListProps) => <Ul className={'List'}>{children}</Ul>;
+const CustomList = ({ children }: CustomListProps) => {
+  return <Ul className={"List"}>{children}</Ul>;
+};
 
 export default CustomList;

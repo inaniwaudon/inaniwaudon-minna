@@ -1,13 +1,13 @@
-import { Metadata } from 'next';
-import { headers } from 'next/headers';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import { Metadata } from "next";
+import { headers } from "next/headers";
 
-import Form from './Form';
-import PlusOne from './PlusOne';
-import { TankaGETResult } from '@/app/api/tanka/route';
-import AdobeFonts from '@/components/common/AdobeFonts';
-import PageWrapper from '@/components/common/PageWrapper';
-import { testTanka } from '@/const/tanka';
+import { TankaGETResult } from "@/app/api/tanka/route";
+import AdobeFonts from "@/components/common/AdobeFonts";
+import PageWrapper from "@/components/common/PageWrapper";
+import { testTanka } from "@/const/tanka";
+import Form from "./Form";
+import PlusOne from "./PlusOne";
 
 const TankaList = styled.ul`
   width: 100%;
@@ -84,18 +84,18 @@ const FootnoteSection = styled.div`
   border-top: solid 1px #ddd;
 `;
 
-const title = '/tanka';
+const title = "/tanka";
 
 export const metadata: Metadata = {
   title,
-  description: '575 あつめてたのし最上川（#haiku）',
+  description: "575 あつめてたのし最上川（#haiku）",
 };
 
 const Index = async () => {
   const headerList = headers();
-  const origin = new URL(headerList.get('x-url')!).origin;
+  const origin = new URL(headerList.get("x-url")!).origin;
   const response = await fetch(`${origin}/api/tanka`, {
-    cache: 'no-store',
+    cache: "no-store",
   });
 
   let tankas: TankaGETResult;
@@ -106,9 +106,12 @@ const Index = async () => {
   }
 
   const convertsToVertical = (str: string) =>
-    str.replace(/[A-Za-z0-9./:\-]/g, (s) => String.fromCharCode(s.charCodeAt(0) + 0xfee0));
+    str.replace(/[A-Za-z0-9./:\-]/g, (s) =>
+      String.fromCharCode(s.charCodeAt(0) + 0xfee0),
+    );
 
-  const processTanka = (tanka: string) => convertsToVertical(tanka.replaceAll(/[ 　]/g, ''));
+  const processTanka = (tanka: string) =>
+    convertsToVertical(tanka.replaceAll(/[ 　]/g, ""));
 
   return (
     <>
@@ -130,16 +133,19 @@ const Index = async () => {
                     {processTanka(tanka.tanka)}
                     <TankaAuthor>
                       {convertsToVertical(tanka.name)}（{tanka.ip}）
-                      <PlusOne tankaId={tanka.id} initialCount={tanka.plusone_count} />
+                      <PlusOne
+                        tankaId={tanka.id}
+                        initialCount={tanka.plusone_count}
+                      />
                     </TankaAuthor>
                   </>
                 );
-                return tanka.supplement && tanka.supplement.includes('1680') ? (
-                  <TankaItem1680 key={tanka.id} title={tanka.comment ?? ''}>
+                return tanka.supplement?.includes("1680") ? (
+                  <TankaItem1680 key={tanka.id} title={tanka.comment ?? ""}>
                     {content}
                   </TankaItem1680>
                 ) : (
-                  <TankaItem key={tanka.id} title={tanka.comment ?? ''}>
+                  <TankaItem key={tanka.id} title={tanka.comment ?? ""}>
                     {content}
                   </TankaItem>
                 );

@@ -1,7 +1,12 @@
-import Link from 'next/link';
-import { styled } from '@linaria/react';
+import Link from "next/link";
+import { styled } from "@linaria/react";
 
-import { SearchParams, getStringParams, isSelectedTag, tagDelimiter } from '@/lib/utils';
+import {
+  SearchParams,
+  getStringParams,
+  isSelectedTag,
+  tagDelimiter,
+} from "@/lib/utils";
 
 const CategoryList = styled.ul`
   margin: 0;
@@ -16,7 +21,7 @@ const CategoryItemCheck = styled.div<{ selected: boolean; keyColor: string }>`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: ${({ selected, keyColor }) => (selected ? '#fff' : keyColor)};
+  background: ${({ selected, keyColor }) => (selected ? "#fff" : keyColor)};
   opacity: ${({ selected }) => (selected ? 1 : 0.2)};
   transition: opacity 0.2s;
 `;
@@ -24,7 +29,7 @@ const CategoryItemCheck = styled.div<{ selected: boolean; keyColor: string }>`
 const Anchor = styled.a<{ selected: boolean; keyColor: string }>`
   height: 14px;
   line-height: 14px;
-  color: ${({ selected, keyColor }) => (selected ? '#fff' : keyColor)};
+  color: ${({ selected, keyColor }) => (selected ? "#fff" : keyColor)};
   text-decoration: none;
   font-size: 14px;
   padding: 6px 8px 8px 10px;
@@ -32,7 +37,7 @@ const Anchor = styled.a<{ selected: boolean; keyColor: string }>`
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  background: ${({ selected, keyColor }) => (selected ? keyColor : '#fff')};
+  background: ${({ selected, keyColor }) => (selected ? keyColor : "#fff")};
   display: flex;
   align-items: center;
   gap: 8px;
@@ -57,7 +62,12 @@ interface CheckboxProps {
   searchParams: SearchParams;
 }
 
-const Checkbox = ({ paramKey, tags, multiple, searchParams }: CheckboxProps) => {
+const Checkbox = ({
+  paramKey,
+  tags,
+  multiple,
+  searchParams,
+}: CheckboxProps) => {
   const stringParams = getStringParams(searchParams);
 
   const getNewParams = (tagKey: string) => {
@@ -94,13 +104,16 @@ const Checkbox = ({ paramKey, tags, multiple, searchParams }: CheckboxProps) => 
         const selected = isSelectedTag(
           tag.key,
           stringParams[paramKey],
-          !multiple ? tags[0].key : undefined
+          !multiple ? tags[0].key : undefined,
         );
         return (
           <li key={tag.key}>
             <Link href={`?${getNewParams(tag.key)}`} replace legacyBehavior>
               <Anchor selected={selected} keyColor={tag.keyColor}>
-                <CategoryItemCheck selected={selected} keyColor={tag.keyColor} />
+                <CategoryItemCheck
+                  selected={selected}
+                  keyColor={tag.keyColor}
+                />
                 {tag.label}
               </Anchor>
             </Link>

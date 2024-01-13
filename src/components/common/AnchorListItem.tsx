@@ -1,8 +1,9 @@
-import { styled } from '@linaria/react';
-import Anchor from './Anchor';
+import { styled } from "@linaria/react";
+import Anchor from "./Anchor";
 
 const Header = styled.header`
   font-size: 14px;
+  margin-bottom: 2px;
 `;
 
 const Time = styled.time`
@@ -27,14 +28,20 @@ interface AnchorListItemProps {
   content?: React.ReactNode;
 }
 
-const AnchorListItem = ({ href, title, date, description, content }: AnchorListItemProps) => {
+const AnchorListItem = ({
+  href,
+  title,
+  date,
+  description,
+  content,
+}: AnchorListItemProps) => {
   return (
     <li>
       <Header>
         {date && <Time>{date}</Time>}
         {description && (
           <>
-            {' '}
+            {" "}
             – <Description>{description}</Description>
           </>
         )}

@@ -1,7 +1,7 @@
-import { styled } from '@linaria/react';
-import { BsInstagram, BsTwitter } from 'react-icons/bs';
+import { styled } from "@linaria/react";
+import { BsInstagram, BsTwitter } from "react-icons/bs";
 
-import Anchor from '@/components/common/Anchor';
+import Anchor from "@/components/common/Anchor";
 
 const RestaurantDescription = styled.p`
   line-height: 1.8;
@@ -55,16 +55,24 @@ const Restaurant = ({
   instagram,
 }: RestaurantProps) => {
   const fields = [
-    { key: '住所', value: place, href: maps },
-    { key: '営業日時', value: date },
-    { key: 'TEL', value: tel, href: `tel:${tel}` },
-    { key: 'Web', value: web, href: web },
-    { key: <BsTwitter />, value: twitter, href: `https://twitter.com/${twitter}` },
-    { key: <BsInstagram />, value: instagram, href: `https://instagram.com/${instagram}` },
+    { key: "住所", value: place, href: maps },
+    { key: "営業日時", value: date },
+    { key: "TEL", value: tel, href: `tel:${tel}` },
+    { key: "Web", value: web, href: web },
+    {
+      key: <BsTwitter />,
+      value: twitter,
+      href: `https://twitter.com/${twitter}`,
+    },
+    {
+      key: <BsInstagram />,
+      value: instagram,
+      href: `https://instagram.com/${instagram}`,
+    },
   ];
 
   return (
-    <div style={{ margin: '16px 0' }}>
+    <div style={{ margin: "16px 0" }}>
       <h3 style={{ margin: 0 }}>{title}</h3>
       <RestaurantDescription>{description}</RestaurantDescription>
       <AddressList>
@@ -73,7 +81,11 @@ const Restaurant = ({
           .map((field, index) => (
             <AddressItem key={index}>
               <AddressItemHead>{field.key}</AddressItemHead>
-              {field.href ? <Anchor href={field.href}>{field.value}</Anchor> : field.value}
+              {field.href ? (
+                <Anchor href={field.href}>{field.value}</Anchor>
+              ) : (
+                field.value
+              )}
             </AddressItem>
           ))}
       </AddressList>

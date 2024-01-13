@@ -1,7 +1,7 @@
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
 
-import jikan from '@/assets/index/jikan.webp';
-import { links } from '@/const/index';
+import jikan from "@/assets/index/jikan.webp";
+import { links } from "@/const/index";
 
 const List = styled.ul`
   margin: 0;

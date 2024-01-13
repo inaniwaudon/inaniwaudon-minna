@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useCallback, useRef, useState } from 'react';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import { useCallback, useRef, useState } from "react";
 
-import { TankaPOSTSchema } from '@/app/api/tanka/route';
-import { tankaMaxLength } from '@/const/tanka';
+import { TankaPOSTSchema } from "@/app/api/tanka/route";
+import { tankaMaxLength } from "@/const/tanka";
 
 const FormWrapper = styled.form`
   display: flex;
@@ -69,15 +69,15 @@ const SubmitButton1680 = styled(SubmitButton)`
 const Form = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [count, setCount] = useState(0);
-  const [inputTanka, setInputTanka] = useState('');
-  const [inputName, setInputName] = useState('');
-  const [inputComment, setInputComment] = useState('');
+  const [inputTanka, setInputTanka] = useState("");
+  const [inputName, setInputName] = useState("");
+  const [inputComment, setInputComment] = useState("");
 
   const onChange = useCallback(() => {
     const value = inputRef.current?.value;
-    setInputTanka(value ?? '');
+    setInputTanka(value ?? "");
     setCount(value?.length ?? 0);
-  }, [inputRef.current, setCount]);
+  }, []);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,14 +86,14 @@ const Form = () => {
   const submit = useCallback(
     async (color1680: boolean) => {
       if (inputTanka.length === 0) {
-        alert('短歌を入力してください');
+        alert("短歌を入力してください");
         return;
       }
       if (inputTanka.length > tankaMaxLength) {
         alert(`${tankaMaxLength} 文字以内で入力してください`);
       }
       if (inputName.length === 0) {
-        alert('名前を入力してください');
+        alert("名前を入力してください");
         return;
       }
 
@@ -103,24 +103,24 @@ const Form = () => {
         comment: inputComment,
         color1680,
       };
-      const response = await fetch('/api/tanka', {
-        method: 'POST',
+      const response = await fetch("/api/tanka", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(body),
       });
 
       if (!response.ok) {
-        alert('じゃあ投稿できてないじゃん残念でした');
+        alert("じゃあ投稿できてないじゃん残念でした");
         return;
       }
 
-      alert('投稿しました！');
+      alert("投稿しました！");
       location.reload();
       return;
     },
-    [inputTanka, inputName, inputComment]
+    [inputTanka, inputName, inputComment],
   );
 
   return (
@@ -128,24 +128,48 @@ const Form = () => {
       <FormHeading>投稿</FormHeading>
       <div>
         <Label htmlFor="tanka">短歌</Label>
-        <TankaInput type="text" value={inputTanka} id="tanka" ref={inputRef} onChange={onChange} />
+        <TankaInput
+          type="text"
+          value={inputTanka}
+          id="tanka"
+          ref={inputRef}
+          onChange={onChange}
+        />
         （{count} 字）
       </div>
       <div>
         <Label htmlFor="name">なまえ</Label>
-        <Input type="text" id="name" onChange={(e) => setInputName(e.currentTarget.value)} />
+        <Input
+          type="text"
+          id="name"
+          onChange={(e) => setInputName(e.currentTarget.value)}
+        />
       </div>
       <div>
         <Label htmlFor="comment">ひとこと</Label>
-        <Input type="text" id="comment" onChange={(e) => setInputComment(e.currentTarget.value)} />
+        <Input
+          type="text"
+          id="comment"
+          onChange={(e) => setInputComment(e.currentTarget.value)}
+        />
       </div>
       <Caution>
-        <li>公序良俗に反した投稿はお控えください（IP アドレスが公開されます）。</li>
+        <li>
+          公序良俗に反した投稿はお控えください（IP アドレスが公開されます）。
+        </li>
         <li>短歌は予告なく削除される可能性があります。</li>
       </Caution>
       <SubmitWrapper>
-        <SubmitButton type="submit" value="投稿！" onClick={() => submit(false)} />
-        <SubmitButton1680 type="submit" value="1680 万色で投稿" onClick={() => submit(true)} />
+        <SubmitButton
+          type="submit"
+          value="投稿！"
+          onClick={() => submit(false)}
+        />
+        <SubmitButton1680
+          type="submit"
+          value="1680 万色で投稿"
+          onClick={() => submit(true)}
+        />
       </SubmitWrapper>
     </FormWrapper>
   );

@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
-import { styled } from '@linaria/react';
+import { Metadata } from "next";
+import { styled } from "@linaria/react";
 
-import Anchor from '@/components/common/Anchor';
-import PageWrapper from '@/components/common/PageWrapper';
+import Anchor from "@/components/common/Anchor";
+import PageWrapper from "@/components/common/PageWrapper";
 
 const Deletion = styled.div`
   background: #ffebe9;
@@ -28,7 +28,7 @@ const Addition = styled.div`
   }
 `;
 
-const title = 'つくばらーめん・飲食店情報 2023 正誤表';
+const title = "つくばらーめん・飲食店情報 2023 正誤表";
 
 export const metadata: Metadata = {
   title,

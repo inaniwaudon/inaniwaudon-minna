@@ -1,16 +1,21 @@
-import { Metadata } from 'next';
-import { styled } from '@linaria/react';
+import { Metadata } from "next";
+import { styled } from "@linaria/react";
 
-import CustomList from '@/components/common/CustomList';
-import PageWrapper from '@/components/common/PageWrapper';
-import AnchorListItem from '@/components/common/AnchorListItem';
-import { kdbArticleLinks, kdbMainLinks, kdbPresentationLinks, KdbLinkItem } from '@/const/kdb';
+import CustomList from "@/components/common/CustomList";
+import PageWrapper from "@/components/common/PageWrapper";
+import AnchorListItem from "@/components/common/AnchorListItem";
+import {
+  kdbArticleLinks,
+  kdbMainLinks,
+  kdbPresentationLinks,
+  KdbLinkItem,
+} from "@/const/kdb";
 
 const H1 = styled.h1`
   margin: 0 0 10px 0;
 `;
 
-const title = 'KdB もどき関連リンク';
+const title = "KdB もどき関連リンク";
 
 export const metadata: Metadata = {
   title,

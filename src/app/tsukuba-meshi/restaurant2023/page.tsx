@@ -1,8 +1,8 @@
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
 
-import Restaurant from './Restaurant';
-import Anchor from '@/components/common/Anchor';
-import PageWrapper from '@/components/common/PageWrapper';
+import Restaurant from "./Restaurant";
+import Anchor from "@/components/common/Anchor";
+import PageWrapper from "@/components/common/PageWrapper";
 
 const Main = styled.main`
   line-height: 1.8;
@@ -13,7 +13,7 @@ const Section = styled.section`
 `;
 
 const Page = () => {
-  const title = 'つくば おすすめ飲食店 2023';
+  const title = "つくば おすすめ飲食店 2023";
 
   return (
     <PageWrapper title={title} path="/tsukuba-meshi/restaurant2023">

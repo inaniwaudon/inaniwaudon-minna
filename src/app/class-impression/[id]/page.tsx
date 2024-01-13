@@ -1,13 +1,13 @@
-import { createElement } from 'react';
-import { styled } from '@linaria/react';
-import rehypeReact from 'rehype-react';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import { unified } from 'unified';
+import { createElement } from "react";
+import { styled } from "@linaria/react";
+import rehypeReact from "rehype-react";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
-import Anchor from '@/components/common/Anchor';
-import PageWrapper from '@/components/common/PageWrapper';
-import { classImpressions } from '@/const/class-impression';
+import Anchor from "@/components/common/Anchor";
+import PageWrapper from "@/components/common/PageWrapper";
+import { classImpressions } from "@/const/class-impression";
 
 const Wrapper = styled.div`
   max-width: 1000px;
@@ -43,7 +43,7 @@ const Main = styled.main`
 const getInformation = (id: string) =>
   classImpressions.find((item) => id === item.year + item.term)!;
 
-const termToJapanese = (term: string) => (term === 'spring' ? '春' : '秋');
+const termToJapanese = (term: string) => (term === "spring" ? "春" : "秋");
 
 const getTitle = (year: number, term: string) =>
   `${year} 年度 ${termToJapanese(term)}学期 授業感想`;

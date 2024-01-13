@@ -1,26 +1,26 @@
-import { Metadata } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import { Metadata } from "next";
+import Head from "next/head";
+import Link from "next/link";
 
-import './style.css';
-import compositions from '@/assets/max/compositions.webp';
-import g2sanserif from '@/assets/max/g2sanserif.webp';
-import logo from '@/assets/max/logo.svg';
-import maxLogo from '@/assets/max/max-logo.webp';
-import maxLogoAnalyze from '@/assets/max/max-logo-analyze.webp';
-import maxMakuhariImage from '@/assets/max/max-makuhari.webp';
-import maxRedImage from '@/assets/max/max-red.webp';
-import maxTrace from '@/assets/max/max-trace.webp';
-import scannerImage from '@/assets/max/scanner.webp';
-import scannedImage from '@/assets/max/scanned.webp';
-import tel from '@/assets/max/tel.webp';
-import thumbnail from '@/assets/max/thumbnail.webp';
-import wave from '@/assets/max/wave.webp';
-import Footer from '@/components/common/Footer';
+import compositions from "@/assets/max/compositions.webp";
+import g2sanserif from "@/assets/max/g2sanserif.webp";
+import logo from "@/assets/max/logo.svg";
+import maxLogoAnalyze from "@/assets/max/max-logo-analyze.webp";
+import maxLogo from "@/assets/max/max-logo.webp";
+import maxMakuhariImage from "@/assets/max/max-makuhari.webp";
+import maxRedImage from "@/assets/max/max-red.webp";
+import maxTrace from "@/assets/max/max-trace.webp";
+import scannedImage from "@/assets/max/scanned.webp";
+import scannerImage from "@/assets/max/scanner.webp";
+import tel from "@/assets/max/tel.webp";
+import thumbnail from "@/assets/max/thumbnail.webp";
+import wave from "@/assets/max/wave.webp";
+import Footer from "@/components/common/Footer";
+import "./style.css";
 
-const maxBrown = '#3e2500';
-const maxRed = '#c00';
+const maxBrown = "#3e2500";
+const maxRed = "#c00";
 
 const ThumbnailImage = styled.div`
   width: 100%;
@@ -167,7 +167,8 @@ const Figure = styled.figure`
 
 const FigureImage = styled.img<{ border?: boolean }>`
   width: 100%;
-  box-shadow: ${({ border }) => (border ? `0 1px 6px rgba(0, 0, 0, 0.4)` : 'none')};
+  box-shadow: ${({ border }) =>
+    border ? "0 1px 6px rgba(0, 0, 0, 0.4)" : "none"};
 `;
 
 const Caption = styled.figcaption`
@@ -189,34 +190,34 @@ const Td = styled.td`
   padding: 8px;
 `;
 
-const title = 'マックスコーヒーのパッケージ観察';
+const title = "マックスコーヒーのパッケージ観察";
 
 export const metadata: Metadata = {
   title,
   description:
-    '特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。',
+    "特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。",
   openGraph: {
     title,
     description:
-      '特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。',
-    type: 'website',
-    url: 'https://いなにわうどん.みんな/articles/max',
-    siteName: 'いなにわうどん.みんな',
-    images: 'https://いなにわうどん.みんな/assets/max-ogp.jpg',
+      "特色あるマックスコーヒーのデザインに着目し、マッ缶ことマックスコーヒー缶のパッケージの装飾を調べました。",
+    type: "website",
+    url: "https://いなにわうどん.みんな/articles/max",
+    siteName: "いなにわうどん.みんな",
+    images: "https://いなにわうどん.みんな/assets/max-ogp.jpg",
   },
   twitter: {
-    card: 'summary_large_image',
-    images: 'https://いなにわうどん.みんな/assets/max-ogp.jpg',
+    card: "summary_large_image",
+    images: "https://いなにわうどん.みんな/assets/max-ogp.jpg",
   },
 };
 
 const links = [
-  { label: 'データ集め', id: 'data' },
-  { label: 'ロゴ', id: 'logo' },
-  { label: '波線', id: 'wave' },
-  { label: '正面', id: 'front' },
-  { label: '側面', id: 'side' },
-  { label: '成分表示', id: 'components' },
+  { label: "データ集め", id: "data" },
+  { label: "ロゴ", id: "logo" },
+  { label: "波線", id: "wave" },
+  { label: "正面", id: "front" },
+  { label: "側面", id: "side" },
+  { label: "成分表示", id: "components" },
 ];
 
 const Page = () => {
@@ -224,7 +225,11 @@ const Page = () => {
     <>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="crossOrigin" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="crossOrigin"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;800&display=swap"
           rel="stylesheet"
@@ -272,8 +277,8 @@ const Page = () => {
                 </Paragraph>
                 <List>
                   <li>
-                    マックスコーヒーの 500ml ペットボトルのフィルムを剥がし 600 dpi
-                    でスキャンしたデータ（図 1、図
+                    マックスコーヒーの 500ml ペットボトルのフィルムを剥がし 600
+                    dpi でスキャンしたデータ（図 1、図
                     2）：フィルムに若干の歪みがあり怪しい点も存在するが、少なくともインターネット上のデータよりは緻密なデータが得られそう。
                   </li>
                   <li>
@@ -290,7 +295,8 @@ const Page = () => {
                 </Figure>
                 <Paragraph>
                   缶のサイズを計測したところ高さ 125 mm、Φ51 mm、円周が 168 mm
-                  でした。これらのデータを基にトレースしたデータを図 3 に示します。
+                  でした。これらのデータを基にトレースしたデータを図 3
+                  に示します。
                 </Paragraph>
                 <Figure>
                   <FigureImage src={maxTrace.src} alt="" border={true} />
@@ -302,12 +308,13 @@ const Page = () => {
                 <Paragraph>
                   正面と背面の 2 箇所に「MAX COFFEE」のロゴ（図
                   4）が印刷されています。恐らくオリジナルのロゴと推測されますが、書体の分類としてはサンセリフ体に該当し、Gotham
-                  等に通ずる幾何学的なデザインです。正面のロゴのサイズを計測したところ、50 mm × 26.7
-                  mm でした。
+                  等に通ずる幾何学的なデザインです。正面のロゴのサイズを計測したところ、50
+                  mm × 26.7 mm でした。
                 </Paragraph>
                 <Paragraph>
                   全体に目を向けると、「MAX」の天地（上下）が完全に揃っているのに対し、「COFFEE」の部分では
-                  C、O が上下のラインから僅かに飛び出すような形で配置されています。水平方向では、C
+                  C、O
+                  が上下のラインから僅かに飛び出すような形で配置されています。水平方向では、C
                   のカーブが M
                   の左端よりも出っ張っていますが、右側はおおよそ垂直で揃えられています。
                 </Paragraph>
@@ -338,9 +345,11 @@ const Page = () => {
                     C：円よりも中央部分に膨らみを持つ。下部に重心が置かれており、カーブも僅かに長い。終端部は垂直。
                   </li>
                   <li>
-                    O：上下左右対称。やや横長で、比率は内側のパスで 16:15、外側のパスは 100:99。C
-                    と同様に中央部分が膨らんでおり、特に内側のパスの膨らみが強い。Illustrator で内側
-                    -13 %、外側 -4 % 程度の「膨張」効果を掛けた円に近似する。
+                    O：上下左右対称。やや横長で、比率は内側のパスで
+                    16:15、外側のパスは 100:99。C
+                    と同様に中央部分が膨らんでおり、特に内側のパスの膨らみが強い。Illustrator
+                    で内側 -13 %、外側 -4 %
+                    程度の「膨張」効果を掛けた円に近似する。
                   </li>
                   <li>
                     F：完全な直線だが、縦画と横画の比率は 6:5
@@ -357,15 +366,16 @@ const Page = () => {
                 </Figure>
                 <Paragraph>
                   なおインターネット上の画像と手元の実物を比較すると、現在発売されている缶・ペットボトル双方のパッケージにおいて、旧来よりも
-                  <strong>カーニングが広めに取られている</strong>ことが判明しました。現行のものは
-                  FFEE に比べて CO の字間がやや狭く、逆に「OF」は空きすぎなようにも思えます。
+                  <strong>カーニングが広めに取られている</strong>
+                  ことが判明しました。現行のものは FFEE に比べて CO
+                  の字間がやや狭く、逆に「OF」は空きすぎなようにも思えます。
                 </Paragraph>
               </section>
               <section id="wave">
                 <H2>謎の曲線？ 波線</H2>
                 <Paragraph>
-                  ロゴ横に長さ 95.5 mm の波線（図 6）が 4 箇所あしらわれ、1 本の波線に対して周期が 3
-                  回（背面は 3
+                  ロゴ横に長さ 95.5 mm の波線（図 6）が 4 箇所あしらわれ、1
+                  本の波線に対して周期が 3 回（背面は 3
                   回、縮尺も異なる）ずつ存在します。サイン波のような風貌ですがサイン波ではなく、線幅も一定ではありません。1
                   箇所につき、外側、中央、内側と 3
                   つの曲線が存在しますが、これらの形状はすべて異なります。さらには、1
@@ -380,25 +390,30 @@ const Page = () => {
                 <H2>正面</H2>
                 <Paragraph>
                   正面には「MAX
-                  COFFEE」「GEOGIA」ロゴのほかに「練乳入り」「マックスコーヒー」「コーヒー飲料」と 3
-                  つの文字が記載され、左右に 38 mm
+                  COFFEE」「GEOGIA」ロゴのほかに「練乳入り」「マックスコーヒー」「コーヒー飲料」と
+                  3 つの文字が記載され、左右に 38 mm
                   の間隔で先述した波線が並びます。パッケージ全体で使用書体はモリサワの「
                   <strong>
-                    <Anchor href="https://www.morisawa.co.jp/fonts/specimen/1473">新ゴ</Anchor>
+                    <Anchor href="https://www.morisawa.co.jp/fonts/specimen/1473">
+                      新ゴ
+                    </Anchor>
                   </strong>
-                  」ファミリーに統一されていて、「練乳入り」「コーヒー飲料」の部分はそれぞれ 新ゴ
-                  B、新ゴ M です。「練乳入り」の部分はベタ組みにトラッキングを -20
-                  程度掛けてあり、カーニングは詰められていません。「1 本あたり 120
-                  kcal」は和文が新ゴ、欧文は Helvetica Condensed
+                  」ファミリーに統一されていて、「練乳入り」「コーヒー飲料」の部分はそれぞれ
+                  新ゴ B、新ゴ M
+                  です。「練乳入り」の部分はベタ組みにトラッキングを -20
+                  程度掛けてあり、カーニングは詰められていません。「1 本あたり
+                  120 kcal」は和文が新ゴ、欧文は Helvetica Condensed
                   で、天地を揃えるべく和文が級下げされています。テキストの囲み罫は矩形と楕円を組み合わせたデザインです。
                 </Paragraph>
                 <MaxCoffeeH3>マックスコーヒー</MaxCoffeeH3>
                 <Paragraph>
                   「マックスコーヒー」の文字（図 7）は 31.5 mm × 5 mm
-                  の赤い矩形で囲われており、下部から 21.7 mm の位置に配置されています。書体は新ゴ B
-                  の 16 Q で、適切にカーニングが詰められているほか、「コ<strong>ー</strong>ヒ
-                  <strong>ー</strong>
-                  」の長音の部分を 70% 程度の長体にする等、文字組みに工夫が凝らされています。
+                  の赤い矩形で囲われており、下部から 21.7 mm
+                  の位置に配置されています。書体は新ゴ B の 16 Q
+                  で、適切にカーニングが詰められているほか、「コ
+                  <strong>ー</strong>ヒ<strong>ー</strong>
+                  」の長音の部分を 70%
+                  程度の長体にする等、文字組みに工夫が凝らされています。
                 </Paragraph>
                 <Figure>
                   <FigureImage src={maxRedImage.src} alt="MAX COFFEE" />
@@ -410,13 +425,14 @@ const Page = () => {
                 <Paragraph>
                   側面には、注意表記、バーコード（JAN
                   コード）、「リサイクルしてね」のロゴ等が縦方向に並んでおり、狭いスペースながらに大量の情報が詰め込まれています。注意書きは最終行まで両端揃えの所謂「カンパコ組み」で、約物は行中・行末に関わらず半角です。全体的に長体気味ですが、項目ごとに本文よりも小さなサイズで付された
-                  ● のマーカーは正体に見えます。注意事項の背後のザブトンは角が若干丸まっています。
+                  ●
+                  のマーカーは正体に見えます。注意事項の背後のザブトンは角が若干丸まっています。
                 </Paragraph>
                 <Paragraph>
-                  「リサイクルしてね」（図 8） は タイプバンク（旧リョービ）の{' '}
+                  「リサイクルしてね」（図 8） は タイプバンク（旧リョービ）の{" "}
                   <Anchor href="https://www.typebank.co.jp/fontfamily/g2sansserif/">
                     G2 サンセリフ-B
-                  </Anchor>{' '}
+                  </Anchor>{" "}
                   をベースとしたロゴタイプで、コカ・コーラ社で共通のシンボルが使用されています。「リサイクル」の部分は微調整が加えられ、元のフォントと若干エレメントが異なるほか、全体的に少し太めに強調されて見えます
                   <Anchor href="#footnote1">
                     <sup>[1]</sup>
@@ -430,7 +446,9 @@ const Page = () => {
                     src={g2sanserif.src}
                     alt="G2 サンセリフ リサイクルしてね リサイクルしてね"
                   />
-                  <Caption>図 8：「リサイクルしてね」のロゴタイプと G2 サンセリフ</Caption>
+                  <Caption>
+                    図 8：「リサイクルしてね」のロゴタイプと G2 サンセリフ
+                  </Caption>
                 </Figure>
               </section>
               <section id="components">
@@ -473,7 +491,7 @@ const Page = () => {
                       <Th>詳細</Th>
                     </tr>
                     <tr>
-                      <Td style={{ color: '#fff', background: '#000' }}>黒</Td>
+                      <Td style={{ color: "#fff", background: "#000" }}>黒</Td>
                       <Td>
                         「MAX
                         COFFEE」「GEOGIA」のロゴ、「練乳入り」「コーヒー飲料」の文字、バーコードの文字色。恐らく
@@ -482,20 +500,24 @@ const Page = () => {
                     </tr>
                     <tr>
                       <Td>黄</Td>
-                      <Td>マックスコーヒーといえばの背景色。C35, Y100 程度。</Td>
+                      <Td>
+                        マックスコーヒーといえばの背景色。C35, Y100 程度。
+                      </Td>
                     </tr>
                     <tr>
-                      <Td style={{ color: '#fff', background: maxRed }}>赤</Td>
+                      <Td style={{ color: "#fff", background: maxRed }}>赤</Td>
                       <Td>
                         「マックスコーヒー」「軽く振り、少し待ってから、あけてください」のザブトン。
                       </Td>
                     </tr>
                     <tr>
-                      <Td style={{ color: '#fff', background: maxBrown }}>茶</Td>
+                      <Td style={{ color: "#fff", background: maxBrown }}>
+                        茶
+                      </Td>
                       <Td>波線や成分表示部分の背景色。</Td>
                     </tr>
                     <tr>
-                      <Td style={{ background: '#fff' }}>白</Td>
+                      <Td style={{ background: "#fff" }}>白</Td>
                       <Td>
                         実は意外に少ない。バーコードの背景色と背後の「ほっとする甘みがお楽しみいただける……」の文言のみ。
                       </Td>
