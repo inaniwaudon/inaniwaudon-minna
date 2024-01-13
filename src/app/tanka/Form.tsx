@@ -4,7 +4,7 @@ import { styled } from "@linaria/react";
 import { useCallback, useRef, useState } from "react";
 
 import { TankaPOSTSchema } from "@/app/api/tanka/route";
-import { tankaMaxLength } from "@/const/tanka";
+import { tankaMaxLength } from "@/app/tanka/tanka";
 
 const Wrapper = styled.form`
   display: flex;

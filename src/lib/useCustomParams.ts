@@ -1,19 +1,32 @@
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { SearchParams } from "./utils";
 
+// Server Components として実装すると切り替え時にページリロードが走るため、Client Components として実装
 export const useCustomParams = (
   paramKey: string,
   multiple: boolean,
   defaultTag?: string,
+  defaultParams?: SearchParams,
 ) => {
   const params = useSearchParams();
-  const [data, setData] = useState<Record<string, string>>({});
+
+  const initialData: Record<string, string> = {};
+  if (defaultParams) {
+    for (const key in defaultParams) {
+      const value = defaultParams[key];
+      if (typeof value === "string") {
+        initialData[key] = value;
+      }
+    }
+  }
+
+  const [data, setData] = useState<Record<string, string>>(initialData);
 
   const tagDelimiter = "+";
 
   const isSelectedTag = useCallback(
     (tag: string) => {
-      console.log(data[paramKey]);
       if (!data[paramKey]) {
         return tag === defaultTag;
       }

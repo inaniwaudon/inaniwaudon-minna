@@ -1,7 +1,7 @@
 import { Database } from "@cloudflare/d1";
 import { NextRequest, NextResponse } from "next/server";
 
-import { Tanka, tankaMaxLength } from "@/const/tanka";
+import { Tanka, tankaMaxLength } from "@/app/tanka/tanka";
 
 declare global {
   namespace NodeJS {

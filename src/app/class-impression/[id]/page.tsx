@@ -7,7 +7,7 @@ import { unified } from "unified";
 
 import Anchor from "@/components/common/Anchor";
 import PageWrapper from "@/components/common/PageWrapper";
-import { classImpressions } from "@/const/class-impression";
+import { classImpressions } from "../_data";
 
 const Wrapper = styled.div`
   max-width: 1000px;
@@ -22,7 +22,6 @@ const Nav = styled.div`
 
 const Main = styled.main`
   max-width: 600px;
-  line-height: 1.6;
   text-align: justify;
 
   h2 {

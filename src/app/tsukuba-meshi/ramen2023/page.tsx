@@ -1,15 +1,13 @@
 import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
+import { ramenInfos } from "@/app/tsukuba-meshi/ramen2023/ramen";
 import Restaurant from "@/app/tsukuba-meshi/restaurant2023/Restaurant";
 import Anchor from "@/components/common/Anchor";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
-import { ramenInfos } from "@/const/restaurant";
-import { Metadata } from "next";
 
-const Main = styled.main`
-  line-height: 1.8;
-`;
+const Main = styled.main``;
 
 const Section = styled.section`
   border-top: solid 1px #ccc;

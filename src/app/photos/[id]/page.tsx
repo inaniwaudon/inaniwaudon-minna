@@ -2,9 +2,9 @@ import { styled } from "@linaria/react";
 import { Metadata } from "next";
 
 import AdobeFonts from "@/components/common/AdobeFonts";
-import { photos } from "@/const/photos";
 import { PhotoInfo } from "@/lib/photo";
 import { SearchParams } from "@/lib/utils";
+import { photos } from "../_data";
 import Main from "./Main";
 
 const Footer = styled.footer`

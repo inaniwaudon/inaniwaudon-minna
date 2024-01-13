@@ -1,8 +1,10 @@
 import { styled } from "@linaria/react";
 
-const Heading = styled.h3`
+const Heading = styled.h2`
   color: #444;
   font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 8px;
   padding-left: 16px;
   border-left: solid 1px #333;
 `;

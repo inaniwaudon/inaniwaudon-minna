@@ -1,9 +1,9 @@
 import { styled } from "@linaria/react";
 import { Metadata } from "next";
 
+import { nerene } from "@/app/nerene/nerene";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
-import { nerene } from "@/const/nerene";
 import Canvas from "./Canvas";
 
 const Tweet = styled.div`

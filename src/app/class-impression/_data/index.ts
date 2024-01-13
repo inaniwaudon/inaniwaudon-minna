@@ -1,7 +1,7 @@
-import markdown2021spring from "./2021spring.md";
 import markdown2021autumn from "./2021autumn.md";
-import markdown2022spring from "./2022spring.md";
+import markdown2021spring from "./2021spring.md";
 import markdown2022autumn from "./2022autumn.md";
+import markdown2022spring from "./2022spring.md";
 import markdown2023spring from "./2023spring.md";
 
 export const classImpressions: {

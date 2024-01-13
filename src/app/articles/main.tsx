@@ -2,12 +2,13 @@
 
 import { styled } from "@linaria/react";
 
+import { ArticleTag, articleLinks, articleTags } from "@/app/articles/articles";
 import AnchorListItem from "@/components/common/AnchorListItem";
 import Checkbox from "@/components/common/Checkbox";
 import CustomList from "@/components/common/CustomList";
 import PageTitle from "@/components/common/PageTitle";
-import { ArticleTag, articleLinks, articleTags } from "@/const/articles";
 import { useCustomParams } from "@/lib/useCustomParams";
+import { SearchParams } from "@/lib/utils";
 import { useMemo } from "react";
 
 const TopHeader = styled.header`
@@ -24,10 +25,11 @@ const tags = [
 
 interface MainProps {
   title: string;
+  searchParams: SearchParams;
 }
 
-export const Main = ({ title }: MainProps) => {
-  const customParams = useCustomParams("tag", true);
+export const Main = ({ title, searchParams }: MainProps) => {
+  const customParams = useCustomParams("tag", true, undefined, searchParams);
   const { isSelectedTag } = customParams;
 
   const selectedTags: ArticleTag[] = articleTags.filter((tag) =>
