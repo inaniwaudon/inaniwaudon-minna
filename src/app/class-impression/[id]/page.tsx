@@ -5,7 +5,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
-import PageAnchor from '@/components/common/PageAnchor';
+import Anchor from '@/components/common/Anchor';
 import PageWrapper from '@/components/common/PageWrapper';
 import { classImpressions } from '@/const/class-impression';
 
@@ -22,6 +22,7 @@ const Nav = styled.div`
 
 const Main = styled.main`
   max-width: 600px;
+  line-height: 1.6;
 
   h2 {
     font-size: 1.3em;
@@ -72,9 +73,9 @@ const Page = ({ params }: PageProps) => {
               const id = item.year + item.term;
               return (
                 <span key={id}>
-                  <PageAnchor href={id}>
+                  <Anchor href={id}>
                     {item.year} 年度 {termToJapanese(item.term)}学期
-                  </PageAnchor>
+                  </Anchor>
                 </span>
               );
             })}

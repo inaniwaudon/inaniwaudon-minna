@@ -7,7 +7,7 @@ import { linkColor, linkHoverColor, linkUnderlineColor } from '@/const/style';
 const Content = styled.span`
   line-height: 1.3;
   color: ${linkColor};
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -30,7 +30,7 @@ interface PageAnchorProps {
   children: ReactNode;
 }
 
-const PageAnchor = ({ href, children }: PageAnchorProps) => {
+const Anchor = ({ href, children }: PageAnchorProps) => {
   const content = (
     <Content>
       {children}
@@ -44,4 +44,4 @@ const PageAnchor = ({ href, children }: PageAnchorProps) => {
   return <Link href={href}>{content}</Link>;
 };
 
-export default PageAnchor;
+export default Anchor;

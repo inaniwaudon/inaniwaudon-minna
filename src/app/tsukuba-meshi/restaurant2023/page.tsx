@@ -1,7 +1,7 @@
 import { styled } from '@linaria/react';
 
 import Restaurant from './Restaurant';
-import PageAnchor from '@/components/common/PageAnchor';
+import Anchor from '@/components/common/Anchor';
 import PageWrapper from '@/components/common/PageWrapper';
 
 const Main = styled.main`
@@ -22,10 +22,10 @@ const Page = () => {
         <p>
           数多の飲食店が立ち並ぶ筑波大学周辺。安くてボリューム満点のお店から個性溢れる店舗まで、「ここなら間違いなし」な飲食店をラインナップ！
           <br />
-          <PageAnchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</PageAnchor>
+          <Anchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</Anchor>
         </p>
         <p>
-          <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
+          <Anchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</Anchor>
         </p>
         <Restaurant
           title="cox"

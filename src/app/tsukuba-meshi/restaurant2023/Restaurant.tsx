@@ -1,7 +1,7 @@
 import { styled } from '@linaria/react';
 import { BsInstagram, BsTwitter } from 'react-icons/bs';
 
-import PageAnchor from '@/components/common/PageAnchor';
+import Anchor from '@/components/common/Anchor';
 
 const RestaurantDescription = styled.p`
   line-height: 1.8;
@@ -73,7 +73,7 @@ const Restaurant = ({
           .map((field, index) => (
             <AddressItem key={index}>
               <AddressItemHead>{field.key}</AddressItemHead>
-              {field.href ? <PageAnchor href={field.href}>{field.value}</PageAnchor> : field.value}
+              {field.href ? <Anchor href={field.href}>{field.value}</Anchor> : field.value}
             </AddressItem>
           ))}
       </AddressList>

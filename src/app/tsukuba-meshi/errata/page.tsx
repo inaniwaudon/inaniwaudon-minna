@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { styled } from '@linaria/react';
 
-import PageAnchor from '@/components/common/PageAnchor';
+import Anchor from '@/components/common/Anchor';
 import PageWrapper from '@/components/common/PageWrapper';
 
 const Deletion = styled.div`
@@ -40,7 +40,7 @@ const Page = () => {
       <main>
         <h1>{title}</h1>
         <p>
-          <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
+          <Anchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</Anchor>
         </p>
         <p>RanRan</p>
         <Deletion>ミニ BIG 丼（550円）</Deletion>

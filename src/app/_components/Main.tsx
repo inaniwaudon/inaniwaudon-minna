@@ -4,7 +4,7 @@ import LinkList from './LinkList';
 import Nengajo from './Nengajo';
 import logo from '@/assets/index/logo.svg';
 import CustomList from '@/components/common/CustomList';
-import PageAnchor from '@/components/common/PageAnchor';
+import Anchor from '@/components/common/Anchor';
 import { photos } from '@/const/photos';
 import { SearchParams } from '@/lib/utils';
 
@@ -50,11 +50,7 @@ const Main = ({ searchParams }: MainProps) => {
             <CustomList>
               {photos.map(({ id, title, data }) => (
                 <li key={id}>
-                  {!data ? (
-                    <del>{title}</del>
-                  ) : (
-                    <PageAnchor href={`/photos/${id}`}>{title}</PageAnchor>
-                  )}
+                  {!data ? <del>{title}</del> : <Anchor href={`/photos/${id}`}>{title}</Anchor>}
                 </li>
               ))}
             </CustomList>
@@ -63,19 +59,19 @@ const Main = ({ searchParams }: MainProps) => {
             <h2>文章など</h2>
             <CustomList>
               <li>
-                <PageAnchor href="/articles">書いたもの・こと</PageAnchor>（
-                <PageAnchor href="/feed/feed.xml">RSS</PageAnchor>・
-                <PageAnchor href="feed/atom.xml">Atom</PageAnchor>・
-                <PageAnchor href="/feed/feed.json">JSON</PageAnchor>）
+                <Anchor href="/articles">書いたもの・こと</Anchor>（
+                <Anchor href="/feed/feed.xml">RSS</Anchor>・
+                <Anchor href="feed/atom.xml">Atom</Anchor>・
+                <Anchor href="/feed/feed.json">JSON</Anchor>）
               </li>
               <li>
-                <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
+                <Anchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</Anchor>
               </li>
               <li>
-                <PageAnchor href="/tanka">/tanka（みんなで作る短歌投稿ページ）</PageAnchor>
+                <Anchor href="/tanka">/tanka（みんなで作る短歌投稿ページ）</Anchor>
               </li>
               <li>
-                <PageAnchor href="/nerene">ネレネー山脈</PageAnchor>
+                <Anchor href="/nerene">ネレネー山脈</Anchor>
               </li>
               <li>
                 授業感想
@@ -83,17 +79,17 @@ const Main = ({ searchParams }: MainProps) => {
                   <CustomList>
                     <li>
                       2023 年度：
-                      <PageAnchor href="/class-impression/2023spring">春学期</PageAnchor>
+                      <Anchor href="/class-impression/2023spring">春学期</Anchor>
                     </li>
                     <li>
                       2022 年度：
-                      <PageAnchor href="/class-impression/2022spring">春学期</PageAnchor>｜
-                      <PageAnchor href="/class-impression/2022autumn">秋学期</PageAnchor>
+                      <Anchor href="/class-impression/2022spring">春学期</Anchor>｜
+                      <Anchor href="/class-impression/2022autumn">秋学期</Anchor>
                     </li>
                     <li>
                       2021 年度：
-                      <PageAnchor href="/class-impression/2021spring">春学期</PageAnchor>｜
-                      <PageAnchor href="/class-impression/2021autumn">秋学期</PageAnchor>
+                      <Anchor href="/class-impression/2021spring">春学期</Anchor>｜
+                      <Anchor href="/class-impression/2021autumn">秋学期</Anchor>
                     </li>
                   </CustomList>
                 </ListWrapper>
@@ -102,43 +98,47 @@ const Main = ({ searchParams }: MainProps) => {
                 <del>Twight 関連リンク（工事中）</del>
               </li>
               <li>
-                <PageAnchor href="/kdb">KdB もどき関連リンク</PageAnchor>
+                <Anchor href="/kdb">KdB もどき関連リンク</Anchor>
               </li>
             </CustomList>
           </section>
           <section style={{ marginTop: '24px' }}>
             <CustomList>
               <li>
-                <PageAnchor href="https://inaniwaudon.github.io/spring-2022/">
+                <Anchor href="https://inaniwaudon.github.io/spring-2022/">
                   桜が舞い上がるページ
-                </PageAnchor>
+                </Anchor>
               </li>
               <li>
-                <PageAnchor href="https://inaniwaudon.github.io/nenga-atena/">
-                  年賀状宛名作成ツール
-                </PageAnchor>
+                <Anchor href="https://nenga.yokohama.dev">年賀状宛名作成ツール</Anchor>
               </li>
               <li>
-                <PageAnchor href="https://github.com/inaniwaudon/twitter-illustration">
+                <Anchor href="https://github.com/inaniwaudon/twitter-illustration">
                   twitter-illustration
-                </PageAnchor>
+                </Anchor>
               </li>
               <li>
-                <PageAnchor href="https://inaniwaudon.github.io/hoshiimo/">
-                  ほしいものリスト
-                </PageAnchor>
+                <Anchor href="https://github.com/inaniwaudon/illustrator-ruby">
+                  illustrator-ruby
+                </Anchor>
               </li>
               <li>
-                <PageAnchor href="https://exagree.netlify.app">超便乗ツール</PageAnchor>
+                <Anchor href="https://parametric.yokohama.dev">parametric-typography</Anchor>
               </li>
               <li>
-                <PageAnchor href="https://inaniwaudon.github.io/genkotsu/">げんこつ</PageAnchor>
+                <Anchor href="https://inaniwaudon.github.io/hoshiimo/">ほしいものリスト</Anchor>
               </li>
               <li>
-                <PageAnchor href="https://cmap-display.pages.dev">cmap-display</PageAnchor>
+                <Anchor href="https://exagree.netlify.app">超便乗ツール</Anchor>
               </li>
               <li>
-                <PageAnchor href="https://mail-segmenter.yokohama.dev">mail-segmenter</PageAnchor>
+                <Anchor href="https://inaniwaudon.github.io/genkotsu/">げんこつ</Anchor>
+              </li>
+              <li>
+                <Anchor href="https://cmap-display.pages.dev">cmap-display</Anchor>
+              </li>
+              <li>
+                <Anchor href="https://mail-segmenter.yokohama.dev">mail-segmenter</Anchor>
               </li>
             </CustomList>
           </section>

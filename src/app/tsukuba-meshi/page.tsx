@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { styled } from '@linaria/react';
 
 import CustomList from '@/components/common/CustomList';
-import PageAnchor from '@/components/common/PageAnchor';
+import Anchor from '@/components/common/Anchor';
 import PageWrapper from '@/components/common/PageWrapper';
 
 const ImageWrapper = styled.div`
@@ -48,24 +48,22 @@ const Page = () => {
         <CustomList>
           <li>
             つくば おすすめ飲食店 2023：
-            <PageAnchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</PageAnchor>｜
-            <PageAnchor href="/tsukuba-meshi/restaurant2023">HTML 版</PageAnchor>
+            <Anchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</Anchor>｜
+            <Anchor href="/tsukuba-meshi/restaurant2023">HTML 版</Anchor>
           </li>
           <li>
             つくば らーめん 10 選 2023：
-            <PageAnchor href="/docs/tsukuba-ramen2023.pdf">PDF 版（1.2 MB）</PageAnchor>｜
-            <PageAnchor href="/tsukuba-meshi/ramen2023">HTML 版</PageAnchor>
+            <Anchor href="/docs/tsukuba-ramen2023.pdf">PDF 版（1.2 MB）</Anchor>｜
+            <Anchor href="/tsukuba-meshi/ramen2023">HTML 版</Anchor>
           </li>
           <li>
-            <PageAnchor href="/tsukuba-meshi/errata">正誤表</PageAnchor>
+            <Anchor href="/tsukuba-meshi/errata">正誤表</Anchor>
           </li>
         </CustomList>
         <h2>2022 年度版</h2>
         <CustomList>
           <li>
-            <PageAnchor href="/docs/tsukuba-ramen2022.pdf">
-              つくば らーめん 10 選（PDF, 1.5 MB）
-            </PageAnchor>
+            <Anchor href="/docs/tsukuba-ramen2022.pdf">つくば らーめん 10 選（PDF, 1.5 MB）</Anchor>
           </li>
         </CustomList>
       </main>
