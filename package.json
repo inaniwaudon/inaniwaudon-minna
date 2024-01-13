@@ -6,7 +6,8 @@
     "dev": "npx next dev",
     "build": "npx next build",
     "start": "npx next start",
-    "lint": "npx next lint",
+    "lint": "biome lint ./src --max-diagnostics=200",
+    "format": "biome format ./src --write --max-diagnostics=200",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:watch": "npx @cloudflare/next-on-pages --watch",
     "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat --local=false"
@@ -29,6 +30,7 @@
     "sharp": "^0.32.6"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.5.1",
     "@cloudflare/next-on-pages": "^1.7.3",
     "@types/argparse": "^2.0.12",
     "@types/node": "18.11.18",

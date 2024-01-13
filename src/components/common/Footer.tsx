@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import Link from "next/link";
 
-import { linkColor, linkHoverColor } from '@/const/style';
+import { linkColor, linkHoverColor } from "@/const/style";
 
 const Wrapper = styled.footer`
   font-size: 14px;

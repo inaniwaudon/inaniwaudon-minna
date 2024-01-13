@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import { useEffect, useState } from "react";
 
-import { PhotoList } from './page';
-import { PhotoInfo } from '@/lib/photo';
-import { SearchParams, shuffle } from '@/lib/utils';
+import { PhotoInfo } from "@/lib/photo";
+import { SearchParams, shuffle } from "@/lib/utils";
+import { PhotoList } from "./page";
 
 const Wrapper = styled.main`
   min-height: 100vh;
@@ -105,19 +105,22 @@ const Main = ({ photos, searchParams }: MainProps) => {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
     setColumnCount(Math.max(Math.floor(window.innerWidth / 350), 2));
   }, []);
 
   useEffect(() => {
-    const isUnsorted = 'unsort' in searchParams;
+    const isUnsorted = "unsort" in searchParams;
     setSortedPhotos(isUnsorted ? photos : shuffle(photos));
-  }, [searchParams]);
+  }, [searchParams, photos]);
 
   useEffect(() => {
-    const allTotalHeight = photos.reduce((previous, photo) => previous + calculateHeight(photo), 0);
+    const allTotalHeight = photos.reduce(
+      (previous, photo) => previous + calculateHeight(photo),
+      0,
+    );
     let totalHeight = 0;
     const newPhotos: PhotoList[] = [[]];
     for (const photo of sortedPhotos) {
@@ -129,7 +132,7 @@ const Main = ({ photos, searchParams }: MainProps) => {
       }
     }
     setPhotoColumns(newPhotos);
-  }, [sortedPhotos, imgWidth]);
+  }, [photos, sortedPhotos, columnCount, calculateHeight]);
 
   return (
     <>

@@ -1,8 +1,9 @@
-import { Metadata } from 'next';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
-import PageAnchor from '@/components/common/PageAnchor';
-import PageWrapper from '@/components/common/PageWrapper';
+import Anchor from "@/components/common/Anchor";
+import PageTitle from "@/components/common/PageTitle";
+import PageWrapper from "@/components/common/PageWrapper";
 
 const Deletion = styled.div`
   background: #ffebe9;
@@ -28,7 +29,7 @@ const Addition = styled.div`
   }
 `;
 
-const title = 'つくばらーめん・飲食店情報 2023 正誤表';
+const title = "つくばらーめん・飲食店情報 2023 正誤表";
 
 export const metadata: Metadata = {
   title,
@@ -38,9 +39,9 @@ const Page = () => {
   return (
     <PageWrapper title={title} path="/tsukuba-meshi/eratta">
       <main>
-        <h1>{title}</h1>
+        <PageTitle>{title}</PageTitle>
         <p>
-          <PageAnchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</PageAnchor>
+          <Anchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</Anchor>
         </p>
         <p>RanRan</p>
         <Deletion>ミニ BIG 丼（550円）</Deletion>

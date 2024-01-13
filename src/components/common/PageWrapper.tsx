@@ -1,7 +1,6 @@
-import { ReactNode } from 'react';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
 
-import Footer from '@/components/common/Footer';
+import Footer from "@/components/common/Footer";
 
 const Wrapper = styled.div`
   margin: 30px 50px;
@@ -14,16 +13,18 @@ const Wrapper = styled.div`
 interface PageWrapperProps {
   title: string;
   path: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-const PageWrapper = ({ title, children, path }: PageWrapperProps) => (
-  <>
-    <Wrapper>
-      {children}
-      <Footer title={title} path={path} />
-    </Wrapper>
-  </>
-);
+const PageWrapper = ({ title, children, path }: PageWrapperProps) => {
+  return (
+    <>
+      <Wrapper>
+        {children}
+        <Footer title={title} path={path} />
+      </Wrapper>
+    </>
+  );
+};
 
 export default PageWrapper;

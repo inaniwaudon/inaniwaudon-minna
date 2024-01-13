@@ -1,9 +1,11 @@
-import { Metadata } from 'next';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
-import CustomList from '@/components/common/CustomList';
-import PageAnchor from '@/components/common/PageAnchor';
-import PageWrapper from '@/components/common/PageWrapper';
+import Anchor from "@/components/common/Anchor";
+import CustomList from "@/components/common/CustomList";
+import H2 from "@/components/common/H2";
+import PageTitle from "@/components/common/PageTitle";
+import PageWrapper from "@/components/common/PageWrapper";
 
 const ImageWrapper = styled.div`
   width: 100%;
@@ -23,19 +25,20 @@ const Image = styled.img`
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const title = 'つくばらーめん・飲食店情報';
+const title = "つくばらーめん・飲食店情報";
 
 export const metadata: Metadata = {
   title,
+  description: "激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に",
 };
 
 const Page = () => {
   return (
     <PageWrapper title={title} path="/tsukuba-meshi">
       <main>
-        <h1>{title}</h1>
+        <PageTitle>{title}</PageTitle>
         <p>激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に</p>
-        <h2>2023 年度版</h2>
+        <H2>2023 年度版</H2>
         <p>画像クリックで拡大します</p>
         <ImageWrapper>
           <ImageAnchor href="/docs/tsukuba-meshi2023.webp">
@@ -48,24 +51,24 @@ const Page = () => {
         <CustomList>
           <li>
             つくば おすすめ飲食店 2023：
-            <PageAnchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</PageAnchor>｜
-            <PageAnchor href="/tsukuba-meshi/restaurant2023">HTML 版</PageAnchor>
+            <Anchor href="/docs/tsukuba-meshi2023.pdf">PDF 版（3.4 MB）</Anchor>
+            ｜<Anchor href="/tsukuba-meshi/restaurant2023">HTML 版</Anchor>
           </li>
           <li>
             つくば らーめん 10 選 2023：
-            <PageAnchor href="/docs/tsukuba-ramen2023.pdf">PDF 版（1.2 MB）</PageAnchor>｜
-            <PageAnchor href="/tsukuba-meshi/ramen2023">HTML 版</PageAnchor>
+            <Anchor href="/docs/tsukuba-ramen2023.pdf">PDF 版（1.2 MB）</Anchor>
+            ｜<Anchor href="/tsukuba-meshi/ramen2023">HTML 版</Anchor>
           </li>
           <li>
-            <PageAnchor href="/tsukuba-meshi/errata">正誤表</PageAnchor>
+            <Anchor href="/tsukuba-meshi/errata">正誤表</Anchor>
           </li>
         </CustomList>
-        <h2>2022 年度版</h2>
+        <H2>2022 年度版</H2>
         <CustomList>
           <li>
-            <PageAnchor href="/docs/tsukuba-ramen2022.pdf">
+            <Anchor href="/docs/tsukuba-ramen2022.pdf">
               つくば らーめん 10 選（PDF, 1.5 MB）
-            </PageAnchor>
+            </Anchor>
           </li>
         </CustomList>
       </main>

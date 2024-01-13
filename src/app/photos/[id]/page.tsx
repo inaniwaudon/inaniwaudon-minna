@@ -1,11 +1,11 @@
-import { Metadata } from 'next';
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
-import Main from './Main';
-import AdobeFonts from '@/components/common/AdobeFonts';
-import { photos } from '@/const/photos';
-import { PhotoInfo } from '@/lib/photo';
-import { SearchParams } from '@/lib/utils';
+import AdobeFonts from "@/components/common/AdobeFonts";
+import { photos } from "@/const/photos";
+import { PhotoInfo } from "@/lib/photo";
+import { SearchParams } from "@/lib/utils";
+import Main from "./Main";
 
 const Footer = styled.footer`
   width: calc(100% - 80px);
@@ -95,19 +95,21 @@ const Page = ({ params, searchParams }: PageProps) => {
       <Footer>
         <h1>
           {title.substring(0, title.length - 1)}
-          {['）', '」', '』', '】', '］', '〉', '》', '。', '、'].includes(titleLast) ? (
+          {["）", "」", "』", "】", "］", "〉", "》", "。", "、"].includes(
+            titleLast,
+          ) ? (
             <Half>）</Half>
           ) : (
             <span>{titleLast}</span>
           )}
         </h1>
-        <p className={'date'}>{date}</p>
+        <p className={"date"}>{date}</p>
         <Copyright>
           <small>
-            © いなにわうどん. ページ中の写真は{' '}
+            © いなにわうどん. ページ中の写真は{" "}
             <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
               クリエイティブ・コモンズ 表示 4.0 国際 (CC BY 4.0)
-            </a>{' '}
+            </a>{" "}
             の下で頒布しています<Half>。</Half>
           </small>
         </Copyright>
