@@ -2,7 +2,7 @@
 
 import { styled } from "@linaria/react";
 
-import { maxReactionCount } from "@/const/tanka";
+import { maxReactionCount } from "@/app/tanka/tanka";
 import { useCallback, useState } from "react";
 
 import {

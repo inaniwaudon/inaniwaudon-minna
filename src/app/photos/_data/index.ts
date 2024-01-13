@@ -1,9 +1,9 @@
+import { PhotoData } from "@/lib/photo";
 import data2022kyushu from "./2022kyushu";
 import data2023hokkaido from "./2023hokkaido";
 import data210301ysfh from "./210301ysfh";
 import dataKirigirisu from "./kirigirisu";
 import dataKiroro from "./kiroro";
-import { PhotoData } from "@/lib/photo";
 
 interface Photo {
   id: string;

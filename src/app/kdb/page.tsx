@@ -1,15 +1,16 @@
 import { Metadata } from "next";
 
-import AnchorListItem from "@/components/common/AnchorListItem";
-import CustomList from "@/components/common/CustomList";
-import PageTitle from "@/components/common/PageTitle";
-import PageWrapper from "@/components/common/PageWrapper";
 import {
   KdbLinkItem,
   kdbArticleLinks,
   kdbMainLinks,
   kdbPresentationLinks,
-} from "@/const/kdb";
+} from "@/app/kdb/kdb";
+import AnchorListItem from "@/components/common/AnchorListItem";
+import CustomList from "@/components/common/CustomList";
+import H2 from "@/components/common/H2";
+import PageTitle from "@/components/common/PageTitle";
+import PageWrapper from "@/components/common/PageWrapper";
 
 const title = "KdB もどき関連リンク";
 
@@ -41,9 +42,9 @@ const Page = () => {
       <main>
         <PageTitle>{title}</PageTitle>
         <LinkCollection links={kdbMainLinks} />
-        <h2>発表</h2>
+        <H2>発表</H2>
         <LinkCollection links={kdbPresentationLinks} />
-        <h2>記事掲載など</h2>
+        <H2>記事掲載など</H2>
         <LinkCollection links={kdbArticleLinks} />
       </main>
     </PageWrapper>

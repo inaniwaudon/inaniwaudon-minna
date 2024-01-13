@@ -1,21 +1,12 @@
 import { styled } from "@linaria/react";
-import Link from "next/link";
 
-import { linkColor, linkHoverColor } from "@/const/style";
+import Anchor from "./Anchor";
 
 const Wrapper = styled.footer`
   font-size: 14px;
   margin-top: 20px;
   padding-top: 10px;
   border-top: solid 1px rgba(0, 0, 0, 0.2);
-
-  a {
-    color: ${linkColor};
-
-    &:hover {
-      color: ${linkHoverColor};
-    }
-  }
 `;
 
 const Split = styled.span`
@@ -31,11 +22,12 @@ const Footer = ({ title, path }: FooterProps) => {
   return (
     <Wrapper>
       現在のページ：
-      <Link href={path}>
+      <Anchor href={path}>
         {title}（{path}）
-      </Link>
+      </Anchor>
       <Split>｜</Split>
-      <Link href="/">トップページ</Link> - <a href="#">ページ上部</a>
+      <Anchor href="/">トップページ</Anchor> –{" "}
+      <Anchor href="#">ページ上部</Anchor>
     </Wrapper>
   );
 };

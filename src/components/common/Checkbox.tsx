@@ -6,7 +6,7 @@ import { useCustomParams } from "@/lib/useCustomParams";
 
 const CategoryList = styled.ul`
   margin: 0;
-  padding: 4px 0 0 0;
+  padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -22,13 +22,13 @@ const CategoryItemCheck = styled.div<{ selected: boolean; keyColor: string }>`
   transition: opacity 0.2s;
 `;
 
-const Anchor = styled.a<{ selected: boolean; keyColor: string }>`
+const Anchor = styled.button<{ selected: boolean; keyColor: string }>`
   height: 14px;
   line-height: 14px;
   color: ${({ selected, keyColor }) => (selected ? "#fff" : keyColor)};
   text-decoration: none;
   font-size: 14px;
-  padding: 6px 8px 8px 10px;
+  padding: 6px 8px 6px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;

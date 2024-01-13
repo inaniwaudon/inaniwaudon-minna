@@ -5,7 +5,6 @@ import Anchor from "@/components/common/Anchor";
 import H3 from "@/components/common/H3";
 
 const RestaurantDescription = styled.p`
-  line-height: 1.8;
   margin: 0;
 `;
 

@@ -4,7 +4,7 @@ import Anchor from "./Anchor";
 
 const Header = styled.header`
   font-size: 14px;
-  margin-bottom: 2px;
+  margin-bottom: -2px;
 `;
 
 const Time = styled.time`
@@ -18,7 +18,7 @@ const Description = styled.span`
 `;
 
 const Content = styled.div`
-  margin-top: 4px;
+  margin-top: 2px;
 `;
 
 interface AnchorListItemProps {

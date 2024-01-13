@@ -5,7 +5,7 @@ const Ul = styled.ul`
   padding: 0 0 0 18px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 
   li {
     list-style: none;

@@ -1,3 +1,5 @@
+// /script/compress-image.ts からも参照される
+
 export interface PhotoData {
   title: string;
   date: string;

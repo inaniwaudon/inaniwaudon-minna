@@ -6,16 +6,13 @@ import Checkbox from "@/components/common/Checkbox";
 import H2 from "@/components/common/H2";
 import { nengajo } from "@/const";
 import { useCustomParams } from "@/lib/useCustomParams";
+import { SearchParams } from "@/lib/utils";
 
 const Header = styled.header`
-  margin-bottom: 20px;
+  margin: 6px 0 20px 0;
   display: flex;
   align-items: center;
   gap: 20px;
-`;
-
-const H3 = styled.h3`
-  margin: 0;
 `;
 
 const ImgWrapper = styled.div<{ displays: boolean }>`
@@ -25,9 +22,15 @@ const ImgWrapper = styled.div<{ displays: boolean }>`
 const Img = styled.img`
   max-width: 500px;
   max-height: 500px;
+  transition: box-shadow 0.2s ease;
 
   @media screen and (max-width: 500px) {
     max-width: 100%;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;  
   }
 `;
 
@@ -37,8 +40,12 @@ const tags = [
   { key: "2022", label: "2022", keyColor: "#2656f3" },
 ];
 
-const Nengajo = () => {
-  const customParams = useCustomParams("year", false, "2024");
+interface NengajoProps {
+  searchParams: SearchParams;
+}
+
+const Nengajo = ({ searchParams }: NengajoProps) => {
+  const customParams = useCustomParams("year", false, "2024", searchParams);
   const { isSelectedTag } = customParams;
 
   const yearStr = ["2024", "2023", "2022"].find((year) => isSelectedTag(year));
@@ -47,12 +54,18 @@ const Nengajo = () => {
   return (
     <div>
       <Header>
-        <H2>年賀状</H2>
+        <H2 style={{ margin: "0" }}>年賀状</H2>
         <Checkbox paramKey="year" tags={tags} customParams={customParams} />
       </Header>
       {nengajo.map((item) => (
         <ImgWrapper displays={item.year === year} key={item.year}>
-          <Img src={item.src} alt={item.alt} />
+          <a href={item.src}>
+            <Img
+              src={item.src}
+              alt={item.alt}
+              loading={item.year === year ? "eager" : "lazy"}
+            />
+          </a>
         </ImgWrapper>
       ))}
     </div>

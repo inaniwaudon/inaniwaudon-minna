@@ -1,10 +1,10 @@
 import { styled } from "@linaria/react";
 
+import { photos } from "@/app/photos/_data";
 import logo from "@/assets/index/logo2.svg";
 import Anchor from "@/components/common/Anchor";
 import CustomList from "@/components/common/CustomList";
 import H2 from "@/components/common/H2";
-import { photos } from "@/const/photos";
 import { SearchParams } from "@/lib/utils";
 import LinkList from "./LinkList";
 import Nengajo from "./Nengajo";
@@ -195,7 +195,7 @@ const Main = ({ searchParams }: MainProps) => {
           </section>
         </TopContent>
         <TopContent>
-          <Nengajo />
+          <Nengajo searchParams={searchParams} />
           <LinkList />
           <p>
             <Anchor href="/about">about</Anchor>

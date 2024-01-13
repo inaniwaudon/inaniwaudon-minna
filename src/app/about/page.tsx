@@ -8,7 +8,6 @@ import PageWrapper from "@/components/common/PageWrapper";
 
 const Main = styled.main`
   max-width: 800px;
-  line-height: 1.6;
 `;
 
 const Paragraph = styled.p`
@@ -53,7 +52,7 @@ const Page = () => {
         <Paragraph>
           エレファントカシマシ「今宵の月のように」「桜の花、舞い上がる道を」、ABBA「Thank
           you for the music」、中島みゆき「EAST
-          ASIA」、尾崎豊「Forget-me-not」雪ノ下雪乃（早見沙織）＆由比ヶ浜結衣（東山奈央）「エブリデイワールド」ほか
+          ASIA」、尾崎豊「Forget-me-not」、雪ノ下雪乃（早見沙織）＆由比ヶ浜結衣（東山奈央）「エブリデイワールド」ほか
         </Paragraph>
         <H3>好きな季節</H3>
         <Paragraph>春に次いで秋</Paragraph>

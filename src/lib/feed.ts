@@ -1,6 +1,6 @@
 import { Feed, FeedOptions } from "feed";
 
-import { articleLinks } from "@/const/articles";
+import { articleLinks } from "@/app/articles/articles";
 
 const directory = "feed";
 

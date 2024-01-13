@@ -3,7 +3,7 @@
 import { styled } from "@linaria/react";
 import { useEffect, useRef } from "react";
 
-import { nerene } from "@/const/nerene";
+import { nerene } from "@/app/nerene/nerene";
 
 export const CanvasBody = styled.canvas`
   width: 100%;

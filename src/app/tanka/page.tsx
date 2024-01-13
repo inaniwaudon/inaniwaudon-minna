@@ -7,9 +7,9 @@ import AdobeFonts from "@/components/common/AdobeFonts";
 import H2 from "@/components/common/H2";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
-import { testTanka } from "@/const/tanka";
 import Form from "./Form";
 import PlusOne from "./PlusOne";
+import { testTanka } from "./tanka";
 
 const TankaList = styled.ul`
   width: 100%;

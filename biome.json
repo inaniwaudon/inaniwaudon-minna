@@ -15,7 +15,8 @@
         "noArrayIndexKey": "off"
       },
       "correctness": {
-        "noSwitchDeclarations": "off"
+        "noSwitchDeclarations": "off",
+        "noUnusedVariables": "error"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
