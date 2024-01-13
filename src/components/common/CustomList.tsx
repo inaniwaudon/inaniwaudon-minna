@@ -1,5 +1,4 @@
 import { styled } from "@linaria/react";
-import React, { ReactNode } from "react";
 
 const Ul = styled.ul`
   margin: 0;
@@ -27,7 +26,7 @@ const Ul = styled.ul`
 `;
 
 interface CustomListProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const CustomList = ({ children }: CustomListProps) => {

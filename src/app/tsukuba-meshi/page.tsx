@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import Anchor from "@/components/common/Anchor";
 import CustomList from "@/components/common/CustomList";
+import H2 from "@/components/common/H2";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 
@@ -37,7 +38,7 @@ const Page = () => {
       <main>
         <PageTitle>{title}</PageTitle>
         <p>激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に</p>
-        <h2>2023 年度版</h2>
+        <H2>2023 年度版</H2>
         <p>画像クリックで拡大します</p>
         <ImageWrapper>
           <ImageAnchor href="/docs/tsukuba-meshi2023.webp">
@@ -62,7 +63,7 @@ const Page = () => {
             <Anchor href="/tsukuba-meshi/errata">正誤表</Anchor>
           </li>
         </CustomList>
-        <h2>2022 年度版</h2>
+        <H2>2022 年度版</H2>
         <CustomList>
           <li>
             <Anchor href="/docs/tsukuba-ramen2022.pdf">

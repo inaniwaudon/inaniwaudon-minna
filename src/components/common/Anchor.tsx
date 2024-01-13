@@ -1,6 +1,5 @@
 import { styled } from "@linaria/react";
 import Link from "next/link";
-import React, { ReactNode } from "react";
 
 import { linkColor, linkHoverColor, linkUnderlineColor } from "@/const/style";
 
@@ -27,7 +26,7 @@ const Line = styled.span`
 
 interface PageAnchorProps {
   href: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const Anchor = ({ href, children }: PageAnchorProps) => {

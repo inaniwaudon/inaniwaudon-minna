@@ -22,6 +22,9 @@
       },
       "a11y": {
         "useValidAnchor": "off"
+      },
+      "nursery": {
+        "noUnusedImports": "error"
       }
     }
   },

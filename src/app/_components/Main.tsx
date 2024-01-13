@@ -1,14 +1,16 @@
 import { styled } from "@linaria/react";
 
-import LinkList from "./LinkList";
-import Nengajo from "./Nengajo";
-import logo from "@/assets/index/logo.svg";
-import CustomList from "@/components/common/CustomList";
+import logo from "@/assets/index/logo2.svg";
 import Anchor from "@/components/common/Anchor";
+import CustomList from "@/components/common/CustomList";
+import H2 from "@/components/common/H2";
 import { photos } from "@/const/photos";
 import { SearchParams } from "@/lib/utils";
+import LinkList from "./LinkList";
+import Nengajo from "./Nengajo";
 
 const Wrapper = styled.main`
+  max-width: 1100px;
   margin: 30px 50px;
 
   @media screen and (max-width: 500px) {
@@ -18,6 +20,7 @@ const Wrapper = styled.main`
 
 const Top = styled.div`
   display: flex;
+  justify-content: space-between;
   gap: 50px;
 
   @media screen and (max-width: 1100px) {
@@ -27,10 +30,22 @@ const Top = styled.div`
 
 const H1 = styled.h1`
   margin: 0;
+
+  img {
+    max-width: min(450px, 100%);
+  }
 `;
 
 const ListWrapper = styled.div`
   margin-top: 8px;
+`;
+
+const Divider = styled.span`
+  width: 24px;
+  height: 1px;
+  margin: 4px 16px;
+  display:inline-block;
+  background: #666;
 `;
 
 interface MainProps {
@@ -46,7 +61,7 @@ const Main = ({ searchParams }: MainProps) => {
             <img src={logo.src} height={36} alt="いなにわうどん.みんな" />
           </H1>
           <section>
-            <h2>写真</h2>
+            <H2>写真</H2>
             <CustomList>
               {photos.map(({ id, title, data }) => (
                 <li key={id}>
@@ -60,7 +75,7 @@ const Main = ({ searchParams }: MainProps) => {
             </CustomList>
           </section>
           <section>
-            <h2>文章など</h2>
+            <H2>文章など</H2>
             <CustomList>
               <li>
                 <Anchor href="/articles">書いたもの・こと</Anchor>（
@@ -178,6 +193,15 @@ const Main = ({ searchParams }: MainProps) => {
         <div>
           <Nengajo searchParams={searchParams} />
           <LinkList />
+          <p>
+            <Anchor href="/about">about</Anchor>
+            <Divider />
+            ソースコードを{" "}
+            <Anchor href="https://github.com/inaniwaudon/inaniwaudon-minna">
+              GitHub
+            </Anchor>{" "}
+            で公開しています
+          </p>
         </div>
       </Top>
     </Wrapper>

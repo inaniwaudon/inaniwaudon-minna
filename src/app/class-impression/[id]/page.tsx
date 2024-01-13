@@ -23,15 +23,26 @@ const Nav = styled.div`
 const Main = styled.main`
   max-width: 600px;
   line-height: 1.6;
+  text-align: justify;
 
   h2 {
-    font-size: 1.3em;
+    color: #444;
+    font-size: 20px;
     padding-left: 16px;
-    border-left: solid 2px #ccc;
+    border-left: solid 1px #333;
   }
 
   h3 {
-    font-size: 1em;
+    color: #333;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 4px 0;
+  
+    &:before {
+      color: #ccc;
+      content: '# ';
+      margin-right: 4px;
+    }
   }
 
   ul {

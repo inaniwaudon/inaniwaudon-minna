@@ -1,4 +1,3 @@
-import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Metadata } from "next";
 import Head from "next/head";

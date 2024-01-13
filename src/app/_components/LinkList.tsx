@@ -1,6 +1,7 @@
 import { styled } from "@linaria/react";
 
 import jikan from "@/assets/index/jikan.webp";
+import H2 from "@/components/common/H2";
 import { links } from "@/const/index";
 
 const List = styled.ul`
@@ -78,7 +79,7 @@ const Bunner = styled.div`
 const LinkList = () => {
   return (
     <section>
-      <h2>外部リンク</h2>
+      <H2>外部リンク</H2>
       <List>
         {links.map(({ color, name, url, platform, icon }) => (
           <Link key={url}>

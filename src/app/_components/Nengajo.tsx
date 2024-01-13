@@ -1,6 +1,7 @@
 import { styled } from "@linaria/react";
 
 import Checkbox from "@/components/common/Checkbox";
+import H2 from "@/components/common/H2";
 import { nengajo } from "@/const";
 import { SearchParams, getStringParams } from "@/lib/utils";
 
@@ -47,7 +48,7 @@ const Nengajo = ({ searchParams }: NengajoProps) => {
   return (
     <div>
       <Header>
-        <H3>年賀状</H3>
+        <H2>年賀状</H2>
         <Checkbox
           paramKey="year"
           tags={tags}

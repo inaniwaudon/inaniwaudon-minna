@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 
 import { TankaGETResult } from "@/app/api/tanka/route";
 import AdobeFonts from "@/components/common/AdobeFonts";
+import H2 from "@/components/common/H2";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import { testTanka } from "@/const/tanka";
@@ -154,6 +155,7 @@ const Index = async () => {
             </TankaList>
           </section>
           <FormSection>
+            <H2>投稿</H2>
             <Form />
           </FormSection>
           <FootnoteSection>

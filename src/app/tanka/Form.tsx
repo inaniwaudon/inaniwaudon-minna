@@ -6,14 +6,10 @@ import { useCallback, useRef, useState } from "react";
 import { TankaPOSTSchema } from "@/app/api/tanka/route";
 import { tankaMaxLength } from "@/const/tanka";
 
-const FormWrapper = styled.form`
+const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   gap: 8px;
-`;
-
-const FormHeading = styled.h2`
-  margin: 0;
 `;
 
 const Label = styled.label`
@@ -124,8 +120,7 @@ const Form = () => {
   );
 
   return (
-    <FormWrapper onSubmit={onSubmit}>
-      <FormHeading>投稿</FormHeading>
+    <Wrapper onSubmit={onSubmit}>
       <div>
         <Label htmlFor="tanka">短歌</Label>
         <TankaInput
@@ -171,7 +166,7 @@ const Form = () => {
           onClick={() => submit(true)}
         />
       </SubmitWrapper>
-    </FormWrapper>
+    </Wrapper>
   );
 };
 

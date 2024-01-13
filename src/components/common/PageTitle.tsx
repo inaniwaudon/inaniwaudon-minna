@@ -1,7 +1,8 @@
 import { styled } from "@linaria/react";
 
 const H1 = styled.h1`
-margin: 0 0 10px 0;
+  font-size: 28px;
+  margin: 0 0 10px 0;
 `;
 
 interface PageTitleProps {

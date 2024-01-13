@@ -2,6 +2,7 @@ import { styled } from "@linaria/react";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 
 import Anchor from "@/components/common/Anchor";
+import H3 from "@/components/common/H3";
 
 const RestaurantDescription = styled.p`
   line-height: 1.8;
@@ -73,7 +74,7 @@ const Restaurant = ({
 
   return (
     <div style={{ margin: "16px 0" }}>
-      <h3 style={{ margin: 0 }}>{title}</h3>
+      <H3 style={{ margin: 0 }}>{title}</H3>
       <RestaurantDescription>{description}</RestaurantDescription>
       <AddressList>
         {fields

@@ -1,28 +1,17 @@
 import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
+import Anchor from "@/components/common/Anchor";
+import H3 from "@/components/common/H3";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
-import { Metadata } from "next";
 
 const Main = styled.main`
   max-width: 800px;
   line-height: 1.6;
 `;
 
-const H3 = styled.h3`
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0 0 4px 0;
-
-  &:before {
-    color: #ccc;
-    content: '# ';
-    margin-right: 4px;
-  }
-`;
-
 const Paragraph = styled.p`
-  font-size: 14px;
   margin: 0 0 12px 0;
 `;
 
@@ -62,13 +51,20 @@ const Page = () => {
         </Paragraph>
         <H3>好きな曲</H3>
         <Paragraph>
-          エレファントカシマシ「桜の花、舞い上がる道を」 ABBA「Thank you for the
-          music」中島みゆき「EAST ASIA」尾崎豊「Forget-me-not」ほか
+          エレファントカシマシ「今宵の月のように」「桜の花、舞い上がる道を」、ABBA「Thank
+          you for the music」、中島みゆき「EAST
+          ASIA」、尾崎豊「Forget-me-not」雪ノ下雪乃（早見沙織）＆由比ヶ浜結衣（東山奈央）「エブリデイワールド」ほか
         </Paragraph>
         <H3>好きな季節</H3>
-        <Paragraph>春・秋</Paragraph>
+        <Paragraph>春に次いで秋</Paragraph>
         <H3>ひとこと</H3>
-        <Paragraph>最近カメラを買いました。春が待ち遠しいです。</Paragraph>
+        <Paragraph>
+          最近{" "}
+          <Anchor href="https://fujifilm-x.com/ja-jp/products/cameras/x-s20/">
+            カメラ
+          </Anchor>{" "}
+          を買いました。春が待ち遠しいです。
+        </Paragraph>
       </Main>
     </PageWrapper>
   );
