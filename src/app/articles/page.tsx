@@ -4,16 +4,13 @@ import { Metadata } from "next";
 import AnchorListItem from "@/components/common/AnchorListItem";
 import Checkbox from "@/components/common/Checkbox";
 import CustomList from "@/components/common/CustomList";
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import { ArticleTag, articleLinks, articleTags } from "@/const/articles";
 import { SearchParams, getStringParams, isSelectedTag } from "@/lib/utils";
 
 const TopHeader = styled.header`
   margin-bottom: 16px;
-`;
-
-const H1 = styled.h1`
-  margin: 0 0 8px 0;
 `;
 
 const tags = [
@@ -54,7 +51,7 @@ const Page = ({ searchParams }: PageProps) => {
     <PageWrapper title={title} path="/articles">
       <main>
         <TopHeader>
-          <H1>{title}</H1>
+          <PageTitle>{title}</PageTitle>
           <Checkbox
             paramKey="tag"
             tags={tags}

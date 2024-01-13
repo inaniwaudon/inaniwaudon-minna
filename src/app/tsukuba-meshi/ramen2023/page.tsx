@@ -2,8 +2,10 @@ import { styled } from "@linaria/react";
 
 import Restaurant from "@/app/tsukuba-meshi/restaurant2023/Restaurant";
 import Anchor from "@/components/common/Anchor";
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import { ramenInfos } from "@/const/restaurant";
+import { Metadata } from "next";
 
 const Main = styled.main`
   line-height: 1.8;
@@ -13,13 +15,19 @@ const Section = styled.section`
   border-top: solid 1px #ccc;
 `;
 
-const Page = () => {
-  const title = "つくば らーめん 10 選 2023";
+const title = "つくば らーめん 10 選 2023";
 
+export const metadata: Metadata = {
+  title: title,
+  description:
+    "らーめん激戦区・つくばのおすすめらーめん 10 選をご紹介！！ 王道から隠れた名店まで、東西南北の厳選らーめんを独断と偏見でお届けします。",
+};
+
+const Page = () => {
   return (
     <PageWrapper title={title} path="/tsukuba-meshi/ramen2023">
       <Main>
-        <h1>{title}</h1>
+        <PageTitle>{title}</PageTitle>
         <p>
           らーめん激戦区・つくばのおすすめらーめん 10 選をご紹介！！
           王道から隠れた名店まで、東西南北の厳選らーめんを独断と偏見でお届けします。

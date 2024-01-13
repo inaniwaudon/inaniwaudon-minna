@@ -1,6 +1,7 @@
 import { styled } from "@linaria/react";
 import { Metadata } from "next";
 
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import { nerene } from "@/const/nerene";
 import Canvas from "./Canvas";
@@ -34,13 +35,14 @@ const title = "ネレネー山脈";
 
 export const metadata: Metadata = {
   title,
+  description: "氷河かもしれない",
 };
 
 const Page = () => {
   return (
     <PageWrapper title={title} path="/nerene">
       <main>
-        <h1>ネレネー山脈</h1>
+        <PageTitle>ネレネー山脈</PageTitle>
         <p>氷河かもしれない</p>
         <Canvas />
         <TweetList>

@@ -1,6 +1,8 @@
 import { styled } from "@linaria/react";
+import { Metadata } from "next";
 
 import Anchor from "@/components/common/Anchor";
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import Restaurant from "./Restaurant";
 
@@ -12,13 +14,19 @@ const Section = styled.section`
   border-top: solid 1px #ccc;
 `;
 
-const Page = () => {
-  const title = "つくば おすすめ飲食店 2023";
+const title = "つくば おすすめ飲食店 2023";
 
+export const metadata: Metadata = {
+  title: title,
+  description:
+    "数多の飲食店が立ち並ぶ筑波大学周辺。安くてボリューム満点のお店から個性溢れる店舗まで、「ここなら間違いなし」な飲食店をラインナップ！",
+};
+
+const Page = () => {
   return (
     <PageWrapper title={title} path="/tsukuba-meshi/restaurant2023">
       <Main>
-        <h1>{title}</h1>
+        <PageTitle>{title}</PageTitle>
         <p>
           数多の飲食店が立ち並ぶ筑波大学周辺。安くてボリューム満点のお店から個性溢れる店舗まで、「ここなら間違いなし」な飲食店をラインナップ！
           <br />

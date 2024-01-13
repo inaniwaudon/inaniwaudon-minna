@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import Anchor from "@/components/common/Anchor";
 import CustomList from "@/components/common/CustomList";
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 
 const ImageWrapper = styled.div`
@@ -27,13 +28,14 @@ const title = "つくばらーめん・飲食店情報";
 
 export const metadata: Metadata = {
   title,
+  description: "激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に",
 };
 
 const Page = () => {
   return (
     <PageWrapper title={title} path="/tsukuba-meshi">
       <main>
-        <h1>{title}</h1>
+        <PageTitle>{title}</PageTitle>
         <p>激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に</p>
         <h2>2023 年度版</h2>
         <p>画像クリックで拡大します</p>

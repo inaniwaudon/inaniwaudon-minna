@@ -2,8 +2,7 @@ import { styled } from "@linaria/react";
 
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
-
-const title = "about";
+import { Metadata } from "next";
 
 const Main = styled.main`
   max-width: 800px;
@@ -26,6 +25,12 @@ const Paragraph = styled.p`
   font-size: 14px;
   margin: 0 0 12px 0;
 `;
+
+const title = "about";
+
+export const metadata: Metadata = {
+  title: title,
+};
 
 const Page = () => {
   return (

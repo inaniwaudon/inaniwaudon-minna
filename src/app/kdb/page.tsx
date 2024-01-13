@@ -1,8 +1,8 @@
-import { styled } from "@linaria/react";
 import { Metadata } from "next";
 
 import AnchorListItem from "@/components/common/AnchorListItem";
 import CustomList from "@/components/common/CustomList";
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import {
   KdbLinkItem,
@@ -10,9 +10,6 @@ import {
   kdbMainLinks,
   kdbPresentationLinks,
 } from "@/const/kdb";
-
-const H1 = styled.h1`
-`;
 
 const title = "KdB もどき関連リンク";
 
@@ -42,7 +39,7 @@ const Page = () => {
   return (
     <PageWrapper title={title} path="/kdb">
       <main>
-        <H1>{title}</H1>
+        <PageTitle>{title}</PageTitle>
         <LinkCollection links={kdbMainLinks} />
         <h2>発表</h2>
         <LinkCollection links={kdbPresentationLinks} />

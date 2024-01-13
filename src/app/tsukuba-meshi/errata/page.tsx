@@ -2,6 +2,7 @@ import { styled } from "@linaria/react";
 import { Metadata } from "next";
 
 import Anchor from "@/components/common/Anchor";
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 
 const Deletion = styled.div`
@@ -38,7 +39,7 @@ const Page = () => {
   return (
     <PageWrapper title={title} path="/tsukuba-meshi/eratta">
       <main>
-        <h1>{title}</h1>
+        <PageTitle>{title}</PageTitle>
         <p>
           <Anchor href="/tsukuba-meshi">つくばらーめん・飲食店情報</Anchor>
         </p>

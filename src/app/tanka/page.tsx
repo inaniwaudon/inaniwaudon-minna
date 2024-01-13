@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 
 import { TankaGETResult } from "@/app/api/tanka/route";
 import AdobeFonts from "@/components/common/AdobeFonts";
+import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import { testTanka } from "@/const/tanka";
 import Form from "./Form";
@@ -118,7 +119,7 @@ const Index = async () => {
       <AdobeFonts />
       <PageWrapper title={title} path="/tanka">
         <main>
-          <h1>/tanka</h1>
+          <PageTitle>/tanka</PageTitle>
           <p>
             575 あつめてたのし最上川（#haiku）
             <sup>
