@@ -1,9 +1,11 @@
+"use client";
+
 import { styled } from "@linaria/react";
 
 import Checkbox from "@/components/common/Checkbox";
 import H2 from "@/components/common/H2";
 import { nengajo } from "@/const";
-import { SearchParams, getStringParams } from "@/lib/utils";
+import { useCustomParams } from "@/lib/useCustomParams";
 
 const Header = styled.header`
   margin-bottom: 20px;
@@ -35,26 +37,18 @@ const tags = [
   { key: "2022", label: "2022", keyColor: "#2656f3" },
 ];
 
-interface NengajoProps {
-  searchParams: SearchParams;
-}
+const Nengajo = () => {
+  const customParams = useCustomParams("year", false, "2024");
+  const { isSelectedTag } = customParams;
 
-const Nengajo = ({ searchParams }: NengajoProps) => {
-  const stringParams = getStringParams(searchParams);
-  const year = ["2024", "2023", "2022"].includes(stringParams.year)
-    ? parseInt(stringParams.year)
-    : 2024;
+  const yearStr = ["2024", "2023", "2022"].find((year) => isSelectedTag(year));
+  const year = yearStr ? parseInt(yearStr) : 2024;
 
   return (
     <div>
       <Header>
         <H2>年賀状</H2>
-        <Checkbox
-          paramKey="year"
-          tags={tags}
-          multiple={false}
-          searchParams={searchParams}
-        />
+        <Checkbox paramKey="year" tags={tags} customParams={customParams} />
       </Header>
       {nengajo.map((item) => (
         <ImgWrapper displays={item.year === year} key={item.year}>

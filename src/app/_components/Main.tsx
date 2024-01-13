@@ -28,6 +28,10 @@ const Top = styled.div`
   }
 `;
 
+const TopContent = styled.div`
+  flex: 1;
+`;
+
 const H1 = styled.h1`
   margin: 0;
 
@@ -56,7 +60,7 @@ const Main = ({ searchParams }: MainProps) => {
   return (
     <Wrapper>
       <Top>
-        <div>
+        <TopContent>
           <H1>
             <img src={logo.src} height={36} alt="いなにわうどん.みんな" />
           </H1>
@@ -189,9 +193,9 @@ const Main = ({ searchParams }: MainProps) => {
               </li>
             </CustomList>
           </section>
-        </div>
-        <div>
-          <Nengajo searchParams={searchParams} />
+        </TopContent>
+        <TopContent>
+          <Nengajo />
           <LinkList />
           <p>
             <Anchor href="/about">about</Anchor>
@@ -202,7 +206,7 @@ const Main = ({ searchParams }: MainProps) => {
             </Anchor>{" "}
             で公開しています
           </p>
-        </div>
+        </TopContent>
       </Top>
     </Wrapper>
   );

@@ -43,7 +43,7 @@ const Page = () => {
         <Paragraph>C#、JavaScript、TypeScript、PDF、OpenType</Paragraph>
         <H3>好きな書体</H3>
         <Paragraph>
-          石井中明朝オールドかな（MMOKL）、艶かな、ゴナ、本蘭明朝、新ゴ、見出しゴMB31、文游明朝体、ネオツデイ、解ルナ
+          石井中明朝オールドスタイルかな（MMOKL）、艶かな、ゴナ、本蘭明朝、新ゴ、見出ゴMB31、文游明朝体、ネオツデイ、解ルナ
         </Paragraph>
         <H3>好きなアニメ・漫画</H3>
         <Paragraph>

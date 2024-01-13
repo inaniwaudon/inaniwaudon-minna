@@ -1,12 +1,8 @@
-import { styled } from "@linaria/react";
-import Link from "next/link";
+"use client";
 
-import {
-  SearchParams,
-  getStringParams,
-  isSelectedTag,
-  tagDelimiter,
-} from "@/lib/utils";
+import { styled } from "@linaria/react";
+
+import { useCustomParams } from "@/lib/useCustomParams";
 
 const CategoryList = styled.ul`
   margin: 0;
@@ -58,65 +54,26 @@ interface Tag {
 interface CheckboxProps {
   paramKey: string;
   tags: Tag[];
-  multiple: boolean;
-  searchParams: SearchParams;
+  customParams: ReturnType<typeof useCustomParams>;
 }
 
-const Checkbox = ({
-  paramKey,
-  tags,
-  multiple,
-  searchParams,
-}: CheckboxProps) => {
-  const stringParams = getStringParams(searchParams);
-
-  const getNewParams = (tagKey: string) => {
-    const newParams = structuredClone(stringParams);
-
-    // single
-    if (!multiple) {
-      newParams[paramKey] = tagKey;
-    }
-    // multiple
-    else {
-      if (!newParams[paramKey]) {
-        newParams[paramKey] = tagKey;
-      } else {
-        let newKeys = newParams[paramKey].split(tagDelimiter);
-        if (newKeys.includes(tagKey)) {
-          newKeys = newKeys.filter((key) => key !== tagKey);
-        } else {
-          newKeys.push(tagKey);
-        }
-        if (newKeys.length > 0) {
-          newParams[paramKey] = newKeys.join(tagDelimiter);
-        } else {
-          delete newParams[paramKey];
-        }
-      }
-    }
-    return new URLSearchParams(newParams);
-  };
+const Checkbox = ({ tags, customParams }: CheckboxProps) => {
+  const { isSelectedTag, switchTag } = customParams;
 
   return (
     <CategoryList>
       {tags.map((tag) => {
-        const selected = isSelectedTag(
-          tag.key,
-          stringParams[paramKey],
-          !multiple ? tags[0].key : undefined,
-        );
+        const selected = isSelectedTag(tag.key);
         return (
           <li key={tag.key}>
-            <Link href={`?${getNewParams(tag.key)}`} replace legacyBehavior>
-              <Anchor selected={selected} keyColor={tag.keyColor}>
-                <CategoryItemCheck
-                  selected={selected}
-                  keyColor={tag.keyColor}
-                />
-                {tag.label}
-              </Anchor>
-            </Link>
+            <Anchor
+              selected={selected}
+              keyColor={tag.keyColor}
+              onClick={() => switchTag(tag.key)}
+            >
+              <CategoryItemCheck selected={selected} keyColor={tag.keyColor} />
+              {tag.label}
+            </Anchor>
           </li>
         );
       })}
