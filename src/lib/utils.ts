@@ -14,10 +14,10 @@ export const tagDelimiter = "+";
 
 export const isSelectedTag = (
   key: string,
-  param: string | undefined,
+  param: string | null,
   defaultKey?: string,
 ) => {
-  if (param === undefined) {
+  if (param === null) {
     return key === defaultKey;
   }
   return param.split(tagDelimiter).includes(key);
