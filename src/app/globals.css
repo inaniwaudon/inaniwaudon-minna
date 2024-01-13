@@ -2,8 +2,32 @@ html,
 body {
   color: #333;
   -webkit-text-size-adjust: 100%;
-  font-family: sans-serif;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
   padding: 0;
   margin: 0;
   background: #fff;
+}
+
+@font-face {
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  src: url("/assets/fonts/NotoSansJP-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans JP";
+  font-weight: 600;
+  src: url("/assets/fonts/NotoSansJP-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  src: url("/assets/fonts/Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 600;
+  src: url("/assets/fonts/Inter-SemiBold.ttf") format("truetype");
 }
