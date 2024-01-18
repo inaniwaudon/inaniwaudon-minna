@@ -93,7 +93,7 @@ export const metadata: Metadata = {
   description: "575 あつめてたのし最上川（#haiku）",
 };
 
-const Index = async () => {
+const Page = async () => {
   const headerList = headers();
   const origin = new URL(headerList.get("x-url")!).origin;
   const response = await fetch(`${origin}/api/tanka`, {
@@ -167,4 +167,4 @@ const Index = async () => {
   );
 };
 
-export default Index;
+export default Page;

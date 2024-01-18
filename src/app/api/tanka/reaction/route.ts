@@ -1,15 +1,6 @@
-import { Database } from "@cloudflare/d1";
 import { NextRequest, NextResponse } from "next/server";
 
 import { maxReactionCount, tankaReactions } from "@/app/tanka/tanka";
-
-declare global {
-  namespace NodeJS {
-    interface ProcessEnv {
-      DB: Database;
-    }
-  }
-}
 
 export interface TankaReactionPOSTSchema {
   tanka_id: number;
