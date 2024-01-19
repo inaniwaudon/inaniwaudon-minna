@@ -29,14 +29,5 @@ export const getTransportationList = async () => {
 
   const txt = await response.text();
   console.log(txt);
-
-  /*let data: string;
-  if (response.ok) {
-    const json = await response.json();
-    data = json.body;
-  } else {
-    data = "# テスト\n- date: test";
-  }
-  return parseTransportation(data);*/
   return [];
 };

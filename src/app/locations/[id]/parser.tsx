@@ -94,3 +94,55 @@ export const parseTransportation = (text: string) => {
 
   return { title, date, checkins };
 };
+
+const dateToISOStringWithTimezone = (date: Date) => {
+  const pad = (str: string) => `0${str}`.slice(-2);
+
+  const year = date.getFullYear().toString();
+  const month = pad((date.getMonth() + 1).toString());
+  const day = pad(date.getDate().toString());
+  const hour = pad(date.getHours().toString());
+  const min = pad(date.getMinutes().toString());
+  const sec = pad(date.getSeconds().toString());
+  const tz = -date.getTimezoneOffset();
+  const sign = tz >= 0 ? "+" : "-";
+  const tzHour = pad((tz / 60).toString());
+  const tzMin = pad((tz % 60).toString());
+
+  return `${year}-${month}-${day}T${hour}:${min}:${sec}${sign}${tzHour}:${tzMin}`;
+};
+
+export const stringifyTransportation = (transportation: Transportation) => {
+  const { title, date, checkins } = transportation;
+  let text = `# ${title}\n\n`;
+  text += `- date: ${date}\n\n`;
+
+  // チェックイン
+  const checkinParts: string[][][] = [];
+
+  for (const checkin of checkins) {
+    const parts: string[][] = [[`## ${checkin.location}`]];
+
+    if (checkin.datetime) {
+      parts.push([`- date: ${dateToISOStringWithTimezone(checkin.datetime)}`]);
+    }
+    if (checkin.description) {
+      parts.push([checkin.description]);
+    }
+    // 写真
+    checkin.photos.map((photo) => {
+      const photoPart: string[] = [];
+      photoPart.push(`![${photo.alt}](${photo.src})`);
+      if (photo.caption) {
+        photoPart.push(`*${photo.caption}*`);
+      }
+      parts.push(photoPart);
+    });
+
+    checkinParts.push(parts);
+  }
+  text += checkinParts
+    .map((parts) => parts.map((part) => part.join("\n")).join("\n\n"))
+    .join("\n\n");
+  return `${text}\n`;
+};
