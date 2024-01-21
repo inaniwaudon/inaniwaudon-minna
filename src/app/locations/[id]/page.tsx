@@ -1,8 +1,9 @@
 import { styled } from "@linaria/react";
+import Link from "next/link";
 import { MdAdd } from "react-icons/md";
 
 import Content from "./Content";
-import { getTransportation, getTransportationList } from "./utils";
+import { getTransportation } from "./utils";
 
 const Warpper = styled.div`
   padding: 40px 64px;
@@ -24,14 +25,14 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-const CheckinButton = styled.button`
+const CheckinAnchor = styled.a`
   width: 32px;
   height: 32px;
+  line-height: 32px;
   color: #fff;
   font-size: 32px;
   cursor: pointer;
   padding: 8px;
-  border: none;
   border-radius: 50%;
   box-sizing: content-box;
   background: hsla(40, 60%, 50%, 0.8);
@@ -60,17 +61,13 @@ const Page = async ({ params }: PageProps) => {
         <Title>{title}</Title>
       </Header>
       <Content checkins={checkins} />
-      <CheckinButton>
-        <MdAdd />
-      </CheckinButton>
+      <Link href={`/locations/register?id=${params.id}`} legacyBehavior>
+        <CheckinAnchor>
+          <MdAdd />
+        </CheckinAnchor>
+      </Link>
     </Warpper>
   );
-};
-
-export const generateStaticParams = async () => {
-  //return photos.flatMap((photo) => (photo.data ? photo.id : []));
-  await getTransportationList();
-  return [{ id: "makuhari-2303252" }];
 };
 
 export default Page;

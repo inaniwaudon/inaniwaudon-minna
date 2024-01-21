@@ -1,6 +1,6 @@
 import { styled } from "@linaria/react";
 
-import { Checkin } from "./parser";
+import { Checkin } from "./utils";
 
 const List = styled.ul`
   width: 340px;
@@ -78,7 +78,9 @@ const Timeline = ({ checkins, setSelectedIndex }: TimelineProps) => {
             <Item onClick={() => setSelectedIndex(index)} key={index}>
               <Thumbnail style={{ backgroundImage: `url(${thumbnail})` }} />
               <Information>
-                <Time>{checkin.datetime?.toDateString() ?? "時刻不詳"}</Time>
+                <Time>
+                  {new Date(checkin.datetime).toDateString() ?? "時刻不詳"}
+                </Time>
                 <Location>{checkin.location}</Location>
               </Information>
             </Item>

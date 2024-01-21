@@ -1,5 +1,5 @@
 import { styled } from "@linaria/react";
-import { Checkin } from "./parser";
+import { Checkin } from "./utils";
 
 const Main = styled.main`
   width: 500px;
@@ -47,7 +47,7 @@ const CheckinContent = ({ checkin }: CheckinContentProps) => {
     <Main>
       <Header>
         <Location>{checkin.location}</Location>
-        <time>{checkin.datetime?.toISOString()}</time>
+        <time>{new Date(checkin.datetime).toDateString()}</time>
       </Header>
       {checkin.description.length > 0 && (
         <Description>{checkin.description}</Description>
