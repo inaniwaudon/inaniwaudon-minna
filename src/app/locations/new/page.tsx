@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import PageWrapper from "@/components/common/PageWrapper";
 import { postTransportation } from "../_lib/api";
-import { Input, buttonCss } from "../_lib/styles";
+import { Button, Input } from "../_lib/styles";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,11 +20,10 @@ const Part = styled.div`
   gap: 8px;
 `;
 
-const Button = styled.input`
+const RegisterButton = styled(Button)`
   width: calc(100% - 8px * 2);
   text-align: center;
   padding: 8px;
-  ${buttonCss}
 `;
 
 const Page = () => {
@@ -76,12 +75,13 @@ const Page = () => {
             onChange={(e) => setDate(e.currentTarget.value)}
           />
         </Part>
-        <Button
+        <RegisterButton
           type="button"
-          value="登録"
           disabled={isDisabledButton}
           onClick={onClick}
-        />
+        >
+          登録
+        </RegisterButton>
       </Wrapper>
     </PageWrapper>
   );

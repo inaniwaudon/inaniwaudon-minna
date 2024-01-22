@@ -7,19 +7,11 @@ import { Checkin, getImageUrl } from "../_lib/utils";
 const List = styled.ul`
   width: 340px;
   list-style: none;
-  margin: 0;
+  margin: -6px 0 0 0;
   padding: 0;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  gap: 12px;
-`;
-
-const Anchor = styled.a`
-  color: inherit;
-  text-decoration: none;
-  display: flex;
-  gap: 16px;
 `;
 
 const Thumbnail = styled.div`
@@ -30,6 +22,7 @@ const Thumbnail = styled.div`
   background-color: #eee;
   background-size: cover;
   background-position: center;
+  transition: transform 0.2s;
 `;
 
 const Information = styled.div`
@@ -61,6 +54,20 @@ const Location = styled.div<{ ratio: number }>`
     display: block;
     position: absolute;
     bottom: 0;
+  }
+`;
+
+const Anchor = styled.a`
+  color: inherit;
+  text-decoration: none;
+  padding: 6px 0;
+  display: flex;
+  gap: 16px;
+
+  &:hover {
+    ${Thumbnail} {
+      transform: translateX(-16px);
+    }
   }
 `;
 

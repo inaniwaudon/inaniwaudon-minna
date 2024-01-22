@@ -4,14 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MdAdd } from "react-icons/md";
 
+import PageWrapper from "@/components/common/PageWrapper";
 import { fetchTransportation } from "../_lib/api";
 import CheckinContent from "./CheckinContent";
 import Timeline from "./Timeline";
-
-const Warpper = styled.div`
-  padding: 40px 64px;
-  box-sizing: border-box;
-`;
 
 const Header = styled.header`
   margin-bottom: 32px;
@@ -72,7 +68,7 @@ const Page = async ({ params, searchParams }: PageProps) => {
   const selectedIndex = paramsIndex > -1 ? paramsIndex : 0;
 
   return (
-    <Warpper>
+    <PageWrapper title={title} path={`/locations/${params.id}`}>
       <Header>
         <Time>{date}</Time>
         <Title>{title}</Title>
@@ -86,7 +82,7 @@ const Page = async ({ params, searchParams }: PageProps) => {
           <MdAdd />
         </CheckinAnchor>
       </Link>
-    </Warpper>
+    </PageWrapper>
   );
 };
 

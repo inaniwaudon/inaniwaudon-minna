@@ -9,7 +9,7 @@ const inputCss = `
   border-radius: 0;
 `;
 
-export const buttonCss = `
+export const Button = styled.button`
   color: #fff;
   cursor: pointer;
   border-radius: 6px;

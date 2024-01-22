@@ -9,25 +9,16 @@ import { useEffect, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import { Checkin, getImageUrl } from "../_lib/utils";
 
-const Anchor = `
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
-  font-size: 24px;
-  border: none;
-  cursor: pointer;
-`;
-
 const Main = styled.main`
   width: 500px;
 `;
 
+// header
 const Header = styled.header`
   margin-bottom: 24px;
 `;
 
 const FirstRow = styled.div`
-  margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
 `;
@@ -40,6 +31,30 @@ const Time = styled.time`
 const Location = styled.h2`
   font-size: 20px;
   margin: 0;
+`;
+
+const Address = styled.p`
+  font-size: 12px;
+  margin: 4px 0 0 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: #999;
+    }
+  }
+`;
+
+// anchor
+const Anchor = `
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
 `;
 
 const AnchorList = styled.div`
@@ -66,9 +81,10 @@ const EditAnchor = styled.a`
 `;
 
 const Description = styled.p`
-  margin: 0;
+  margin: 16px 0 0 0;
 `;
 
+// figure
 const FigureWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -123,6 +139,15 @@ const CheckinContent = ({ id, checkin }: CheckinContentProps) => {
               <div>
                 <Time>{stringifyDate(new Date(checkin.datetime), false)}</Time>
                 <Location>{checkin.location}</Location>
+                {checkin.fsqPlace && (
+                  <Address>
+                    <a
+                      href={`https://ja.foursquare.com/v/${checkin.fsqPlace.name}/${checkin.fsqPlace.fsqId}`}
+                    >
+                      {checkin.fsqPlace.formattedAddress}
+                    </a>
+                  </Address>
+                )}
               </div>
               <AnchorList>
                 <TweetAnchor href={tweetHref}>

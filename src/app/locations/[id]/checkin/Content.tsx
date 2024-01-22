@@ -7,8 +7,8 @@ import { MdClose, MdPlace } from "react-icons/md";
 import { v4 as uuidV4 } from "uuid";
 
 import { dateToInput } from "@/lib/utils";
-import { postImages, putCheckin } from "../../_lib/api";
-import { Input, Textarea, buttonCss } from "../../_lib/styles";
+import { deleteCheckin, postImages, putCheckin } from "../../_lib/api";
+import { Button, Input, Textarea } from "../../_lib/styles";
 import { Checkin, FoursquarePlace, convertImageToWebp } from "../../_lib/utils";
 import Modal from "./Modal";
 
@@ -29,7 +29,7 @@ const LocationWrapper = styled.div`
   gap: 16px;
 `;
 
-const LocationButton = styled.button`
+const LocationButton = styled(Button)`
   width: 24px;
   line-height: 24px;
   font-size: 24px;
@@ -37,14 +37,44 @@ const LocationButton = styled.button`
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  ${buttonCss}
 `;
 
-const Button = styled.button`
+const ButtonList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const CheckinButton = styled(Button)`
   width: calc(100% - 8px * 2);
   text-align: center;
   padding: 8px;
-  ${buttonCss}
+`;
+
+const DeleteButton = styled(Button)`
+  width: calc(100% - 8px * 2);
+  color: #c00;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #c00;
+  background: transparent;
+
+  &:hover {
+    background: rgba(204, 0, 0, 0.05);
+  }
+`;
+
+const CancelButton = styled(Button)`
+  width: calc(100% - 8px * 2);
+  color: #666;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #666;
+  background: transparent;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
 `;
 
 interface ContentProps {
@@ -123,6 +153,20 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
     router.push(`/locations/${id}?checkin=${checkinId}`);
   };
 
+  const onClickDeleteButton = async () => {
+    const ok = window.confirm("チェックインを削除しますか？");
+    if (!ok) {
+      return;
+    }
+    const checkinResult = await deleteCheckin(id, checkinId);
+    if (!checkinResult.success) {
+      alert(`チェックインの削除に失敗しました: ${checkinResult.value}`);
+      return;
+    }
+    alert("チェックインを削除しました");
+    router.push(`/locations/${id}`);
+  };
+
   useEffect(() => {
     if (fsqPlace) {
       setLocation(fsqPlace.name);
@@ -183,9 +227,19 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
             onChange={(e) => setDescription(e.currentTarget.value)}
           />
         </Part>
-        <Button disabled={isDisabledButton} onClick={onClick}>
-          チェックイン
-        </Button>
+        <ButtonList>
+          <CheckinButton disabled={isDisabledButton} onClick={onClick}>
+            {initialCheckin ? "チェックインを更新" : "チェックイン"}
+          </CheckinButton>
+          {initialCheckin && (
+            <DeleteButton onClick={onClickDeleteButton}>
+              チェックインを削除
+            </DeleteButton>
+          )}
+          <CancelButton onClick={() => router.push(`/locations/${id}`)}>
+            キャンセル
+          </CancelButton>
+        </ButtonList>
       </Wrapper>
       <Modal
         displays={displaysModal}

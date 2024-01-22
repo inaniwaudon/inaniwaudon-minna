@@ -81,6 +81,25 @@ export const putCheckin = async (
   }
 };
 
+export const deleteCheckin = async (id: string, checkinId: string) => {
+  const url = new URL(
+    `/locations/${id}/checkins/${checkinId}`,
+    process.env.NEXT_PUBLIC_BACKEND_URL,
+  );
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      return fail(await response.text());
+    }
+    return succeed(null);
+  } catch (e) {
+    return fail(e);
+  }
+};
+
 export const postImages = async (id: string, images: string[]) => {
   const url = new URL(
     `/locations/${id}/images`,

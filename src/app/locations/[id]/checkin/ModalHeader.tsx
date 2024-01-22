@@ -2,7 +2,7 @@ import { styled } from "@linaria/react";
 import { IoSearch } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 
-import { buttonCss } from "../../_lib/styles";
+import { Button } from "../../_lib/styles";
 
 const Wrapper = styled.div`
   padding: 16px 50px;
@@ -51,7 +51,7 @@ const BackButton = styled.button`
   }
 `;
 
-const SearchButton = styled.button`
+const SearchButton = styled(Button)`
   width: 16px;
   line-height: 16px;
   font-size: 16px;
@@ -59,7 +59,6 @@ const SearchButton = styled.button`
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  ${buttonCss}
 `;
 
 interface ModalHeaderProps {
