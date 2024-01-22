@@ -1,32 +1,20 @@
 "use client";
 
 import { styled } from "@linaria/react";
-import { useState } from "react";
-import { MdPlace } from "react-icons/md";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { MdClose, MdPlace } from "react-icons/md";
 import { v4 as uuidV4 } from "uuid";
 
 import PageWrapper from "@/components/common/PageWrapper";
-import { useRouter } from "next/navigation";
-import { postCheckin, postImages } from "../../_lib/api";
-import { Checkin, convertImageToWebp } from "../../_lib/utils";
+import { postImages, putCheckin } from "../../_lib/api";
+import { Input, Textarea, buttonCss } from "../../_lib/styles";
+import {
+  Checkin,
+  FoursquareOriginalPlace,
+  convertImageToWebp,
+} from "../../_lib/utils";
 import Modal from "./Modal";
-
-const buttonCss = `
-  color: #fff;
-  cursor: pointer;
-  border-radius: 6px;
-  box-sizing: content-box;
-  background: hsl(40, 60%, 50%);
-
-  &:hover {
-    background: hsla(40, 60%, 50%, 0.8);
-  }
-
-  &:disabled {
-    color: #999;
-    background: #ccc;
-  }
-`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -40,30 +28,9 @@ const Part = styled.div`
   gap: 8px;
 `;
 
-const inputCss = `
-  width: calc(100% - 8px * 2);
-  color: #000;
-  font-size: 16px;
-  padding: 8px;
-  border-top: none;
-  border-right: none;
-  border-bottom: solid 1px #ccc;
-  border-left: none;
-  border-radius: 0;
-  background: #fff;
-`;
-
-const Input = styled.input`
-  ${inputCss}
-`;
-
-const Textarea = styled.textarea`
-  ${inputCss}
-`;
-
 const LocationWrapper = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 16px;
 `;
 
 const LocationButton = styled.button`
@@ -79,9 +46,7 @@ const LocationButton = styled.button`
 
 const Button = styled.button`
   width: calc(100% - 8px * 2);
-  color: #fff;
   text-align: center;
-  font-size: 16px;
   padding: 8px;
   ${buttonCss}
 `;
@@ -109,12 +74,14 @@ const Page = ({ params }: PageProps) => {
 
   const [checkinId, _] = useState(uuidV4());
   const [location, setLocation] = useState("");
+  const [fsqPlace, setFsqPlace] = useState<FoursquareOriginalPlace>();
   const [datetime, setDatetime] = useState(dateStr);
   const [description, setDescription] = useState("");
 
   const isDisabledButton =
     location === "" || datetime === "" || description === "";
 
+  // 画像を WebP に変換
   const onChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.currentTarget.files) {
       return;
@@ -130,6 +97,7 @@ const Page = ({ params }: PageProps) => {
     setWebpBase64s(tempBase64s);
   };
 
+  // チェックイン
   const onClick = async () => {
     if (webpBase64s === null) {
       alert("画像を変換中です");
@@ -143,16 +111,24 @@ const Page = ({ params }: PageProps) => {
       return;
     }
 
-    // チェックイン
     const checkin: Checkin = {
       location,
       id: checkinId,
-      datetime,
+      datetime: new Date(datetime).toISOString(),
       description,
-      // TODO
-      photos: [],
+      photos: imageResult.value.map((imageId) => ({ src: imageId, alt: "" })),
     };
-    const checkinResult = await postCheckin(params.id, checkinId, checkin);
+    if (fsqPlace) {
+      checkin.fsqPlace = {
+        fsqId: fsqPlace.fsq_id,
+        name: fsqPlace.name,
+        latitude: fsqPlace.geocodes.latitude,
+        longitude: fsqPlace.geocodes.longitude,
+        formattedAddress: fsqPlace.location.formatted_address,
+      };
+    }
+
+    const checkinResult = await putCheckin(params.id, checkinId, checkin);
     if (!checkinResult.success) {
       alert(`チェックインに失敗しました: ${checkinResult.value}`);
       return;
@@ -160,6 +136,12 @@ const Page = ({ params }: PageProps) => {
     alert("チェックインしました");
     router.push(`/locations/${params.id}?checkin=${checkinId}`);
   };
+
+  useEffect(() => {
+    if (fsqPlace) {
+      setLocation(fsqPlace.name);
+    }
+  }, [fsqPlace]);
 
   return (
     <>
@@ -178,9 +160,15 @@ const Page = ({ params }: PageProps) => {
                 value={location}
                 onChange={(e) => setLocation(e.currentTarget.value)}
               />
-              <LocationButton onClick={() => setDisplaysModal(true)}>
-                <MdPlace />
-              </LocationButton>
+              {fsqPlace ? (
+                <LocationButton onClick={() => setFsqPlace(undefined)}>
+                  <MdClose />
+                </LocationButton>
+              ) : (
+                <LocationButton onClick={() => setDisplaysModal(true)}>
+                  <MdPlace />
+                </LocationButton>
+              )}
             </LocationWrapper>
           </Part>
           <Part>
@@ -215,7 +203,11 @@ const Page = ({ params }: PageProps) => {
           </Button>
         </Wrapper>
       </PageWrapper>
-      <Modal displays={displaysModal} setDisplays={setDisplaysModal} />
+      <Modal
+        displays={displaysModal}
+        setFsqPlace={setFsqPlace}
+        setDisplays={setDisplaysModal}
+      />
     </>
   );
 };

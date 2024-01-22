@@ -1,10 +1,12 @@
 import { styled } from "@linaria/react";
+import { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { MdAdd } from "react-icons/md";
 
-import { notFound } from "next/navigation";
-import { fetchTransportation } from "../utils";
-import Content from "./Content";
+import { fetchTransportation } from "../_lib/api";
+import CheckinContent from "./CheckinContent";
+import Timeline from "./Timeline";
 
 const Warpper = styled.div`
   padding: 40px 64px;
@@ -24,6 +26,10 @@ const Title = styled.h1`
   font-size: 20px;
   font-weight: normal;
   margin: 0;
+`;
+
+const Content = styled.div`
+  display: flex;
 `;
 
 const CheckinAnchor = styled.a`
@@ -50,14 +56,20 @@ const CheckinAnchor = styled.a`
 
 interface PageProps {
   params: { id: string };
+  searchParams: { checkin?: string };
 }
 
-const Page = async ({ params }: PageProps) => {
+const Page = async ({ params, searchParams }: PageProps) => {
   const result = await fetchTransportation(params.id);
   if (!result.success) {
     notFound();
   }
   const { title, date, checkins } = result.value;
+
+  const paramsIndex = checkins.findIndex(
+    (checkin) => checkin.id === searchParams.checkin,
+  );
+  const selectedIndex = paramsIndex > -1 ? paramsIndex : 0;
 
   return (
     <Warpper>
@@ -65,7 +77,10 @@ const Page = async ({ params }: PageProps) => {
         <Time>{date}</Time>
         <Title>{title}</Title>
       </Header>
-      <Content checkins={checkins} />
+      <Content>
+        <Timeline id={params.id} checkins={checkins} />
+        <CheckinContent id={params.id} checkin={checkins[selectedIndex]} />
+      </Content>
       <Link href={`/locations/${params.id}/checkin`} legacyBehavior>
         <CheckinAnchor>
           <MdAdd />
@@ -73,6 +88,18 @@ const Page = async ({ params }: PageProps) => {
       </Link>
     </Warpper>
   );
+};
+
+export const generateMetadata = async ({
+  params,
+}: PageProps): Promise<Metadata> => {
+  const result = await fetchTransportation(params.id);
+  if (!result.success) {
+    return {};
+  }
+  return {
+    title: result.value.title,
+  };
 };
 
 export default Page;

@@ -1,7 +1,8 @@
 import { styled } from "@linaria/react";
 
 import { stringifyDate } from "@/lib/utils";
-import { Checkin } from "../utils";
+import Link from "next/link";
+import { Checkin, getImageUrl } from "../_lib/utils";
 
 const List = styled.ul`
   width: 340px;
@@ -14,8 +15,9 @@ const List = styled.ul`
   gap: 12px;
 `;
 
-const Item = styled.li`
-  border-radius: 4px;
+const Anchor = styled.a`
+  color: inherit;
+  text-decoration: none;
   display: flex;
   gap: 16px;
 `;
@@ -63,30 +65,41 @@ const Location = styled.div<{ ratio: number }>`
 `;
 
 interface TimelineProps {
+  id: string;
   checkins: Checkin[];
-  setSelectedIndex: (value: number) => void;
 }
 
 {
   /* タイルビュー と タイムラインビュー */
 }
 
-const Timeline = ({ checkins, setSelectedIndex }: TimelineProps) => {
+const Timeline = ({ id, checkins }: TimelineProps) => {
   return (
     <nav>
       <List>
         {checkins.map((checkin, index) => {
-          const thumbnail = checkin.photos[0]?.src ?? undefined;
+          const thumbnail = checkin.photos[0]
+            ? getImageUrl(id, checkin.photos[0].src)
+            : undefined;
           return (
-            <Item onClick={() => setSelectedIndex(index)} key={index}>
-              <Thumbnail style={{ backgroundImage: `url(${thumbnail})` }} />
-              <Information>
-                <Time>{stringifyDate(new Date(checkin.datetime), false)}</Time>
-                <Location ratio={(index + 1) / checkins.length}>
-                  {checkin.location}
-                </Location>
-              </Information>
-            </Item>
+            <li key={index}>
+              <Link
+                href={`/locations/${id}?checkin=${checkin.id}`}
+                legacyBehavior
+              >
+                <Anchor>
+                  <Thumbnail style={{ backgroundImage: `url(${thumbnail})` }} />
+                  <Information>
+                    <Time>
+                      {stringifyDate(new Date(checkin.datetime), false)}
+                    </Time>
+                    <Location ratio={(index + 1) / checkins.length}>
+                      {checkin.location}
+                    </Location>
+                  </Information>
+                </Anchor>
+              </Link>
+            </li>
           );
         })}
       </List>

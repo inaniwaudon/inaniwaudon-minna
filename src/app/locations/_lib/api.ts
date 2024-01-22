@@ -1,5 +1,5 @@
 import { fail, succeed } from "@/lib/utils";
-import { Checkin, Transportation } from "./utils";
+import { Checkin, FoursquareOriginalPlace, Transportation } from "./utils";
 
 export const fetchTransportation = async (id: string) => {
   const url = new URL(`/locations/${id}`, process.env.NEXT_PUBLIC_BACKEND_URL);
@@ -54,18 +54,18 @@ export const postTransportation = async (
   }
 };
 
-export const postCheckin = async (
+export const putCheckin = async (
   id: string,
   checkinId: string,
   checkin: Checkin,
 ) => {
   const url = new URL(
-    `/locations/${id}/${checkinId}`,
+    `/locations/${id}/checkins/${checkinId}`,
     process.env.NEXT_PUBLIC_BACKEND_URL,
   );
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -100,6 +100,36 @@ export const postImages = async (id: string, images: string[]) => {
     }
     const imageIds = (await response.json()) as string[];
     return succeed(imageIds);
+  } catch (e) {
+    return fail(e);
+  }
+};
+
+export const fetchPlaces = async (
+  latitude: string,
+  longitude: string,
+  query?: string,
+) => {
+  const searchParams = new URLSearchParams({
+    latitude,
+    longitude,
+  });
+  if (query) {
+    searchParams.set("query", query);
+  }
+  const url = new URL(
+    `/locations/places?${searchParams.toString()}`,
+    process.env.NEXT_PUBLIC_BACKEND_URL,
+  );
+  try {
+    const response = await fetch(url, {
+      next: { revalidate: 60 },
+    });
+    if (!response.ok) {
+      return fail(await response.text());
+    }
+    const places = (await response.json()) as FoursquareOriginalPlace[];
+    return succeed(places);
   } catch (e) {
     return fail(e);
   }

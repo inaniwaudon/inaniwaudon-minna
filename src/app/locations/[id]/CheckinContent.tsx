@@ -1,8 +1,11 @@
+"use client";
+
 import { styled } from "@linaria/react";
 import { IoLogoTwitter } from "react-icons/io5";
 
 import { stringifyDate } from "@/lib/utils";
-import { Checkin } from "../utils";
+import { useEffect, useState } from "react";
+import { Checkin, getImageUrl } from "../_lib/utils";
 
 const Main = styled.main`
   width: 500px;
@@ -36,7 +39,6 @@ const TweetAnchor = styled.a`
   font-size: 24px;
   border: none;
   cursor: pointer;
-  background: transparent;
 
   &:hover {
     color: rgba(29, 161, 242, 0.6);
@@ -67,14 +69,27 @@ const Figcaption = styled.figcaption`
 `;
 
 interface CheckinContentProps {
+  id: string;
   checkin?: Checkin;
 }
 
-const CheckinContent = ({ checkin }: CheckinContentProps) => {
-  const tweetText = `I'm at ${checkin?.location} in hogehoge. ${location.href}`;
-  const tweetHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-    tweetText,
-  )}`;
+const CheckinContent = ({ id, checkin }: CheckinContentProps) => {
+  const [tweetHref, setTweetHref] = useState("");
+
+  const getTweetHref = () => {
+    if (!checkin) {
+      return "";
+    }
+    // 30分以上前のチェックインは I was at にする
+    const diff = Date.now() - new Date(checkin.datetime).getTime();
+    const be = diff > 60 * 30 * 1000 ? " was" : "'m";
+    const text = `I${be} at ${checkin.location} in hogehoge. ${location.href}`;
+    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  };
+
+  useEffect(() => {
+    setTweetHref(getTweetHref());
+  }, [getTweetHref]);
 
   return (
     <Main>
@@ -99,7 +114,7 @@ const CheckinContent = ({ checkin }: CheckinContentProps) => {
           <FigureWrapper>
             {checkin.photos.map((photo, index) => (
               <Figure key={index}>
-                <Image src={photo.src} alt={photo.alt} />
+                <Image src={getImageUrl(id, photo.src)} alt={photo.alt} />
                 {photo.caption && <Figcaption>{photo.caption}</Figcaption>}
               </Figure>
             ))}

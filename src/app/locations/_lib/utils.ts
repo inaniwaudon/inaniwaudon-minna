@@ -1,4 +1,4 @@
-import { fail, succeed } from "@/lib/utils";
+import { Result, fail, succeed } from "@/lib/utils";
 
 export interface Transportation {
   title: string;
@@ -10,12 +10,41 @@ export interface Checkin {
   location: string;
   id: string;
   datetime: string;
+  fsqPlace?: FoursquarePlace;
   description: string;
   photos: {
     src: string;
     alt: string;
     caption?: string;
   }[];
+}
+
+export interface FoursquarePlace {
+  fsqId: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  formattedAddress: string;
+}
+
+export interface FoursquareOriginalPlace {
+  fsq_id: string;
+  geocodes: {
+    latitude: number;
+    longitude: number;
+  };
+  distance: number;
+  location: {
+    address?: string;
+    address_extended?: string;
+    country: string;
+    cross_street?: string;
+    formatted_address: string;
+    locality?: string;
+    postcode?: string;
+    region: string;
+  };
+  name: string;
 }
 
 const loadImage = (file: File) =>
@@ -56,3 +85,33 @@ export const convertImageToWebp = async (file: File) => {
   context.drawImage(image, 0, 0, width, height);
   return succeed(canvas.toDataURL("image/webp"));
 };
+
+export const getImageUrl = (id: string, src: string) => {
+  if (src.startsWith("http") || src.startsWith("https")) {
+    return src;
+  }
+  const url = new URL(
+    `/locations/${id}/${src}.webp`,
+    process.env.NEXT_PUBLIC_PHOTO_URL,
+  );
+  return url.href;
+};
+
+export const getCurrentPosition = () =>
+  new Promise<Result<{ latitude: number; longitude: number }, string>>(
+    (resolve) => {
+      navigator.geolocation.getCurrentPosition(
+        (result) => {
+          resolve(
+            succeed({
+              latitude: result.coords.latitude,
+              longitude: result.coords.longitude,
+            }),
+          );
+        },
+        (e) => {
+          resolve(fail(e.message));
+        },
+      );
+    },
+  );

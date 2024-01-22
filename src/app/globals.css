@@ -13,9 +13,12 @@ body {
   font-family: "Inter", "Noto Sans JP", sans-serif;
 }
 
-input, button {
+input, textarea, button {
+  font-size: inherit;
   border: none;
+  box-sizing: content-box;
   appearance: none;
+  background: transparent;
 }
 
 @font-face {
