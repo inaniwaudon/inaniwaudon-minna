@@ -37,3 +37,13 @@ export const stringifyDate = (date: Date, showsMinutes: boolean): string => {
   }
   return str;
 };
+
+export const dateToInput = (date: Date): string => {
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  const YY = date.getFullYear();
+  const MM = pad(date.getMonth() + 1);
+  const DD = pad(date.getDate());
+  const hh = pad(date.getHours());
+  const mm = pad(date.getMinutes());
+  return `${YY}-${MM}-${DD}T${hh}:${mm}`;
+};

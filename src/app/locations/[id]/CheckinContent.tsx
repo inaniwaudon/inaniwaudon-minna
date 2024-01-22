@@ -4,8 +4,19 @@ import { styled } from "@linaria/react";
 import { IoLogoTwitter } from "react-icons/io5";
 
 import { stringifyDate } from "@/lib/utils";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { MdEdit } from "react-icons/md";
 import { Checkin, getImageUrl } from "../_lib/utils";
+
+const Anchor = `
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+`;
 
 const Main = styled.main`
   width: 500px;
@@ -31,19 +42,29 @@ const Location = styled.h2`
   margin: 0;
 `;
 
+const AnchorList = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
 const TweetAnchor = styled.a`
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
   color: rgba(29, 161, 242, 0.8);
-  font-size: 24px;
-  border: none;
-  cursor: pointer;
+  ${Anchor}
 
   &:hover {
     color: rgba(29, 161, 242, 0.6);
   }
 `;
+
+const EditAnchor = styled.a`
+  color: #666;
+  ${Anchor}
+
+  &:hover {
+    color: #999;
+  }
+`;
+
 const Description = styled.p`
   margin: 0;
 `;
@@ -103,9 +124,19 @@ const CheckinContent = ({ id, checkin }: CheckinContentProps) => {
                 <Time>{stringifyDate(new Date(checkin.datetime), false)}</Time>
                 <Location>{checkin.location}</Location>
               </div>
-              <TweetAnchor href={tweetHref}>
-                <IoLogoTwitter />
-              </TweetAnchor>
+              <AnchorList>
+                <TweetAnchor href={tweetHref}>
+                  <IoLogoTwitter />
+                </TweetAnchor>
+                <Link
+                  href={`/locations/${id}/checkin/?checkin=${checkin.id}`}
+                  legacyBehavior
+                >
+                  <EditAnchor>
+                    <MdEdit />
+                  </EditAnchor>
+                </Link>
+              </AnchorList>
             </FirstRow>
             {checkin.description.length > 0 && (
               <Description>{checkin.description}</Description>

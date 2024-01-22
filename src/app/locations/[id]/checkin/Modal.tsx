@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import { MdPlace } from "react-icons/md";
 
 import { samplePlaces } from "../../_lib/sample-places";
-import { FoursquareOriginalPlace, getCurrentPosition } from "../../_lib/utils";
+import {
+  FoursquareOriginalPlace,
+  FoursquarePlace,
+  getCurrentPosition,
+} from "../../_lib/utils";
 import ModalHeader from "./ModalHeader";
 
 const Wrapper = styled.div<{ displays: boolean }>`
@@ -65,7 +69,7 @@ const Details = styled.div`
 
 interface ModalProps {
   displays: boolean;
-  setFsqPlace: (place: FoursquareOriginalPlace) => void;
+  setFsqPlace: (place: FoursquarePlace) => void;
   setDisplays: (value: boolean) => void;
 }
 
@@ -75,7 +79,13 @@ const Modal = ({ displays, setFsqPlace, setDisplays }: ModalProps) => {
   const [longitude, setLongitude] = useState<number>();
 
   const decide = (place: FoursquareOriginalPlace) => {
-    setFsqPlace(place);
+    setFsqPlace({
+      fsqId: place.fsq_id,
+      name: place.name,
+      latitude: place.geocodes.latitude,
+      longitude: place.geocodes.longitude,
+      formattedAddress: place.location.formatted_address,
+    });
     setDisplays(false);
   };
 
