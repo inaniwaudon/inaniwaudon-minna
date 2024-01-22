@@ -75,10 +75,6 @@ const Navigation = styled.nav`
       background: rgba(255, 255, 255, 0.2);
     }
   }
-
-  button + button {
-    margin-left: 4px;
-  }
 `;
 
 interface MainProps {

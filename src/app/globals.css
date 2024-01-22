@@ -13,6 +13,11 @@ body {
   font-family: "Inter", "Noto Sans JP", sans-serif;
 }
 
+input, button {
+  border: none;
+  appearance: none;
+}
+
 @font-face {
   font-family: "Noto Sans JP";
   font-weight: 400;

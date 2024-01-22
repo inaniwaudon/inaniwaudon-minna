@@ -1,6 +1,7 @@
 import { styled } from "@linaria/react";
 
-import { Checkin } from "./utils";
+import { stringifyDate } from "@/lib/utils";
+import { Checkin } from "../utils";
 
 const List = styled.ul`
   width: 340px;
@@ -41,7 +42,7 @@ const Time = styled.time`
   display: block;
 `;
 
-const Location = styled.div`
+const Location = styled.div<{ ratio: number }>`
   font-size: 15px;
   padding-bottom: 4px;
   position: relative;
@@ -49,10 +50,12 @@ const Location = styled.div`
   --color: hsl(40, 60%, 50%);
 
   &::before {
-    width: 100%;
+    width: 100px;
     height: 1px;
     content: "";
-    background: linear-gradient(90deg, var(--color), var(--color) 16px, #eee 17px, #eee);
+    background: linear-gradient(90deg, var(--color), var(--color) ${({
+      ratio,
+    }) => `${ratio * 100}%`}, #eee calc(${({ ratio }) => `${ratio * 100}%`} + 1px), #eee);
     display: block;
     position: absolute;
     bottom: 0;
@@ -78,10 +81,10 @@ const Timeline = ({ checkins, setSelectedIndex }: TimelineProps) => {
             <Item onClick={() => setSelectedIndex(index)} key={index}>
               <Thumbnail style={{ backgroundImage: `url(${thumbnail})` }} />
               <Information>
-                <Time>
-                  {new Date(checkin.datetime).toDateString() ?? "時刻不詳"}
-                </Time>
-                <Location>{checkin.location}</Location>
+                <Time>{stringifyDate(new Date(checkin.datetime), false)}</Time>
+                <Location ratio={(index + 1) / checkins.length}>
+                  {checkin.location}
+                </Location>
               </Information>
             </Item>
           );

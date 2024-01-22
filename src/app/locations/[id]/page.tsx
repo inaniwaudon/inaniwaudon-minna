@@ -2,8 +2,9 @@ import { styled } from "@linaria/react";
 import Link from "next/link";
 import { MdAdd } from "react-icons/md";
 
+import { notFound } from "next/navigation";
+import { fetchTransportation } from "../utils";
 import Content from "./Content";
-import { getTransportation } from "./utils";
 
 const Warpper = styled.div`
   padding: 40px 64px;
@@ -38,8 +39,8 @@ const CheckinAnchor = styled.a`
   background: hsla(40, 60%, 50%, 0.8);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 32px;
+  right: 32px;
   transition: transform 0.2s ease;
 
   &:hover {
@@ -52,7 +53,11 @@ interface PageProps {
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { title, date, checkins } = await getTransportation(params.id);
+  const result = await fetchTransportation(params.id);
+  if (!result.success) {
+    notFound();
+  }
+  const { title, date, checkins } = result.value;
 
   return (
     <Warpper>
@@ -61,7 +66,7 @@ const Page = async ({ params }: PageProps) => {
         <Title>{title}</Title>
       </Header>
       <Content checkins={checkins} />
-      <Link href={`/locations/register?id=${params.id}`} legacyBehavior>
+      <Link href={`/locations/${params.id}/checkin`} legacyBehavior>
         <CheckinAnchor>
           <MdAdd />
         </CheckinAnchor>

@@ -1,5 +1,8 @@
 import { styled } from "@linaria/react";
-import { Checkin } from "./utils";
+import { IoLogoTwitter } from "react-icons/io5";
+
+import { stringifyDate } from "@/lib/utils";
+import { Checkin } from "../utils";
 
 const Main = styled.main`
   width: 500px;
@@ -9,13 +12,38 @@ const Header = styled.header`
   margin-bottom: 24px;
 `;
 
+const FirstRow = styled.div`
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Time = styled.time`
+  color: #999;
+  display: block;
+`;
+
 const Location = styled.h2`
   font-size: 20px;
   margin: 0;
 `;
 
+const TweetAnchor = styled.a`
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  color: rgba(29, 161, 242, 0.8);
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+
+  &:hover {
+    color: rgba(29, 161, 242, 0.6);
+  }
+`;
 const Description = styled.p`
-  margin-top: 0;
+  margin: 0;
 `;
 
 const FigureWrapper = styled.div`
@@ -39,27 +67,45 @@ const Figcaption = styled.figcaption`
 `;
 
 interface CheckinContentProps {
-  checkin: Checkin;
+  checkin?: Checkin;
 }
 
 const CheckinContent = ({ checkin }: CheckinContentProps) => {
+  const tweetText = `I'm at ${checkin?.location} in hogehoge. ${location.href}`;
+  const tweetHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    tweetText,
+  )}`;
+
   return (
     <Main>
-      <Header>
-        <Location>{checkin.location}</Location>
-        <time>{new Date(checkin.datetime).toDateString()}</time>
-      </Header>
-      {checkin.description.length > 0 && (
-        <Description>{checkin.description}</Description>
+      {!checkin ? (
+        <p>チェックインがありません</p>
+      ) : (
+        <>
+          <Header>
+            <FirstRow>
+              <div>
+                <Time>{stringifyDate(new Date(checkin.datetime), false)}</Time>
+                <Location>{checkin.location}</Location>
+              </div>
+              <TweetAnchor href={tweetHref}>
+                <IoLogoTwitter />
+              </TweetAnchor>
+            </FirstRow>
+            {checkin.description.length > 0 && (
+              <Description>{checkin.description}</Description>
+            )}
+          </Header>
+          <FigureWrapper>
+            {checkin.photos.map((photo, index) => (
+              <Figure key={index}>
+                <Image src={photo.src} alt={photo.alt} />
+                {photo.caption && <Figcaption>{photo.caption}</Figcaption>}
+              </Figure>
+            ))}
+          </FigureWrapper>
+        </>
       )}
-      <FigureWrapper>
-        {checkin.photos.map((photo, index) => (
-          <Figure key={index}>
-            <Image src={photo.src} alt={photo.alt} />
-            {photo.caption && <Figcaption>{photo.caption}</Figcaption>}
-          </Figure>
-        ))}
-      </FigureWrapper>
     </Main>
   );
 };

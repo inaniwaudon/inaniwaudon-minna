@@ -3,9 +3,9 @@
 import { styled } from "@linaria/react";
 
 import { useState } from "react";
+import { Checkin } from "../utils";
 import CheckinContent from "./CheckinContent";
 import Timeline from "./Timeline";
-import { Checkin } from "./parser";
 
 const Wrapper = styled.div`
   display: flex;

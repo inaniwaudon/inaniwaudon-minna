@@ -28,6 +28,7 @@ const Caution = styled.ul`
 
 const Input = styled.input`
   padding: 4px;
+  border-bottom: solid 1px #ccc;
 `;
 
 const TankaInput = styled(Input)`
@@ -44,11 +45,8 @@ const SubmitButton = styled.input`
   color: #fff;
   font-size: 16px;
   padding: 4px 18px 4px 24px;
-  border: none;
   border-radius: 16px;
   cursor: pointer;
-  appearance: none;
-  --webkit-appearance: none;
   background: #20b2aa;
   transition: opacity 0.2s;
 
