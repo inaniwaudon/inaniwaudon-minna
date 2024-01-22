@@ -6,6 +6,9 @@ import { MdPlace } from "react-icons/md";
 import { v4 as uuidV4 } from "uuid";
 
 import PageWrapper from "@/components/common/PageWrapper";
+import { useRouter } from "next/navigation";
+import { postCheckin, postImages } from "../../_lib/api";
+import { Checkin, convertImageToWebp } from "../../_lib/utils";
 import Modal from "./Modal";
 
 const buttonCss = `
@@ -99,7 +102,10 @@ const Page = ({ params }: PageProps) => {
     return `${YY}-${MM}-${DD}T${hh}:${mm}`;
   })();
 
+  const router = useRouter();
+
   const [displaysModal, setDisplaysModal] = useState(false);
+  const [webpBase64s, setWebpBase64s] = useState<string[] | null>([]);
 
   const [checkinId, _] = useState(uuidV4());
   const [location, setLocation] = useState("");
@@ -109,15 +115,50 @@ const Page = ({ params }: PageProps) => {
   const isDisabledButton =
     location === "" || datetime === "" || description === "";
 
-  const onClick = async () => {
-    console.log(checkinId);
-    /*const result = await createTransportation(id, title, date);
-    if (!result.success) {
-      alert(`登録に失敗しました: ${result.value}`);
+  const onChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.currentTarget.files) {
       return;
     }
-    alert("登録しました");
-    router.push(`/locations/${id}`);*/
+    setWebpBase64s(null);
+
+    const converted = await Promise.all(
+      [...e.currentTarget.files].map((file) => convertImageToWebp(file)),
+    );
+    const tempBase64s = converted.flatMap((result) =>
+      result.success ? result.value : [],
+    );
+    setWebpBase64s(tempBase64s);
+  };
+
+  const onClick = async () => {
+    if (webpBase64s === null) {
+      alert("画像を変換中です");
+      return;
+    }
+
+    // 画像の投稿
+    const imageResult = await postImages(params.id, webpBase64s);
+    if (!imageResult.success) {
+      alert(`画像のアップロードに失敗しました: ${imageResult.value}`);
+      return;
+    }
+
+    // チェックイン
+    const checkin: Checkin = {
+      location,
+      id: checkinId,
+      datetime,
+      description,
+      // TODO
+      photos: [],
+    };
+    const checkinResult = await postCheckin(params.id, checkinId, checkin);
+    if (!checkinResult.success) {
+      alert(`チェックインに失敗しました: ${checkinResult.value}`);
+      return;
+    }
+    alert("チェックインしました");
+    router.push(`/locations/${params.id}?checkin=${checkinId}`);
   };
 
   return (
@@ -158,7 +199,7 @@ const Page = ({ params }: PageProps) => {
               id="image"
               multiple
               accept="image/*"
-              onChange={(e) => setDatetime(e.currentTarget.value)}
+              onChange={onChangeImage}
             />
           </Part>
           <Part>

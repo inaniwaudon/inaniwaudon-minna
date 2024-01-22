@@ -1,22 +1,5 @@
 import { fail, succeed } from "@/lib/utils";
-
-export interface Transportation {
-  title: string;
-  date: string;
-  checkins: Checkin[];
-}
-
-export interface Checkin {
-  location: string;
-  id: string;
-  datetime: string;
-  description: string;
-  photos: {
-    src: string;
-    alt: string;
-    caption?: string;
-  }[];
-}
+import { Checkin, Transportation } from "./utils";
 
 export const fetchTransportation = async (id: string) => {
   const url = new URL(`/locations/${id}`, process.env.NEXT_PUBLIC_BACKEND_URL);
@@ -37,6 +20,7 @@ export const fetchTransportationList = async () => {
       headers: {
         "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY!,
       },
+      next: { revalidate: 10 },
     },
   );
 
@@ -45,7 +29,7 @@ export const fetchTransportationList = async () => {
   return [];
 };
 
-export const createTransportation = async (
+export const postTransportation = async (
   id: string,
   title: string,
   date: string,
@@ -58,14 +42,64 @@ export const createTransportation = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id, title, date }),
-      next: { revalidate: 10 },
+      cache: "no-store",
     });
-
     if (!response.ok) {
       return fail(await response.text());
     }
     const transportation = (await response.json()) as Transportation;
     return succeed(transportation);
+  } catch (e) {
+    return fail(e);
+  }
+};
+
+export const postCheckin = async (
+  id: string,
+  checkinId: string,
+  checkin: Checkin,
+) => {
+  const url = new URL(
+    `/locations/${id}/${checkinId}`,
+    process.env.NEXT_PUBLIC_BACKEND_URL,
+  );
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(checkin),
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      return fail(await response.text());
+    }
+    return succeed(null);
+  } catch (e) {
+    return fail(e);
+  }
+};
+
+export const postImages = async (id: string, images: string[]) => {
+  const url = new URL(
+    `/locations/${id}/images`,
+    process.env.NEXT_PUBLIC_BACKEND_URL,
+  );
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ images }),
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      return fail(await response.text());
+    }
+    const imageIds = (await response.json()) as string[];
+    return succeed(imageIds);
   } catch (e) {
     return fail(e);
   }

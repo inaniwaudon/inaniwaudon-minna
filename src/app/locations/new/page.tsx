@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import PageWrapper from "@/components/common/PageWrapper";
-import { createTransportation } from "../utils";
+import { postTransportation } from "../utils";
 
 const Wrapper = styled.div`
   display: flex;
@@ -55,7 +55,7 @@ const Page = () => {
   const isDisabledButton = id === "" || title === "" || date === "";
 
   const onClick = async () => {
-    const result = await createTransportation(id, title, date);
+    const result = await postTransportation(id, title, date);
     if (!result.success) {
       alert(`登録に失敗しました: ${result.value}`);
       return;
