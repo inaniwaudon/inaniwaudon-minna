@@ -1,5 +1,3 @@
-"use client";
-
 import PageWrapper from "@/components/common/PageWrapper";
 import { fetchTransportation } from "../../_lib/api";
 import Content from "./Content";

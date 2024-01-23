@@ -1,7 +1,10 @@
+"use client";
+
 import { styled } from "@linaria/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MdPlace } from "react-icons/md";
 
+import { fetchPlaces } from "../../_lib/api";
 import { samplePlaces } from "../../_lib/sample-places";
 import {
   FoursquareOriginalPlace,
@@ -67,6 +70,34 @@ const Details = styled.div`
   color: #999;
 `;
 
+const Loading = styled.div`
+  @keyframes ball-scale {
+    0% {
+      transform: scale(0.0);
+    }
+    100% {
+      transform: scale(1.0);
+      opacity: 0;
+    }
+  }
+
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  border-radius: 50%;
+  background: hsla(40, 60%, 50%, 0.8);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  animation: ball-scale 1s 0s ease-in-out infinite;
+`;
+
+const toSortPlaces = (places: FoursquareOriginalPlace[]) => {
+  return places.toSorted((a, b) => (a.distance ?? 0) - (b.distance ?? 0));
+};
+
 interface ModalProps {
   displays: boolean;
   setFsqPlace: (place: FoursquarePlace) => void;
@@ -74,20 +105,40 @@ interface ModalProps {
 }
 
 const Modal = ({ displays, setFsqPlace, setDisplays }: ModalProps) => {
-  const [places, setPlaces] = useState<FoursquareOriginalPlace[]>([]);
+  const [places, setPlaces] = useState<FoursquareOriginalPlace[] | null>(null);
   const [latitude, setLatitude] = useState<number>();
   const [longitude, setLongitude] = useState<number>();
+  const [query, setQuery] = useState<string>("");
 
-  const decide = (place: FoursquareOriginalPlace) => {
-    setFsqPlace({
-      fsqId: place.fsq_id,
-      name: place.name,
-      latitude: place.geocodes.latitude,
-      longitude: place.geocodes.longitude,
-      formattedAddress: place.location.formatted_address,
-    });
-    setDisplays(false);
-  };
+  const decide = useCallback(
+    (place: FoursquareOriginalPlace) => {
+      setFsqPlace({
+        fsqId: place.fsq_id,
+        name: place.name,
+        latitude: place.geocodes.latitude,
+        longitude: place.geocodes.longitude,
+        formattedAddress: place.location.formatted_address,
+      });
+      setDisplays(false);
+    },
+    [setFsqPlace, setDisplays],
+  );
+
+  const search = useCallback(async () => {
+    if (!latitude || !longitude) {
+      return;
+    }
+    const result = await fetchPlaces(
+      latitude.toString(),
+      longitude.toString(),
+      query,
+    );
+    if (!result.success) {
+      alert(`スポットの取得に失敗しました: ${result.value}`);
+      return;
+    }
+    setPlaces(toSortPlaces(result.value));
+  }, [latitude, longitude, query]);
 
   useEffect(() => {
     (async () => {
@@ -99,11 +150,7 @@ const Modal = ({ displays, setFsqPlace, setDisplays }: ModalProps) => {
       } else {
         alert(`位置情報の取得に失敗しました: ${positionResult.value}`);
       }
-
-      const sortedPlaces = samplePlaces.toSorted(
-        (a, b) => a.distance - b.distance,
-      );
-      setPlaces(sortedPlaces);
+      setPlaces(toSortPlaces(samplePlaces));
     })();
   }, []);
 
@@ -112,25 +159,33 @@ const Modal = ({ displays, setFsqPlace, setDisplays }: ModalProps) => {
       <ModalHeader
         latitude={latitude}
         longitude={longitude}
+        query={query}
         setLatitude={setLatitude}
         setLongitude={setLongitude}
+        setQuery={setQuery}
         setDisplays={setDisplays}
+        search={search}
       />
-      <List>
-        {places.map((place) => (
-          <Item onClick={() => decide(place)}>
-            <PlaceIcon>
-              <MdPlace />
-            </PlaceIcon>
-            <Information>
-              <Location>{place.name}</Location>
-              <Details>
-                {place.distance} m ／ {place.location.formatted_address}
-              </Details>
-            </Information>
-          </Item>
-        ))}
-      </List>
+      {places ? (
+        <List>
+          {places.map((place) => (
+            <Item onClick={() => decide(place)}>
+              <PlaceIcon>
+                <MdPlace />
+              </PlaceIcon>
+              <Information>
+                <Location>{place.name}</Location>
+                <Details>
+                  {place.distance ?? "?"} m ／{" "}
+                  {place.location.formatted_address}
+                </Details>
+              </Information>
+            </Item>
+          ))}
+        </List>
+      ) : (
+        <Loading />
+      )}
     </Wrapper>
   );
 };

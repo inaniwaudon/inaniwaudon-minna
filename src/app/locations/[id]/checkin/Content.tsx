@@ -1,15 +1,22 @@
 "use client";
 
-import { styled } from "@linaria/react";
+import { CSSProperties, styled } from "@linaria/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MdClose, MdPlace } from "react-icons/md";
 import { v4 as uuidV4 } from "uuid";
 
 import { dateToInput } from "@/lib/utils";
 import { deleteCheckin, postImages, putCheckin } from "../../_lib/api";
 import { Button, Input, Textarea } from "../../_lib/styles";
-import { Checkin, FoursquarePlace, convertImageToWebp } from "../../_lib/utils";
+import {
+  Checkin,
+  FoursquarePlace,
+  Photo,
+  convertImageToWebp,
+  getImageUrl,
+  isBase64Image,
+} from "../../_lib/utils";
 import Modal from "./Modal";
 
 const Wrapper = styled.div`
@@ -37,6 +44,26 @@ const LocationButton = styled(Button)`
   flex-shrink: 0;
   display: flex;
   align-items: center;
+`;
+
+const ThumbnailWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+const Thumbnail = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgba(40, 60%, 50%, 0.05);
+  background-position: center;
+  background-size: cover;
+
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 const ButtonList = styled.div`
@@ -69,7 +96,7 @@ const CancelButton = styled(Button)`
   color: #666;
   text-align: center;
   padding: 8px;
-  border: 1px solid #666;
+  border: 1px solid #999;
   background: transparent;
 
   &:hover {
@@ -85,8 +112,7 @@ interface ContentProps {
 const Content = ({ id, initialCheckin }: ContentProps) => {
   const router = useRouter();
 
-  const [displaysModal, setDisplaysModal] = useState(false);
-  const [webpBase64s, setWebpBase64s] = useState<string[] | null>([]);
+  const tempPrefix = "@temp:";
 
   // 初期値の設定
   const [checkinId, _] = useState(initialCheckin?.id ?? uuidV4());
@@ -97,42 +123,87 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
   const [description, setDescription] = useState(
     initialCheckin?.description ?? "",
   );
+  const [photos, setPhotos] = useState<Photo[]>(initialCheckin?.photos ?? []);
 
   const initialDate = initialCheckin
     ? new Date(initialCheckin.datetime)
     : new Date();
   const [datetime, setDatetime] = useState(dateToInput(initialDate));
 
-  const isDisabledButton = location === "" || datetime === "";
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [displaysModal, setDisplaysModal] = useState(false);
 
-  // 画像を WebP に変換
-  const onChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.currentTarget.files) {
-      return;
-    }
-    setWebpBase64s(null);
+  const isDisabledButton = location === "" || datetime === "" || isSubmitting;
 
-    const converted = await Promise.all(
-      [...e.currentTarget.files].map((file) => convertImageToWebp(file)),
-    );
-    const tempBase64s = converted.flatMap((result) =>
-      result.success ? result.value : [],
-    );
-    setWebpBase64s(tempBase64s);
-  };
+  const onChangeImage = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!e.currentTarget.files) {
+        return;
+      }
+      const files = [...e.currentTarget.files];
+
+      // 識別用に仮の ID を付与
+      const tempSrcs = files.map(() => `${tempPrefix}${uuidV4()}`);
+      const addedPhotos = files.map((_, index) => ({
+        src: tempSrcs[index],
+        alt: "",
+      }));
+      setPhotos((previous) => [...previous, ...addedPhotos]);
+
+      // 画像を WebP に変換
+      const converted = await Promise.all(
+        files.map((file) => convertImageToWebp(file)),
+      );
+
+      // 変換後の画像に差し替え
+      setPhotos((previous) => {
+        const newPhotos = [...previous];
+        for (let i = 0; i < converted.length; i++) {
+          const result = converted[i];
+          if (result.success) {
+            const index = newPhotos.findIndex(
+              (photo) => photo.src === tempSrcs[i],
+            );
+            if (index > -1) {
+              newPhotos[index].src = result.value;
+            }
+          }
+        }
+        return newPhotos;
+      });
+    },
+    [],
+  );
 
   // チェックイン
-  const onClick = async () => {
-    if (webpBase64s === null) {
+  const onClick = useCallback(async () => {
+    setIsSubmitting(true);
+
+    // 画像の変換中が存在する場合は投稿を拒否
+    if (photos.some((photo) => photo.src.startsWith(tempPrefix))) {
       alert("画像を変換中です");
       return;
     }
 
     // 画像の投稿
+    const webpBase64s = photos
+      .filter((photo) => isBase64Image(photo.src))
+      .map((photo) => photo.src);
     const imageResult = await postImages(id, webpBase64s);
     if (!imageResult.success) {
       alert(`画像のアップロードに失敗しました: ${imageResult.value}`);
+      setIsSubmitting(false);
       return;
+    }
+
+    // base64 を imageId に差し替え
+    const newPhotos = [...photos];
+    let base64Index = 0;
+    for (const photo of newPhotos) {
+      if (isBase64Image(photo.src)) {
+        photo.src = imageResult.value[base64Index];
+        base64Index++;
+      }
     }
 
     const checkin: Checkin = {
@@ -141,19 +212,28 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
       datetime: new Date(datetime).toISOString(),
       fsqPlace,
       description,
-      photos: imageResult.value.map((imageId) => ({ src: imageId, alt: "" })),
+      photos: newPhotos,
     };
-
     const checkinResult = await putCheckin(id, checkinId, checkin);
     if (!checkinResult.success) {
       alert(`チェックインに失敗しました: ${checkinResult.value}`);
+      setIsSubmitting(false);
       return;
     }
     alert("チェックインしました");
     router.push(`/locations/${id}?checkin=${checkinId}`);
-  };
+  }, [
+    id,
+    checkinId,
+    location,
+    datetime,
+    fsqPlace,
+    description,
+    photos,
+    router,
+  ]);
 
-  const onClickDeleteButton = async () => {
+  const onClickDeleteButton = useCallback(async () => {
     const ok = window.confirm("チェックインを削除しますか？");
     if (!ok) {
       return;
@@ -165,7 +245,7 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
     }
     alert("チェックインを削除しました");
     router.push(`/locations/${id}`);
-  };
+  }, [id, checkinId, router]);
 
   useEffect(() => {
     if (fsqPlace) {
@@ -211,6 +291,15 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
         </Part>
         <Part>
           <label htmlFor="image">画像</label>
+          <ThumbnailWrapper>
+            {photos.map((photo, index) => {
+              const styles: CSSProperties = {};
+              if (photo.src !== "") {
+                styles.backgroundImage = `url(${getImageUrl(id, photo.src)})`;
+              }
+              return <Thumbnail style={styles} key={index} />;
+            })}
+          </ThumbnailWrapper>
           <Input
             type="file"
             id="image"

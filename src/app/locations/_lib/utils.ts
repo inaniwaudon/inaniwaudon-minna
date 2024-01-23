@@ -12,11 +12,13 @@ export interface Checkin {
   datetime: string;
   fsqPlace?: FoursquarePlace;
   description: string;
-  photos: {
-    src: string;
-    alt: string;
-    caption?: string;
-  }[];
+  photos: Photo[];
+}
+
+export interface Photo {
+  src: string;
+  alt: string;
+  caption?: string;
 }
 
 export interface FoursquarePlace {
@@ -33,7 +35,7 @@ export interface FoursquareOriginalPlace {
     latitude: number;
     longitude: number;
   };
-  distance: number;
+  distance?: number;
   location: {
     address?: string;
     address_extended?: string;
@@ -86,8 +88,15 @@ export const convertImageToWebp = async (file: File) => {
   return succeed(canvas.toDataURL("image/webp"));
 };
 
+export const isBase64Image = (src: string) => {
+  return src.startsWith("data:image/");
+};
+
 export const getImageUrl = (id: string, src: string) => {
   if (src.startsWith("http") || src.startsWith("https")) {
+    return src;
+  }
+  if (isBase64Image(src)) {
     return src;
   }
   const url = new URL(

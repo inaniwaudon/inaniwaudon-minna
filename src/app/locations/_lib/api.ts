@@ -42,6 +42,8 @@ export const postTransportation = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id, title, date }),
+      mode: "cors",
+      credentials: "include",
       cache: "no-store",
     });
     if (!response.ok) {
@@ -70,6 +72,8 @@ export const putCheckin = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(checkin),
+      mode: "cors",
+      credentials: "include",
       cache: "no-store",
     });
     if (!response.ok) {
@@ -89,6 +93,8 @@ export const deleteCheckin = async (id: string, checkinId: string) => {
   try {
     const response = await fetch(url, {
       method: "DELETE",
+      mode: "cors",
+      credentials: "include",
       cache: "no-store",
     });
     if (!response.ok) {
@@ -112,6 +118,8 @@ export const postImages = async (id: string, images: string[]) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ images }),
+      mode: "cors",
+      credentials: "include",
       cache: "no-store",
     });
     if (!response.ok) {
@@ -142,6 +150,8 @@ export const fetchPlaces = async (
   );
   try {
     const response = await fetch(url, {
+      mode: "cors",
+      credentials: "include",
       next: { revalidate: 60 },
     });
     if (!response.ok) {

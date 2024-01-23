@@ -64,17 +64,23 @@ const SearchButton = styled(Button)`
 interface ModalHeaderProps {
   latitude?: number;
   longitude?: number;
+  query?: string;
+  search: () => void;
   setLatitude: (value: number) => void;
   setLongitude: (value: number) => void;
+  setQuery: (value: string) => void;
   setDisplays: (value: boolean) => void;
 }
 
 const ModalHeader = ({
   latitude,
   longitude,
+  query,
   setLatitude,
   setLongitude,
+  setQuery,
   setDisplays,
+  search,
 }: ModalHeaderProps) => {
   return (
     <Wrapper>
@@ -95,14 +101,20 @@ const ModalHeader = ({
         </Item>
         <Item>
           <Label>キーワード</Label>
-          <input />
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.currentTarget.value)}
+          />
         </Item>
       </div>
       <ButtonWrapper>
         <BackButton onClick={() => setDisplays(false)}>
           <MdClose />
         </BackButton>
-        <SearchButton>
+        <SearchButton
+          disabled={latitude === undefined || longitude === undefined}
+          onClick={search}
+        >
           <IoSearch />
         </SearchButton>
       </ButtonWrapper>
