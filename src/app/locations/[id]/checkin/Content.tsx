@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, styled } from "@linaria/react";
+import { styled } from "@linaria/react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { MdClose, MdPlace } from "react-icons/md";
@@ -13,11 +13,11 @@ import {
   Checkin,
   FoursquarePlace,
   Photo,
-  convertImageToWebp,
-  getImageUrl,
   isBase64Image,
+  tempImagePrefix,
 } from "../../_lib/utils";
 import Modal from "./Modal";
+import PhotoUploader from "./PhotoUploader";
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,26 +44,6 @@ const LocationButton = styled(Button)`
   flex-shrink: 0;
   display: flex;
   align-items: center;
-`;
-
-const ThumbnailWrapper = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-
-const Thumbnail = styled.div`
-  width: 100px;
-  height: 100px;
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: rgba(40, 60%, 50%, 0.05);
-  background-position: center;
-  background-size: cover;
-
-  &:hover {
-    opacity: 0.6;
-  }
 `;
 
 const ButtonList = styled.div`
@@ -112,8 +92,6 @@ interface ContentProps {
 const Content = ({ id, initialCheckin }: ContentProps) => {
   const router = useRouter();
 
-  const tempPrefix = "@temp:";
-
   // 初期値の設定
   const [checkinId, _] = useState(initialCheckin?.id ?? uuidV4());
   const [location, setLocation] = useState(initialCheckin?.location ?? "");
@@ -135,52 +113,12 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
 
   const isDisabledButton = location === "" || datetime === "" || isSubmitting;
 
-  const onChangeImage = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (!e.currentTarget.files) {
-        return;
-      }
-      const files = [...e.currentTarget.files];
-
-      // 識別用に仮の ID を付与
-      const tempSrcs = files.map(() => `${tempPrefix}${uuidV4()}`);
-      const addedPhotos = files.map((_, index) => ({
-        src: tempSrcs[index],
-        alt: "",
-      }));
-      setPhotos((previous) => [...previous, ...addedPhotos]);
-
-      // 画像を WebP に変換
-      const converted = await Promise.all(
-        files.map((file) => convertImageToWebp(file)),
-      );
-
-      // 変換後の画像に差し替え
-      setPhotos((previous) => {
-        const newPhotos = [...previous];
-        for (let i = 0; i < converted.length; i++) {
-          const result = converted[i];
-          if (result.success) {
-            const index = newPhotos.findIndex(
-              (photo) => photo.src === tempSrcs[i],
-            );
-            if (index > -1) {
-              newPhotos[index].src = result.value;
-            }
-          }
-        }
-        return newPhotos;
-      });
-    },
-    [],
-  );
-
   // チェックイン
   const onClick = useCallback(async () => {
     setIsSubmitting(true);
 
     // 画像の変換中が存在する場合は投稿を拒否
-    if (photos.some((photo) => photo.src.startsWith(tempPrefix))) {
+    if (photos.some((photo) => photo.src.startsWith(tempImagePrefix))) {
       alert("画像を変換中です");
       return;
     }
@@ -291,22 +229,7 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
         </Part>
         <Part>
           <label htmlFor="image">画像</label>
-          <ThumbnailWrapper>
-            {photos.map((photo, index) => {
-              const styles: CSSProperties = {};
-              if (photo.src !== "") {
-                styles.backgroundImage = `url(${getImageUrl(id, photo.src)})`;
-              }
-              return <Thumbnail style={styles} key={index} />;
-            })}
-          </ThumbnailWrapper>
-          <Input
-            type="file"
-            id="image"
-            multiple
-            accept="image/*"
-            onChange={onChangeImage}
-          />
+          <PhotoUploader id={id} photos={photos} setPhotos={setPhotos} />
         </Part>
         <Part>
           <label htmlFor="date">説明</label>

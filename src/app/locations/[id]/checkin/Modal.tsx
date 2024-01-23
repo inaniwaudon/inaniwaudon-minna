@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from "react";
 import { MdPlace } from "react-icons/md";
 
 import { fetchPlaces } from "../../_lib/api";
-import { samplePlaces } from "../../_lib/sample-places";
 import {
   FoursquareOriginalPlace,
   FoursquarePlace,
@@ -105,7 +104,7 @@ interface ModalProps {
 }
 
 const Modal = ({ displays, setFsqPlace, setDisplays }: ModalProps) => {
-  const [places, setPlaces] = useState<FoursquareOriginalPlace[] | null>(null);
+  const [places, setPlaces] = useState<FoursquareOriginalPlace[]>();
   const [latitude, setLatitude] = useState<number>();
   const [longitude, setLongitude] = useState<number>();
   const [query, setQuery] = useState<string>("");
@@ -115,8 +114,8 @@ const Modal = ({ displays, setFsqPlace, setDisplays }: ModalProps) => {
       setFsqPlace({
         fsqId: place.fsq_id,
         name: place.name,
-        latitude: place.geocodes.latitude,
-        longitude: place.geocodes.longitude,
+        latitude: place.geocodes?.latitude,
+        longitude: place.geocodes?.longitude,
         formattedAddress: place.location.formatted_address,
       });
       setDisplays(false);
@@ -150,9 +149,14 @@ const Modal = ({ displays, setFsqPlace, setDisplays }: ModalProps) => {
       } else {
         alert(`位置情報の取得に失敗しました: ${positionResult.value}`);
       }
-      setPlaces(toSortPlaces(samplePlaces));
     })();
   }, []);
+
+  useEffect(() => {
+    if (displays && !places) {
+      search();
+    }
+  }, [displays, places, search]);
 
   return (
     <Wrapper displays={displays}>

@@ -24,14 +24,14 @@ export interface Photo {
 export interface FoursquarePlace {
   fsqId: string;
   name: string;
-  latitude: number;
-  longitude: number;
+  latitude?: number;
+  longitude?: number;
   formattedAddress: string;
 }
 
 export interface FoursquareOriginalPlace {
   fsq_id: string;
-  geocodes: {
+  geocodes?: {
     latitude: number;
     longitude: number;
   };
@@ -105,6 +105,8 @@ export const getImageUrl = (id: string, src: string) => {
   );
   return url.href;
 };
+
+export const tempImagePrefix = "@temp:";
 
 export const getCurrentPosition = () =>
   new Promise<Result<{ latitude: number; longitude: number }, string>>(
