@@ -6,6 +6,7 @@ import { MdAdd } from "react-icons/md";
 
 import PageWrapper from "@/components/common/PageWrapper";
 import { fetchTransportation } from "../_lib/api";
+import { getImageUrl } from "../_lib/utils";
 import CheckinContent from "./CheckinContent";
 import Timeline from "./Timeline";
 
@@ -124,13 +125,42 @@ const Page = async ({ params, searchParams }: PageProps) => {
 
 export const generateMetadata = async ({
   params,
+  searchParams,
 }: PageProps): Promise<Metadata> => {
   const result = await fetchTransportation(params.id);
   if (!result.success) {
     return {};
   }
+
+  const { checkins } = result.value;
+  const paramsIndex = checkins.findIndex(
+    (checkin) => checkin.id === searchParams.checkin,
+  );
+  const checkin = checkins[paramsIndex];
+
+  const partTitle = checkin
+    ? `${checkin.location} – ${result.value.title}`
+    : result.value.title;
+  const title = `${partTitle}｜いなにわうどん.みんな`;
+  const description = checkin ? checkin.description : "";
+  const images = checkin?.photos[0]
+    ? [getImageUrl(params.id, checkin.photos[0]?.src)]
+    : undefined;
+
   return {
-    title: result.value.title,
+    title: partTitle,
+    description,
+    openGraph: {
+      title,
+      description,
+      images,
+    },
+    twitter: {
+      title,
+      description,
+      card: "summary",
+      images,
+    },
   };
 };
 
