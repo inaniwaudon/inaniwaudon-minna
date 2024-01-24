@@ -137,26 +137,27 @@ export const generateMetadata = async ({
     (checkin) => checkin.id === searchParams.checkin,
   );
   const checkin = checkins[paramsIndex];
-  const title = checkin
+
+  const partTitle = checkin
     ? `${checkin.location} – ${result.value.title}`
     : result.value.title;
+  const title = `${partTitle}｜いなにわうどん.みんな`;
   const description = checkin ? checkin.description : "";
-
   const images = checkin?.photos[0]
     ? [getImageUrl(params.id, checkin.photos[0]?.src)]
     : undefined;
 
   return {
-    title: title,
-    description: description,
+    title: partTitle,
+    description,
     openGraph: {
-      title: title,
-      description: description,
+      title,
+      description,
       images,
     },
     twitter: {
-      title: title,
-      description: description,
+      title,
+      description,
       card: "summary",
       images,
     },
