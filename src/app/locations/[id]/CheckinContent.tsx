@@ -9,10 +9,6 @@ import { useEffect, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import { Checkin, getImageUrl } from "../_lib/utils";
 
-const Main = styled.main`
-  width: 500px;
-`;
-
 // header
 const Header = styled.header`
   margin-bottom: 24px;
@@ -129,7 +125,7 @@ const CheckinContent = ({ id, checkin }: CheckinContentProps) => {
   }, [getTweetHref]);
 
   return (
-    <Main>
+    <main>
       {!checkin ? (
         <p>チェックインがありません</p>
       ) : (
@@ -177,7 +173,7 @@ const CheckinContent = ({ id, checkin }: CheckinContentProps) => {
           </FigureWrapper>
         </>
       )}
-    </Main>
+    </main>
   );
 };
 

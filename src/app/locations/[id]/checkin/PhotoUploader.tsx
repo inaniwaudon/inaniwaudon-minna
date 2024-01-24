@@ -1,5 +1,5 @@
 import { CSSProperties, styled } from "@linaria/react";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { v4 as uuidV4 } from "uuid";
 
 import { DndContext, DragOverEvent, UniqueIdentifier } from "@dnd-kit/core";
@@ -58,7 +58,7 @@ const DraggableThumbnail = ({ id, photo }: DraggableThumbnailProps) => {
     id: photo.src,
   });
   const styles: CSSProperties = {};
-  if (photo.src !== "") {
+  if (photo.src !== "" && photo.src.startsWith(tempImagePrefix)) {
     styles.backgroundImage = `url(${getImageUrl(id, photo.src)})`;
   }
   if (transform) {
@@ -77,6 +77,8 @@ interface PhotoUploaderProps {
 
 const PhotoUploader = ({ id, photos, setPhotos }: PhotoUploaderProps) => {
   const photoSrcs = photos.map((photo) => photo.src);
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const reorder = (
     prev: Photo[],
@@ -152,13 +154,14 @@ const PhotoUploader = ({ id, photos, setPhotos }: PhotoUploaderProps) => {
             {photos.map((photo) => (
               <DraggableThumbnail id={id} photo={photo} key={photo.src} />
             ))}
-            <AddButton>
+            <AddButton onClick={() => inputRef.current?.click()}>
               <MdAdd />
             </AddButton>
           </ThumbnailWrapper>
         </SortableContext>
       </DndContext>
       <input
+        ref={inputRef}
         type="file"
         id="image"
         multiple

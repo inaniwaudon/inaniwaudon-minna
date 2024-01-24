@@ -25,6 +25,7 @@ export const fetchTransportationList = async () => {
   );
 
   const txt = await response.text();
+  // TODO
   console.log(txt);
   return [];
 };

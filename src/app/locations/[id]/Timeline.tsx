@@ -5,12 +5,10 @@ import Link from "next/link";
 import { Checkin, getImageUrl } from "../_lib/utils";
 
 const List = styled.ul`
-  width: 340px;
   list-style: none;
   margin: -6px 0 0 0;
   padding: 0;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
 `;
 
@@ -66,7 +64,7 @@ const Anchor = styled.a`
 
   &:hover {
     ${Thumbnail} {
-      transform: translateX(-16px);
+      transform: translateX(-12px);
     }
   }
 `;
@@ -74,10 +72,6 @@ const Anchor = styled.a`
 interface TimelineProps {
   id: string;
   checkins: Checkin[];
-}
-
-{
-  /* タイルビュー と タイムラインビュー */
 }
 
 const Timeline = ({ id, checkins }: TimelineProps) => {
