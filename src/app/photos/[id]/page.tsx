@@ -75,7 +75,7 @@ const Page = ({ params, searchParams }: PageProps) => {
   const photoData = photos.find((photo) => photo.id === id)!.data!;
 
   const { title, date } = photoData;
-  const dir = `${process.env.PHOTO_URL}/photo/${id}`;
+  const dir = `${process.env.NEXT_PUBLIC_PHOTO_URL}/photo/${id}`;
   const titleLast = title[title.length - 1];
 
   const newPhotos = photoData.photos.map((photo) => ({

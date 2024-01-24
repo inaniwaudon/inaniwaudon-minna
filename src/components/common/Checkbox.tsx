@@ -22,14 +22,13 @@ const CategoryItemCheck = styled.div<{ selected: boolean; keyColor: string }>`
   transition: opacity 0.2s;
 `;
 
-const Anchor = styled.button<{ selected: boolean; keyColor: string }>`
+const Button = styled.button<{ selected: boolean; keyColor: string }>`
   height: 14px;
   line-height: 14px;
   color: ${({ selected, keyColor }) => (selected ? "#fff" : keyColor)};
   text-decoration: none;
   font-size: 14px;
   padding: 6px 8px 6px 10px;
-  border: none;
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -66,14 +65,14 @@ const Checkbox = ({ tags, customParams }: CheckboxProps) => {
         const selected = isSelectedTag(tag.key);
         return (
           <li key={tag.key}>
-            <Anchor
+            <Button
               selected={selected}
               keyColor={tag.keyColor}
               onClick={() => switchTag(tag.key)}
             >
               <CategoryItemCheck selected={selected} keyColor={tag.keyColor} />
               {tag.label}
-            </Anchor>
+            </Button>
           </li>
         );
       })}

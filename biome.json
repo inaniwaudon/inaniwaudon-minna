@@ -22,7 +22,8 @@
         "noDangerouslySetInnerHtml": "off"
       },
       "a11y": {
-        "useValidAnchor": "off"
+        "useValidAnchor": "off",
+        "useButtonType": "off"
       },
       "nursery": {
         "noUnusedImports": "error"
