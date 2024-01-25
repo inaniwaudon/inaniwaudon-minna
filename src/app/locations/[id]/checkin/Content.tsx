@@ -134,7 +134,7 @@ const Content = ({ id, initialCheckin }: ContentProps) => {
       return;
     }
 
-    // base64 を imageId に差し替え
+    // base64 をファイル名に差し替え
     const newPhotos = [...photos];
     let base64Index = 0;
     for (const photo of newPhotos) {
