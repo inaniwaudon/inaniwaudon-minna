@@ -17,7 +17,7 @@ npx wrangler d1 create inaniwaudon-minna
 npx wrangler d1 execute inaniwaudon-minna --file=./create.sql
 ```
 
-## 写真の更新方法
+## 写真の更新
 
 WebP 形式に圧縮した上で、Cloudflare R2 にアップロードし、メタデータを JSON ファイルとして管理します。
 
@@ -43,7 +43,11 @@ WebP 形式に圧縮した上で、Cloudflare R2 にアップロードし、メ�
 
 4. JSON ファイルを編集してコミットする
 
-## 短歌の削除方法
+## チェックイン
+
+iOS 端末からチェックイン機能を利用するには、位置情報を許可したうえで「設定 → Safari → サイト越えトラッキングを防ぐ」を無効にする必要があります。
+
+## 短歌の削除
 
 不適切な短歌は、deleted_at カラムに任意の日付を追加してソフトデリートします。
 
