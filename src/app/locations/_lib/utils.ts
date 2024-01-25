@@ -87,7 +87,7 @@ export const getImageUrl = (id: string, src: string) => {
     return src;
   }
   const url = new URL(
-    `/locations/${id}/${src}.webp`,
+    `/locations/${id}/${src}`,
     process.env.NEXT_PUBLIC_PHOTO_URL,
   );
   return url.href;

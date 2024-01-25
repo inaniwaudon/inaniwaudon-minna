@@ -126,8 +126,8 @@ export const postImages = async (id: string, images: string[]) => {
     if (!response.ok) {
       return fail(await response.text());
     }
-    const imageIds = (await response.json()) as string[];
-    return succeed(imageIds);
+    const filenames = (await response.json()) as string[];
+    return succeed(filenames);
   } catch (e) {
     return fail(e);
   }
