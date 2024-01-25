@@ -113,10 +113,30 @@ const CheckinContent = ({ id, checkin }: CheckinContentProps) => {
     if (!checkin) {
       return "";
     }
+
+    // 住所を抽出
+    let address = "";
+    if (checkin.fsqPlace) {
+      const formattedAddress = checkin.fsqPlace.formattedAddress;
+      const prefecture = formattedAddress.match(/[^\x20-\x7e]+[都道府県]/u);
+      const city = formattedAddress.match(/[^\x20-\x7e]+市/u);
+      const ward = formattedAddress.match(/[^\x20-\x7e]+区/u);
+      if (prefecture) {
+        address += prefecture[0];
+      }
+      if (city) {
+        address += city[0];
+      }
+      if (ward) {
+        address += ward[0];
+      }
+    }
+
     // 30分以上前のチェックインは I was at にする
     const diff = Date.now() - new Date(checkin.datetime).getTime();
     const be = diff > 60 * 30 * 1000 ? " was" : "'m";
-    const text = `I${be} at ${checkin.location} in hogehoge. ${location.href}`;
+    const place = `${checkin.location}${address ? ` in ${address}` : ""}`;
+    const text = `I${be} at ${place}. ${location.href}`;
     return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
   };
 

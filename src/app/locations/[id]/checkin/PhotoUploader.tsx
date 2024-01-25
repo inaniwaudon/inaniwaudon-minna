@@ -58,7 +58,7 @@ const DraggableThumbnail = ({ id, photo }: DraggableThumbnailProps) => {
     id: photo.src,
   });
   const styles: CSSProperties = {};
-  if (photo.src !== "" && photo.src.startsWith(tempImagePrefix)) {
+  if (photo.src !== "" && !photo.src.startsWith(tempImagePrefix)) {
     styles.backgroundImage = `url(${getImageUrl(id, photo.src)})`;
   }
   if (transform) {

@@ -47,8 +47,7 @@ const TimelineWrapper = styled.div<{ hidable: boolean }>`
 `;
 
 const CheckinContentWrapper = styled.div<{ hidable: boolean }>`
-  max-width: 500px;
-  flex: 1 0 500px;
+  flex: 0 1 500px;
 
   @media (width < 800px) {
     display: ${({ hidable }) => (hidable ? "none" : "block")};
