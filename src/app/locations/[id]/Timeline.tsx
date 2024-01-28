@@ -76,7 +76,6 @@ interface TimelineProps {
 }
 
 const Timeline = ({ id, checkins }: TimelineProps) => {
-  console.log(checkins[0]);
   return (
     <nav>
       <List>
