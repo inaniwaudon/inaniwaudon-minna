@@ -1,7 +1,8 @@
 import { styled } from "@linaria/react";
+import Link from "next/link";
 
 import { stringifyDate } from "@/lib/utils";
-import Link from "next/link";
+import { utcToZonedTime } from "date-fns-tz";
 import { Checkin, getImageUrl } from "../_lib/utils";
 
 const List = styled.ul`
@@ -75,6 +76,7 @@ interface TimelineProps {
 }
 
 const Timeline = ({ id, checkins }: TimelineProps) => {
+  console.log(checkins[0]);
   return (
     <nav>
       <List>
@@ -92,7 +94,13 @@ const Timeline = ({ id, checkins }: TimelineProps) => {
                   <Thumbnail style={{ backgroundImage: `url(${thumbnail})` }} />
                   <Information>
                     <Time>
-                      {stringifyDate(new Date(checkin.datetime), false)}
+                      {stringifyDate(
+                        utcToZonedTime(
+                          new Date(checkin.datetime),
+                          "Asia/Tokyo",
+                        ),
+                        false,
+                      )}
                     </Time>
                     <Location ratio={(index + 1) / checkins.length}>
                       {checkin.location}
