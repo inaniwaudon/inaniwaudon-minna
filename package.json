@@ -32,6 +32,7 @@
     "remark-parse": "^10.0.1",
     "sass": "^1.49.9",
     "sharp": "^0.32.6",
+    "ua-parser-js": "^1.0.37",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "@types/jest": "^29.5.11",
     "@types/node": "18.11.18",
     "@types/react": "^18.0.26",
+    "@types/ua-parser-js": "^0.7.39",
     "@types/uuid": "^9.0.7",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
