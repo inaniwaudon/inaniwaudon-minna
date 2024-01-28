@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "@linaria/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { postTransportation } from "../_lib/api";

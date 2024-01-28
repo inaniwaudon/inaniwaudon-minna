@@ -1,6 +1,7 @@
 import imageCompression from "browser-image-compression";
 
 import { Result, fail, succeed } from "@/lib/utils";
+import { UAParser } from "ua-parser-js";
 
 export interface Transportation {
   title: string;
@@ -56,14 +57,20 @@ export const convertImageToWebp = (file: File) =>
     const MAX_SIZE = 2500;
 
     (async () => {
-      // Safari では WebP には変換されない
+      // Safari は WebP のエンコードに未対応なため、JPEG を採用する
+      const ua = new UAParser();
+      const browserName = ua.getBrowser().name;
+      const fileType =
+        browserName === "Safari" || browserName === "Mobile Safari"
+          ? "image/jpeg"
+          : "image/webp";
       const compressed = await imageCompression(file, {
-        fileType: "image/webp",
-        maxSizeMB: 1,
+        fileType,
+        maxSizeMB: 0.7,
         maxWidthOrHeight: MAX_SIZE,
         initialQuality: 0.7,
       });
-      console.log(file.size, compressed.size);
+
       const reader = new FileReader();
       reader.readAsDataURL(compressed);
       reader.onload = () => {
