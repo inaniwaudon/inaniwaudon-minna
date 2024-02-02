@@ -4,9 +4,9 @@ import { styled } from "@linaria/react";
 
 import Checkbox from "@/components/common/Checkbox";
 import H2 from "@/components/common/H2";
-import { nengajo } from "@/const";
 import { useCustomParams } from "@/lib/useCustomParams";
 import { SearchParams } from "@/lib/utils";
+import { nengajo } from "../const/nengajo";
 
 const Header = styled.header`
   margin: 6px 0 20px 0;

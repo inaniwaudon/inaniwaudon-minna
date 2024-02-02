@@ -2,7 +2,7 @@ import { styled } from "@linaria/react";
 
 import jikan from "@/assets/index/jikan.webp";
 import H2 from "@/components/common/H2";
-import { links } from "@/const/index";
+import { links } from "../const/link";
 
 const List = styled.ul`
   margin: 0;

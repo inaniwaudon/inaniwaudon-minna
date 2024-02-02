@@ -277,6 +277,13 @@ const articleZennLinks: ArticleLink[] = [
     date: "2023/12/12",
     tags: ["tech"],
   },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/09f20fbec91f27",
+    title:
+      "GitHub Actions から PR を自動で作成してテストが通ったらマージしたい",
+    date: "2023/01/15",
+    tags: ["tech"],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [

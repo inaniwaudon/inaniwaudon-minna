@@ -7,7 +7,7 @@ import { unified } from "unified";
 
 import Anchor from "@/components/common/Anchor";
 import PageWrapper from "@/components/common/PageWrapper";
-import { classImpressions } from "../_data";
+import { classImpressions } from "../_const";
 
 const Wrapper = styled.div`
   max-width: 1000px;
