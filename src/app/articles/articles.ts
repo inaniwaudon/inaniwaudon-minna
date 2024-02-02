@@ -281,7 +281,7 @@ const articleZennLinks: ArticleLink[] = [
     href: "https://zenn.dev/inaniwaudon/articles/09f20fbec91f27",
     title:
       "GitHub Actions から PR を自動で作成してテストが通ったらマージしたい",
-    date: "2023/01/15",
+    date: "2024/01/15",
     tags: ["tech"],
   },
 ];
