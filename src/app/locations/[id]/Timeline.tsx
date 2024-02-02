@@ -1,8 +1,8 @@
 import { styled } from "@linaria/react";
+import { utcToZonedTime } from "date-fns-tz";
 import Link from "next/link";
 
 import { stringifyDate } from "@/lib/utils";
-import { utcToZonedTime } from "date-fns-tz";
 import { Checkin, getImageUrl } from "../_lib/utils";
 
 const List = styled.ul`
