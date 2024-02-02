@@ -23,23 +23,24 @@ export const shuffle = <T>(array: T[]): T[] => {
   return newArray;
 };
 
-export const stringifyDate = (date: Date, showsMinutes: boolean): string => {
+const pad = (n: number) => n.toString().padStart(2, "0");
+
+export const stringifyDate = (date: Date, showsSeconds: boolean): string => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const dayOfMonth = date.getDate();
   const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
+  const minutes = pad(date.getMinutes());
+  const seconds = pad(date.getSeconds());
 
   let str = `${year}/${month}/${dayOfMonth} ${hours}:${minutes}`;
-  if (showsMinutes) {
+  if (showsSeconds) {
     str += `:${seconds}`;
   }
   return str;
 };
 
 export const dateToInput = (date: Date): string => {
-  const pad = (n: number) => n.toString().padStart(2, "0");
   const YY = date.getFullYear();
   const MM = pad(date.getMonth() + 1);
   const DD = pad(date.getDate());

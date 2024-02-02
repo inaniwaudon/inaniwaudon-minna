@@ -1,6 +1,7 @@
 "use client";
 
 import { styled } from "@linaria/react";
+import { utcToZonedTime } from "date-fns-tz";
 import { IoLogoTwitter } from "react-icons/io5";
 
 import { stringifyDate } from "@/lib/utils";
@@ -153,7 +154,12 @@ const CheckinContent = ({ id, checkin }: CheckinContentProps) => {
           <Header>
             <FirstRow>
               <div>
-                <Time>{stringifyDate(new Date(checkin.datetime), false)}</Time>
+                <Time>
+                  {stringifyDate(
+                    utcToZonedTime(new Date(checkin.datetime), "Asia/Tokyo"),
+                    false,
+                  )}
+                </Time>
                 <Location>{checkin.location}</Location>
                 {checkin.fsqPlace && (
                   <Address>

@@ -23,6 +23,8 @@
     "@linaria/react": "^5.0.3",
     "argparse": "^2.0.1",
     "browser-image-compression": "^2.0.2",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
     "feed": "^4.2.2",
     "natsort": "^2.0.3",
     "next": "~13.5.6",
