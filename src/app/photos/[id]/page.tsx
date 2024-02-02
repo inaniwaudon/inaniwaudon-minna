@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import AdobeFonts from "@/components/common/AdobeFonts";
 import { PhotoInfo } from "@/lib/photo";
 import { SearchParams } from "@/lib/utils";
-import { photos } from "../_data";
+import { photos } from "../_const";
 import Main from "./Main";
 
 const Footer = styled.footer`

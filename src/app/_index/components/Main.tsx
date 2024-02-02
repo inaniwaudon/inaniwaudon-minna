@@ -1,11 +1,12 @@
 import { styled } from "@linaria/react";
 
-import { photos } from "@/app/photos/_data";
+import { photos } from "@/app/photos/_const";
 import logo from "@/assets/index/logo2.svg";
 import Anchor from "@/components/common/Anchor";
 import CustomList from "@/components/common/CustomList";
 import H2 from "@/components/common/H2";
 import { SearchParams } from "@/lib/utils";
+import { creations } from "../const/creation";
 import LinkList from "./LinkList";
 import Nengajo from "./Nengajo";
 
@@ -79,6 +80,16 @@ const Main = ({ searchParams }: MainProps) => {
             </CustomList>
           </section>
           <section>
+            <H2>移動記（β）</H2>
+            <CustomList>
+              <li>
+                <Anchor href="/locations/2024nagoya">
+                  岐阜・名古屋旅行（2024/1/26–29）
+                </Anchor>
+              </li>
+            </CustomList>
+          </section>
+          <section>
             <H2>文章など</H2>
             <CustomList>
               <li>
@@ -143,54 +154,11 @@ const Main = ({ searchParams }: MainProps) => {
           </section>
           <section style={{ marginTop: "24px" }}>
             <CustomList>
-              <li>
-                <Anchor href="https://inaniwaudon.github.io/spring-2022/">
-                  桜が舞い上がるページ
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://nenga.yokohama.dev">
-                  年賀状宛名作成ツール
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://github.com/inaniwaudon/twitter-illustration">
-                  twitter-illustration
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://github.com/inaniwaudon/illustrator-ruby">
-                  illustrator-ruby
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://parametric.yokohama.dev">
-                  parametric-typography
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://inaniwaudon.github.io/hoshiimo/">
-                  ほしいものリスト
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://exagree.netlify.app">超便乗ツール</Anchor>
-              </li>
-              <li>
-                <Anchor href="https://inaniwaudon.github.io/genkotsu/">
-                  げんこつ
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://cmap-display.pages.dev">
-                  cmap-display
-                </Anchor>
-              </li>
-              <li>
-                <Anchor href="https://mail-segmenter.yokohama.dev">
-                  mail-segmenter
-                </Anchor>
-              </li>
+              {creations.map((creation) => (
+                <li key={creation.url}>
+                  <Anchor href={creation.url}>{creation.title}</Anchor>
+                </li>
+              ))}
             </CustomList>
           </section>
         </TopContent>

@@ -56,6 +56,8 @@ const Page = () => {
         </Paragraph>
         <H3>好きな季節</H3>
         <Paragraph>春に次いで秋</Paragraph>
+        <H3>持っているドメイン</H3>
+        <Paragraph>いなにわうどん.みんな、yokohama.dev、chin-ch.in</Paragraph>
         <H3>ひとこと</H3>
         <Paragraph>
           最近{" "}
