@@ -3,8 +3,9 @@
 import { styled } from "@linaria/react";
 import { useCallback, useRef, useState } from "react";
 
-import { TankaPOSTSchema } from "@/app/api/tanka/route";
-import { tankaMaxLength } from "@/app/tanka/tanka";
+import { PostTankaBody, postTanka } from "./api";
+
+export const tankaMaxLength = 40;
 
 const Wrapper = styled.form`
   display: flex;
@@ -91,25 +92,17 @@ const Form = () => {
         return;
       }
 
-      const body: TankaPOSTSchema = {
+      const body: PostTankaBody = {
         tanka: inputTanka,
         name: inputName,
         comment: inputComment,
         color1680,
       };
-      const response = await fetch("/api/tanka", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-
-      if (!response.ok) {
+      const result = await postTanka(body);
+      if (!result.success) {
         alert("じゃあ投稿できてないじゃん残念でした");
         return;
       }
-
       alert("投稿しました！");
       location.reload();
       return;

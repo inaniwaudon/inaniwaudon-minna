@@ -1,14 +1,11 @@
 "use client";
 
 import { styled } from "@linaria/react";
-
-import { maxReactionCount } from "@/app/tanka/tanka";
 import { useCallback, useState } from "react";
 
-import {
-  TankaReactionPOSTResult,
-  TankaReactionPOSTSchema,
-} from "@/app/api/tanka/reaction/route";
+import { PostTankaReactionBody, postTankaReaction } from "./api";
+
+export const maxReactionCount = 10;
 
 const Wrapper = styled.button`
   color: #20b2aa;
@@ -39,24 +36,17 @@ const PlusOne = ({ tankaId, initialCount }: PlusOneProps) => {
   const [count, setCount] = useState(initialCount);
 
   const onClick = useCallback(async () => {
-    const body: TankaReactionPOSTSchema = {
+    const body: PostTankaReactionBody = {
       tanka_id: tankaId,
       reaction: "plusone",
     };
-    const response = await fetch("/api/tanka/reaction", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-    if (!response.ok) {
+    const result = await postTankaReaction(body);
+    if (!result.success) {
       alert("じゃあ反応できてないじゃん残念でした");
       return;
     }
 
-    const result: TankaReactionPOSTResult = await response.json();
-    if (!result.executed) {
+    if (!result.value.executed) {
       alert(
         `同一 IP から ${maxReactionCount} 回以上のリアクションはできません`,
       );
