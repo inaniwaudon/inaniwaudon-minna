@@ -1214,11 +1214,6 @@
   resolved "https://registry.yarnpkg.com/@biomejs/cli-win32-x64/-/cli-win32-x64-1.5.1.tgz#b1996fa2dc6580f39fb2e1b6d126e93baf8da58d"
   integrity sha512-qx8EKwScZmVYZjMPZ6GF3ZUmgg/N6zqh+d8vHA2E43opNCyqIPTl89sOqkc7zd1CyyABDWxsbqI9Ih6xTT6hnQ==
 
-"@cloudflare/d1@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@cloudflare/d1/-/d1-1.4.1.tgz#38550b1a918e1bde94c46757620fdcb624c000da"
-  integrity sha512-czIBkVoZG7csWK0GVpWXqvnfM2Uv91AqdhwXeTPd1zpdQ+x/or492tD1ybVe679868bGMsHRqtHxp+5rwHXRaA==
-
 "@cloudflare/next-on-pages@^1.7.3":
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/@cloudflare/next-on-pages/-/next-on-pages-1.7.3.tgz#00abcd569866d4e225c04b72b7fe7b751706bcd1"
