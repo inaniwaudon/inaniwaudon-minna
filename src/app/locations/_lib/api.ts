@@ -2,7 +2,10 @@ import { fail, succeed } from "@/lib/utils";
 import { Checkin, FoursquareOriginalPlace, Transportation } from "./utils";
 
 export const fetchTransportation = async (id: string) => {
-  const url = new URL(`/locations/${id}`, process.env.NEXT_PUBLIC_BACKEND_URL);
+  const url = new URL(
+    `/api/locations/${id}`,
+    process.env.NEXT_PUBLIC_BACKEND_URL,
+  );
   try {
     const response = await fetch(url, {
       next: { revalidate: 10 },
@@ -39,7 +42,7 @@ export const postTransportation = async (
   title: string,
   date: string,
 ) => {
-  const url = new URL("/locations", process.env.NEXT_PUBLIC_BACKEND_URL);
+  const url = new URL("/api/locations", process.env.NEXT_PUBLIC_BACKEND_URL);
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -67,7 +70,7 @@ export const putCheckin = async (
   checkin: Checkin,
 ) => {
   const url = new URL(
-    `/locations/${id}/checkins/${checkinId}`,
+    `/api/locations/${id}/checkins/${checkinId}`,
     process.env.NEXT_PUBLIC_BACKEND_URL,
   );
   try {
@@ -92,7 +95,7 @@ export const putCheckin = async (
 
 export const deleteCheckin = async (id: string, checkinId: string) => {
   const url = new URL(
-    `/locations/${id}/checkins/${checkinId}`,
+    `/api/locations/${id}/checkins/${checkinId}`,
     process.env.NEXT_PUBLIC_BACKEND_URL,
   );
   try {
@@ -113,7 +116,7 @@ export const deleteCheckin = async (id: string, checkinId: string) => {
 
 export const postImages = async (id: string, images: string[]) => {
   const url = new URL(
-    `/locations/${id}/images`,
+    `/api/locations/${id}/images`,
     process.env.NEXT_PUBLIC_BACKEND_URL,
   );
   try {
@@ -150,7 +153,7 @@ export const fetchPlaces = async (
     searchParams.set("query", query);
   }
   const url = new URL(
-    `/locations/places?${searchParams.toString()}`,
+    `/api/locations/places?${searchParams.toString()}`,
     process.env.NEXT_PUBLIC_BACKEND_URL,
   );
   try {
