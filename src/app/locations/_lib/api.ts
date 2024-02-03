@@ -3,14 +3,18 @@ import { Checkin, FoursquareOriginalPlace, Transportation } from "./utils";
 
 export const fetchTransportation = async (id: string) => {
   const url = new URL(`/locations/${id}`, process.env.NEXT_PUBLIC_BACKEND_URL);
-  const response = await fetch(url, {
-    next: { revalidate: 10 },
-  });
-  if (!response.ok) {
-    return fail(await response.text());
+  try {
+    const response = await fetch(url, {
+      next: { revalidate: 10 },
+    });
+    if (!response.ok) {
+      return fail(await response.text());
+    }
+    const transportation = (await response.json()) as Transportation;
+    return succeed(transportation);
+  } catch (e) {
+    return fail(e);
   }
-  const transportation = (await response.json()) as Transportation;
-  return succeed(transportation);
 };
 
 export const fetchTransportationList = async () => {

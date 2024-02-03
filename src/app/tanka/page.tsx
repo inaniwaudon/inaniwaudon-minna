@@ -1,15 +1,13 @@
 import { styled } from "@linaria/react";
 import { Metadata } from "next";
-import { headers } from "next/headers";
 
-import { TankaGETResult } from "@/app/api/tanka/route";
 import AdobeFonts from "@/components/common/AdobeFonts";
 import H2 from "@/components/common/H2";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
 import Form from "./Form";
 import PlusOne from "./PlusOne";
-import { testTanka } from "./tanka";
+import { fetchTankas } from "./api";
 
 const TankaList = styled.ul`
   width: 100%;
@@ -94,18 +92,8 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-  const headerList = headers();
-  const origin = new URL(headerList.get("x-url")!).origin;
-  const response = await fetch(`${origin}/api/tanka`, {
-    cache: "no-store",
-  });
-
-  let tankas: TankaGETResult;
-  if (response.ok) {
-    tankas = await response.json();
-  } else {
-    tankas = [testTanka, testTanka, testTanka, testTanka, testTanka, testTanka];
-  }
+  const tankasResult = await fetchTankas();
+  const tankas = tankasResult.success ? tankasResult.value : [];
 
   const convertsToVertical = (str: string) =>
     str.replace(/[A-Za-z0-9./:\-]/g, (s) =>
