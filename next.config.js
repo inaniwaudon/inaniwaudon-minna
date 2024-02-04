@@ -1,16 +1,17 @@
-const path = require('path');
-const withLinaria = require('next-with-linaria');
+const path = require("path");
+const withLinaria = require("next-with-linaria");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: "export",
 
   webpack: (config) => {
-    config.resolve.alias['@'] = path.join(__dirname, 'src');
+    config.resolve.alias["@"] = path.join(__dirname, "src");
     config.resolve.fallback = { fs: false };
     config.module.rules.push({
       test: /\.md$/i,
-      use: 'raw-loader',
+      use: "raw-loader",
     });
     return config;
   },
@@ -18,11 +19,11 @@ const nextConfig = {
   headers: async () => {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'max-age=600',
+            key: "Cache-Control",
+            value: "max-age=600",
           },
         ],
       },
