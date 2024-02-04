@@ -151,6 +151,12 @@ const articleHatenaLinks: ArticleLink[] = [
     date: "2023/12/31",
     tags: ["random"],
   },
+  {
+    href: "https://soudakyoto-ikou.hatenadiary.jp/entry/20240204/1707056780",
+    title: "「安達としまむら」聖地巡礼記（岐阜編）",
+    date: "2024/02/04",
+    tags: ["random"],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [
