@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import PageWrapper from "@/components/common/PageWrapper";
 import { SearchParams } from "@/lib/utils";
-import { Main } from "./main";
+import { Main } from "./Main";
 
 const title = "書いたもの・こと";
 

@@ -145,6 +145,9 @@ const Main = ({ searchParams }: MainProps) => {
                 </ListWrapper>
               </li>
               <li>
+                <Anchor href="/tasks">やること・やったこと</Anchor>
+              </li>
+              <li>
                 <del>Twight 関連リンク（工事中）</del>
               </li>
               <li>
