@@ -19,16 +19,28 @@ export interface Task {
   public: boolean;
 }
 
+const fetchTasks = async () => {
+  const url = new URL("/api/tasks", process.env.NEXT_PUBLIC_BACKEND_URL);
+  try {
+    const response = await fetch(url.href, {
+      next: { revalidate: 10 },
+    });
+    if (!response.ok) {
+      return [];
+    }
+    const json: { tasks: Task[] } = await response.json();
+    return json.tasks;
+  } catch {
+    return [];
+  }
+};
+
 interface PageProps {
   searchParams: SearchParams;
 }
 
 const Page = async ({ searchParams }: PageProps) => {
-  const url = new URL("/api/tasks", process.env.NEXT_PUBLIC_BACKEND_URL);
-  const response = await fetch(url.href, {
-    next: { revalidate: 10 },
-  });
-  const { tasks }: { tasks: Task[] } = await response.json();
+  const tasks: Task[] = await fetchTasks();
 
   return (
     <PageWrapper title={title} path="/tasks">
