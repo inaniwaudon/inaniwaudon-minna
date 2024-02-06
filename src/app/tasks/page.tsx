@@ -28,7 +28,7 @@ const Page = async ({ searchParams }: PageProps) => {
   const response = await fetch(url.href, {
     next: { revalidate: 10 },
   });
-  const tasks: Task[] = await response.json();
+  const { tasks }: { tasks: Task[] } = await response.json();
 
   return (
     <PageWrapper title={title} path="/tasks">
