@@ -35,10 +35,11 @@ const ListItem = styled.li`
 `;
 
 const CheckIcon = styled.div<{ closed: boolean }>`
-  flex: 24px 0 0;
-  font-size: 24px;
   color: ${({ closed }) => (closed ? color.closed : "#ddd")};
+  font-size: 24px;
+  margin-bottom: 8px;
   display: flex;
+  flex: 24px 0 0;
   align-items: center;
 `;
 
