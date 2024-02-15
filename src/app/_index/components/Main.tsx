@@ -120,6 +120,10 @@ const Main = ({ searchParams }: MainProps) => {
                       <Anchor href="/class-impression/2023spring">
                         春学期
                       </Anchor>
+                      ｜
+                      <Anchor href="/class-impression/2023autumn">
+                        秋学期
+                      </Anchor>
                     </li>
                     <li>
                       2022 年度：
