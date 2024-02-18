@@ -155,7 +155,7 @@ const articleHatenaLinks: ArticleLink[] = [
     href: "https://soudakyoto-ikou.hatenadiary.jp/entry/20240204/1707056780",
     title: "「安達としまむら」聖地巡礼記（岐阜編）",
     date: "2024/02/04",
-    tags: ["random"],
+    tags: ["random", "hongoshi"],
   },
 ];
 
@@ -288,6 +288,12 @@ const articleZennLinks: ArticleLink[] = [
     title:
       "GitHub Actions から PR を自動で作成してテストが通ったらマージしたい",
     date: "2024/01/15",
+    tags: ["tech"],
+  },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/40858ff736ba97",
+    title: "組版システムの品質を保証する自動テスト",
+    date: "2024/02/18",
     tags: ["tech"],
   },
 ];
