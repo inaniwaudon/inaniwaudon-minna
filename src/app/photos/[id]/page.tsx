@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import AdobeFonts from "@/components/common/AdobeFonts";
 import { PhotoInfo } from "@/lib/photo";
 import { SearchParams } from "@/lib/utils";
+import { notFound } from "next/navigation";
 import { photos } from "../_const";
 import Main from "./Main";
 
@@ -72,7 +73,10 @@ interface PageProps {
 
 const Page = ({ params, searchParams }: PageProps) => {
   const { id } = params;
-  const photoData = photos.find((photo) => photo.id === id)!.data!;
+  const photoData = photos.find((photo) => photo.data?.key === id)?.data;
+  if (!photoData) {
+    notFound();
+  }
 
   const { title, date } = photoData;
   const dir = `${process.env.NEXT_PUBLIC_PHOTO_URL}/photo/${id}`;
@@ -119,16 +123,18 @@ const Page = ({ params, searchParams }: PageProps) => {
 };
 
 export const generateStaticParams = () => {
-  return photos.flatMap((photo) => (photo.data ? photo.id : []));
+  return photos.flatMap((photo) => (photo.data ? photo.data.key : []));
 };
 
 export const generateMetadata = ({ params }: PageProps): Metadata => {
   const { id } = params;
-  const photo = photos.find((photo) => photo.id === id)!;
-  return {
-    title: photo.data!.title,
-    formatDetection: { telephone: false },
-  };
+  const photo = photos.find((photo) => photo.data?.key === id);
+  return photo
+    ? {
+        title: photo.data!.title,
+        formatDetection: { telephone: false },
+      }
+    : {};
 };
 
 export default Page;
