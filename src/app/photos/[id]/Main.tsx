@@ -30,6 +30,7 @@ const Img = styled.img`
 const Description = styled.div`
   width: 100%;
   height: 100%;
+  line-height: 1.3;
   color: #fff;
   padding: 20px 24px;
   opacity: 0;

@@ -68,12 +68,12 @@ const Main = ({ searchParams }: MainProps) => {
           <section>
             <H2>写真</H2>
             <CustomList>
-              {photos.map(({ id, title, data }) => (
-                <li key={id}>
-                  {!data ? (
-                    <del>{title}</del>
+              {photos.map(({ title, data }, index) => (
+                <li key={index}>
+                  {data ? (
+                    <Anchor href={`/photos/${data.key}`}>{title}</Anchor>
                   ) : (
-                    <Anchor href={`/photos/${id}`}>{title}</Anchor>
+                    <del>{title}</del>
                   )}
                 </li>
               ))}
@@ -85,6 +85,11 @@ const Main = ({ searchParams }: MainProps) => {
               <li>
                 <Anchor href="/locations/2024nagoya">
                   岐阜・名古屋旅行（2024/1/26–29）
+                </Anchor>
+              </li>
+              <li>
+                <Anchor href="/locations/2024taiwan">
+                  台湾旅行（2024/2/24–29）
                 </Anchor>
               </li>
             </CustomList>
