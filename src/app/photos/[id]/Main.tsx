@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "@linaria/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { PhotoInfo } from "@/lib/photo";
 import { SearchParams, shuffle } from "@/lib/utils";
@@ -19,8 +19,13 @@ const Column = styled.div<{ width: number }>`
 `;
 
 const ImgWrapper = styled.div`
-position: relative;
-}`;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+`;
 
 const Img = styled.img`
   width: 100%;
@@ -96,16 +101,25 @@ const Main = ({ photos, searchParams }: MainProps) => {
     setColumnCount(count);
   };
 
-  const calculateHeight = (photo: PhotoInfo) => {
-    return (photo.height / photo.width) * imgWidth;
-  };
+  const calculateHeight = useCallback(
+    (photo: PhotoInfo) => {
+      return (photo.height / photo.width) * imgWidth;
+    },
+    [imgWidth],
+  );
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", () => {
-      setWindowWidth(window.innerWidth);
-    });
     setColumnCount(Math.max(Math.floor(window.innerWidth / 350), 2));
+
+    // innerWidth を登録
+    const setInnerWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    setInnerWidth();
+    window.addEventListener("resize", () => setInnerWidth);
+    return () => {
+      window.removeEventListener("resize", setInnerWidth);
+    };
   }, []);
 
   useEffect(() => {
@@ -118,12 +132,13 @@ const Main = ({ photos, searchParams }: MainProps) => {
       (previous, photo) => previous + calculateHeight(photo),
       0,
     );
+
     let totalHeight = 0;
     const newPhotos: PhotoList[] = [[]];
     for (const photo of sortedPhotos) {
       newPhotos[newPhotos.length - 1].push(photo);
       totalHeight += calculateHeight(photo);
-      if (totalHeight > allTotalHeight / columnCount) {
+      if (totalHeight > allTotalHeight / columnCount && columnCount > 1) {
         newPhotos.push([]);
         totalHeight = 0;
       }
