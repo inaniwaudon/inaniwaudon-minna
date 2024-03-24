@@ -296,6 +296,12 @@ const articleZennLinks: ArticleLink[] = [
     date: "2024/02/18",
     tags: ["tech"],
   },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/3ff8761773178c",
+    title: "Chrome で text-spacing-trim プロパティがサポートされたぞ！！",
+    date: "2024/03/24",
+    tags: ["tech"],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
