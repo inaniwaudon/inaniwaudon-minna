@@ -117,6 +117,9 @@ const Main = ({ searchParams }: MainProps) => {
                 <Anchor href="/nerene">ネレネー山脈</Anchor>
               </li>
               <li>
+                <Anchor href="/articles/diary">日記</Anchor>
+              </li>
+              <li>
                 授業感想
                 <ListWrapper>
                   <CustomList>
