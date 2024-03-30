@@ -1,8 +1,8 @@
 import { styled } from "@linaria/react";
 import { Metadata } from "next";
 
+import Restaurant from "@/app/tsukuba-meshi/Restaurant";
 import { ramenInfos } from "@/app/tsukuba-meshi/ramen2023/ramen";
-import Restaurant from "@/app/tsukuba-meshi/restaurant2023/Restaurant";
 import Anchor from "@/components/common/Anchor";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";

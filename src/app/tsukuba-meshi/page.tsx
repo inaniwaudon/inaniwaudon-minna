@@ -38,6 +38,20 @@ const Page = () => {
       <main>
         <PageTitle>{title}</PageTitle>
         <p>激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に</p>
+        <ImageWrapper>
+          <ImageAnchor href="/docs/tsukuba-ramen2024.webp">
+            <Image src="/docs/tsukuba-ramen2024.webp" />
+          </ImageAnchor>
+        </ImageWrapper>
+        <H2>2024 年度版</H2>
+        <CustomList>
+          <li>
+            つくば らーめん 10 選 2024：
+            <Anchor href="/docs/tsukuba-ramen2024.pdf">PDF 版（1.5 MB）</Anchor>
+            ｜<Anchor href="/tsukuba-meshi/ramen2024">HTML 版</Anchor>
+          </li>
+        </CustomList>
+
         <H2>2023 年度版</H2>
         <p>画像クリックで拡大します</p>
         <ImageWrapper>
@@ -63,6 +77,7 @@ const Page = () => {
             <Anchor href="/tsukuba-meshi/errata">正誤表</Anchor>
           </li>
         </CustomList>
+
         <H2>2022 年度版</H2>
         <CustomList>
           <li>
