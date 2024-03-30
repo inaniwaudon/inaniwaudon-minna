@@ -57,7 +57,6 @@ const Restaurant = ({
   const fields = [
     { key: "住所", value: place, href: maps },
     { key: "営業日時", value: date },
-    { key: "TEL", value: tel, href: `tel:${tel}` },
     { key: "Web", value: web, href: web },
     {
       key: <BsTwitter />,
@@ -69,6 +68,7 @@ const Restaurant = ({
       value: instagram,
       href: `https://instagram.com/${instagram}`,
     },
+    { key: "TEL", value: tel, href: `tel:${tel}` },
   ];
 
   return (

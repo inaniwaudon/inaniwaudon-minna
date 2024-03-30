@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Anchor from "@/components/common/Anchor";
 import PageTitle from "@/components/common/PageTitle";
 import PageWrapper from "@/components/common/PageWrapper";
-import Restaurant from "./Restaurant";
+import Restaurant from "../Restaurant";
 
 const Main = styled.main`
   line-height: 1.8;
