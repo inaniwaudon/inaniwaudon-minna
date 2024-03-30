@@ -38,12 +38,14 @@ const Page = () => {
       <main>
         <PageTitle>{title}</PageTitle>
         <p>激ウマ店舗を独断と偏見でセレクト。再配布等ご自由に</p>
+
+        <H2>2024 年度版</H2>
+        <p>画像クリックで拡大します</p>
         <ImageWrapper>
           <ImageAnchor href="/docs/tsukuba-ramen2024.webp">
             <Image src="/docs/tsukuba-ramen2024.webp" />
           </ImageAnchor>
         </ImageWrapper>
-        <H2>2024 年度版</H2>
         <CustomList>
           <li>
             つくば らーめん 10 選 2024：
