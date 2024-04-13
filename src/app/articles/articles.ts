@@ -357,6 +357,13 @@ const articleWordLinks: ArticleLink[] = [
     description: "WORD 53号",
     tags: ["hongoshi", "tech"],
   },
+  {
+    href: "https://www.word-ac.net/post/2024/0409-iwai2024/",
+    title: "確定申告バトル 2024",
+    date: "2024/04/09",
+    description: "WORD 入学祝い号 2024",
+    tags: ["random", "hongoshi"],
+  },
 ];
 
 const articleOthersLinks: ArticleLink[] = [

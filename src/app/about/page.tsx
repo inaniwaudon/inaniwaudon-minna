@@ -30,9 +30,9 @@ const Page = () => {
           プログラミング（特に Web
           など）、組版・タイポグラフィ、グラフィックデザイン、写真、らーめん巡り、ぬいぐるみ
         </Paragraph>
-        <H3>好きな食べ物</H3>
+        <H3>好きな食べ物・飲み物</H3>
         <Paragraph>
-          かりんとう、回鍋肉、らーめん、マックスコーヒー、安い缶チューハイ
+          かりんとう、回鍋肉、らーめん、キーバパンチ、マックスコーヒー、安い缶チューハイ
         </Paragraph>
         <H3>好きな場所</H3>
         <Paragraph>
@@ -57,7 +57,7 @@ const Page = () => {
         <H3>好きな季節</H3>
         <Paragraph>春に次いで秋</Paragraph>
         <H3>持っているドメイン</H3>
-        <Paragraph>いなにわうどん.みんな、yokohama.dev、chin-ch.in</Paragraph>
+        <Paragraph>いなにわうどん.みんな、yokohama.dev</Paragraph>
         <H3>ひとこと</H3>
         <Paragraph>
           最近{" "}
