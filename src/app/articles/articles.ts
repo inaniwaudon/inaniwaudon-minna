@@ -302,6 +302,13 @@ const articleZennLinks: ArticleLink[] = [
     date: "2024/03/24",
     tags: ["tech"],
   },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/08bd891f106177",
+    title:
+      "Cloudflare Workers に Google Apps Script を挟んで処理に時間の掛かる Discord Bot を作る",
+    date: "2024/04/29",
+    tags: ["tech"],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
