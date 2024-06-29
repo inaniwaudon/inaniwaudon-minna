@@ -309,6 +309,12 @@ const articleZennLinks: ArticleLink[] = [
     date: "2024/04/29",
     tags: ["tech"],
   },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/5e56e701fc7a41",
+    title: "macOS のファイルを断捨離して 60 GB 空ける",
+    date: "2024/06/23",
+    tags: ["tech"],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
@@ -406,14 +412,21 @@ const articleOthersLinks: ArticleLink[] = [
     href: "https://speakerdeck.com/inaniwaudon/until-0601-2",
     title: "Web フロントエンドと複雑 GUI の実装",
     date: "2023/06/01",
-    description: "UNTIL.LT 0x02",
+    description: "UNTIL.LT #0x02",
     tags: ["tech", "speaking"],
   },
   {
     href: "https://speakerdeck.com/inaniwaudon/wip-github-actions-wo-hui-sitehisawolai-mitai",
     title: "[WIP] GitHub Actions を回してピザを頼みたい",
     date: "2023/12/03",
-    description: "UNTIL.LT 0x03",
+    description: "UNTIL.LT #0x03",
+    tags: ["tech", "speaking"],
+  },
+  {
+    href: "https://speakerdeck.com/inaniwaudon/ltknwlwjy-wr-llg-at-lrby-at",
+    title: "التكنولوجيا_وراء_اللغة_العربية",
+    date: "2024/05/11",
+    description: "UNTIL.LT #0x04",
     tags: ["tech", "speaking"],
   },
 ];
