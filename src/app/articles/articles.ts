@@ -59,7 +59,7 @@ const articleHatenaLinks: ArticleLink[] = [
     href: "https://soudakyoto-ikou.hatenadiary.jp/entry/20211012/1633979685",
     title: "筑波大学 国際科学オリンピック特別入試体験記",
     date: "2021/10/12",
-    tags: ["tech"],
+    tags: ["random"],
   },
   {
     href: "https://soudakyoto-ikou.hatenadiary.jp/entry/20211231/1640943650",
@@ -315,6 +315,18 @@ const articleZennLinks: ArticleLink[] = [
     date: "2024/06/23",
     tags: ["tech"],
   },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/61d2b3632a3325",
+    title: "Tkinter でルビを表示する",
+    date: "2024/06/30",
+    tags: ["tech"],
+  },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/2cdf852fa10442",
+    title: "Web で TikTok やショート動画のような縦スワイプ UI を実装する",
+    date: "2024/07/19",
+    tags: ["tech"],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
@@ -402,6 +414,14 @@ const articleOthersLinks: ArticleLink[] = [
     tags: ["tech", "speaking"],
   },
   {
+    href: "https://www.iplab.cs.tsukuba.ac.jp/paper/poster/wada_interaction2023.pdf",
+    title:
+      "グリッドレイアウトに基づく組版作業を支援する手書きストロークを入力としたインタフェース",
+    date: "2023/03/01",
+    description: "情報処理学会 インタラクション 2023",
+    tags: ["tech"],
+  },
+  {
     href: "/articles/max",
     title: "マックスコーヒーのパッケージ観察",
     date: "2023/05/14",
@@ -428,6 +448,13 @@ const articleOthersLinks: ArticleLink[] = [
     date: "2024/05/11",
     description: "UNTIL.LT #0x04",
     tags: ["tech", "speaking"],
+  },
+  {
+    href: "https://www.iplab.cs.tsukuba.ac.jp/~wada/mast2024.pdf",
+    title: "メ創ってどんなとこ！？ 在学生体験談 LT",
+    date: "2024/07/28",
+    description: "筑波大学情報メディア創成学類 夏の大学説明会",
+    tags: ["random", "speaking"],
   },
 ];
 
