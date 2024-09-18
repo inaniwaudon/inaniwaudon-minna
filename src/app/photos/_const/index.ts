@@ -1,6 +1,7 @@
 import { PhotoData } from "@/lib/photo";
 import data2022kyushu from "./2022kyushu";
 import data2023hokkaido from "./2023hokkaido";
+import data2024kyoto from "./2024kyoto";
 import data2024taiwan from "./2024taiwan";
 import data210301ysfh from "./210301ysfh";
 import dataKirigirisu from "./kirigirisu";
@@ -19,6 +20,10 @@ export const photos: Photo[] = [
   {
     title: "キリギリス",
     data: dataKirigirisu,
+  },
+  {
+    title: "京都（2024/6/20–21）",
+    data: data2024kyoto,
   },
   {
     title: "台湾旅行（台北・高雄、2024/2/24–29）",
