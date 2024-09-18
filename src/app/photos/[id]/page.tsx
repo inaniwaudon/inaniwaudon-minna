@@ -110,11 +110,10 @@ const Page = ({ params, searchParams }: PageProps) => {
         <p className={"date"}>{date}</p>
         <Copyright>
           <small>
-            © いなにわうどん. ページ中の写真は{" "}
+            © いなにわうどん．{" "}
             <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
               クリエイティブ・コモンズ 表示 4.0 国際 (CC BY 4.0)
-            </a>{" "}
-            の下で頒布しています<Half>。</Half>
+            </a>
           </small>
         </Copyright>
       </Footer>

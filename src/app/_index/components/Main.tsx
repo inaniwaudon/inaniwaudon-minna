@@ -83,13 +83,18 @@ const Main = ({ searchParams }: MainProps) => {
             <H2>移動記（β）</H2>
             <CustomList>
               <li>
-                <Anchor href="/locations/2024nagoya">
-                  岐阜・名古屋旅行（2024/1/26–29）
+                <Anchor href="/locations/2024kyoto">
+                  京都（2024/6/20–21）
                 </Anchor>
               </li>
               <li>
                 <Anchor href="/locations/2024taiwan">
                   台湾旅行（2024/2/24–29）
+                </Anchor>
+              </li>
+              <li>
+                <Anchor href="/locations/2024nagoya">
+                  岐阜・名古屋旅行（2024/1/26–29）
                 </Anchor>
               </li>
             </CustomList>
