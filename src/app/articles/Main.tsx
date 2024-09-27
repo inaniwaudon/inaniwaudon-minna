@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "@linaria/react";
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import AnchorListItem from "@/components/common/AnchorListItem";
 import Checkbox from "@/components/common/Checkbox";
@@ -64,23 +64,25 @@ export const Main = ({ title, searchParams }: MainProps) => {
         <Checkbox paramKey="tag" tags={tags} customParams={customParams} />
       </TopHeader>
       <CustomList>
-        {filteredLinks.map((link) =>
-          link.pdf ? (
-            <AnchorListItem
-              title={link.title}
-              date={link.date}
-              description={link.description}
-              onClick={() => open(link)}
-            />
-          ) : (
-            <AnchorListItem
-              title={link.title}
-              date={link.date}
-              description={link.description}
-              href={link.href}
-            />
-          ),
-        )}
+        {filteredLinks.map((link) => (
+          <React.Fragment key={link.title}>
+            {link.pdf ? (
+              <AnchorListItem
+                title={link.title}
+                date={link.date}
+                description={link.description}
+                onClick={() => open(link)}
+              />
+            ) : (
+              <AnchorListItem
+                title={link.title}
+                date={link.date}
+                description={link.description}
+                href={link.href}
+              />
+            )}
+          </React.Fragment>
+        ))}
       </CustomList>
       {displayingArticleLink && (
         <Article
