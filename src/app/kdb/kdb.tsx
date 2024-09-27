@@ -32,7 +32,9 @@ export const kdbPresentationLinks: KdbLinkItem[] = [
     date: "2021/12/15",
     description: "大学ICT推進協議会（AXIES）年次大会・幕張メッセ",
     content: (
-      <Anchor href="docs/axies-kdb.pdf">発表資料（PDF, 14.7 MB）</Anchor>
+      <Anchor href="docs/articles/axies-kdb.pdf">
+        発表資料（PDF, 14.7 MB）
+      </Anchor>
     ),
   },
   {

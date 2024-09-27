@@ -23,7 +23,8 @@
       },
       "a11y": {
         "useValidAnchor": "off",
-        "useButtonType": "off"
+        "useButtonType": "off",
+        "useKeyWithClickEvents": "off"
       },
       "nursery": {
         "noUnusedImports": "error"

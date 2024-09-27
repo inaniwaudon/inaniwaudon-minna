@@ -328,6 +328,12 @@ const articleZennLinks: ArticleLink[] = [
     date: "2024/07/19",
     tags: ["tech"],
   },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/c115a36f810eda",
+    title: "Hono + Cloudflare Workers でパスキーを試してみる",
+    date: "2024/09/18",
+    tags: ["tech"],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
@@ -401,6 +407,7 @@ const articleWordLinks: ArticleLink[] = [
 const articleOthersLinks: ArticleLink[] = [
   {
     href: "https://speakerdeck.com/inaniwaudon/qiang-li-nagurahuitukuji-neng-wobei-etazu-ban-chu-li-sisutemutwightfalsekai-fa",
+    pdf: "/docs/articles/twight.pdf",
     title: "強力なグラフィック機能を備えた組版処理システム Twight の開発",
     date: "2021/04/10",
     description: "CSS組版 Vivliostyle ユーザーと開発者の集い 2021春",
@@ -439,6 +446,7 @@ const articleOthersLinks: ArticleLink[] = [
   },
   {
     href: "https://speakerdeck.com/inaniwaudon/until-0601-2",
+    pdf: "/docs/articles/complex-gui.pdf",
     title: "Web フロントエンドと複雑 GUI の実装",
     date: "2023/06/01",
     description: "UNTIL.LT #0x02",
