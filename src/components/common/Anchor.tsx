@@ -24,23 +24,33 @@ const Line = styled.span`
   display: block;
 `;
 
+export const AnchorContent = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Content>
+      {children}
+      <Line />
+    </Content>
+  );
+};
+
 interface PageAnchorProps {
   href: string;
   children: React.ReactNode;
 }
 
 const Anchor = ({ href, children }: PageAnchorProps) => {
-  const content = (
-    <Content>
-      {children}
-      <Line />
-    </Content>
-  );
-
   if (href.startsWith("https://") || href.startsWith("http://")) {
-    return <a href={href}>{content}</a>;
+    return (
+      <a href={href}>
+        <AnchorContent>{children}</AnchorContent>
+      </a>
+    );
   }
-  return <Link href={href}>{content}</Link>;
+  return (
+    <Link href={href}>
+      <AnchorContent>{children}</AnchorContent>
+    </Link>
+  );
 };
 
 export default Anchor;
