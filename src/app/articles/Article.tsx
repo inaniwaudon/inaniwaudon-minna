@@ -11,19 +11,28 @@ import { ArticleLink } from "./articles";
 // import article from "./text.md";
 
 const Wrapper = styled.article`
-  width: calc(700px - 48px * 2);
+  width: calc(50vw - 48px * 2);
   height: calc(100vh - 40px * 2);
   padding: 40px 48px;
-  box-shadow: 0 1px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 0 32px rgba(0,0,0,0.1);
   background: #fff;
   overflow-y: scroll;
   position: fixed;
   top: 0;
   right: 16px;
+
+  @media (max-width: 1000px) {
+    width: calc(100% - 48px * 2);
+    height: calc(100vh - 20px - 40px * 2);
+    box-shadow: 0 0 16px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    top: 20px;
+    left: 0;
+  }
 `;
 
 const Border = styled.div<{ color: string }>`
-  width: 700px;
+  width: 50vw;
   height: 4px;
   background: ${({ color }) => color};
   position: fixed;
@@ -68,7 +77,9 @@ const CloseButton = styled.button`
 `;
 
 const Content = styled.div`
+  max-width: 700px;
   line-height: 1.8;
+  margin: auto;
 
   h1, h2, h3, h4, h5, h6 {
     margin-left: -48px;
@@ -177,9 +188,15 @@ const Article = ({ link, closeModal }: ArticleProps) => {
   }, []);
 
   useEffect(() => {
-    const tempWidth = contentRef.current?.getBoundingClientRect().width;
-    setWidth(tempWidth ? tempWidth - 2 : undefined);
-  }, [contentRef.current]);
+    if (!contentRef.current) {
+      return;
+    }
+    const observer = new ResizeObserver(() => {
+      const tempWidth = contentRef.current?.getBoundingClientRect().width;
+      setWidth(tempWidth ? tempWidth - 2 : undefined);
+    });
+    observer.observe(contentRef.current);
+  }, []);
 
   return (
     <Wrapper>
