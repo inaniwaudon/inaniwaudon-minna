@@ -1,15 +1,16 @@
 "use client";
 
 import { styled } from "@linaria/react";
+import { useMemo, useState } from "react";
 
-import { ArticleTag, articleLinks, articleTags } from "@/app/articles/articles";
 import AnchorListItem from "@/components/common/AnchorListItem";
 import Checkbox from "@/components/common/Checkbox";
 import CustomList from "@/components/common/CustomList";
 import PageTitle from "@/components/common/PageTitle";
 import { useCustomParams } from "@/lib/useCustomParams";
 import { SearchParams } from "@/lib/utils";
-import { useMemo } from "react";
+import Article from "./Article";
+import { ArticleLink, ArticleTag, articleLinks, articleTags } from "./articles";
 
 const TopHeader = styled.header`
   margin-bottom: 16px;
@@ -31,6 +32,8 @@ interface MainProps {
 export const Main = ({ title, searchParams }: MainProps) => {
   const customParams = useCustomParams("tag", true, undefined, searchParams);
   const { isSelectedTag } = customParams;
+  const [displayingArticleLink, setDisplayingArticleLink] =
+    useState<ArticleLink | null>(null);
 
   const selectedTags: ArticleTag[] = articleTags.filter((tag) =>
     isSelectedTag(tag),
@@ -50,6 +53,10 @@ export const Main = ({ title, searchParams }: MainProps) => {
     [selectedTags],
   );
 
+  const open = (link: ArticleLink) => {
+    setDisplayingArticleLink(link);
+  };
+
   return (
     <main>
       <TopHeader>
@@ -57,16 +64,30 @@ export const Main = ({ title, searchParams }: MainProps) => {
         <Checkbox paramKey="tag" tags={tags} customParams={customParams} />
       </TopHeader>
       <CustomList>
-        {filteredLinks.map((link) => (
-          <AnchorListItem
-            key={link.href}
-            href={link.href}
-            title={link.title}
-            date={link.date}
-            description={link.description}
-          />
-        ))}
+        {filteredLinks.map((link) =>
+          link.pdf ? (
+            <AnchorListItem
+              title={link.title}
+              date={link.date}
+              description={link.description}
+              onClick={() => open(link)}
+            />
+          ) : (
+            <AnchorListItem
+              title={link.title}
+              date={link.date}
+              description={link.description}
+              href={link.href}
+            />
+          ),
+        )}
       </CustomList>
+      {displayingArticleLink && (
+        <Article
+          link={displayingArticleLink}
+          closeModal={() => setDisplayingArticleLink(null)}
+        />
+      )}
     </main>
   );
 };

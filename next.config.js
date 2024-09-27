@@ -7,6 +7,7 @@ const nextConfig = {
 
   webpack: (config) => {
     config.resolve.alias["@"] = path.join(__dirname, "src");
+    config.resolve.alias.canvas = false;
     config.resolve.fallback = { fs: false };
     config.module.rules.push({
       test: /\.md$/i,

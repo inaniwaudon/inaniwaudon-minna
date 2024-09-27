@@ -1,6 +1,7 @@
 import { styled } from "@linaria/react";
 
 import Anchor from "./Anchor";
+import AnchorOnClick from "./AnchorOnClick";
 
 const Header = styled.header`
   font-size: 14px;
@@ -21,21 +22,16 @@ const Content = styled.div`
   margin-top: 2px;
 `;
 
-interface AnchorListItemProps {
-  href: string;
+type AnchorListItemProps = {
   title: string;
   date?: string;
   description?: string;
   content?: React.ReactNode;
-}
+} & ({ href: string } | { onClick: () => void });
 
-const AnchorListItem = ({
-  href,
-  title,
-  date,
-  description,
-  content,
-}: AnchorListItemProps) => {
+const AnchorListItem = (props: AnchorListItemProps) => {
+  const { title, date, description, content } = props;
+
   return (
     <li>
       <Header>
@@ -48,7 +44,11 @@ const AnchorListItem = ({
         )}
       </Header>
       <div>
-        <Anchor href={href}>{title}</Anchor>
+        {"href" in props ? (
+          <Anchor href={props.href}>{title}</Anchor>
+        ) : (
+          <AnchorOnClick onClick={props.onClick}>{title}</AnchorOnClick>
+        )}
       </div>
       {content && <Content>{content}</Content>}
     </li>

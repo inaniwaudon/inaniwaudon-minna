@@ -10,6 +10,7 @@ export type ArticleTag = (typeof articleTags)[number];
 
 export interface ArticleLink {
   href: string;
+  pdf?: string;
   title: string;
   date: string;
   description?: string;
@@ -327,6 +328,12 @@ const articleZennLinks: ArticleLink[] = [
     date: "2024/07/19",
     tags: ["tech"],
   },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/c115a36f810eda",
+    title: "Hono + Cloudflare Workers でパスキーを試してみる",
+    date: "2024/09/18",
+    tags: ["tech"],
+  },
 ];
 
 const articleNoteLinks: ArticleLink[] = [
@@ -348,21 +355,24 @@ const articleNoteLinks: ArticleLink[] = [
 
 const articleWordLinks: ArticleLink[] = [
   {
-    href: "/docs/word-kumihan.pdf",
+    href: "/docs/articles/word-kumihan.pdf",
+    pdf: "/docs/articles/word-kumihan.pdf",
     title: "書いてみよう！組版処理系",
     date: "2021/09/12",
     description: "WORD 50号",
     tags: ["tech"],
   },
   {
-    href: "/docs/word-takutsu.pdf",
+    href: "/docs/articles/word-takutsu.pdf",
+    pdf: "/docs/articles/word-takutsu.pdf",
     title: "宅通......本当にするのですか？",
     date: "2022/02/26",
     description: "WORD 引っ越し準備号 2022",
     tags: ["random"],
   },
   {
-    href: "/docs/word-adobe.pdf",
+    href: "/docs/articles/word-adobe.pdf",
+    pdf: "/docs/articles/word-adobe.pdf",
     title: "あの日見た Adobe CC の名前を僕達はまだ知らない。",
     date: "2022/03",
     description: "WORD 入学祝い号 2023",
@@ -370,13 +380,15 @@ const articleWordLinks: ArticleLink[] = [
   },
   {
     href: "https://www.word-ac.net/post/2022/0811-word52/",
+    pdf: "/docs/articles/word-energy.pdf",
     title: "令和4年度版 おすすめエナドリ 10 選",
     date: "2022/08/11",
     description: "WORD 52号",
     tags: ["random"],
   },
   {
-    href: "/docs/word-clreq.pdf",
+    href: "https://www.word-ac.net/post/2023/0707-word53/",
+    pdf: "/docs/articles/word-clreq.pdf",
     title: "やはり俺の中国語組版はまちがっている",
     date: "2023/07/07",
     description: "WORD 53号",
@@ -384,6 +396,7 @@ const articleWordLinks: ArticleLink[] = [
   },
   {
     href: "https://www.word-ac.net/post/2024/0409-iwai2024/",
+    pdf: "/docs/articles/word-tax.pdf",
     title: "確定申告バトル 2024",
     date: "2024/04/09",
     description: "WORD 入学祝い号 2024",
@@ -394,6 +407,7 @@ const articleWordLinks: ArticleLink[] = [
 const articleOthersLinks: ArticleLink[] = [
   {
     href: "https://speakerdeck.com/inaniwaudon/qiang-li-nagurahuitukuji-neng-wobei-etazu-ban-chu-li-sisutemutwightfalsekai-fa",
+    pdf: "/docs/articles/twight.pdf",
     title: "強力なグラフィック機能を備えた組版処理システム Twight の開発",
     date: "2021/04/10",
     description: "CSS組版 Vivliostyle ユーザーと開発者の集い 2021春",
@@ -401,6 +415,7 @@ const articleOthersLinks: ArticleLink[] = [
   },
   {
     href: "https://speakerdeck.com/inaniwaudon/kdbmodoki-falsekai-fa-toyun-yong",
+    pdf: "/docs/articles/axies-kdb.pdf",
     title: "授業科目 DB 代替システム「KdB もどき」の開発と運用",
     date: "2021/12/15",
     description: "大学 ICT 推進協議会 2021 年度 年次大会",
@@ -408,6 +423,7 @@ const articleOthersLinks: ArticleLink[] = [
   },
   {
     href: "https://speakerdeck.com/inaniwaudon/puroguramingunihong-retemiyou",
+    pdf: "/docs/articles/slide-programming.pdf",
     title: "プログラミングに触れてみよう！！",
     date: "2023/01/23",
     description: "文京区立昭和小学校",
@@ -430,6 +446,7 @@ const articleOthersLinks: ArticleLink[] = [
   },
   {
     href: "https://speakerdeck.com/inaniwaudon/until-0601-2",
+    pdf: "/docs/articles/complex-gui.pdf",
     title: "Web フロントエンドと複雑 GUI の実装",
     date: "2023/06/01",
     description: "UNTIL.LT #0x02",
@@ -437,6 +454,7 @@ const articleOthersLinks: ArticleLink[] = [
   },
   {
     href: "https://speakerdeck.com/inaniwaudon/wip-github-actions-wo-hui-sitehisawolai-mitai",
+    pdf: "/docs/articles/github-pizza.pdf",
     title: "[WIP] GitHub Actions を回してピザを頼みたい",
     date: "2023/12/03",
     description: "UNTIL.LT #0x03",
@@ -444,6 +462,7 @@ const articleOthersLinks: ArticleLink[] = [
   },
   {
     href: "https://speakerdeck.com/inaniwaudon/ltknwlwjy-wr-llg-at-lrby-at",
+    pdf: "/docs/articles/arabic-typesetting.pdf",
     title: "التكنولوجيا_وراء_اللغة_العربية",
     date: "2024/05/11",
     description: "UNTIL.LT #0x04",
@@ -451,6 +470,7 @@ const articleOthersLinks: ArticleLink[] = [
   },
   {
     href: "https://www.iplab.cs.tsukuba.ac.jp/~wada/mast2024.pdf",
+    pdf: "/docs/articles/mast2024.pdf",
     title: "メ創ってどんなとこ！？ 在学生体験談 LT",
     date: "2024/07/28",
     description: "筑波大学情報メディア創成学類 夏の大学説明会",
