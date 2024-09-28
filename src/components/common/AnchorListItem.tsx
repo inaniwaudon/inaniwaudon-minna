@@ -1,25 +1,5 @@
-import { styled } from "@linaria/react";
-
 import Anchor from "./Anchor";
-
-const Header = styled.header`
-  font-size: 14px;
-  margin-bottom: -2px;
-`;
-
-const Time = styled.time`
-  font-family: 'Courier New';
-  font-weight: 700;
-`;
-
-const Description = styled.span`
-  color: #666;
-  font-size: 13px;
-`;
-
-const Content = styled.div`
-  margin-top: 2px;
-`;
+import styles from "./AnchorListItem.module.scss";
 
 interface AnchorListItemProps {
   href: string;
@@ -38,19 +18,19 @@ const AnchorListItem = ({
 }: AnchorListItemProps) => {
   return (
     <li>
-      <Header>
-        {date && <Time>{date}</Time>}
+      <header className={styles.header}>
+        {date && <time className={styles.time}>{date}</time>}
         {description && (
           <>
             {" "}
-            – <Description>{description}</Description>
+            – <span className={styles.description}>{description}</span>
           </>
         )}
-      </Header>
+      </header>
       <div>
         <Anchor href={href}>{title}</Anchor>
       </div>
-      {content && <Content>{content}</Content>}
+      {content && <div className={styles.content}>{content}</div>}
     </li>
   );
 };

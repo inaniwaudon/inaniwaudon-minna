@@ -31,7 +31,7 @@
     "react-dom": "~18.2.0",
     "react-icons": "^4.8.0",
     "remark-parse": "^10.0.1",
-    "sass": "^1.49.9",
+    "sass": "^1.79.4",
     "sharp": "^0.32.6",
     "ua-parser-js": "^1.0.37",
     "uuid": "^9.0.1"
