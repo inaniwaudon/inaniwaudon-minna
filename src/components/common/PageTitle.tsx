@@ -1,16 +1,11 @@
-import { styled } from "@linaria/react";
-
-const H1 = styled.h1`
-  font-size: 28px;
-  margin: 0 0 10px 0;
-`;
+import styles from "./PageTitle.module.scss";
 
 interface PageTitleProps {
   children: string;
 }
 
 const PageTitle = ({ children }: PageTitleProps) => {
-  return <H1>{children}</H1>;
+  return <h1 className={styles.h1}>{children}</h1>;
 };
 
 export default PageTitle;

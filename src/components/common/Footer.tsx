@@ -1,17 +1,5 @@
-import { styled } from "@linaria/react";
-
 import Anchor from "./Anchor";
-
-const Wrapper = styled.footer`
-  font-size: 14px;
-  margin-top: 20px;
-  padding-top: 10px;
-  border-top: solid 1px rgba(0, 0, 0, 0.2);
-`;
-
-const Split = styled.span`
-  margin: 0 4px;
-`;
+import styles from "./Footer.module.scss";
 
 interface FooterProps {
   title: string;
@@ -20,15 +8,15 @@ interface FooterProps {
 
 const Footer = ({ title, path }: FooterProps) => {
   return (
-    <Wrapper>
+    <footer className={styles.wrapper}>
       現在のページ：
       <Anchor href={path}>
         {title}（{path}）
       </Anchor>
-      <Split>｜</Split>
+      <span className={styles.split}>｜</span>
       <Anchor href="/">トップページ</Anchor> –{" "}
       <Anchor href="#">ページ上部</Anchor>
-    </Wrapper>
+    </footer>
   );
 };
 

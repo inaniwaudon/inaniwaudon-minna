@@ -4,6 +4,7 @@ import markdown2022autumn from "./2022autumn.md";
 import markdown2022spring from "./2022spring.md";
 import markdown2023autumn from "./2023autumn.md";
 import markdown2023spring from "./2023spring.md";
+import markdown2024spring from "./2024spring.md";
 
 export const classImpressions: {
   year: number;
@@ -46,5 +47,11 @@ export const classImpressions: {
     term: "autumn",
     description: "学群最後の授業",
     article: markdown2023autumn,
+  },
+  {
+    year: 2024,
+    term: "spring",
+    description: "卒研きたぞ",
+    article: markdown2024spring,
   },
 ];

@@ -1,8 +1,13 @@
 "use client";
 
-import { styled } from "@linaria/react";
 import React, { useMemo, useState } from "react";
 
+import {
+  ArticleLink,
+  ArticleTag,
+  articleLinks,
+  articleTags,
+} from "@/app/articles/articles";
 import AnchorListItem from "@/components/common/AnchorListItem";
 import Checkbox from "@/components/common/Checkbox";
 import CustomList from "@/components/common/CustomList";
@@ -10,11 +15,7 @@ import PageTitle from "@/components/common/PageTitle";
 import { useCustomParams } from "@/lib/useCustomParams";
 import { SearchParams } from "@/lib/utils";
 import Article from "./Article";
-import { ArticleLink, ArticleTag, articleLinks, articleTags } from "./articles";
-
-const TopHeader = styled.header`
-  margin-bottom: 16px;
-`;
+import styles from "./Main.module.scss";
 
 const tags = [
   { key: "hongoshi", label: "hongoshi", keyColor: "#ff32ab" },
@@ -59,10 +60,10 @@ export const Main = ({ title, searchParams }: MainProps) => {
 
   return (
     <main>
-      <TopHeader>
+      <header className={styles.topHeader}>
         <PageTitle>{title}</PageTitle>
         <Checkbox paramKey="tag" tags={tags} customParams={customParams} />
-      </TopHeader>
+      </header>
       <CustomList>
         {filteredLinks.map((link) => (
           <React.Fragment key={link.title}>

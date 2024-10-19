@@ -29,6 +29,13 @@ const nextConfig = {
       },
     ];
   },
+
+  sassOptions: {
+    prependData: `@import "${path.resolve(
+      __dirname,
+      "src/const/styles.scss"
+    )}";`,
+  },
 };
 
 module.exports = withLinaria(nextConfig);

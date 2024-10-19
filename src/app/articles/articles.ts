@@ -158,6 +158,13 @@ const articleHatenaLinks: ArticleLink[] = [
     date: "2024/02/04",
     tags: ["random", "hongoshi"],
   },
+  {
+    href: "https://soudakyoto-ikou.hatenadiary.jp/entry/20241007/1728301046",
+    title:
+      "スライドに適した「ニュートラルでデフォルト感のない」フォントを考える",
+    date: "2024/10/07",
+    tags: ["design"],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [

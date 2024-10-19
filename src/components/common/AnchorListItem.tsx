@@ -1,26 +1,6 @@
-import { styled } from "@linaria/react";
-
 import Anchor from "./Anchor";
+import styles from "./AnchorListItem.module.scss";
 import AnchorOnClick from "./AnchorOnClick";
-
-const Header = styled.header`
-  font-size: 14px;
-  margin-bottom: -2px;
-`;
-
-const Time = styled.time`
-  font-family: 'Courier New';
-  font-weight: 700;
-`;
-
-const Description = styled.span`
-  color: #666;
-  font-size: 13px;
-`;
-
-const Content = styled.div`
-  margin-top: 2px;
-`;
 
 type AnchorListItemProps = {
   title: string;
@@ -34,15 +14,15 @@ const AnchorListItem = (props: AnchorListItemProps) => {
 
   return (
     <li>
-      <Header>
-        {date && <Time>{date}</Time>}
+      <header className={styles.header}>
+        {date && <time className={styles.time}>{date}</time>}
         {description && (
           <>
             {" "}
-            – <Description>{description}</Description>
+            – <span className={styles.description}>{description}</span>
           </>
         )}
-      </Header>
+      </header>
       <div>
         {"href" in props ? (
           <Anchor href={props.href}>{title}</Anchor>
@@ -50,7 +30,7 @@ const AnchorListItem = (props: AnchorListItemProps) => {
           <AnchorOnClick onClick={props.onClick}>{title}</AnchorOnClick>
         )}
       </div>
-      {content && <Content>{content}</Content>}
+      {content && <div className={styles.content}>{content}</div>}
     </li>
   );
 };

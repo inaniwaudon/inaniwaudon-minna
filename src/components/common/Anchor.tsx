@@ -1,37 +1,6 @@
-import { styled } from "@linaria/react";
 import Link from "next/link";
 
-import { linkColor, linkHoverColor, linkUnderlineColor } from "@/const/style";
-
-const Content = styled.span`
-  line-height: 1.3;
-  color: ${linkColor};
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  transition: background 200ms;
-
-  &:hover {
-    color: ${linkHoverColor};
-  }
-`;
-
-const Line = styled.span`
-  height: 1px;
-  margin-top: 2px;
-  background: ${linkUnderlineColor};
-  display: block;
-`;
-
-export const AnchorContent = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Content>
-      {children}
-      <Line />
-    </Content>
-  );
-};
+import styles from "./Anchor.module.scss";
 
 interface PageAnchorProps {
   href: string;
@@ -39,18 +8,17 @@ interface PageAnchorProps {
 }
 
 const Anchor = ({ href, children }: PageAnchorProps) => {
-  if (href.startsWith("https://") || href.startsWith("http://")) {
-    return (
-      <a href={href}>
-        <AnchorContent>{children}</AnchorContent>
-      </a>
-    );
-  }
-  return (
-    <Link href={href}>
-      <AnchorContent>{children}</AnchorContent>
-    </Link>
+  const Content = (
+    <span className={styles.content}>
+      {children}
+      <span className={styles.line} />
+    </span>
   );
+
+  if (href.startsWith("https://") || href.startsWith("http://")) {
+    return <a href={href}>{Content}</a>;
+  }
+  return <Link href={href}>{Content}</Link>;
 };
 
 export default Anchor;
