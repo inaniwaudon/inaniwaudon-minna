@@ -8,7 +8,7 @@ interface PageAnchorProps {
 }
 
 const Anchor = ({ href, children }: PageAnchorProps) => {
-  const content = (
+  const Content = (
     <span className={styles.content}>
       {children}
       <span className={styles.line} />
@@ -16,9 +16,9 @@ const Anchor = ({ href, children }: PageAnchorProps) => {
   );
 
   if (href.startsWith("https://") || href.startsWith("http://")) {
-    return <a href={href}>{content}</a>;
+    return <a href={href}>{Content}</a>;
   }
-  return <Link href={href}>{content}</Link>;
+  return <Link href={href}>{Content}</Link>;
 };
 
 export default Anchor;

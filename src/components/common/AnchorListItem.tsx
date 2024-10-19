@@ -1,21 +1,17 @@
 import Anchor from "./Anchor";
 import styles from "./AnchorListItem.module.scss";
+import AnchorOnClick from "./AnchorOnClick";
 
-interface AnchorListItemProps {
-  href: string;
+type AnchorListItemProps = {
   title: string;
   date?: string;
   description?: string;
   content?: React.ReactNode;
-}
+} & ({ href: string } | { onClick: () => void });
 
-const AnchorListItem = ({
-  href,
-  title,
-  date,
-  description,
-  content,
-}: AnchorListItemProps) => {
+const AnchorListItem = (props: AnchorListItemProps) => {
+  const { title, date, description, content } = props;
+
   return (
     <li>
       <header className={styles.header}>
@@ -28,7 +24,11 @@ const AnchorListItem = ({
         )}
       </header>
       <div>
-        <Anchor href={href}>{title}</Anchor>
+        {"href" in props ? (
+          <Anchor href={props.href}>{title}</Anchor>
+        ) : (
+          <AnchorOnClick onClick={props.onClick}>{title}</AnchorOnClick>
+        )}
       </div>
       {content && <div className={styles.content}>{content}</div>}
     </li>

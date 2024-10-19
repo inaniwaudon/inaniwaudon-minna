@@ -1,13 +1,20 @@
 "use client";
 
-import { ArticleTag, articleLinks, articleTags } from "@/app/articles/articles";
+import React, { useMemo, useState } from "react";
+
+import {
+  ArticleLink,
+  ArticleTag,
+  articleLinks,
+  articleTags,
+} from "@/app/articles/articles";
 import AnchorListItem from "@/components/common/AnchorListItem";
 import Checkbox from "@/components/common/Checkbox";
 import CustomList from "@/components/common/CustomList";
 import PageTitle from "@/components/common/PageTitle";
 import { useCustomParams } from "@/lib/useCustomParams";
 import { SearchParams } from "@/lib/utils";
-import { useMemo } from "react";
+import Article from "./Article";
 import styles from "./Main.module.scss";
 
 const tags = [
@@ -26,6 +33,8 @@ interface MainProps {
 export const Main = ({ title, searchParams }: MainProps) => {
   const customParams = useCustomParams("tag", true, undefined, searchParams);
   const { isSelectedTag } = customParams;
+  const [displayingArticleLink, setDisplayingArticleLink] =
+    useState<ArticleLink | null>(null);
 
   const selectedTags: ArticleTag[] = articleTags.filter((tag) =>
     isSelectedTag(tag),
@@ -45,6 +54,10 @@ export const Main = ({ title, searchParams }: MainProps) => {
     [selectedTags],
   );
 
+  const open = (link: ArticleLink) => {
+    setDisplayingArticleLink(link);
+  };
+
   return (
     <main>
       <header className={styles.topHeader}>
@@ -53,15 +66,31 @@ export const Main = ({ title, searchParams }: MainProps) => {
       </header>
       <CustomList>
         {filteredLinks.map((link) => (
-          <AnchorListItem
-            key={link.href}
-            href={link.href}
-            title={link.title}
-            date={link.date}
-            description={link.description}
-          />
+          <React.Fragment key={link.title}>
+            {link.pdf ? (
+              <AnchorListItem
+                title={link.title}
+                date={link.date}
+                description={link.description}
+                onClick={() => open(link)}
+              />
+            ) : (
+              <AnchorListItem
+                title={link.title}
+                date={link.date}
+                description={link.description}
+                href={link.href}
+              />
+            )}
+          </React.Fragment>
         ))}
       </CustomList>
+      {displayingArticleLink && (
+        <Article
+          link={displayingArticleLink}
+          closeModal={() => setDisplayingArticleLink(null)}
+        />
+      )}
     </main>
   );
 };
