@@ -157,6 +157,13 @@ const articleHatenaLinks: ArticleLink[] = [
     date: "2024/02/04",
     tags: ["random", "hongoshi"],
   },
+  {
+    href: "https://soudakyoto-ikou.hatenadiary.jp/entry/20241007/1728301046",
+    title:
+      "スライドに適した「ニュートラルでデフォルト感のない」フォントを考える",
+    date: "2024/10/07",
+    tags: ["design"],
+  },
 ];
 
 const articleZennLinks: ArticleLink[] = [
@@ -325,6 +332,12 @@ const articleZennLinks: ArticleLink[] = [
     href: "https://zenn.dev/inaniwaudon/articles/2cdf852fa10442",
     title: "Web で TikTok やショート動画のような縦スワイプ UI を実装する",
     date: "2024/07/19",
+    tags: ["tech"],
+  },
+  {
+    href: "https://zenn.dev/inaniwaudon/articles/c115a36f810eda",
+    title: "Hono + Cloudflare Workers でパスキーを試してみる",
+    date: "2024/09/18",
     tags: ["tech"],
   },
 ];
